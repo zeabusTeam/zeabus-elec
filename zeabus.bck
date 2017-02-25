@@ -1,0 +1,32 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP 74HC595_CUST
+D 8 bits serial in // out Shift Register 3 State Out
+K HCMOS SR 3State
+F 74xx/74HC595.pdf
+$ENDCMP
+#
+$CMP 74LS32_CUST
+D Quad Or 2 inputs
+K TTL Or2
+$ENDCMP
+#
+$CMP AUIRFS8409-7P
+F transistors/mos/*.*
+$ENDCMP
+#
+$CMP GND_CBA
+K POWER, PWR
+$ENDCMP
+#
+$CMP LM1117-XX
+D LM1117-xx, 0.8A 35V Linear Regulator, SOT-223
+K Fixed Voltage Regulator 0.8A Positive
+F http://www.national.com/ds/LM/LM1117.pdf
+$ENDCMP
+#
+$CMP LTC4357
+D Positive High Voltage Ideal Diode Controller
+$ENDCMP
+#
+#End Doc Library

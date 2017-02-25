@@ -1,0 +1,49 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP 4050_pwr_visible
+D Hex Buffer
+K CMOS BUFFER
+$ENDCMP
+#
+$CMP 74HC595_CUST
+D 8 bits serial in // out Shift Register 3 State Out
+K HCMOS SR 3State
+F 74xx/74HC595.pdf
+$ENDCMP
+#
+$CMP 74LS32_CUST
+D Quad Or 2 inputs
+K TTL Or2
+$ENDCMP
+#
+$CMP ATMEGA1280-A_Corrected
+D TQFP100, 128k Flash, 8k SRAM, 4k EEPROM, JTAG
+K AVR 8bit Microcontroller MegaAVR
+F http://www.atmel.com/Images/Atmel-2549-8-bit-AVR-Microcontroller-ATmega640-1280-1281-2560-2561_datasheet.pdf
+$ENDCMP
+#
+$CMP AUIRFS8409-7P
+F transistors/mos/*.*
+$ENDCMP
+#
+$CMP GND_CBA
+K POWER, PWR
+$ENDCMP
+#
+$CMP LM1117-XX
+D LM1117-xx, 0.8A 35V Linear Regulator, SOT-223
+K Fixed Voltage Regulator 0.8A Positive
+F http://www.national.com/ds/LM/LM1117.pdf
+$ENDCMP
+#
+$CMP LTC4357
+D Positive High Voltage Ideal Diode Controller
+$ENDCMP
+#
+$CMP NCV1117ST33T3G
+D LM1117-xx, 0.8A 35V Linear Regulator, SOT-223
+K Fixed Voltage Regulator 0.8A Positive
+F http://www.national.com/ds/LM/LM1117.pdf
+$ENDCMP
+#
+#End Doc Library
