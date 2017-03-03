@@ -5,5 +5,5 @@ Bridge circuit for several peripherals. It communicates to NUC via a USB (throug
 * Has 2 **isolated** RS-232 ports (use ADM3251E as the tranceiver/receiver) for:
  * DSP board
  * DVL board
-* Has an analog input including power supply for a presure sensor.
+* Has an analog input and a 5V power-supply for a presure sensor.
 * Has 8-channel digital output with **opto-isolator** for solinoid valves.
