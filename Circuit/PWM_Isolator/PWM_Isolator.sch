@@ -29,6 +29,7 @@ LIBS:atmel
 LIBS:contrib
 LIBS:valves
 LIBS:zeabus
+LIBS:PWM_Isolator-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -66,10 +67,10 @@ F 3 "" H 5150 3900 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_01X13 P5
+L CONN_01X13 P3
 U 1 1 58BD71B6
 P 2550 3600
-F 0 "P5" H 2550 4300 50  0000 C CNN
+F 0 "P3" H 2550 4300 50  0000 C CNN
 F 1 "Pololu PWM + Power rail" V 2650 3600 50  0000 C CNN
 F 2 "Socket_Strips:Socket_Strip_Straight_1x13" H 2550 3600 50  0001 C CNN
 F 3 "" H 2550 3600 50  0000 C CNN
@@ -77,21 +78,21 @@ F 3 "" H 2550 3600 50  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L CONN_02X06 P7
+L CONN_02X06 P2
 U 1 1 58BD71DC
-P 1850 4000
-F 0 "P7" H 1850 4350 50  0000 C CNN
-F 1 "GND_IN_2" H 1850 3650 50  0000 C CNN
-F 2 "Socket_Strips:Socket_Strip_Straight_2x06" H 1850 2800 50  0001 C CNN
-F 3 "" H 1850 2800 50  0000 C CNN
-	1    1850 4000
+P 1850 3850
+F 0 "P2" H 1850 4200 50  0000 C CNN
+F 1 "GND_IN_2" H 1850 3500 50  0000 C CNN
+F 2 "Socket_Strips:Socket_Strip_Straight_2x06" H 1850 2650 50  0001 C CNN
+F 3 "" H 1850 2650 50  0000 C CNN
+	1    1850 3850
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_01X07 P6
+L CONN_01X07 P10
 U 1 1 58BD7246
 P 10350 3650
-F 0 "P6" H 10350 4050 50  0000 C CNN
+F 0 "P10" H 10350 4050 50  0000 C CNN
 F 1 "NC" V 10450 3650 50  0000 C CNN
 F 2 "Socket_Strips:Socket_Strip_Straight_1x07" H 10350 3650 50  0001 C CNN
 F 3 "" H 10350 3650 50  0000 C CNN
@@ -99,43 +100,32 @@ F 3 "" H 10350 3650 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_02X06 P4
+L CONN_02X06 P1
 U 1 1 58BD72FA
-P 1850 3100
-F 0 "P4" H 1850 3450 50  0000 C CNN
-F 1 "GND_IN_1" H 1850 2750 50  0000 C CNN
-F 2 "Socket_Strips:Socket_Strip_Straight_2x06" H 1850 1900 50  0001 C CNN
-F 3 "" H 1850 1900 50  0000 C CNN
-	1    1850 3100
+P 1850 2950
+F 0 "P1" H 1850 3300 50  0000 C CNN
+F 1 "GND_IN_1" H 1850 2600 50  0000 C CNN
+F 2 "Socket_Strips:Socket_Strip_Straight_2x06" H 1850 1750 50  0001 C CNN
+F 3 "" H 1850 1750 50  0000 C CNN
+	1    1850 2950
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_02X06 P3
+L CONN_02X06 P6
 U 1 1 58BD7333
-P 8950 3050
-F 0 "P3" H 8950 3400 50  0000 C CNN
-F 1 "Motor_Pwr1" H 8950 2700 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_2x06" H 8950 1850 50  0001 C CNN
-F 3 "" H 8950 1850 50  0000 C CNN
-	1    8950 3050
+P 8400 3050
+F 0 "P6" H 8400 3400 50  0000 C CNN
+F 1 "Motor_Pwr1" H 8400 2700 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_2x06" H 8400 1850 50  0001 C CNN
+F 3 "" H 8400 1850 50  0000 C CNN
+	1    8400 3050
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_02X06 P2
-U 1 1 58BD7377
-P 8250 3050
-F 0 "P2" H 8250 3400 50  0000 C CNN
-F 1 "PWR_Jumper1" H 8250 2700 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_SMT_02x06" H 8250 1850 50  0001 C CNN
-F 3 "" H 8250 1850 50  0000 C CNN
-	1    8250 3050
-	1    0    0    -1  
-$EndComp
-$Comp
-L CONN_01X06 P1
+L CONN_01X06 P4
 U 1 1 58BD73C1
 P 7100 2950
-F 0 "P1" H 7100 3300 50  0000 C CNN
+F 0 "P4" H 7100 3300 50  0000 C CNN
 F 1 "PWM_OUT_1" V 7200 2950 50  0000 C CNN
 F 2 "Pin_Headers:Pin_Header_Straight_1x06" H 7100 2950 50  0001 C CNN
 F 3 "" H 7100 2950 50  0000 C CNN
@@ -143,10 +133,10 @@ F 3 "" H 7100 2950 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_01X06 P10
+L CONN_01X06 P5
 U 1 1 58BD7462
 P 7100 4350
-F 0 "P10" H 7100 4700 50  0000 C CNN
+F 0 "P5" H 7100 4700 50  0000 C CNN
 F 1 "PWM_OUT_2" V 7200 4350 50  0000 C CNN
 F 2 "Pin_Headers:Pin_Header_Straight_1x06" H 7100 4350 50  0001 C CNN
 F 3 "" H 7100 4350 50  0000 C CNN
@@ -154,48 +144,25 @@ F 3 "" H 7100 4350 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_02X06 P8
-U 1 1 58BD749E
-P 8250 4050
-F 0 "P8" H 8250 4400 50  0000 C CNN
-F 1 "PWR_Jumper2" H 8250 3700 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_SMT_02x06" H 8250 2850 50  0001 C CNN
-F 3 "" H 8250 2850 50  0000 C CNN
-	1    8250 4050
-	1    0    0    -1  
-$EndComp
-$Comp
-L CONN_02X06 P9
+L CONN_02X06 P7
 U 1 1 58BD7515
-P 8950 4050
-F 0 "P9" H 8950 4400 50  0000 C CNN
-F 1 "Motor_Pwr2" H 8950 3700 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_2x06" H 8950 2850 50  0001 C CNN
-F 3 "" H 8950 2850 50  0000 C CNN
-	1    8950 4050
+P 8400 4050
+F 0 "P7" H 8400 4400 50  0000 C CNN
+F 1 "Motor_Pwr2" H 8400 3700 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_2x06" H 8400 2850 50  0001 C CNN
+F 3 "" H 8400 2850 50  0000 C CNN
+	1    8400 4050
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	2100 2850 2100 4350
-Connection ~ 2100 2950
-Connection ~ 2100 3050
-Connection ~ 2100 3150
-Connection ~ 2100 3250
-Connection ~ 2100 3350
-Connection ~ 2100 3750
-Connection ~ 2100 3850
-Connection ~ 2100 3950
-Connection ~ 2100 4050
-Connection ~ 2100 4150
 $Comp
 L GNDA #PWR01
 U 1 1 58BD7AF0
-P 2100 4350
-F 0 "#PWR01" H 2100 4100 50  0001 C CNN
-F 1 "GNDA" H 2100 4200 50  0000 C CNN
-F 2 "" H 2100 4350 50  0000 C CNN
-F 3 "" H 2100 4350 50  0000 C CNN
-	1    2100 4350
+P 1600 4200
+F 0 "#PWR01" H 1600 3950 50  0001 C CNN
+F 1 "GNDA" H 1600 4050 50  0000 C CNN
+F 2 "" H 1600 4200 50  0000 C CNN
+F 3 "" H 1600 4200 50  0000 C CNN
+	1    1600 4200
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -220,7 +187,6 @@ F 3 "" H 5150 3400 50  0000 C CNN
 	1    5150 3400
 	1    0    0    -1  
 $EndComp
-Connection ~ 2100 4250
 Wire Wire Line
 	2750 3000 2900 3000
 Wire Wire Line
@@ -296,12 +262,12 @@ Wire Wire Line
 $Comp
 L +5VD #PWR04
 U 1 1 58BD81D8
-P 8000 2700
-F 0 "#PWR04" H 8000 2550 50  0001 C CNN
-F 1 "+5VD" H 8000 2840 50  0000 C CNN
-F 2 "" H 8000 2700 50  0000 C CNN
-F 3 "" H 8000 2700 50  0000 C CNN
-	1    8000 2700
+P 9300 2650
+F 0 "#PWR04" H 9300 2500 50  0001 C CNN
+F 1 "+5VD" H 9300 2790 50  0000 C CNN
+F 2 "" H 9300 2650 50  0000 C CNN
+F 3 "" H 9300 2650 50  0000 C CNN
+	1    9300 2650
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -352,51 +318,15 @@ Wire Wire Line
 	6900 4500 6150 4500
 Wire Wire Line
 	6150 4600 6900 4600
-Wire Wire Line
-	8500 2800 8700 2800
-Wire Wire Line
-	8700 2900 8500 2900
-Wire Wire Line
-	8500 3000 8700 3000
-Wire Wire Line
-	8700 3100 8500 3100
-Wire Wire Line
-	8500 3200 8700 3200
-Wire Wire Line
-	8700 3300 8500 3300
-Wire Wire Line
-	8500 3800 8700 3800
-Wire Wire Line
-	8700 3900 8500 3900
-Wire Wire Line
-	8700 4000 8500 4000
-Wire Wire Line
-	8500 4100 8700 4100
-Wire Wire Line
-	8700 4200 8500 4200
-Wire Wire Line
-	8500 4300 8700 4300
-Wire Wire Line
-	9200 2800 9200 4400
-Connection ~ 9200 4200
-Connection ~ 9200 4100
-Connection ~ 9200 4000
-Connection ~ 9200 3900
-Connection ~ 9200 3800
-Connection ~ 9200 3300
-Connection ~ 9200 3200
-Connection ~ 9200 3100
-Connection ~ 9200 3000
-Connection ~ 9200 2900
 $Comp
 L GNDD #PWR07
 U 1 1 58BD98A2
-P 9200 4400
-F 0 "#PWR07" H 9200 4150 50  0001 C CNN
-F 1 "GNDD" H 9200 4250 50  0000 C CNN
-F 2 "" H 9200 4400 50  0000 C CNN
-F 3 "" H 9200 4400 50  0000 C CNN
-	1    9200 4400
+P 8150 4450
+F 0 "#PWR07" H 8150 4200 50  0001 C CNN
+F 1 "GNDD" H 8150 4300 50  0000 C CNN
+F 2 "" H 8150 4450 50  0000 C CNN
+F 3 "" H 8150 4450 50  0000 C CNN
+	1    8150 4450
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -421,19 +351,6 @@ F 3 "" H 6150 4800 50  0000 C CNN
 	1    6150 4800
 	1    0    0    -1  
 $EndComp
-Connection ~ 9200 4300
-Wire Wire Line
-	8000 2700 8000 4300
-Connection ~ 8000 4200
-Connection ~ 8000 4100
-Connection ~ 8000 4000
-Connection ~ 8000 3900
-Connection ~ 8000 3800
-Connection ~ 8000 3300
-Connection ~ 8000 3200
-Connection ~ 8000 3100
-Connection ~ 8000 3000
-Connection ~ 8000 2900
 $Comp
 L +5VA #PWR010
 U 1 1 58BDA111
@@ -467,7 +384,6 @@ F 3 "" H 5150 3900 50  0000 C CNN
 	1    5150 3900
 	1    0    0    -1  
 $EndComp
-Connection ~ 8000 2800
 Text Notes 8050 6950 0    206  ~ 41
 PWM Isolator\n
 Text Notes 8250 7650 0    60   ~ 0
@@ -476,4 +392,63 @@ Text Notes 10650 7650 0    60   ~ 0
 1.0.0
 Text Notes 7550 7500 0    60   ~ 0
 PWM Isolator\n
+Wire Wire Line
+	1600 2700 1600 4200
+Connection ~ 1600 2800
+Connection ~ 1600 2900
+Connection ~ 1600 3000
+Connection ~ 1600 3100
+Connection ~ 1600 3200
+Connection ~ 1600 3600
+Connection ~ 1600 3700
+Connection ~ 1600 3800
+Connection ~ 1600 3900
+Connection ~ 1600 4000
+Connection ~ 1600 4100
+Wire Wire Line
+	8150 2800 8150 4450
+Connection ~ 8150 2900
+Connection ~ 8150 3000
+Connection ~ 8150 3100
+Connection ~ 8150 3200
+Connection ~ 8150 3300
+Connection ~ 8150 3800
+Connection ~ 8150 3900
+Connection ~ 8150 4000
+Connection ~ 8150 4100
+Connection ~ 8150 4200
+Connection ~ 8150 4300
+$Comp
+L CONN_01X01 P8
+U 1 1 58BE358F
+P 9300 2850
+F 0 "P8" H 9300 2950 50  0000 C CNN
+F 1 "Motor PWR" V 9400 2850 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x01" H 9300 2850 50  0001 C CNN
+F 3 "" H 9300 2850 50  0000 C CNN
+	1    9300 2850
+	0    1    1    0   
+$EndComp
+$Comp
+L +5VD #PWR?
+U 1 1 58BE3A9C
+P 9800 2650
+F 0 "#PWR?" H 9800 2500 50  0001 C CNN
+F 1 "+5VD" H 9800 2790 50  0000 C CNN
+F 2 "" H 9800 2650 50  0000 C CNN
+F 3 "" H 9800 2650 50  0000 C CNN
+	1    9800 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X01 P9
+U 1 1 58BE3AA2
+P 9800 2850
+F 0 "P9" H 9800 2950 50  0000 C CNN
+F 1 "Motor PWR" V 9900 2850 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x01" H 9800 2850 50  0001 C CNN
+F 3 "" H 9800 2850 50  0000 C CNN
+	1    9800 2850
+	0    1    1    0   
+$EndComp
 $EndSCHEMATC
