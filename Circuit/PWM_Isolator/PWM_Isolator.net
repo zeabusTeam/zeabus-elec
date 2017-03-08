@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source /Users/Pongkemon/Copy/AUV/Zeabus-Elec-2017/Circuit/PWM_Isolator/PWM_Isolator.sch)
-    (date "Tuesday, 07 March 2017 'amt' 10:18:49")
+    (date "Wednesday, 08 March 2017 'amt' 10:25:22")
     (tool "Eeschema 4.0.5")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -17,13 +17,13 @@
   (components
     (comp (ref U1)
       (value Si8660BA-B-IS1)
-      (footprint SMD_Packages:SO-16-N)
+      (footprint Zeabus:Narrow-SOIC-16)
       (libsource (lib zeabus) (part Si8660BA-B-IS1))
       (sheetpath (names /) (tstamps /))
       (tstamp 58BD70E7))
     (comp (ref U2)
       (value Si8660BA-B-IS1)
-      (footprint SMD_Packages:SO-16-N)
+      (footprint Zeabus:Narrow-SOIC-16)
       (libsource (lib zeabus) (part Si8660BA-B-IS1))
       (sheetpath (names /) (tstamps /))
       (tstamp 58BD7124))
@@ -183,6 +183,7 @@
         (pin (num 11) (name P11) (type passive))
         (pin (num 12) (name P12) (type passive))))
     (libpart (lib zeabus) (part Si8660BA-B-IS1)
+      (description "6-Channel Digital Isolator")
       (fields
         (field (name Reference) U)
         (field (name Value) Si8660BA-B-IS1))
