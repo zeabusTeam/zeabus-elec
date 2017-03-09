@@ -46,4 +46,9 @@ K Fixed Voltage Regulator 0.8A Positive
 F http://www.national.com/ds/LM/LM1117.pdf
 $ENDCMP
 #
+$CMP Si8660BA-B-IS1
+D 6-Channel Digital Isolator
+K Isolator
+$ENDCMP
+#
 #End Doc Library
