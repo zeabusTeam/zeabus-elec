@@ -16,6 +16,10 @@ D Quad Or 2 inputs
 K TTL Or2
 $ENDCMP
 #
+$CMP ADC101S021
+D 10-bit ADC with SPI Output
+$ENDCMP
+#
 $CMP ATMEGA1280-A_Corrected
 D TQFP100, 128k Flash, 8k SRAM, 4k EEPROM, JTAG
 K AVR 8bit Microcontroller MegaAVR
