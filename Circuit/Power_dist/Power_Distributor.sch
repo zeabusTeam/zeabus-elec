@@ -29,6 +29,7 @@ LIBS:atmel
 LIBS:contrib
 LIBS:valves
 LIBS:zeabus
+LIBS:Power_Distributor-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -46,8 +47,16 @@ $EndDescr
 $Sheet
 S 4000 3000 900  400 
 U 58C990D6
-F0 "switch5V" 60
+F0 "Switch5V" 60
 F1 "Power_switch_5V.sch" 60
 F2 "+Power" I R 4900 3100 60 
+$EndSheet
+$Sheet
+S 4000 3850 900  400 
+U 58C998BD
+F0 "Lamp_switch" 60
+F1 "Lamp_switch.sch" 60
+F2 "+Power" I R 4900 3950 60 
+F3 "+Switch" I R 4900 4100 60 
 $EndSheet
 $EndSCHEMATC
