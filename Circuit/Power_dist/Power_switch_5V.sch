@@ -99,17 +99,6 @@ F 3 "" H 4500 3550 50  0001 C CNN
 	1    4500 3550
 	1    0    0    -1  
 $EndComp
-$Comp
-L XT30 P?
-U 1 1 58C992B6
-P 7150 3600
-F 0 "P?" H 7150 3750 50  0000 C CNN
-F 1 "XT30" H 7150 3450 50  0000 C CNN
-F 2 "auv:XT30" H 7250 3350 60  0000 C CNN
-F 3 "" H 7150 3600 60  0000 C CNN
-	1    7150 3600
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	5000 3450 5000 3550
 Wire Wire Line
@@ -145,4 +134,15 @@ Text HLabel 3800 3150 0    60   Input ~ 0
 +Power
 Wire Wire Line
 	3800 3150 5000 3150
+$Comp
+L XT60 P?
+U 1 1 58C9F835
+P 7150 3600
+F 0 "P?" H 7150 3750 50  0000 C CNN
+F 1 "XT60" H 7150 3450 50  0000 C CNN
+F 2 "auv:XT60" H 7250 3350 60  0000 C CNN
+F 3 "" H 7150 3600 60  0000 C CNN
+	1    7150 3600
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
