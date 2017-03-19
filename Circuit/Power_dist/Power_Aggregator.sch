@@ -1,0 +1,245 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:zeabus
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title "Power Aggregator"
+Date "2017-03-14"
+Rev "1.0.0"
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Fuse F2
+U 1 1 5626464E
+P 4300 4000
+F 0 "F2" H 4400 4050 50  0000 C CNN
+F 1 "FUSE" H 4200 3950 50  0000 C CNN
+F 2 "Zeabus:FUSE_AUTO" H 4300 4000 60  0001 C CNN
+F 3 "" H 4300 4000 60  0000 C CNN
+	1    4300 4000
+	0    1    1    0   
+$EndComp
+$Comp
+L XT60 P2
+U 1 1 5626F4F4
+P 3850 4450
+F 0 "P2" H 3850 4600 50  0000 C CNN
+F 1 "XT60" H 3850 4300 50  0000 C CNN
+F 2 "Zeabus:XT60" H 3850 4450 60  0001 C CNN
+F 3 "" H 3850 4450 60  0000 C CNN
+	1    3850 4450
+	-1   0    0    -1  
+$EndComp
+$Comp
+L LTC4357 U2
+U 1 1 5626F549
+P 5850 5050
+F 0 "U2" H 5600 5350 60  0000 C CNN
+F 1 "LTC4357" H 5750 4750 60  0000 C CNN
+F 2 "Housings_SSOP:MSOP-8_3x3mm_Pitch0.65mm" H 5550 4900 60  0001 C CNN
+F 3 "" H 5550 4900 60  0000 C CNN
+	1    5850 5050
+	1    0    0    -1  
+$EndComp
+$Comp
+L AUIRFS8409-7P Q2
+U 1 1 5626F582
+P 5200 4100
+F 0 "Q2" H 5210 4270 60  0000 R CNN
+F 1 "AUIRFS8409-7P" H 5210 3950 60  0000 R CNN
+F 2 "Zeabus:D2PAK-7" H 5200 4100 60  0001 C CNN
+F 3 "" H 5200 4100 60  0000 C CNN
+	1    5200 4100
+	0    1    -1   0   
+$EndComp
+$Comp
+L GND #PWR01
+U 1 1 5626F752
+P 6350 5250
+F 0 "#PWR01" H 6350 5000 50  0001 C CNN
+F 1 "GND" H 6350 5100 50  0000 C CNN
+F 2 "" H 6350 5250 60  0000 C CNN
+F 3 "" H 6350 5250 60  0000 C CNN
+	1    6350 5250
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR02
+U 1 1 5626F76E
+P 4050 4600
+F 0 "#PWR02" H 4050 4350 50  0001 C CNN
+F 1 "GND" H 4050 4450 50  0000 C CNN
+F 2 "" H 4050 4600 60  0000 C CNN
+F 3 "" H 4050 4600 60  0000 C CNN
+	1    4050 4600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4050 4400 4050 4000
+Wire Wire Line
+	4450 4000 5000 4000
+Wire Wire Line
+	5400 5200 5200 5200
+Wire Wire Line
+	5200 5200 5200 4300
+Wire Wire Line
+	5400 4900 4800 4900
+Wire Wire Line
+	4800 4900 4800 4000
+Connection ~ 4800 4000
+Wire Wire Line
+	6350 5000 6300 5000
+Wire Wire Line
+	6350 4000 6350 5000
+Wire Wire Line
+	6350 4900 6300 4900
+Wire Wire Line
+	5400 4000 6600 4000
+Connection ~ 6350 4900
+Wire Wire Line
+	6350 5250 6350 5200
+Wire Wire Line
+	6350 5200 6300 5200
+Wire Wire Line
+	4050 4500 4050 4600
+$Comp
+L Fuse F1
+U 1 1 5626F941
+P 4300 2100
+F 0 "F1" H 4400 2150 50  0000 C CNN
+F 1 "FUSE" H 4200 2050 50  0000 C CNN
+F 2 "Zeabus:FUSE_AUTO" H 4300 2100 60  0001 C CNN
+F 3 "" H 4300 2100 60  0000 C CNN
+	1    4300 2100
+	0    1    1    0   
+$EndComp
+$Comp
+L XT60 P1
+U 1 1 5626F947
+P 3850 2550
+F 0 "P1" H 3850 2700 50  0000 C CNN
+F 1 "XT60" H 3850 2400 50  0000 C CNN
+F 2 "Zeabus:XT60" H 3850 2550 60  0001 C CNN
+F 3 "" H 3850 2550 60  0000 C CNN
+	1    3850 2550
+	-1   0    0    -1  
+$EndComp
+$Comp
+L LTC4357 U1
+U 1 1 5626F94D
+P 5850 3150
+F 0 "U1" H 5600 3450 60  0000 C CNN
+F 1 "LTC4357" H 5750 2850 60  0000 C CNN
+F 2 "Housings_SSOP:MSOP-8_3x3mm_Pitch0.65mm" H 5550 3000 60  0001 C CNN
+F 3 "" H 5550 3000 60  0000 C CNN
+	1    5850 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L AUIRFS8409-7P Q1
+U 1 1 5626F953
+P 5200 2200
+F 0 "Q1" H 5210 2370 60  0000 R CNN
+F 1 "AUIRFS8409-7P" H 5210 2050 60  0000 R CNN
+F 2 "Zeabus:D2PAK-7" H 5200 2200 60  0001 C CNN
+F 3 "" H 5200 2200 60  0000 C CNN
+	1    5200 2200
+	0    1    -1   0   
+$EndComp
+$Comp
+L GND #PWR03
+U 1 1 5626F959
+P 6350 3350
+F 0 "#PWR03" H 6350 3100 50  0001 C CNN
+F 1 "GND" H 6350 3200 50  0000 C CNN
+F 2 "" H 6350 3350 60  0000 C CNN
+F 3 "" H 6350 3350 60  0000 C CNN
+	1    6350 3350
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR04
+U 1 1 5626F95F
+P 4050 2700
+F 0 "#PWR04" H 4050 2450 50  0001 C CNN
+F 1 "GND" H 4050 2550 50  0000 C CNN
+F 2 "" H 4050 2700 60  0000 C CNN
+F 3 "" H 4050 2700 60  0000 C CNN
+	1    4050 2700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4050 2500 4050 2100
+Wire Wire Line
+	4450 2100 5000 2100
+Wire Wire Line
+	5400 3300 5200 3300
+Wire Wire Line
+	5200 3300 5200 2400
+Wire Wire Line
+	5400 3000 4800 3000
+Wire Wire Line
+	4800 3000 4800 2100
+Connection ~ 4800 2100
+Wire Wire Line
+	6350 3100 6300 3100
+Wire Wire Line
+	6350 2100 6350 3100
+Wire Wire Line
+	6350 3000 6300 3000
+Wire Wire Line
+	5400 2100 6900 2100
+Connection ~ 6350 3000
+Wire Wire Line
+	6350 3350 6350 3300
+Wire Wire Line
+	6350 3300 6300 3300
+Wire Wire Line
+	4050 2600 4050 2700
+Text HLabel 6900 2100 2    60   UnSpc ~ 0
++VBatt
+Connection ~ 6350 2100
+Wire Wire Line
+	6600 4000 6600 2100
+Connection ~ 6600 2100
+Connection ~ 6350 4000
+Wire Wire Line
+	4050 2100 4150 2100
+Wire Wire Line
+	4050 4000 4150 4000
+$EndSCHEMATC
