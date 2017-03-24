@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Zeabus-Elec-2017-Power_Dist-Code
 Library for Power Distributer
 =======
@@ -31,4 +30,4 @@ The components under control of FTxx are:
 The library consists of 2 files, _zblib.h_ and _zblib.c_. Users should consider only information in the _zblib.h_ file.
 
 Normally, Zeabus team use only this Zeabus library and let the library manipulate base FTDI function calls.
->>>>>>> f18a975... First alpha version of library.
+=======
