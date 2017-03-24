@@ -1,2 +1,2 @@
-# Zeabus-Elec-2017-Power_Dist-Code
-Library for Power Distributer
+# Zeabus-Elec-2017-Code
+Library for Power Distributer and Peripheral Bridge\
