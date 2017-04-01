@@ -173,7 +173,20 @@ Text HLabel 3350 3550 0    60   Input ~ 0
 Text HLabel 3350 4550 0    60   Input ~ 0
 +Switch
 Wire Wire Line
-	3350 4550 4500 4550
-Wire Wire Line
 	3350 3550 4900 3550
+$Comp
+L R R?
+U 1 1 58E00964
+P 4150 4550
+F 0 "R?" V 4230 4550 50  0000 C CNN
+F 1 "R" V 4150 4550 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 4080 4550 50  0001 C CNN
+F 3 "" H 4150 4550 50  0001 C CNN
+	1    4150 4550
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	4500 4550 4300 4550
+Wire Wire Line
+	4000 4550 3350 4550
 $EndSCHEMATC
