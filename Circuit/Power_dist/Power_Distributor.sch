@@ -34,7 +34,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 4
+Sheet 1 5
 Title ""
 Date ""
 Rev ""
@@ -66,5 +66,12 @@ F0 "DSP" 60
 F1 "Power_Switch_5V.sch" 60
 F2 "+Power" I R 5000 3800 60 
 F3 "+Switch" I R 5000 3950 60 
+$EndSheet
+$Sheet
+S 5900 3000 900  400 
+U 58DFDFD6
+F0 "NUC" 60
+F1 "Power_12V.sch" 60
+F2 "+Power" I R 6800 3100 60 
 $EndSheet
 $EndSCHEMATC
