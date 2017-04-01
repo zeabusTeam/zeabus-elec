@@ -34,7 +34,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 3
+Sheet 1 4
 Title ""
 Date ""
 Rev ""
@@ -52,11 +52,19 @@ F1 "Power_switch_5V.sch" 60
 F2 "+Power" I R 4900 3100 60 
 $EndSheet
 $Sheet
-S 4000 3850 900  400 
+S 5950 3700 900  400 
 U 58C998BD
 F0 "Lamp_switch" 60
 F1 "Lamp_switch.sch" 60
-F2 "+Power" I R 4900 3950 60 
-F3 "+Switch" I R 4900 4100 60 
+F2 "+Power" I R 6850 3800 60 
+F3 "+Switch" I R 6850 3950 60 
+$EndSheet
+$Sheet
+S 4000 3700 900  400 
+U 58DFD88E
+F0 "Switch5V_SW" 60
+F1 "Power_switch_5V_SW.sch" 60
+F2 "+Power" I R 4900 3800 60 
+F3 "+Switch" I R 4900 3950 60 
 $EndSheet
 $EndSCHEMATC
