@@ -45,26 +45,26 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Sheet
-S 4000 3000 900  400 
+S 4100 3000 900  400 
 U 58C990D6
-F0 "Switch5V" 60
-F1 "Power_switch_5V.sch" 60
-F2 "+Power" I R 4900 3100 60 
+F0 "USB_N_Ethernet" 60
+F1 "Power_5V.sch" 60
+F2 "+Power" I R 5000 3100 60 
 $EndSheet
 $Sheet
-S 5950 3700 900  400 
+S 5900 3700 900  400 
 U 58C998BD
-F0 "Lamp_switch" 60
-F1 "Lamp_switch.sch" 60
-F2 "+Power" I R 6850 3800 60 
-F3 "+Switch" I R 6850 3950 60 
+F0 "Lamp_Switch" 60
+F1 "Lamp_Switch.sch" 60
+F2 "+Power" I R 6800 3800 60 
+F3 "+Switch" I R 6800 3950 60 
 $EndSheet
 $Sheet
-S 4000 3700 900  400 
+S 4100 3700 900  400 
 U 58DFD88E
-F0 "Switch5V_SW" 60
-F1 "Power_switch_5V_SW.sch" 60
-F2 "+Power" I R 4900 3800 60 
-F3 "+Switch" I R 4900 3950 60 
+F0 "DSP" 60
+F1 "Power_Switch_5V.sch" 60
+F2 "+Power" I R 5000 3800 60 
+F3 "+Switch" I R 5000 3950 60 
 $EndSheet
 $EndSCHEMATC
