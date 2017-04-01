@@ -34,7 +34,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 5
+Sheet 1 6
 Title ""
 Date ""
 Rev ""
@@ -52,12 +52,12 @@ F1 "Power_5V.sch" 60
 F2 "+Power" I R 5000 3100 60 
 $EndSheet
 $Sheet
-S 5900 3700 900  400 
+S 5900 4300 900  400 
 U 58C998BD
 F0 "Lamp_Switch" 60
 F1 "Lamp_Switch.sch" 60
-F2 "+Power" I R 6800 3800 60 
-F3 "+Switch" I R 6800 3950 60 
+F2 "+Power" I R 6800 4400 60 
+F3 "+Switch" I R 6800 4550 60 
 $EndSheet
 $Sheet
 S 4100 3700 900  400 
@@ -73,5 +73,14 @@ U 58DFDFD6
 F0 "NUC" 60
 F1 "Power_12V.sch" 60
 F2 "+Power" I R 6800 3100 60 
+$EndSheet
+$Sheet
+S 5900 3700 900  400 
+U 58E0048C
+F0 "Thruster1" 60
+F1 "Power_Switch_VBatt.sch" 60
+F2 "+Power" I R 6800 3800 60 
+F3 "Software_Switch" I R 6800 3900 60 
+F4 "Hardware_Switch" I R 6800 4000 60 
 $EndSheet
 $EndSCHEMATC
