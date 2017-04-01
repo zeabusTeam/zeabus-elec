@@ -78,7 +78,7 @@ $Sheet
 S 5900 3700 900  400 
 U 58E0048C
 F0 "Thruster1" 60
-F1 "Power_Switch_VBatt.sch" 60
+F1 "Thruster_Switch.sch" 60
 F2 "+Power" I R 6800 3800 60 
 F3 "Software_Switch" I R 6800 3900 60 
 F4 "Hardware_Switch" I R 6800 4000 60 
