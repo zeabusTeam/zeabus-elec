@@ -111,7 +111,7 @@ Wire Wire Line
 	4050 3550 4200 3550
 Connection ~ 4050 3550
 Wire Wire Line
-	6100 3150 6950 3150
+	6100 3150 8250 3150
 Wire Wire Line
 	6600 3150 6600 3300
 Wire Wire Line
@@ -121,7 +121,7 @@ Wire Wire Line
 Wire Wire Line
 	6200 3300 6200 4050
 Wire Wire Line
-	6200 4050 6950 4050
+	6200 4050 8250 4050
 Wire Wire Line
 	6600 4050 6600 3950
 Wire Wire Line
@@ -145,4 +145,38 @@ F 3 "" H 7150 3600 60  0000 C CNN
 	1    7150 3600
 	1    0    0    -1  
 $EndComp
+$Comp
+L XT60 P?
+U 1 1 58DFD635
+P 7800 3600
+F 0 "P?" H 7800 3750 50  0000 C CNN
+F 1 "XT60" H 7800 3450 50  0000 C CNN
+F 2 "auv:XT60" H 7900 3350 60  0000 C CNN
+F 3 "" H 7800 3600 60  0000 C CNN
+	1    7800 3600
+	1    0    0    -1  
+$EndComp
+Connection ~ 6950 3150
+Connection ~ 6950 4050
+$Comp
+L XT60 P?
+U 1 1 58DFD6BF
+P 8450 3600
+F 0 "P?" H 8450 3750 50  0000 C CNN
+F 1 "XT60" H 8450 3450 50  0000 C CNN
+F 2 "auv:XT60" H 8550 3350 60  0000 C CNN
+F 3 "" H 8450 3600 60  0000 C CNN
+	1    8450 3600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8250 3150 8250 3550
+Wire Wire Line
+	8250 4050 8250 3650
+Wire Wire Line
+	7600 3550 7600 3150
+Connection ~ 7600 3150
+Wire Wire Line
+	7600 3650 7600 4050
+Connection ~ 7600 4050
 $EndSCHEMATC
