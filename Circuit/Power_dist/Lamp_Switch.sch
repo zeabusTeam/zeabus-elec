@@ -146,7 +146,7 @@ $EndComp
 Text HLabel 3150 2600 0    60   Input ~ 0
 +Power
 Text HLabel 3200 4800 0    60   Input ~ 0
-+Switch
+Switch
 $Comp
 L UWE-12/6-Q12P U?
 U 1 1 58C9B4D5
@@ -162,17 +162,13 @@ Connection ~ 3750 3050
 Wire Wire Line
 	3750 2750 5100 2750
 Wire Wire Line
-	3750 2750 3750 3050
-Wire Wire Line
-	3750 3050 3750 3200
+	3750 2750 3750 3200
 Wire Wire Line
 	3900 3050 3750 3050
 Wire Wire Line
-	5100 3050 4750 3050
+	4500 3050 5100 3050
 Wire Wire Line
-	4750 3050 4500 3050
-Wire Wire Line
-	5100 2900 5100 3050
+	5100 3050 5100 2900
 Connection ~ 6600 3500
 Wire Wire Line
 	6950 3500 6950 3100
@@ -182,9 +178,7 @@ Wire Wire Line
 Wire Wire Line
 	6600 3500 6600 3350
 Wire Wire Line
-	6200 3500 6600 3500
-Wire Wire Line
-	6600 3500 6950 3500
+	6200 3500 6950 3500
 Wire Wire Line
 	6200 3200 6200 3500
 Wire Wire Line
@@ -192,13 +186,9 @@ Wire Wire Line
 Wire Wire Line
 	6600 2600 6600 2700
 Wire Wire Line
-	6200 2600 6600 2600
+	6200 2600 6950 2600
 Wire Wire Line
-	6600 2600 6950 2600
-Wire Wire Line
-	3150 2600 3350 2600
-Wire Wire Line
-	3350 2600 5100 2600
+	3150 2600 5100 2600
 Wire Wire Line
 	3350 3850 3350 2600
 Connection ~ 3350 2600
@@ -222,9 +212,7 @@ Wire Wire Line
 Wire Wire Line
 	4000 4800 3200 4800
 Wire Wire Line
-	4750 3050 4750 4350
-Wire Wire Line
-	4750 4350 4750 4600
+	4750 3050 4750 4600
 Wire Wire Line
 	4750 4350 5100 4350
 Wire Wire Line
@@ -269,9 +257,7 @@ F 3 "" V 6600 4500 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 Wire Wire Line
-	6200 3850 6600 3850
-Wire Wire Line
-	6600 3850 6950 3850
+	6200 3850 6950 3850
 Wire Wire Line
 	6600 3850 6600 3950
 Wire Wire Line
@@ -279,9 +265,7 @@ Wire Wire Line
 Wire Wire Line
 	6200 4450 6200 4750
 Wire Wire Line
-	6200 4750 6600 4750
-Wire Wire Line
-	6600 4750 6950 4750
+	6200 4750 6950 4750
 Wire Wire Line
 	6600 4750 6600 4600
 Wire Wire Line

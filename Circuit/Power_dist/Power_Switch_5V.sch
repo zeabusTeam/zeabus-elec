@@ -171,7 +171,7 @@ Connection ~ 6450 4450
 Text HLabel 3350 3550 0    60   Input ~ 0
 +Power
 Text HLabel 3350 4550 0    60   Input ~ 0
-+Switch
+Switch
 Wire Wire Line
 	3350 3550 4900 3550
 $Comp
