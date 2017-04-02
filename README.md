@@ -1,4 +1,5 @@
 # Zeabus-Elec-2017-Code
+<<<<<<< HEAD
 Library for Power Distributer and Peripheral Bridge
 
 ## The base FTDI library
@@ -27,3 +28,6 @@ The components under control of FTxx are:
 The library consists of 2 files, _zblib.h_ and _zblib.c_. Users should consider only information in the .h file.
 
 Normally, Zeabus team use only this Zeabus library and let the library manipulate base FTDI function calls.
+=======
+Library for Power Distributer and Peripheral Bridge\
+>>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
