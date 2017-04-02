@@ -16,13 +16,13 @@ Zebus library was built over the base FTDI library. It provides high-level funct
 The components under control of FTxx are:
 
 * _FT232H_ The chip must be pre-programmed its serial number as "PowerDist".
- * 8-Channel galvanic-isolated power switches assigned as:
-  * 6 channels for thrusters, DVL, and Sonar (including spared channels) with directed connection to batteries
-  * 1 channel for head lamps with 12V supply
-  * 1 channel for DSP board with 5V supply
+  * 8-Channel galvanic-isolated power switches assigned as:
+    * 6 channels for thrusters, DVL, and Sonar (including spared channels) with directed connection to batteries
+    * 1 channel for head lamps with 12V supply
+    * 1 channel for DSP board with 5V supply
 * _FT4232H_ This chip consists of 4 independent modules Their serial numbers must be pre-programmed as "PerpheralBridge-A", "PerpheralBridge-B", "PerpheralBridge-C", and "PerpheralBridge-D".
- * 8-Channel galvanic-isolated switches for pneumatic valves.
- * 2-Channel galvanic-isolated RS232 for communication with DSP and DVL boards
+  * 8-Channel galvanic-isolated switches for pneumatic valves.
+  * 2-Channel galvanic-isolated RS232 for communication with DSP and DVL boards
 
 The library consists of 2 files, _zblib.h_ and _zblib.c_. Users should consider only information in the .h file.
 
