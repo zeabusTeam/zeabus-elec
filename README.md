@@ -1,5 +1,4 @@
 # Zeabus-Elec-2017-Code
-<<<<<<< HEAD
 Library for Power Distributer and Peripheral Bridge
 
 ## The base FTDI library
@@ -9,7 +8,7 @@ The base library consists of 2 files, _libftd2xx.a_ and _ftd2xx.h_.
 
 The library requires "pthread" and "dl" libraries provided by the system.
 Therefore, to build the program we need _-lpthread -ldl_ option. 
-For example `gcc main.c -o runing libftd2xx -lpthread -ldl`.
+For example `gcc main.c zblib.c -o runing libftd2xx -lpthread -ldl`.
 
 ## Zeabus Library
 Zebus library was built over the base FTDI library. It provides high-level functions to control various components via FTxxx chips.
@@ -25,9 +24,6 @@ The components under control of FTxx are:
   * 8-Channel galvanic-isolated switches for pneumatic valves.
   * 2-Channel galvanic-isolated RS232 for communication with DSP and DVL boards
 
-The library consists of 2 files, _zblib.h_ and _zblib.c_. Users should consider only information in the .h file.
+The library consists of 2 files, _zblib.h_ and _zblib.c_. Users should consider only information in the _zblib.h_ file.
 
 Normally, Zeabus team use only this Zeabus library and let the library manipulate base FTDI function calls.
-=======
-Library for Power Distributer and Peripheral Bridge\
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631

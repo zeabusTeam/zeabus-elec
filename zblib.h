@@ -32,15 +32,22 @@ typedef enum
 	ZB_STAT_INIT_FAIL,
 	ZB_STAT_NEVER_INIT,
 	ZB_STAT_NO_DEVICE,
+	ZB_STAT_PRESSURE_SENSOR_FAIL,
 	ZB_STAT_PERIPHERAL_BRIDGE_FAIL,
-	ZB_STAT_POWER_SW_FAIL
+	ZB_STAT_POWER_SW_FAIL,
 	ZB_STAT_COMM_WRITE_FAIL,
-	ZB_STAT_COMM_READ_FAIL,
+	ZB_STAT_COMM_READ_FAIL
 }ZB_Status_t;
+
+/*=====================================================================================*/
 /* Function calls. Unless specified, all functions return the status of the operation. */
+/*=====================================================================================*/
 
 /* Reset and initialize all FTxxxx chips. Then, prepare all setup for further operation */
-ZB_Status_t ZB_Init();
+ZB_Status_t ZB_Init( uint32_t ulComm1BaudRate, uint32_t ulComm2BaudRate );
+
+/* Return the maximum data size that can be send at once (i.e. USB packet size) */
+uint32_t ZB_GetMaxDataSize();
 
 /* Retrieve the error code of the previous operation. Some functions may return this error
 code by default. */
@@ -60,15 +67,22 @@ ZB_Status_t ZB_Solenoid_TurnOn( uint8_t ucSolMask );
 ZB_Status_t ZB_Solenoid_TurnOff( uint8_t ucSolMask );
 
 /* Write a stream of data to the specified RS232 port (Com1 or Com2). The function returns 
-the amount of actually written data. If the returned value differs from the aspected one.
-User can get the error status from ZB_GetErrorCode or ZB_GetErrorString */
-size_t ZB_Write_Com1( uint8_t* ucData, size_t usLen );
-size_t ZB_Write_Com2( uint8_t* ucData, size_t usLen );
+the amount of actually written data. If the returned value differs from the aspected one,
+user can get the error status from ZB_GetErrorCode or ZB_GetErrorString */
+uint32_t ZB_Write_Com1( uint8_t* ucData, uint32_t ulLen );
+uint32_t ZB_Write_Com2( uint8_t* ucData, uint32_t ulLen );
 
 /* Read a stream of data to the specified RS232 port (Com1 or Com2). The function returns 
-the amount of actually read data. If the returned value differs from the aspected one.
-User can get the error status from ZB_GetErrorCode or ZB_GetErrorString */
-size_t ZB_Read_Com1( uint8_t* ucData, size_t usMaxLen );
-size_t ZB_Read_Com2( uint8_t* ucData, size_t usMaxLen );
+the amount of actually read data. If the returned value differs from the aspected one,
+user can get the error status from ZB_GetErrorCode or ZB_GetErrorString */
+uint32_t ZB_Read_Com1( uint8_t* ucData, uint32_t ulMaxLen );
+uint32_t ZB_Read_Com2( uint8_t* ucData, uint32_t ulMaxLen );
+
+/* Read the value of the pressure sensor through the ADC chip. The ADC chip has 
+10-bit precision; therefore, the valid returned value should be 0 - 1023.
+Any other values outside this range indicates error of the reading. In error cases,
+user must use the functions ZB_GetErrorCode or ZB_GetErrorString to determine the
+error. */
+uint16_t ZB_Read_Pressure();
 
 #endif

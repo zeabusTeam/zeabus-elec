@@ -14,11 +14,7 @@ EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 FTDI DRIVERS MAY BE USED ONLY IN CONJUNCTION WITH PRODUCTS BASED ON FTDI PARTS.
 
-<<<<<<< HEAD
 FTDI DRIVERS MAY BE DISTRIBUTED IN ANY FORM AS uint32_t AS LICENSE INFORMATION IS NOT MODIFIED.
-=======
-FTDI DRIVERS MAY BE DISTRIBUTED IN ANY FORM AS LONG AS LICENSE INFORMATION IS NOT MODIFIED.
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 
 IF A CUSTOM VENDOR ID AND/OR PRODUCT ID OR DESCRIPTION STRING ARE USED, IT IS THE
 RESPONSIBILITY OF THE PRODUCT MANUFACTURER TO MAINTAIN ANY CHANGES AND SUBSEQUENT WHQL
@@ -45,11 +41,8 @@ kernel & user mode
 #ifndef FTD2XX_H
 #define FTD2XX_H
 
-<<<<<<< HEAD
 #include <stdint.h>
 
-=======
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 #ifdef _WIN32
 // Compiling on Windows
 #include <windows.h>
@@ -73,7 +66,6 @@ kernel & user mode
 
 #else // _WIN32
 // Compiling on non-Windows platform.
-<<<<<<< HEAD
 //#include "WinTypes.h"
 #include <pthread.h>
 
@@ -176,21 +168,13 @@ typedef struct _EVENT_HANDLE
 #define INVALID_HANDLE_VALUE 0xFFFFFFFF
 #endif
 
-=======
-#include "WinTypes.h"
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 // No decorations needed.
 #define FTD2XX_API
 
 #endif // _WIN32
 
-<<<<<<< HEAD
 typedef void*		FT_HANDLE;
 typedef uint32_t	FT_STATUS;
-=======
-typedef PVOID	FT_HANDLE;
-typedef ULONG	FT_STATUS;
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 
 //
 // Device status
@@ -267,43 +251,25 @@ enum {
 // Word Lengths
 //
 
-<<<<<<< HEAD
 #define FT_BITS_8			(uint8_t) 8
 #define FT_BITS_7			(uint8_t) 7
-=======
-#define FT_BITS_8			(UCHAR) 8
-#define FT_BITS_7			(UCHAR) 7
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 
 //
 // Stop Bits
 //
 
-<<<<<<< HEAD
 #define FT_STOP_BITS_1		(uint8_t) 0
 #define FT_STOP_BITS_2		(uint8_t) 2
-=======
-#define FT_STOP_BITS_1		(UCHAR) 0
-#define FT_STOP_BITS_2		(UCHAR) 2
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 
 //
 // Parity
 //
 
-<<<<<<< HEAD
 #define FT_PARITY_NONE		(uint8_t) 0
 #define FT_PARITY_ODD		(uint8_t) 1
 #define FT_PARITY_EVEN		(uint8_t) 2
 #define FT_PARITY_MARK		(uint8_t) 3
 #define FT_PARITY_SPACE		(uint8_t) 4
-=======
-#define FT_PARITY_NONE		(UCHAR) 0
-#define FT_PARITY_ODD		(UCHAR) 1
-#define FT_PARITY_EVEN		(UCHAR) 2
-#define FT_PARITY_MARK		(UCHAR) 3
-#define FT_PARITY_SPACE		(UCHAR) 4
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 
 //
 // Flow Control
@@ -324,15 +290,9 @@ enum {
 // Events
 //
 
-<<<<<<< HEAD
 typedef void (*PFT_EVENT_HANDLER)(uint32_t,uint32_t);
 
 #define FT_EVENT_RXunsigned char			1
-=======
-typedef void (*PFT_EVENT_HANDLER)(DWORD,DWORD);
-
-#define FT_EVENT_RXCHAR			1
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 #define FT_EVENT_MODEM_STATUS	2
 #define FT_EVENT_LINE_STATUS	4
 
@@ -347,11 +307,7 @@ typedef void (*PFT_EVENT_HANDLER)(DWORD,DWORD);
 // Device types
 //
 
-<<<<<<< HEAD
 typedef uint32_t	FT_DEVICE;
-=======
-typedef ULONG	FT_DEVICE;
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 
 enum {
 	FT_DEVICE_BM,
@@ -459,30 +415,19 @@ extern "C" {
 
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_Open(
-=======
-		FT_STATUS WINAPI FT_Open(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		int deviceNumber,
 		FT_HANDLE *pHandle
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_OpenEx(
 		void* pArg1,
 		uint32_t Flags,
-=======
-		FT_STATUS WINAPI FT_OpenEx(
-		PVOID pArg1,
-		DWORD Flags,
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE *pHandle
 		);
 
 	FTD2XX_API 
-<<<<<<< HEAD
 		FT_STATUS  FT_ListDevices(
 		void* pArg1,
 		void* pArg2,
@@ -491,21 +436,10 @@ extern "C" {
 
 	FTD2XX_API
 		FT_STATUS  FT_Close(
-=======
-		FT_STATUS WINAPI FT_ListDevices(
-		PVOID pArg1,
-		PVOID pArg2,
-		DWORD Flags
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_Close(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE ftHandle
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_Read(
 		FT_HANDLE ftHandle,
 		void* lpBuffer,
@@ -530,37 +464,10 @@ extern "C" {
 		void* lpOutBuf,
 		uint32_t nOutBufSize,
 		uint32_t* lpBytesReturned,
-=======
-		FT_STATUS WINAPI FT_Read(
-		FT_HANDLE ftHandle,
-		LPVOID lpBuffer,
-		DWORD dwBytesToRead,
-		LPDWORD lpBytesReturned
-		);
-
-	FTD2XX_API 
-		FT_STATUS WINAPI FT_Write(
-		FT_HANDLE ftHandle,
-		LPVOID lpBuffer,
-		DWORD dwBytesToWrite,
-		LPDWORD lpBytesWritten
-		);
-
-	FTD2XX_API 
-		FT_STATUS WINAPI FT_IoCtl(
-		FT_HANDLE ftHandle,
-		DWORD dwIoControlCode,
-		LPVOID lpInBuf,
-		DWORD nInBufSize,
-		LPVOID lpOutBuf,
-		DWORD nOutBufSize,
-		LPDWORD lpBytesReturned,
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		LPOVERLAPPED lpOverlapped
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_SetBaudRate(
 		FT_HANDLE ftHandle,
 		uint32_t BaudRate
@@ -590,78 +497,30 @@ extern "C" {
 
 	FTD2XX_API
 		FT_STATUS  FT_ResetDevice(
-=======
-		FT_STATUS WINAPI FT_SetBaudRate(
-		FT_HANDLE ftHandle,
-		ULONG BaudRate
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_SetDivisor(
-		FT_HANDLE ftHandle,
-		USHORT Divisor
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_SetDataCharacteristics(
-		FT_HANDLE ftHandle,
-		UCHAR WordLength,
-		UCHAR StopBits,
-		UCHAR Parity
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_SetFlowControl(
-		FT_HANDLE ftHandle,
-		USHORT FlowControl,
-		UCHAR XonChar,
-		UCHAR XoffChar
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_ResetDevice(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE ftHandle
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_SetDtr(
-=======
-		FT_STATUS WINAPI FT_SetDtr(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE ftHandle
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_ClrDtr(
-=======
-		FT_STATUS WINAPI FT_ClrDtr(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE ftHandle
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_SetRts(
-=======
-		FT_STATUS WINAPI FT_SetRts(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE ftHandle
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_ClrRts(
-=======
-		FT_STATUS WINAPI FT_ClrRts(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE ftHandle
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_GetModemStatus(
 		FT_HANDLE ftHandle,
 		uint32_t *pModemStatus
@@ -712,72 +571,15 @@ extern "C" {
 
 	FTD2XX_API
 		FT_STATUS  FT_SetBreakOn(
-=======
-		FT_STATUS WINAPI FT_GetModemStatus(
-		FT_HANDLE ftHandle,
-		ULONG *pModemStatus
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_SetChars(
-		FT_HANDLE ftHandle,
-		UCHAR EventChar,
-		UCHAR EventCharEnabled,
-		UCHAR ErrorChar,
-		UCHAR ErrorCharEnabled
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_Purge(
-		FT_HANDLE ftHandle,
-		ULONG Mask
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_SetTimeouts(
-		FT_HANDLE ftHandle,
-		ULONG ReadTimeout,
-		ULONG WriteTimeout
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_GetQueueStatus(
-		FT_HANDLE ftHandle,
-		DWORD *dwRxBytes
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_SetEventNotification(
-		FT_HANDLE ftHandle,
-		DWORD Mask,
-		PVOID Param
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_GetStatus(
-		FT_HANDLE ftHandle,
-		DWORD *dwRxBytes,
-		DWORD *dwTxBytes,
-		DWORD *dwEventDWord
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_SetBreakOn(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE ftHandle
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_SetBreakOff(
-=======
-		FT_STATUS WINAPI FT_SetBreakOff(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE ftHandle
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_SetWaitMask(
 		FT_HANDLE ftHandle,
 		uint32_t Mask
@@ -811,41 +613,6 @@ extern "C" {
 
 	FTD2XX_API
 		FT_STATUS  FT_EraseEE(
-=======
-		FT_STATUS WINAPI FT_SetWaitMask(
-		FT_HANDLE ftHandle,
-		DWORD Mask
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_WaitOnMask(
-		FT_HANDLE ftHandle,
-		DWORD *Mask
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_GetEventStatus(
-		FT_HANDLE ftHandle,
-		DWORD *dwEventDWord
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_ReadEE(
-		FT_HANDLE ftHandle,
-		DWORD dwWordOffset,
-		LPWORD lpwValue
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_WriteEE(
-		FT_HANDLE ftHandle,
-		DWORD dwWordOffset,
-		WORD wValue
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_EraseEE(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE ftHandle
 		);
 
@@ -855,15 +622,9 @@ extern "C" {
 	//
 	typedef struct ft_program_data {
 
-<<<<<<< HEAD
 		uint32_t Signature1;			// Header - must be 0x00000000 
 		uint32_t Signature2;			// Header - must be 0xffffffff
 		uint32_t Version;				// Header - FT_PROGRAM_DATA version
-=======
-		DWORD Signature1;			// Header - must be 0x00000000 
-		DWORD Signature2;			// Header - must be 0xffffffff
-		DWORD Version;				// Header - FT_PROGRAM_DATA version
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		//			0 = original
 		//			1 = FT2232 extensions
 		//			2 = FT232R extensions
@@ -871,18 +632,12 @@ extern "C" {
 		//			4 = FT4232H extensions
 		//			5 = FT232H extensions
 
-<<<<<<< HEAD
 		uint16_t VendorId;				// 0x0403
 		uint16_t ProductId;				// 0x6001
-=======
-		WORD VendorId;				// 0x0403
-		WORD ProductId;				// 0x6001
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		char *Manufacturer;			// "FTDI"
 		char *ManufacturerId;		// "FT"
 		char *Description;			// "USB HS Serial Converter"
 		char *SerialNumber;			// "FT000001" if fixed, or NULL
-<<<<<<< HEAD
 		uint16_t MaxPower;				// 0 < MaxPower <= 500
 		uint16_t PnP;					// 0 = disabled, 1 = enabled
 		uint16_t SelfPowered;			// 0 = bus powered, 1 = self powered
@@ -1022,166 +777,17 @@ extern "C" {
 		uint8_t FT1248FlowControlH;	// FT1248 flow control enable
 		uint8_t IsVCPH;				// non-zero if interface is to use VCP drivers
 		uint8_t PowerSaveEnableH;		// non-zero if using ACBUS7 to save power for self-powered designs
-=======
-		WORD MaxPower;				// 0 < MaxPower <= 500
-		WORD PnP;					// 0 = disabled, 1 = enabled
-		WORD SelfPowered;			// 0 = bus powered, 1 = self powered
-		WORD RemoteWakeup;			// 0 = not capable, 1 = capable
-		//
-		// Rev4 (FT232B) extensions
-		//
-		UCHAR Rev4;					// non-zero if Rev4 chip, zero otherwise
-		UCHAR IsoIn;				// non-zero if in endpoint is isochronous
-		UCHAR IsoOut;				// non-zero if out endpoint is isochronous
-		UCHAR PullDownEnable;		// non-zero if pull down enabled
-		UCHAR SerNumEnable;			// non-zero if serial number to be used
-		UCHAR USBVersionEnable;		// non-zero if chip uses USBVersion
-		WORD USBVersion;			// BCD (0x0200 => USB2)
-		//
-		// Rev 5 (FT2232) extensions
-		//
-		UCHAR Rev5;					// non-zero if Rev5 chip, zero otherwise
-		UCHAR IsoInA;				// non-zero if in endpoint is isochronous
-		UCHAR IsoInB;				// non-zero if in endpoint is isochronous
-		UCHAR IsoOutA;				// non-zero if out endpoint is isochronous
-		UCHAR IsoOutB;				// non-zero if out endpoint is isochronous
-		UCHAR PullDownEnable5;		// non-zero if pull down enabled
-		UCHAR SerNumEnable5;		// non-zero if serial number to be used
-		UCHAR USBVersionEnable5;	// non-zero if chip uses USBVersion
-		WORD USBVersion5;			// BCD (0x0200 => USB2)
-		UCHAR AIsHighCurrent;		// non-zero if interface is high current
-		UCHAR BIsHighCurrent;		// non-zero if interface is high current
-		UCHAR IFAIsFifo;			// non-zero if interface is 245 FIFO
-		UCHAR IFAIsFifoTar;			// non-zero if interface is 245 FIFO CPU target
-		UCHAR IFAIsFastSer;			// non-zero if interface is Fast serial
-		UCHAR AIsVCP;				// non-zero if interface is to use VCP drivers
-		UCHAR IFBIsFifo;			// non-zero if interface is 245 FIFO
-		UCHAR IFBIsFifoTar;			// non-zero if interface is 245 FIFO CPU target
-		UCHAR IFBIsFastSer;			// non-zero if interface is Fast serial
-		UCHAR BIsVCP;				// non-zero if interface is to use VCP drivers
-		//
-		// Rev 6 (FT232R) extensions
-		//
-		UCHAR UseExtOsc;			// Use External Oscillator
-		UCHAR HighDriveIOs;			// High Drive I/Os
-		UCHAR EndpointSize;			// Endpoint size
-		UCHAR PullDownEnableR;		// non-zero if pull down enabled
-		UCHAR SerNumEnableR;		// non-zero if serial number to be used
-		UCHAR InvertTXD;			// non-zero if invert TXD
-		UCHAR InvertRXD;			// non-zero if invert RXD
-		UCHAR InvertRTS;			// non-zero if invert RTS
-		UCHAR InvertCTS;			// non-zero if invert CTS
-		UCHAR InvertDTR;			// non-zero if invert DTR
-		UCHAR InvertDSR;			// non-zero if invert DSR
-		UCHAR InvertDCD;			// non-zero if invert DCD
-		UCHAR InvertRI;				// non-zero if invert RI
-		UCHAR Cbus0;				// Cbus Mux control
-		UCHAR Cbus1;				// Cbus Mux control
-		UCHAR Cbus2;				// Cbus Mux control
-		UCHAR Cbus3;				// Cbus Mux control
-		UCHAR Cbus4;				// Cbus Mux control
-		UCHAR RIsD2XX;				// non-zero if using D2XX driver
-		//
-		// Rev 7 (FT2232H) Extensions
-		//
-		UCHAR PullDownEnable7;		// non-zero if pull down enabled
-		UCHAR SerNumEnable7;		// non-zero if serial number to be used
-		UCHAR ALSlowSlew;			// non-zero if AL pins have slow slew
-		UCHAR ALSchmittInput;		// non-zero if AL pins are Schmitt input
-		UCHAR ALDriveCurrent;		// valid values are 4mA, 8mA, 12mA, 16mA
-		UCHAR AHSlowSlew;			// non-zero if AH pins have slow slew
-		UCHAR AHSchmittInput;		// non-zero if AH pins are Schmitt input
-		UCHAR AHDriveCurrent;		// valid values are 4mA, 8mA, 12mA, 16mA
-		UCHAR BLSlowSlew;			// non-zero if BL pins have slow slew
-		UCHAR BLSchmittInput;		// non-zero if BL pins are Schmitt input
-		UCHAR BLDriveCurrent;		// valid values are 4mA, 8mA, 12mA, 16mA
-		UCHAR BHSlowSlew;			// non-zero if BH pins have slow slew
-		UCHAR BHSchmittInput;		// non-zero if BH pins are Schmitt input
-		UCHAR BHDriveCurrent;		// valid values are 4mA, 8mA, 12mA, 16mA
-		UCHAR IFAIsFifo7;			// non-zero if interface is 245 FIFO
-		UCHAR IFAIsFifoTar7;		// non-zero if interface is 245 FIFO CPU target
-		UCHAR IFAIsFastSer7;		// non-zero if interface is Fast serial
-		UCHAR AIsVCP7;				// non-zero if interface is to use VCP drivers
-		UCHAR IFBIsFifo7;			// non-zero if interface is 245 FIFO
-		UCHAR IFBIsFifoTar7;		// non-zero if interface is 245 FIFO CPU target
-		UCHAR IFBIsFastSer7;		// non-zero if interface is Fast serial
-		UCHAR BIsVCP7;				// non-zero if interface is to use VCP drivers
-		UCHAR PowerSaveEnable;		// non-zero if using BCBUS7 to save power for self-powered designs
-		//
-		// Rev 8 (FT4232H) Extensions
-		//
-		UCHAR PullDownEnable8;		// non-zero if pull down enabled
-		UCHAR SerNumEnable8;		// non-zero if serial number to be used
-		UCHAR ASlowSlew;			// non-zero if A pins have slow slew
-		UCHAR ASchmittInput;		// non-zero if A pins are Schmitt input
-		UCHAR ADriveCurrent;		// valid values are 4mA, 8mA, 12mA, 16mA
-		UCHAR BSlowSlew;			// non-zero if B pins have slow slew
-		UCHAR BSchmittInput;		// non-zero if B pins are Schmitt input
-		UCHAR BDriveCurrent;		// valid values are 4mA, 8mA, 12mA, 16mA
-		UCHAR CSlowSlew;			// non-zero if C pins have slow slew
-		UCHAR CSchmittInput;		// non-zero if C pins are Schmitt input
-		UCHAR CDriveCurrent;		// valid values are 4mA, 8mA, 12mA, 16mA
-		UCHAR DSlowSlew;			// non-zero if D pins have slow slew
-		UCHAR DSchmittInput;		// non-zero if D pins are Schmitt input
-		UCHAR DDriveCurrent;		// valid values are 4mA, 8mA, 12mA, 16mA
-		UCHAR ARIIsTXDEN;			// non-zero if port A uses RI as RS485 TXDEN
-		UCHAR BRIIsTXDEN;			// non-zero if port B uses RI as RS485 TXDEN
-		UCHAR CRIIsTXDEN;			// non-zero if port C uses RI as RS485 TXDEN
-		UCHAR DRIIsTXDEN;			// non-zero if port D uses RI as RS485 TXDEN
-		UCHAR AIsVCP8;				// non-zero if interface is to use VCP drivers
-		UCHAR BIsVCP8;				// non-zero if interface is to use VCP drivers
-		UCHAR CIsVCP8;				// non-zero if interface is to use VCP drivers
-		UCHAR DIsVCP8;				// non-zero if interface is to use VCP drivers
-		//
-		// Rev 9 (FT232H) Extensions
-		//
-		UCHAR PullDownEnableH;		// non-zero if pull down enabled
-		UCHAR SerNumEnableH;		// non-zero if serial number to be used
-		UCHAR ACSlowSlewH;			// non-zero if AC pins have slow slew
-		UCHAR ACSchmittInputH;		// non-zero if AC pins are Schmitt input
-		UCHAR ACDriveCurrentH;		// valid values are 4mA, 8mA, 12mA, 16mA
-		UCHAR ADSlowSlewH;			// non-zero if AD pins have slow slew
-		UCHAR ADSchmittInputH;		// non-zero if AD pins are Schmitt input
-		UCHAR ADDriveCurrentH;		// valid values are 4mA, 8mA, 12mA, 16mA
-		UCHAR Cbus0H;				// Cbus Mux control
-		UCHAR Cbus1H;				// Cbus Mux control
-		UCHAR Cbus2H;				// Cbus Mux control
-		UCHAR Cbus3H;				// Cbus Mux control
-		UCHAR Cbus4H;				// Cbus Mux control
-		UCHAR Cbus5H;				// Cbus Mux control
-		UCHAR Cbus6H;				// Cbus Mux control
-		UCHAR Cbus7H;				// Cbus Mux control
-		UCHAR Cbus8H;				// Cbus Mux control
-		UCHAR Cbus9H;				// Cbus Mux control
-		UCHAR IsFifoH;				// non-zero if interface is 245 FIFO
-		UCHAR IsFifoTarH;			// non-zero if interface is 245 FIFO CPU target
-		UCHAR IsFastSerH;			// non-zero if interface is Fast serial
-		UCHAR IsFT1248H;			// non-zero if interface is FT1248
-		UCHAR FT1248CpolH;			// FT1248 clock polarity - clock idle high (1) or clock idle low (0)
-		UCHAR FT1248LsbH;			// FT1248 data is LSB (1) or MSB (0)
-		UCHAR FT1248FlowControlH;	// FT1248 flow control enable
-		UCHAR IsVCPH;				// non-zero if interface is to use VCP drivers
-		UCHAR PowerSaveEnableH;		// non-zero if using ACBUS7 to save power for self-powered designs
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		
 	} FT_PROGRAM_DATA, *PFT_PROGRAM_DATA;
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_EE_Program(
-=======
-		FT_STATUS WINAPI FT_EE_Program(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE ftHandle,
 		PFT_PROGRAM_DATA pData
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_EE_ProgramEx(
-=======
-		FT_STATUS WINAPI FT_EE_ProgramEx(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE ftHandle,
 		PFT_PROGRAM_DATA pData,
 		char *Manufacturer,
@@ -1191,21 +797,13 @@ extern "C" {
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_EE_Read(
-=======
-		FT_STATUS WINAPI FT_EE_Read(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE ftHandle,
 		PFT_PROGRAM_DATA pData
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_EE_ReadEx(
-=======
-		FT_STATUS WINAPI FT_EE_ReadEx(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE ftHandle,
 		PFT_PROGRAM_DATA pData,
 		char *Manufacturer,
@@ -1215,7 +813,6 @@ extern "C" {
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_EE_UASize(
 		FT_HANDLE ftHandle,
 		uint32_t* lpdwSize
@@ -1234,33 +831,12 @@ extern "C" {
 		int8_t* pucData,
 		uint32_t dwDataLen,
 		uint32_t* lpdwBytesRead
-=======
-		FT_STATUS WINAPI FT_EE_UASize(
-		FT_HANDLE ftHandle,
-		LPDWORD lpdwSize
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_EE_UAWrite(
-		FT_HANDLE ftHandle,
-		PUCHAR pucData,
-		DWORD dwDataLen
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_EE_UARead(
-		FT_HANDLE ftHandle,
-		PUCHAR pucData,
-		DWORD dwDataLen,
-		LPDWORD lpdwBytesRead
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		);
 
 
 	typedef struct ft_eeprom_header {
 		FT_DEVICE deviceType;		// FTxxxx device type to be programmed
 		// Device descriptor options
-<<<<<<< HEAD
 		uint16_t VendorId;				// 0x0403
 		uint16_t ProductId;				// 0x6001
 		uint8_t SerNumEnable;			// non-zero if serial number to be used
@@ -1270,17 +846,6 @@ extern "C" {
 		uint8_t RemoteWakeup;			// 0 = not capable, 1 = capable
 		// Hardware options
 		uint8_t PullDownEnable;		// non-zero if pull down in suspend enabled
-=======
-		WORD VendorId;				// 0x0403
-		WORD ProductId;				// 0x6001
-		UCHAR SerNumEnable;			// non-zero if serial number to be used
-		// Config descriptor options
-		WORD MaxPower;				// 0 < MaxPower <= 500
-		UCHAR SelfPowered;			// 0 = bus powered, 1 = self powered
-		UCHAR RemoteWakeup;			// 0 = not capable, 1 = capable
-		// Hardware options
-		UCHAR PullDownEnable;		// non-zero if pull down in suspend enabled
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 	} FT_EEPROM_HEADER, *PFT_EEPROM_HEADER;
 
 
@@ -1296,7 +861,6 @@ extern "C" {
 		// Common header
 		FT_EEPROM_HEADER common;	// common elements for all device EEPROMs
 		// Drive options
-<<<<<<< HEAD
 		uint8_t AIsHighCurrent;		// non-zero if interface is high current
 		uint8_t BIsHighCurrent;		// non-zero if interface is high current
 		// Hardware options
@@ -1309,20 +873,6 @@ extern "C" {
 		// Driver option
 		uint8_t ADriverType;			// 
 		uint8_t BDriverType;			// 
-=======
-		UCHAR AIsHighCurrent;		// non-zero if interface is high current
-		UCHAR BIsHighCurrent;		// non-zero if interface is high current
-		// Hardware options
-		UCHAR AIsFifo;				// non-zero if interface is 245 FIFO
-		UCHAR AIsFifoTar;			// non-zero if interface is 245 FIFO CPU target
-		UCHAR AIsFastSer;			// non-zero if interface is Fast serial
-		UCHAR BIsFifo;				// non-zero if interface is 245 FIFO
-		UCHAR BIsFifoTar;			// non-zero if interface is 245 FIFO CPU target
-		UCHAR BIsFastSer;			// non-zero if interface is Fast serial
-		// Driver option
-		UCHAR ADriverType;			// 
-		UCHAR BDriverType;			// 
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 	} FT_EEPROM_2232, *PFT_EEPROM_2232;
 
 
@@ -1331,7 +881,6 @@ extern "C" {
 		// Common header
 		FT_EEPROM_HEADER common;	// common elements for all device EEPROMs
 		// Drive options
-<<<<<<< HEAD
 		uint8_t IsHighCurrent;		// non-zero if interface is high current
 		// Hardware options
 		uint8_t UseExtOsc;			// Use External Oscillator
@@ -1350,26 +899,6 @@ extern "C" {
 		uint8_t Cbus4;				// Cbus Mux control
 		// Driver option
 		uint8_t DriverType;			// 
-=======
-		UCHAR IsHighCurrent;		// non-zero if interface is high current
-		// Hardware options
-		UCHAR UseExtOsc;			// Use External Oscillator
-		UCHAR InvertTXD;			// non-zero if invert TXD
-		UCHAR InvertRXD;			// non-zero if invert RXD
-		UCHAR InvertRTS;			// non-zero if invert RTS
-		UCHAR InvertCTS;			// non-zero if invert CTS
-		UCHAR InvertDTR;			// non-zero if invert DTR
-		UCHAR InvertDSR;			// non-zero if invert DSR
-		UCHAR InvertDCD;			// non-zero if invert DCD
-		UCHAR InvertRI;				// non-zero if invert RI
-		UCHAR Cbus0;				// Cbus Mux control
-		UCHAR Cbus1;				// Cbus Mux control
-		UCHAR Cbus2;				// Cbus Mux control
-		UCHAR Cbus3;				// Cbus Mux control
-		UCHAR Cbus4;				// Cbus Mux control
-		// Driver option
-		UCHAR DriverType;			// 
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 	} FT_EEPROM_232R, *PFT_EEPROM_232R;
 
 
@@ -1378,7 +907,6 @@ extern "C" {
 		// Common header
 		FT_EEPROM_HEADER common;	// common elements for all device EEPROMs
 		// Drive options
-<<<<<<< HEAD
 		uint8_t ALSlowSlew;			// non-zero if AL pins have slow slew
 		uint8_t ALSchmittInput;		// non-zero if AL pins are Schmitt input
 		uint8_t ALDriveCurrent;		// valid values are 4mA, 8mA, 12mA, 16mA
@@ -1402,31 +930,6 @@ extern "C" {
 		// Driver option
 		uint8_t ADriverType;			// 
 		uint8_t BDriverType;			// 
-=======
-		UCHAR ALSlowSlew;			// non-zero if AL pins have slow slew
-		UCHAR ALSchmittInput;		// non-zero if AL pins are Schmitt input
-		UCHAR ALDriveCurrent;		// valid values are 4mA, 8mA, 12mA, 16mA
-		UCHAR AHSlowSlew;			// non-zero if AH pins have slow slew
-		UCHAR AHSchmittInput;		// non-zero if AH pins are Schmitt input
-		UCHAR AHDriveCurrent;		// valid values are 4mA, 8mA, 12mA, 16mA
-		UCHAR BLSlowSlew;			// non-zero if BL pins have slow slew
-		UCHAR BLSchmittInput;		// non-zero if BL pins are Schmitt input
-		UCHAR BLDriveCurrent;		// valid values are 4mA, 8mA, 12mA, 16mA
-		UCHAR BHSlowSlew;			// non-zero if BH pins have slow slew
-		UCHAR BHSchmittInput;		// non-zero if BH pins are Schmitt input
-		UCHAR BHDriveCurrent;		// valid values are 4mA, 8mA, 12mA, 16mA
-		// Hardware options
-		UCHAR AIsFifo;				// non-zero if interface is 245 FIFO
-		UCHAR AIsFifoTar;			// non-zero if interface is 245 FIFO CPU target
-		UCHAR AIsFastSer;			// non-zero if interface is Fast serial
-		UCHAR BIsFifo;				// non-zero if interface is 245 FIFO
-		UCHAR BIsFifoTar;			// non-zero if interface is 245 FIFO CPU target
-		UCHAR BIsFastSer;			// non-zero if interface is Fast serial
-		UCHAR PowerSaveEnable;		// non-zero if using BCBUS7 to save power for self-powered designs
-		// Driver option
-		UCHAR ADriverType;			// 
-		UCHAR BDriverType;			// 
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 	} FT_EEPROM_2232H, *PFT_EEPROM_2232H;
 
 
@@ -1435,7 +938,6 @@ extern "C" {
 		// Common header
 		FT_EEPROM_HEADER common;	// common elements for all device EEPROMs
 		// Drive options
-<<<<<<< HEAD
 		uint8_t ASlowSlew;			// non-zero if A pins have slow slew
 		uint8_t ASchmittInput;		// non-zero if A pins are Schmitt input
 		uint8_t ADriveCurrent;		// valid values are 4mA, 8mA, 12mA, 16mA
@@ -1458,30 +960,6 @@ extern "C" {
 		uint8_t BDriverType;			// 
 		uint8_t CDriverType;			// 
 		uint8_t DDriverType;			// 
-=======
-		UCHAR ASlowSlew;			// non-zero if A pins have slow slew
-		UCHAR ASchmittInput;		// non-zero if A pins are Schmitt input
-		UCHAR ADriveCurrent;		// valid values are 4mA, 8mA, 12mA, 16mA
-		UCHAR BSlowSlew;			// non-zero if B pins have slow slew
-		UCHAR BSchmittInput;		// non-zero if B pins are Schmitt input
-		UCHAR BDriveCurrent;		// valid values are 4mA, 8mA, 12mA, 16mA
-		UCHAR CSlowSlew;			// non-zero if C pins have slow slew
-		UCHAR CSchmittInput;		// non-zero if C pins are Schmitt input
-		UCHAR CDriveCurrent;		// valid values are 4mA, 8mA, 12mA, 16mA
-		UCHAR DSlowSlew;			// non-zero if D pins have slow slew
-		UCHAR DSchmittInput;		// non-zero if D pins are Schmitt input
-		UCHAR DDriveCurrent;		// valid values are 4mA, 8mA, 12mA, 16mA
-		// Hardware options
-		UCHAR ARIIsTXDEN;			// non-zero if port A uses RI as RS485 TXDEN
-		UCHAR BRIIsTXDEN;			// non-zero if port B uses RI as RS485 TXDEN
-		UCHAR CRIIsTXDEN;			// non-zero if port C uses RI as RS485 TXDEN
-		UCHAR DRIIsTXDEN;			// non-zero if port D uses RI as RS485 TXDEN
-		// Driver option
-		UCHAR ADriverType;			// 
-		UCHAR BDriverType;			// 
-		UCHAR CDriverType;			// 
-		UCHAR DDriverType;			// 
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 	} FT_EEPROM_4232H, *PFT_EEPROM_4232H;
 
 
@@ -1490,7 +968,6 @@ extern "C" {
 		// Common header
 		FT_EEPROM_HEADER common;	// common elements for all device EEPROMs
 		// Drive options
-<<<<<<< HEAD
 		uint8_t ACSlowSlew;			// non-zero if AC bus pins have slow slew
 		uint8_t ACSchmittInput;		// non-zero if AC bus pins are Schmitt input
 		uint8_t ACDriveCurrent;		// valid values are 4mA, 8mA, 12mA, 16mA
@@ -1520,37 +997,6 @@ extern "C" {
 		uint8_t PowerSaveEnable;		// 
 		// Driver option
 		uint8_t DriverType;			// 
-=======
-		UCHAR ACSlowSlew;			// non-zero if AC bus pins have slow slew
-		UCHAR ACSchmittInput;		// non-zero if AC bus pins are Schmitt input
-		UCHAR ACDriveCurrent;		// valid values are 4mA, 8mA, 12mA, 16mA
-		UCHAR ADSlowSlew;			// non-zero if AD bus pins have slow slew
-		UCHAR ADSchmittInput;		// non-zero if AD bus pins are Schmitt input
-		UCHAR ADDriveCurrent;		// valid values are 4mA, 8mA, 12mA, 16mA
-		// CBUS options
-		UCHAR Cbus0;				// Cbus Mux control
-		UCHAR Cbus1;				// Cbus Mux control
-		UCHAR Cbus2;				// Cbus Mux control
-		UCHAR Cbus3;				// Cbus Mux control
-		UCHAR Cbus4;				// Cbus Mux control
-		UCHAR Cbus5;				// Cbus Mux control
-		UCHAR Cbus6;				// Cbus Mux control
-		UCHAR Cbus7;				// Cbus Mux control
-		UCHAR Cbus8;				// Cbus Mux control
-		UCHAR Cbus9;				// Cbus Mux control
-		// FT1248 options
-		UCHAR FT1248Cpol;			// FT1248 clock polarity - clock idle high (1) or clock idle low (0)
-		UCHAR FT1248Lsb;			// FT1248 data is LSB (1) or MSB (0)
-		UCHAR FT1248FlowControl;	// FT1248 flow control enable
-		// Hardware options
-		UCHAR IsFifo;				// non-zero if interface is 245 FIFO
-		UCHAR IsFifoTar;			// non-zero if interface is 245 FIFO CPU target
-		UCHAR IsFastSer;			// non-zero if interface is Fast serial
-		UCHAR IsFT1248	;			// non-zero if interface is FT1248
-		UCHAR PowerSaveEnable;		// 
-		// Driver option
-		UCHAR DriverType;			// 
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 	} FT_EEPROM_232H, *PFT_EEPROM_232H;
 
 
@@ -1559,7 +1005,6 @@ extern "C" {
 		// Common header
 		FT_EEPROM_HEADER common;	// common elements for all device EEPROMs
 		// Drive options
-<<<<<<< HEAD
 		uint8_t ACSlowSlew;			// non-zero if AC bus pins have slow slew
 		uint8_t ACSchmittInput;		// non-zero if AC bus pins are Schmitt input
 		uint8_t ACDriveCurrent;		// valid values are 4mA, 8mA, 12mA, 16mA
@@ -1600,63 +1045,14 @@ extern "C" {
 		uint8_t PowerSaveEnable;		// 
 		// Driver option
 		uint8_t DriverType;			// 
-=======
-		UCHAR ACSlowSlew;			// non-zero if AC bus pins have slow slew
-		UCHAR ACSchmittInput;		// non-zero if AC bus pins are Schmitt input
-		UCHAR ACDriveCurrent;		// valid values are 4mA, 8mA, 12mA, 16mA
-		UCHAR ADSlowSlew;			// non-zero if AD bus pins have slow slew
-		UCHAR ADSchmittInput;		// non-zero if AD bus pins are Schmitt input
-		UCHAR ADDriveCurrent;		// valid values are 4mA, 8mA, 12mA, 16mA
-		// CBUS options
-		UCHAR Cbus0;				// Cbus Mux control
-		UCHAR Cbus1;				// Cbus Mux control
-		UCHAR Cbus2;				// Cbus Mux control
-		UCHAR Cbus3;				// Cbus Mux control
-		UCHAR Cbus4;				// Cbus Mux control
-		UCHAR Cbus5;				// Cbus Mux control
-		UCHAR Cbus6;				// Cbus Mux control
-		// UART signal options
-		UCHAR InvertTXD;			// non-zero if invert TXD
-		UCHAR InvertRXD;			// non-zero if invert RXD
-		UCHAR InvertRTS;			// non-zero if invert RTS
-		UCHAR InvertCTS;			// non-zero if invert CTS
-		UCHAR InvertDTR;			// non-zero if invert DTR
-		UCHAR InvertDSR;			// non-zero if invert DSR
-		UCHAR InvertDCD;			// non-zero if invert DCD
-		UCHAR InvertRI;				// non-zero if invert RI
-		// Battery Charge Detect options
-		UCHAR BCDEnable;			// Enable Battery Charger Detection
-		UCHAR BCDForceCbusPWREN;	// asserts the power enable signal on CBUS when charging port detected
-		UCHAR BCDDisableSleep;		// forces the device never to go into sleep mode
-		// I2C options
-		WORD I2CSlaveAddress;		// I2C slave device address
-		DWORD I2CDeviceId;			// I2C device ID
-		UCHAR I2CDisableSchmitt;	// Disable I2C Schmitt trigger
-		// FT1248 options
-		UCHAR FT1248Cpol;			// FT1248 clock polarity - clock idle high (1) or clock idle low (0)
-		UCHAR FT1248Lsb;			// FT1248 data is LSB (1) or MSB (0)
-		UCHAR FT1248FlowControl;	// FT1248 flow control enable
-		// Hardware options
-		UCHAR RS485EchoSuppress;	// 
-		UCHAR PowerSaveEnable;		// 
-		// Driver option
-		UCHAR DriverType;			// 
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 	} FT_EEPROM_X_SERIES, *PFT_EEPROM_X_SERIES;
 
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_EEPROM_Read(
 		FT_HANDLE ftHandle,
 		void *eepromData,
 		uint32_t eepromDataSize,
-=======
-		FT_STATUS WINAPI FT_EEPROM_Read(
-		FT_HANDLE ftHandle,
-		void *eepromData,
-		DWORD eepromDataSize,
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		char *Manufacturer,
 		char *ManufacturerId,
 		char *Description,
@@ -1665,17 +1061,10 @@ extern "C" {
 
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_EEPROM_Program(
 		FT_HANDLE ftHandle,
 		void *eepromData,
 		uint32_t eepromDataSize,
-=======
-		FT_STATUS WINAPI FT_EEPROM_Program(
-		FT_HANDLE ftHandle,
-		void *eepromData,
-		DWORD eepromDataSize,
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		char *Manufacturer,
 		char *ManufacturerId,
 		char *Description,
@@ -1684,7 +1073,6 @@ extern "C" {
 
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_SetLatencyTimer(
 		FT_HANDLE ftHandle,
 		uint8_t ucLatency
@@ -1720,43 +1108,6 @@ extern "C" {
 		FT_STATUS  FT_SetDeadmanTimeout(
 		FT_HANDLE ftHandle,
 		uint32_t ulDeadmanTimeout
-=======
-		FT_STATUS WINAPI FT_SetLatencyTimer(
-		FT_HANDLE ftHandle,
-		UCHAR ucLatency
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_GetLatencyTimer(
-		FT_HANDLE ftHandle,
-		PUCHAR pucLatency
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_SetBitMode(
-		FT_HANDLE ftHandle,
-		UCHAR ucMask,
-		UCHAR ucEnable
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_GetBitMode(
-		FT_HANDLE ftHandle,
-		PUCHAR pucMode
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_SetUSBParameters(
-		FT_HANDLE ftHandle,
-		ULONG ulInTransferSize,
-		ULONG ulOutTransferSize
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_SetDeadmanTimeout(
-		FT_HANDLE ftHandle,
-		ULONG ulDeadmanTimeout
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		);
 
 #ifndef _WIN32
@@ -1765,18 +1116,12 @@ extern "C" {
 
 	FTD2XX_API
 		FT_STATUS FT_SetVIDPID(
-<<<<<<< HEAD
 		uint32_t dwVID, 
 		uint32_t dwPID
-=======
-		DWORD dwVID, 
-		DWORD dwPID
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		);
 			
 	FTD2XX_API
 		FT_STATUS FT_GetVIDPID(
-<<<<<<< HEAD
 		uint32_t * pdwVID, 
 		uint32_t * pdwPID
 		);
@@ -1785,21 +1130,10 @@ extern "C" {
 		FT_STATUS  FT_GetDeviceLocId(
 		FT_HANDLE ftHandle,
 		uint32_t* lpdwLocId
-=======
-		DWORD * pdwVID, 
-		DWORD * pdwPID
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_GetDeviceLocId(
-		FT_HANDLE ftHandle,
-		LPDWORD lpdwLocId
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		);
 #endif // _WIN32        
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_GetDeviceInfo(
 		FT_HANDLE ftHandle,
 		FT_DEVICE *lpftDevice,
@@ -1811,33 +1145,15 @@ extern "C" {
 
 	FTD2XX_API
 		FT_STATUS  FT_StopInTask(
-=======
-		FT_STATUS WINAPI FT_GetDeviceInfo(
-		FT_HANDLE ftHandle,
-		FT_DEVICE *lpftDevice,
-		LPDWORD lpdwID,
-		PCHAR SerialNumber,
-		PCHAR Description,
-		LPVOID Dummy
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_StopInTask(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE ftHandle
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_RestartInTask(
-=======
-		FT_STATUS WINAPI FT_RestartInTask(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE ftHandle
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_SetResetPipeRetryCount(
 		FT_HANDLE ftHandle,
 		uint32_t dwCount
@@ -1845,24 +1161,11 @@ extern "C" {
 
 	FTD2XX_API
 		FT_STATUS  FT_ResetPort(
-=======
-		FT_STATUS WINAPI FT_SetResetPipeRetryCount(
-		FT_HANDLE ftHandle,
-		DWORD dwCount
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_ResetPort(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE ftHandle
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_CyclePort(
-=======
-		FT_STATUS WINAPI FT_CyclePort(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE ftHandle
 		);
 
@@ -1872,7 +1175,6 @@ extern "C" {
 	//
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_HANDLE  FT_W32_CreateFile(
 		const char*					lpszName,
 		uint32_t					dwAccess,
@@ -1885,87 +1187,42 @@ extern "C" {
 
 	FTD2XX_API
 		BOOL  FT_W32_CloseHandle(
-=======
-		FT_HANDLE WINAPI FT_W32_CreateFile(
-		LPCTSTR					lpszName,
-		DWORD					dwAccess,
-		DWORD					dwShareMode,
-		LPSECURITY_ATTRIBUTES	lpSecurityAttributes,
-		DWORD					dwCreate,
-		DWORD					dwAttrsAndFlags,
-		HANDLE					hTemplate
-		);
-
-	FTD2XX_API
-		BOOL WINAPI FT_W32_CloseHandle(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE ftHandle
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		BOOL  FT_W32_ReadFile(
 		FT_HANDLE ftHandle,
 		void* lpBuffer,
 		uint32_t nBufferSize,
 		uint32_t* lpBytesReturned,
-=======
-		BOOL WINAPI FT_W32_ReadFile(
-		FT_HANDLE ftHandle,
-		LPVOID lpBuffer,
-		DWORD nBufferSize,
-		LPDWORD lpBytesReturned,
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		LPOVERLAPPED lpOverlapped
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		BOOL  FT_W32_WriteFile(
 		FT_HANDLE ftHandle,
 		void* lpBuffer,
 		uint32_t nBufferSize,
 		uint32_t* lpBytesWritten,
-=======
-		BOOL WINAPI FT_W32_WriteFile(
-		FT_HANDLE ftHandle,
-		LPVOID lpBuffer,
-		DWORD nBufferSize,
-		LPDWORD lpBytesWritten,
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		LPOVERLAPPED lpOverlapped
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		uint32_t  FT_W32_GetLastError(
-=======
-		DWORD WINAPI FT_W32_GetLastError(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE ftHandle
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		BOOL  FT_W32_GetOverlappedResult(
 		FT_HANDLE ftHandle,
 		LPOVERLAPPED lpOverlapped,
 		uint32_t* lpdwBytesTransferred,
-=======
-		BOOL WINAPI FT_W32_GetOverlappedResult(
-		FT_HANDLE ftHandle,
-		LPOVERLAPPED lpOverlapped,
-		LPDWORD lpdwBytesTransferred,
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		BOOL bWait
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		BOOL  FT_W32_CancelIo(
-=======
-		BOOL WINAPI FT_W32_CancelIo(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE ftHandle
 		);
 
@@ -1974,7 +1231,6 @@ extern "C" {
 	// Win32 COMM API type functions
 	//
 	typedef struct _FTCOMSTAT {
-<<<<<<< HEAD
 		uint32_t fCtsHold : 1;
 		uint32_t fDsrHold : 1;
 		uint32_t fRlsdHold : 1;
@@ -2010,49 +1266,11 @@ extern "C" {
 		uint8_t ByteSize;				/* Number of bits/byte, 4-8				*/
 		uint8_t Parity;				/* 0-4=None,Odd,Even,Mark,Space			*/
 		uint8_t StopBits;				/* 0,1,2 = 1, 1.5, 2					*/
-=======
-		DWORD fCtsHold : 1;
-		DWORD fDsrHold : 1;
-		DWORD fRlsdHold : 1;
-		DWORD fXoffHold : 1;
-		DWORD fXoffSent : 1;
-		DWORD fEof : 1;
-		DWORD fTxim : 1;
-		DWORD fReserved : 25;
-		DWORD cbInQue;
-		DWORD cbOutQue;
-	} FTCOMSTAT, *LPFTCOMSTAT;
-
-	typedef struct _FTDCB {
-		DWORD DCBlength;			/* sizeof(FTDCB)						*/
-		DWORD BaudRate;				/* Baudrate at which running			*/
-		DWORD fBinary: 1;			/* Binary Mode (skip EOF check)			*/
-		DWORD fParity: 1;			/* Enable parity checking				*/
-		DWORD fOutxCtsFlow:1;		/* CTS handshaking on output			*/
-		DWORD fOutxDsrFlow:1;		/* DSR handshaking on output			*/
-		DWORD fDtrControl:2;		/* DTR Flow control						*/
-		DWORD fDsrSensitivity:1;	/* DSR Sensitivity						*/
-		DWORD fTXContinueOnXoff: 1;	/* Continue TX when Xoff sent			*/
-		DWORD fOutX: 1;				/* Enable output X-ON/X-OFF				*/
-		DWORD fInX: 1;				/* Enable input X-ON/X-OFF				*/
-		DWORD fErrorChar: 1;		/* Enable Err Replacement				*/
-		DWORD fNull: 1;				/* Enable Null stripping				*/
-		DWORD fRtsControl:2;		/* Rts Flow control						*/
-		DWORD fAbortOnError:1;		/* Abort all reads and writes on Error	*/
-		DWORD fDummy2:17;			/* Reserved								*/
-		WORD wReserved;				/* Not currently used					*/
-		WORD XonLim;				/* Transmit X-ON threshold				*/
-		WORD XoffLim;				/* Transmit X-OFF threshold				*/
-		BYTE ByteSize;				/* Number of bits/byte, 4-8				*/
-		BYTE Parity;				/* 0-4=None,Odd,Even,Mark,Space			*/
-		BYTE StopBits;				/* 0,1,2 = 1, 1.5, 2					*/
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		char XonChar;				/* Tx and Rx X-ON character				*/
 		char XoffChar;				/* Tx and Rx X-OFF character			*/
 		char ErrorChar;				/* Error replacement char				*/
 		char EofChar;				/* End of Input character				*/
 		char EvtChar;				/* Received Event character				*/
-<<<<<<< HEAD
 		uint16_t wReserved1;			/* Fill for now.						*/
 	} FTDCB, *LPFTDCB;
 
@@ -2062,44 +1280,22 @@ extern "C" {
 		uint32_t ReadTotalTimeoutConstant;		/* Constant in milliseconds.		*/
 		uint32_t WriteTotalTimeoutMultiplier;	/* Multiplier of characters.		*/
 		uint32_t WriteTotalTimeoutConstant;	/* Constant in milliseconds.		*/
-=======
-		WORD wReserved1;			/* Fill for now.						*/
-	} FTDCB, *LPFTDCB;
-
-	typedef struct _FTTIMEOUTS {
-		DWORD ReadIntervalTimeout;			/* Maximum time between read chars.	*/
-		DWORD ReadTotalTimeoutMultiplier;	/* Multiplier of characters.		*/
-		DWORD ReadTotalTimeoutConstant;		/* Constant in milliseconds.		*/
-		DWORD WriteTotalTimeoutMultiplier;	/* Multiplier of characters.		*/
-		DWORD WriteTotalTimeoutConstant;	/* Constant in milliseconds.		*/
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 	} FTTIMEOUTS,*LPFTTIMEOUTS;
 
 
 	FTD2XX_API
-<<<<<<< HEAD
 		BOOL  FT_W32_ClearCommBreak(
-=======
-		BOOL WINAPI FT_W32_ClearCommBreak(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE ftHandle
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		BOOL  FT_W32_ClearCommError(
 		FT_HANDLE ftHandle,
 		uint32_t* lpdwErrors,
-=======
-		BOOL WINAPI FT_W32_ClearCommError(
-		FT_HANDLE ftHandle,
-		LPDWORD lpdwErrors,
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		LPFTCOMSTAT lpftComstat
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		BOOL  FT_W32_EscapeCommFunction(
 		FT_HANDLE ftHandle,
 		uint32_t dwFunc
@@ -2113,37 +1309,17 @@ extern "C" {
 
 	FTD2XX_API
 		BOOL  FT_W32_GetCommState(
-=======
-		BOOL WINAPI FT_W32_EscapeCommFunction(
-		FT_HANDLE ftHandle,
-		DWORD dwFunc
-		);
-
-	FTD2XX_API
-		BOOL WINAPI FT_W32_GetCommModemStatus(
-		FT_HANDLE ftHandle,
-		LPDWORD lpdwModemStatus
-		);
-
-	FTD2XX_API
-		BOOL WINAPI FT_W32_GetCommState(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE ftHandle,
 		LPFTDCB lpftDcb
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		BOOL  FT_W32_GetCommTimeouts(
-=======
-		BOOL WINAPI FT_W32_GetCommTimeouts(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE ftHandle,
 		FTTIMEOUTS *pTimeouts
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		BOOL  FT_W32_PurgeComm(
 		FT_HANDLE ftHandle,
 		uint32_t dwMask
@@ -2151,20 +1327,10 @@ extern "C" {
 
 	FTD2XX_API
 		BOOL  FT_W32_SetCommBreak(
-=======
-		BOOL WINAPI FT_W32_PurgeComm(
-		FT_HANDLE ftHandle,
-		DWORD dwMask
-		);
-
-	FTD2XX_API
-		BOOL WINAPI FT_W32_SetCommBreak(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE ftHandle
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		BOOL  FT_W32_SetCommMask(
 		FT_HANDLE ftHandle,
 		uint32_t ulEventMask
@@ -2178,37 +1344,17 @@ extern "C" {
 
 	FTD2XX_API
 		BOOL  FT_W32_SetCommState(
-=======
-		BOOL WINAPI FT_W32_SetCommMask(
-		FT_HANDLE ftHandle,
-		ULONG ulEventMask
-		);
-
-	FTD2XX_API
-		BOOL WINAPI FT_W32_GetCommMask(
-		FT_HANDLE ftHandle,
-		LPDWORD lpdwEventMask
-		);
-
-	FTD2XX_API
-		BOOL WINAPI FT_W32_SetCommState(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE ftHandle,
 		LPFTDCB lpftDcb
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		BOOL  FT_W32_SetCommTimeouts(
-=======
-		BOOL WINAPI FT_W32_SetCommTimeouts(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE ftHandle,
 		FTTIMEOUTS *pTimeouts
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		BOOL  FT_W32_SetupComm(
 		FT_HANDLE ftHandle,
 		uint32_t dwReadBufferSize,
@@ -2219,18 +1365,6 @@ extern "C" {
 		BOOL  FT_W32_WaitCommEvent(
 		FT_HANDLE ftHandle,
 		uint32_t* pulEvent,
-=======
-		BOOL WINAPI FT_W32_SetupComm(
-		FT_HANDLE ftHandle,
-		DWORD dwReadBufferSize,
-		DWORD dwWriteBufferSize
-		);
-
-	FTD2XX_API
-		BOOL WINAPI FT_W32_WaitCommEvent(
-		FT_HANDLE ftHandle,
-		PULONG pulEvent,
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		LPOVERLAPPED lpOverlapped
 		);
 
@@ -2240,17 +1374,10 @@ extern "C" {
 	//
 
 	typedef struct _ft_device_list_info_node {
-<<<<<<< HEAD
 		uint32_t Flags;
 		uint32_t Type;
 		uint32_t ID;
 		uint32_t LocId;
-=======
-		ULONG Flags;
-		ULONG Type;
-		ULONG ID;
-		DWORD LocId;
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		char SerialNumber[16];
 		char Description[64];
 		FT_HANDLE ftHandle;
@@ -2264,7 +1391,6 @@ extern "C" {
 
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_CreateDeviceInfoList(
 		uint32_t* lpdwNumDevs
 		);
@@ -2284,27 +1410,6 @@ extern "C" {
 		uint32_t* lpdwLocId,
 		void* lpSerialNumber,
 		void* lpDescription,
-=======
-		FT_STATUS WINAPI FT_CreateDeviceInfoList(
-		LPDWORD lpdwNumDevs
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_GetDeviceInfoList(
-		FT_DEVICE_LIST_INFO_NODE *pDest,
-		LPDWORD lpdwNumDevs
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_GetDeviceInfoDetail(
-		DWORD dwIndex,
-		LPDWORD lpdwFlags,
-		LPDWORD lpdwType,
-		LPDWORD lpdwID,
-		LPDWORD lpdwLocId,
-		LPVOID lpSerialNumber,
-		LPVOID lpDescription,
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE *pftHandle
 		);
 
@@ -2314,7 +1419,6 @@ extern "C" {
 	//
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_GetDriverVersion(
 		FT_HANDLE ftHandle,
 		uint32_t* lpdwVersion
@@ -2323,30 +1427,15 @@ extern "C" {
 	FTD2XX_API
 		FT_STATUS  FT_GetLibraryVersion(
 		uint32_t* lpdwVersion
-=======
-		FT_STATUS WINAPI FT_GetDriverVersion(
-		FT_HANDLE ftHandle,
-		LPDWORD lpdwVersion
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_GetLibraryVersion(
-		LPDWORD lpdwVersion
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		);
 
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_Rescan(
-=======
-		FT_STATUS WINAPI FT_Rescan(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		void
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_Reload(
 		uint16_t wVid,
 		uint16_t wPid
@@ -2356,17 +1445,6 @@ extern "C" {
 		FT_STATUS  FT_GetComPortNumber(
 		FT_HANDLE ftHandle,
 		int32_t*	lpdwComPortNumber
-=======
-		FT_STATUS WINAPI FT_Reload(
-		WORD wVid,
-		WORD wPid
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_GetComPortNumber(
-		FT_HANDLE ftHandle,
-		LPLONG	lpdwComPortNumber
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		);
 
 
@@ -2375,7 +1453,6 @@ extern "C" {
 	//
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_EE_ReadConfig(
 		FT_HANDLE ftHandle,
 		uint8_t ucAddress,
@@ -2404,50 +1481,15 @@ extern "C" {
 
 	FTD2XX_API
 		FT_STATUS  FT_ComPortIdle(
-=======
-		FT_STATUS WINAPI FT_EE_ReadConfig(
-		FT_HANDLE ftHandle,
-		UCHAR ucAddress,
-		PUCHAR pucValue
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_EE_WriteConfig(
-		FT_HANDLE ftHandle,
-		UCHAR ucAddress,
-		UCHAR ucValue
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_EE_ReadECC(
-		FT_HANDLE ftHandle,
-		UCHAR ucOption,
-		LPWORD lpwValue
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_GetQueueStatusEx(
-		FT_HANDLE ftHandle,
-		DWORD *dwRxBytes
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_ComPortIdle(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE ftHandle
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_ComPortCancelIdle(
-=======
-		FT_STATUS WINAPI FT_ComPortCancelIdle(
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		FT_HANDLE ftHandle
 		);
 
 	FTD2XX_API
-<<<<<<< HEAD
 		FT_STATUS  FT_VendorCmdGet(
 		FT_HANDLE ftHandle,
 		uint8_t Request,
@@ -2477,37 +1519,6 @@ extern "C" {
 		uint16_t wValue,
 		uint8_t *Buf,
 		uint16_t Len
-=======
-		FT_STATUS WINAPI FT_VendorCmdGet(
-		FT_HANDLE ftHandle,
-		UCHAR Request,
-		UCHAR *Buf,
-		USHORT Len
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_VendorCmdSet(
-		FT_HANDLE ftHandle,
-		UCHAR Request,
-		UCHAR *Buf,
-		USHORT Len
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_VendorCmdGetEx(
-		FT_HANDLE ftHandle,
-		USHORT wValue,
-		UCHAR *Buf,
-		USHORT Len
-		);
-
-	FTD2XX_API
-		FT_STATUS WINAPI FT_VendorCmdSetEx(
-		FT_HANDLE ftHandle,
-		USHORT wValue,
-		UCHAR *Buf,
-		USHORT Len
->>>>>>> 27a5e12838015e11ddaf8a76199aba14b08e9631
 		);
 
 #ifdef __cplusplus
