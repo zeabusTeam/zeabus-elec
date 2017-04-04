@@ -146,7 +146,7 @@ $EndComp
 Text HLabel 3150 2600 0    60   Input ~ 0
 +Power
 Text HLabel 3200 4800 0    60   Input ~ 0
-Switch
+Software_Switch
 $Comp
 L UWE-12/6-Q12P U?
 U 1 1 58C9B4D5
