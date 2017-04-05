@@ -33,7 +33,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 10
+Sheet 1 11
 Title ""
 Date ""
 Rev ""
@@ -44,11 +44,11 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Sheet
-S 5900 3600 900  400 
+S 5900 4300 900  400 
 U 58C990D6
 F0 "USB_N_Ethernet" 60
 F1 "Power_5V.sch" 60
-F2 "+Power" I R 6800 3700 60 
+F2 "+Power" I R 6800 4400 60 
 $EndSheet
 $Sheet
 S 5900 2200 900  400 
@@ -59,12 +59,12 @@ F2 "+Power" I R 6800 2300 60
 F3 "Software_Switch" I R 6800 2400 60 
 $EndSheet
 $Sheet
-S 5900 4300 900  400 
+S 5900 3600 900  400 
 U 58DFD88E
 F0 "DSP" 60
 F1 "Power_Switch_5V.sch" 60
-F2 "+Power" I R 6800 4400 60 
-F3 "Software_Switch" I R 6800 4500 60 
+F2 "+Power" I R 6800 3700 60 
+F3 "Software_Switch" I R 6800 3800 60 
 $EndSheet
 $Sheet
 S 5900 2900 900  400 
@@ -110,9 +110,18 @@ F3 "Software_Switch" I R 5000 4500 60
 F4 "Hardware_Switch" I R 5000 4600 60 
 $EndSheet
 $Sheet
-S 5900 5000 900  400 
+S 4100 5000 900  400 
 U 58E62AD5
-F0 "Thruster_Switch_Spare" 60
+F0 "Thruster_Switch_Spare1" 60
+F1 "Thruster_Switch.sch" 60
+F2 "+Power" I R 5000 5100 60 
+F3 "Software_Switch" I R 5000 5200 60 
+F4 "Hardware_Switch" I R 5000 5300 60 
+$EndSheet
+$Sheet
+S 5900 5000 900  400 
+U 58E6D43E
+F0 "Thruster_Switch_Spare2" 60
 F1 "Thruster_Switch.sch" 60
 F2 "+Power" I R 6800 5100 60 
 F3 "Software_Switch" I R 6800 5200 60 
