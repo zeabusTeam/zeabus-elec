@@ -33,7 +33,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 8
+Sheet 1 9
 Title ""
 Date ""
 Rev ""
@@ -99,5 +99,14 @@ F1 "Power_Switch_VBatt.sch" 60
 F2 "+Power" I R 5000 3900 60 
 F3 "Software_Switch" I R 5000 4000 60 
 F4 "Hardware_Switch" I R 5000 4100 60 
+$EndSheet
+$Sheet
+S 4100 4600 900  400 
+U 58E527AF
+F0 "Imagine_Sonar" 60
+F1 "Power_Switch_VBatt.sch" 60
+F2 "+Power" I R 5000 4700 60 
+F3 "Software_Switch" I R 5000 4800 60 
+F4 "Hardware_Switch" I R 5000 4900 60 
 $EndSheet
 $EndSCHEMATC
