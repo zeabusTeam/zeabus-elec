@@ -1,6 +1,6 @@
-update=Thursday, 09 March 2017 'amt' 00:06:27
+update=Thu 06 Apr 2017 02:22:55 AM +07
 version=1
-last_client=kicad
+last_client=eeschema
 [pcbnew]
 version=1
 LastNetListRead=
@@ -59,3 +59,4 @@ LibName27=atmel
 LibName28=contrib
 LibName29=valves
 LibName30=zeabus
+LibName31=ftdi
