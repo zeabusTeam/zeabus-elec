@@ -29,11 +29,13 @@ LIBS:atmel
 LIBS:contrib
 LIBS:valves
 LIBS:zeabus
+LIBS:ftdi
+LIBS:Power_Distributor-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 2 11
+Sheet 2 12
 Title ""
 Date ""
 Rev ""
@@ -110,15 +112,11 @@ Wire Wire Line
 	4050 3550 4200 3550
 Connection ~ 4050 3550
 Wire Wire Line
-	6100 3150 8250 3150
-Wire Wire Line
 	6600 3150 6600 3300
 Wire Wire Line
 	6100 3300 6200 3300
 Wire Wire Line
 	6200 3300 6200 4050
-Wire Wire Line
-	6200 4050 8250 4050
 Wire Wire Line
 	6600 4050 6600 3950
 Wire Wire Line
@@ -178,4 +176,8 @@ Wire Wire Line
 Connection ~ 7600 4050
 Wire Wire Line
 	6600 3600 6600 3750
+Wire Wire Line
+	6100 3150 8250 3150
+Wire Wire Line
+	6200 4050 8250 4050
 $EndSCHEMATC

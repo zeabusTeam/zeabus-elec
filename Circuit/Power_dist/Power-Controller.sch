@@ -28,13 +28,14 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
-LIBS:ftdi
 LIBS:zeabus
+LIBS:ftdi
+LIBS:Power_Distributor-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 1
+Sheet 11 12
 Title "Power Controller"
 Date "2017-03-13"
 Rev "1.0.0"
