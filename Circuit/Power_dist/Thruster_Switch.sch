@@ -29,7 +29,6 @@ LIBS:atmel
 LIBS:contrib
 LIBS:valves
 LIBS:zeabus
-LIBS:Power_Distributor-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -127,17 +126,6 @@ Text HLabel 3650 4050 0    60   Input ~ 0
 Software_Switch
 Text HLabel 3650 4650 0    60   Input ~ 0
 Hardware_Switch
-$Comp
-L IPI120P04P4L Q?
-U 1 1 58E063AF
-P 6450 3050
-F 0 "Q?" H 6650 3100 50  0000 L CNN
-F 1 "IPI120P04P4L" H 6650 3000 50  0000 L CNN
-F 2 "TO_SOT_Packages_SMD:TO-263-3Lead" H 7400 2900 50  0001 C CNN
-F 3 "" H 6450 3050 50  0001 C CNN
-	1    6450 3050
-	1    0    0    1   
-$EndComp
 $Comp
 L XT60 P?
 U 1 1 58E0D2A0
@@ -299,4 +287,15 @@ Wire Wire Line
 	4600 4500 4600 4750
 Wire Wire Line
 	4600 4750 8600 4750
+$Comp
+L Q_PMOS_GDS Q?
+U 1 1 58E51C6A
+P 6450 3050
+F 0 "Q?" H 6650 3100 50  0000 L CNN
+F 1 "IPI120P04P4L" H 6650 3000 50  0000 L CNN
+F 2 "TO_SOT_Packages_SMD:TO-263-3Lead" H 6650 3150 50  0001 C CNN
+F 3 "" H 6450 3050 50  0001 C CNN
+	1    6450 3050
+	1    0    0    1   
+$EndComp
 $EndSCHEMATC
