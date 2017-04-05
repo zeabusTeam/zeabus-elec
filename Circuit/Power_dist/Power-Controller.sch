@@ -239,7 +239,11 @@ $Comp
 L R R39
 U 1 1 58C63845
 P 3550 5050
+<<<<<<< HEAD
 F 0 "R39" V 3450 5050 50  0000 C CNN
+=======
+F 0 "R6" V 3450 5050 50  0000 C CNN
+>>>>>>> 06edccc... Merge branch 'Power_Voltage_Converter_AjPong' of https://github.com/Pongkemon01/Zeabus-Elec-2017 into Power_Voltage_Converter_AjPong
 F 1 "2.2k" V 3550 5050 50  0000 C CNN
 F 2 "Resistors_SMD:R_0603" V 3480 5050 30  0001 C CNN
 F 3 "" H 3550 5050 30  0000 C CNN
@@ -490,7 +494,11 @@ U 1 1 58C67224
 P 3400 2800
 F 0 "C9" H 3410 2870 50  0000 L CNN
 F 1 "4.7uF" H 3410 2720 50  0000 L CNN
+<<<<<<< HEAD
 F 2 "Capacitors_SMD:C_0805" H 3400 2800 50  0001 C CNN
+=======
+F 2 "MMZ1608S601A-CT" H 3400 2800 50  0001 C CNN
+>>>>>>> 06edccc... Merge branch 'Power_Voltage_Converter_AjPong' of https://github.com/Pongkemon01/Zeabus-Elec-2017 into Power_Voltage_Converter_AjPong
 F 3 "" H 3400 2800 50  0000 C CNN
 	1    3400 2800
 	1    0    0    -1  
@@ -822,7 +830,11 @@ $Comp
 L R R47
 U 1 1 58C67080
 P 8400 4150
+<<<<<<< HEAD
 F 0 "R47" V 8300 4150 50  0000 C CNN
+=======
+F 0 "R11" V 8300 4150 50  0000 C CNN
+>>>>>>> 06edccc... Merge branch 'Power_Voltage_Converter_AjPong' of https://github.com/Pongkemon01/Zeabus-Elec-2017 into Power_Voltage_Converter_AjPong
 F 1 "150" V 8400 4150 50  0000 C CNN
 F 2 "Resistors_SMD:R_0603" V 8330 4150 30  0001 C CNN
 F 3 "" H 8400 4150 30  0000 C CNN
@@ -861,7 +873,11 @@ $Comp
 L R R48
 U 1 1 58C67F55
 P 8400 4750
+<<<<<<< HEAD
 F 0 "R48" V 8300 4750 50  0000 C CNN
+=======
+F 0 "R12" V 8300 4750 50  0000 C CNN
+>>>>>>> 06edccc... Merge branch 'Power_Voltage_Converter_AjPong' of https://github.com/Pongkemon01/Zeabus-Elec-2017 into Power_Voltage_Converter_AjPong
 F 1 "150" V 8400 4750 50  0000 C CNN
 F 2 "Resistors_SMD:R_0603" V 8330 4750 30  0001 C CNN
 F 3 "" H 8400 4750 30  0000 C CNN
@@ -900,7 +916,11 @@ $Comp
 L R R49
 U 1 1 58C6806F
 P 8400 5350
+<<<<<<< HEAD
 F 0 "R49" V 8300 5350 50  0000 C CNN
+=======
+F 0 "R13" V 8300 5350 50  0000 C CNN
+>>>>>>> 06edccc... Merge branch 'Power_Voltage_Converter_AjPong' of https://github.com/Pongkemon01/Zeabus-Elec-2017 into Power_Voltage_Converter_AjPong
 F 1 "150" V 8400 5350 50  0000 C CNN
 F 2 "Resistors_SMD:R_0603" V 8330 5350 30  0001 C CNN
 F 3 "" H 8400 5350 30  0000 C CNN
@@ -939,7 +959,11 @@ $Comp
 L R R50
 U 1 1 58C68084
 P 8400 5950
+<<<<<<< HEAD
 F 0 "R50" V 8300 5950 50  0000 C CNN
+=======
+F 0 "R14" V 8300 5950 50  0000 C CNN
+>>>>>>> 06edccc... Merge branch 'Power_Voltage_Converter_AjPong' of https://github.com/Pongkemon01/Zeabus-Elec-2017 into Power_Voltage_Converter_AjPong
 F 1 "150" V 8400 5950 50  0000 C CNN
 F 2 "Resistors_SMD:R_0603" V 8330 5950 30  0001 C CNN
 F 3 "" H 8400 5950 30  0000 C CNN
@@ -978,7 +1002,11 @@ $Comp
 L R R44
 U 1 1 58C68C73
 P 8400 1750
+<<<<<<< HEAD
 F 0 "R44" V 8300 1750 50  0000 C CNN
+=======
+F 0 "R7" V 8300 1750 50  0000 C CNN
+>>>>>>> 06edccc... Merge branch 'Power_Voltage_Converter_AjPong' of https://github.com/Pongkemon01/Zeabus-Elec-2017 into Power_Voltage_Converter_AjPong
 F 1 "150" V 8400 1750 50  0000 C CNN
 F 2 "Resistors_SMD:R_0603" V 8330 1750 30  0001 C CNN
 F 3 "" H 8400 1750 30  0000 C CNN
@@ -1017,7 +1045,11 @@ $Comp
 L R R45
 U 1 1 58C68C88
 P 8400 2350
+<<<<<<< HEAD
 F 0 "R45" V 8300 2350 50  0000 C CNN
+=======
+F 0 "R8" V 8300 2350 50  0000 C CNN
+>>>>>>> 06edccc... Merge branch 'Power_Voltage_Converter_AjPong' of https://github.com/Pongkemon01/Zeabus-Elec-2017 into Power_Voltage_Converter_AjPong
 F 1 "150" V 8400 2350 50  0000 C CNN
 F 2 "Resistors_SMD:R_0603" V 8330 2350 30  0001 C CNN
 F 3 "" H 8400 2350 30  0000 C CNN
@@ -1095,7 +1127,11 @@ $Comp
 L R R46
 U 1 1 58C68CB2
 P 8400 3550
+<<<<<<< HEAD
 F 0 "R46" V 8300 3550 50  0000 C CNN
+=======
+F 0 "R10" V 8300 3550 50  0000 C CNN
+>>>>>>> 06edccc... Merge branch 'Power_Voltage_Converter_AjPong' of https://github.com/Pongkemon01/Zeabus-Elec-2017 into Power_Voltage_Converter_AjPong
 F 1 "150" V 8400 3550 50  0000 C CNN
 F 2 "Resistors_SMD:R_0603" V 8330 3550 30  0001 C CNN
 F 3 "" H 8400 3550 30  0000 C CNN
