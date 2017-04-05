@@ -44,11 +44,11 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Sheet
-S 5900 3800 900  400 
+S 5900 3600 900  400 
 U 58C990D6
 F0 "USB_N_Ethernet" 60
 F1 "Power_5V.sch" 60
-F2 "+Power" I R 6800 3900 60 
+F2 "+Power" I R 6800 3700 60 
 $EndSheet
 $Sheet
 S 5900 2200 900  400 
@@ -59,19 +59,19 @@ F2 "+Power" I R 6800 2300 60
 F3 "Software_Switch" I R 6800 2400 60 
 $EndSheet
 $Sheet
-S 5900 4600 900  400 
+S 5900 4300 900  400 
 U 58DFD88E
 F0 "DSP" 60
 F1 "Power_Switch_5V.sch" 60
-F2 "+Power" I R 6800 4700 60 
-F3 "Software_Switch" I R 6800 4800 60 
+F2 "+Power" I R 6800 4400 60 
+F3 "Software_Switch" I R 6800 4500 60 
 $EndSheet
 $Sheet
-S 5900 3000 900  400 
+S 5900 2900 900  400 
 U 58DFDFD6
 F0 "NUC" 60
 F1 "Power_12V.sch" 60
-F2 "+Power" I R 6800 3100 60 
+F2 "+Power" I R 6800 3000 60 
 $EndSheet
 $Sheet
 S 4100 2200 900  400 
@@ -83,30 +83,39 @@ F3 "Software_Switch" I R 5000 2400 60
 F4 "Hardware_Switch" I R 5000 2500 60 
 $EndSheet
 $Sheet
-S 4100 3000 900  400 
+S 4100 2900 900  400 
 U 58E52973
 F0 "Thruster2" 60
 F1 "Thruster_Switch.sch" 60
-F2 "+Power" I R 5000 3100 60 
-F3 "Software_Switch" I R 5000 3200 60 
-F4 "Hardware_Switch" I R 5000 3300 60 
+F2 "+Power" I R 5000 3000 60 
+F3 "Software_Switch" I R 5000 3100 60 
+F4 "Hardware_Switch" I R 5000 3200 60 
 $EndSheet
 $Sheet
-S 4100 3800 900  400 
+S 4100 3600 900  400 
 U 58E51F99
 F0 "DVL" 60
 F1 "Power_Switch_VBatt.sch" 60
-F2 "+Power" I R 5000 3900 60 
-F3 "Software_Switch" I R 5000 4000 60 
-F4 "Hardware_Switch" I R 5000 4100 60 
+F2 "+Power" I R 5000 3700 60 
+F3 "Software_Switch" I R 5000 3800 60 
+F4 "Hardware_Switch" I R 5000 3900 60 
 $EndSheet
 $Sheet
-S 4100 4600 900  400 
+S 4100 4300 900  400 
 U 58E527AF
 F0 "Imagine_Sonar" 60
 F1 "Power_Switch_VBatt.sch" 60
-F2 "+Power" I R 5000 4700 60 
-F3 "Software_Switch" I R 5000 4800 60 
-F4 "Hardware_Switch" I R 5000 4900 60 
+F2 "+Power" I R 5000 4400 60 
+F3 "Software_Switch" I R 5000 4500 60 
+F4 "Hardware_Switch" I R 5000 4600 60 
+$EndSheet
+$Sheet
+S 5900 5000 900  400 
+U 58E62AD5
+F0 "Thruster_Switch_Spare" 60
+F1 "Thruster_Switch.sch" 60
+F2 "+Power" I R 6800 5100 60 
+F3 "Software_Switch" I R 6800 5200 60 
+F4 "Hardware_Switch" I R 6800 5300 60 
 $EndSheet
 $EndSCHEMATC
