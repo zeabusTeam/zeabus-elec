@@ -33,7 +33,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 4 10
+Sheet 4 11
 Title ""
 Date ""
 Rev ""
@@ -120,6 +120,32 @@ F 3 "" H 4400 3950 50  0001 C CNN
 	1    4400 3950
 	1    0    0    -1  
 $EndComp
+Text HLabel 3350 3550 0    60   Input ~ 0
++Power
+Text HLabel 3350 4550 0    60   Input ~ 0
+Software_Switch
+$Comp
+L R R?
+U 1 1 58E00964
+P 4150 4550
+F 0 "R?" V 4230 4550 50  0000 C CNN
+F 1 "10k" V 4150 4550 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V 4080 4550 50  0001 C CNN
+F 3 "" H 4150 4550 50  0001 C CNN
+	1    4150 4550
+	0    1    1    0   
+$EndComp
+$Comp
+L BC817-40 Q?
+U 1 1 58E56AD9
+P 4700 4550
+F 0 "Q?" H 4900 4625 50  0000 L CNN
+F 1 "BC817-40" H 4900 4550 50  0000 L CNN
+F 2 "TO_SOT_Packages_SMD:SOT-23" H 4900 4475 50  0001 L CIN
+F 3 "" H 4700 4550 50  0001 L CNN
+	1    4700 4550
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
 	4100 3950 3900 3950
 Wire Wire Line
@@ -156,36 +182,10 @@ Connection ~ 6450 3550
 Wire Wire Line
 	6850 4450 6850 4050
 Connection ~ 6450 4450
-Text HLabel 3350 3550 0    60   Input ~ 0
-+Power
-Text HLabel 3350 4550 0    60   Input ~ 0
-Software_Switch
 Wire Wire Line
 	3350 3550 4900 3550
-$Comp
-L R R?
-U 1 1 58E00964
-P 4150 4550
-F 0 "R?" V 4230 4550 50  0000 C CNN
-F 1 "10k" V 4150 4550 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603" V 4080 4550 50  0001 C CNN
-F 3 "" H 4150 4550 50  0001 C CNN
-	1    4150 4550
-	0    1    1    0   
-$EndComp
 Wire Wire Line
 	4500 4550 4300 4550
 Wire Wire Line
 	4000 4550 3350 4550
-$Comp
-L BC817-40 Q?
-U 1 1 58E56AD9
-P 4700 4550
-F 0 "Q?" H 4900 4625 50  0000 L CNN
-F 1 "BC817-40" H 4900 4550 50  0000 L CNN
-F 2 "TO_SOT_Packages_SMD:SOT-23" H 4900 4475 50  0001 L CIN
-F 3 "" H 4700 4550 50  0001 L CNN
-	1    4700 4550
-	1    0    0    -1  
-$EndComp
 $EndSCHEMATC
