@@ -1,6 +1,6 @@
-update=Thu 06 Apr 2017 02:22:55 AM +07
+update=Thursday, 06 April 2017 'pmt' 20:09:00
 version=1
-last_client=eeschema
+last_client=kicad
 [pcbnew]
 version=1
 LastNetListRead=
@@ -23,8 +23,6 @@ ModuleOutlineThickness=0.150000000000
 [cvpcb]
 version=1
 NetIExt=net
-[general]
-version=1
 [eeschema]
 version=1
 LibDir=../Kicad-Libraries
@@ -60,3 +58,5 @@ LibName28=contrib
 LibName29=valves
 LibName30=zeabus
 LibName31=ftdi
+[general]
+version=1
