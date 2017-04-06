@@ -35,7 +35,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 7 12
+Sheet 7 13
 Title ""
 Date ""
 Rev ""
@@ -79,7 +79,7 @@ AR Path="/58E527AF/58E521F9" Ref="P?"  Part="1"
 AR Path="/58E51F99/58E521F9" Ref="P?"  Part="1" 
 F 0 "P?" H 7050 4350 50  0000 C CNN
 F 1 "XT60" H 7050 4050 50  0000 C CNN
-F 2 "auv:XT60" H 7150 3950 60  0000 C CNN
+F 2 "zeabus:XT60" H 7150 3950 60  0001 C CNN
 F 3 "" H 7050 4200 60  0000 C CNN
 	1    7050 4200
 	1    0    0    -1  

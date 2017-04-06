@@ -29,11 +29,13 @@ LIBS:atmel
 LIBS:contrib
 LIBS:valves
 LIBS:zeabus
+LIBS:ftdi
+LIBS:Power_Distributor-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 1
+Sheet 13 13
 Title "Power Aggregator"
 Date "2017-03-14"
 Rev "1.0.0"

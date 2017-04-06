@@ -35,7 +35,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 12
+Sheet 1 13
 Title ""
 Date ""
 Rev ""
@@ -121,36 +121,14 @@ F3 "Software_Switch" I L 9000 2550 60
 F4 "Hardware_Switch" I L 9000 2650 60 
 $EndSheet
 $Comp
-L XT60 P?
-U 1 1 58E5C87F
-P 2750 2200
-F 0 "P?" H 2750 2350 50  0000 C CNN
-F 1 "XT60" H 2750 2050 50  0000 C CNN
-F 2 "" H 2750 2200 60  0000 C CNN
-F 3 "" H 2750 2200 60  0000 C CNN
-	1    2750 2200
-	1    0    0    -1  
-$EndComp
-$Comp
 L +BATT #PWR?
 U 1 1 58E61C00
-P 2400 2050
-F 0 "#PWR?" H 2400 1900 50  0001 C CNN
-F 1 "+BATT" H 2400 2190 50  0000 C CNN
-F 2 "" H 2400 2050 50  0001 C CNN
-F 3 "" H 2400 2050 50  0001 C CNN
-	1    2400 2050
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR?
-U 1 1 58E6205D
-P 2400 2350
-F 0 "#PWR?" H 2400 2100 50  0001 C CNN
-F 1 "GND" H 2400 2200 50  0000 C CNN
-F 2 "" H 2400 2350 50  0001 C CNN
-F 3 "" H 2400 2350 50  0001 C CNN
-	1    2400 2350
+P 4500 2300
+F 0 "#PWR?" H 4500 2150 50  0001 C CNN
+F 1 "+BATT" H 4500 2440 50  0000 C CNN
+F 2 "" H 4500 2300 50  0001 C CNN
+F 3 "" H 4500 2300 50  0001 C CNN
+	1    4500 2300
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -190,14 +168,6 @@ F4 "Hardware_Switch" I R 6150 1950 60
 $EndSheet
 Text Label 6750 2650 2    60   ~ 0
 Thruster_Off
-Wire Wire Line
-	2400 2150 2550 2150
-Wire Wire Line
-	2550 2250 2400 2250
-Wire Wire Line
-	2400 2250 2400 2350
-Wire Wire Line
-	2400 2050 2400 2150
 Wire Wire Line
 	2650 3300 2750 3300
 Wire Wire Line
@@ -388,4 +358,15 @@ F15 "SW6_E" O R 8150 2650 60
 F16 "SW7_E" O R 8150 3350 60 
 F17 "SW8_E" O R 8150 4050 60 
 $EndSheet
+$Sheet
+S 3050 2250 1050 400 
+U 58E5E8B2
+F0 "Power_Aggregator" 60
+F1 "Power_Aggregator.sch" 60
+F2 "+VBatt" U R 4100 2450 60 
+$EndSheet
+Wire Wire Line
+	4100 2450 4500 2450
+Wire Wire Line
+	4500 2450 4500 2300
 $EndSCHEMATC
