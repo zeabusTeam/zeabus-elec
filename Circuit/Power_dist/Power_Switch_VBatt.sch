@@ -35,7 +35,7 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 4 10
-Title ""
+Title "DVL and Sonar Switch"
 Date "2017-04-06"
 Rev "1.0.0"
 Comp ""
@@ -123,99 +123,29 @@ F 3 "" H 6450 4150 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L BC817-40 Q3
-U 1 1 58E52473
-P 5450 4100
-AR Path="/58E51F99/58E52473" Ref="Q3"  Part="1" 
-AR Path="/58E527AF/58E52473" Ref="Q5"  Part="1" 
-F 0 "Q5" H 5650 4175 50  0000 L CNN
-F 1 "BC817-40" H 5650 4100 50  0000 L CNN
-F 2 "TO_SOT_Packages_SMD:SOT-23" H 5650 4025 50  0001 L CIN
-F 3 "" H 5450 4100 50  0001 L CNN
-	1    5450 4100
-	1    0    0    -1  
-$EndComp
-$Comp
-L R R6
-U 1 1 58E526E2
-P 4300 4100
-AR Path="/58E51F99/58E526E2" Ref="R6"  Part="1" 
-AR Path="/58E527AF/58E526E2" Ref="R11"  Part="1" 
-F 0 "R11" V 4380 4100 50  0000 C CNN
-F 1 "2.2k" V 4300 4100 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603" V 4230 4100 50  0001 C CNN
-F 3 "" H 4300 4100 50  0001 C CNN
-	1    4300 4100
-	0    1    1    0   
-$EndComp
-$Comp
-L C C2
-U 1 1 58E5272C
-P 4900 4400
-AR Path="/58E51F99/58E5272C" Ref="C2"  Part="1" 
-AR Path="/58E527AF/58E5272C" Ref="C3"  Part="1" 
-F 0 "C3" H 4925 4500 50  0000 L CNN
-F 1 "1uF" H 4925 4300 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0603" H 4938 4250 50  0001 C CNN
-F 3 "" H 4900 4400 50  0001 C CNN
-	1    4900 4400
-	1    0    0    -1  
-$EndComp
-$Comp
 L GND #PWR017
 U 1 1 58E527F8
-P 5550 5000
+P 6450 4950
 AR Path="/58E51F99/58E527F8" Ref="#PWR017"  Part="1" 
 AR Path="/58E527AF/58E527F8" Ref="#PWR018"  Part="1" 
-F 0 "#PWR018" H 5550 4750 50  0001 C CNN
-F 1 "GND" H 5550 4850 50  0000 C CNN
-F 2 "" H 5550 5000 50  0001 C CNN
-F 3 "" H 5550 5000 50  0001 C CNN
-	1    5550 5000
+F 0 "#PWR018" H 6450 4700 50  0001 C CNN
+F 1 "GND" H 6450 4800 50  0000 C CNN
+F 2 "" H 6450 4950 50  0001 C CNN
+F 3 "" H 6450 4950 50  0001 C CNN
+	1    6450 4950
 	1    0    0    -1  
 $EndComp
 Text HLabel 3650 2450 0    60   Input ~ 0
 +Power
-Text HLabel 3650 4100 0    60   Input ~ 0
+Text HLabel 3650 3300 0    60   Input ~ 0
 Software_Switch
 Wire Wire Line
 	6000 3300 6150 3300
 Wire Wire Line
-	5550 3300 5700 3300
-Wire Wire Line
-	5550 2700 5550 3900
+	3650 3300 5700 3300
 Connection ~ 5550 3300
 Wire Wire Line
-	4450 4100 5250 4100
-Wire Wire Line
-	4900 4100 4900 4250
-Wire Wire Line
-	4900 4550 4900 4850
-Connection ~ 4900 4100
-Wire Wire Line
-	3650 4100 4150 4100
-Wire Wire Line
 	6450 2450 6450 3100
-$Comp
-L R R7
-U 1 1 58E6A1DE
-P 5550 4550
-AR Path="/58E51F99/58E6A1DE" Ref="R7"  Part="1" 
-AR Path="/58E527AF/58E6A1DE" Ref="R12"  Part="1" 
-F 0 "R12" V 5630 4550 50  0000 C CNN
-F 1 "10k" V 5550 4550 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603" V 5480 4550 50  0001 C CNN
-F 3 "" H 5550 4550 50  0001 C CNN
-	1    5550 4550
-	-1   0    0    1   
-$EndComp
-Connection ~ 5550 4850
-Wire Wire Line
-	4900 4850 6850 4850
-Wire Wire Line
-	5550 4300 5550 4400
-Wire Wire Line
-	5550 4700 5550 5000
 $Comp
 L D_Zener D4
 U 1 1 58E648CE
@@ -262,7 +192,7 @@ Wire Wire Line
 Wire Wire Line
 	6450 4300 6450 4450
 Wire Wire Line
-	6450 4850 6450 4650
+	6450 4650 6450 4950
 Wire Wire Line
 	6850 4850 6850 4300
 Connection ~ 6450 4850
@@ -271,4 +201,8 @@ Wire Wire Line
 Wire Wire Line
 	6850 3950 6850 4200
 Connection ~ 6450 3950
+Wire Wire Line
+	5550 2700 5550 3300
+Wire Wire Line
+	6850 4850 6450 4850
 $EndSCHEMATC

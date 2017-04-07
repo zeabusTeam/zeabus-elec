@@ -51,7 +51,6 @@ F0 "Thruster2" 60
 F1 "Thruster_Switch.sch" 60
 F2 "+Power" I R 5450 3350 60 
 F3 "Software_Switch" I R 5450 3450 60 
-F4 "Hardware_Switch" I R 5450 3550 60 
 $EndSheet
 $Sheet
 S 4550 3950 900  400 
@@ -76,7 +75,6 @@ F0 "Thruster_Switch_Spare1" 60
 F1 "Thruster_Switch.sch" 60
 F2 "+Power" I L 8300 2650 60 
 F3 "Software_Switch" I L 8300 2750 60 
-F4 "Hardware_Switch" I L 8300 2850 60 
 $EndSheet
 $Sheet
 S 8300 3250 900  400 
@@ -85,7 +83,6 @@ F0 "Thruster_Switch_Spare2" 60
 F1 "Thruster_Switch.sch" 60
 F2 "+Power" I L 8300 3350 60 
 F3 "Software_Switch" I L 8300 3450 60 
-F4 "Hardware_Switch" I L 8300 3550 60 
 $EndSheet
 $Comp
 L +BATT #PWR2
@@ -110,7 +107,7 @@ F 3 "" H 1750 4150 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 Text Label 2600 4100 2    60   ~ 0
-Thruster_Off
+Kill_SW
 $Comp
 L GND #PWR1
 U 1 1 58E6E6F3
@@ -122,8 +119,6 @@ F 3 "" H 2050 4350 50  0001 C CNN
 	1    2050 4350
 	1    0    0    -1  
 $EndComp
-Text Label 6050 2850 2    60   ~ 0
-Thruster_Off
 $Sheet
 S 4550 2550 900  400 
 U 58E0048C
@@ -131,28 +126,13 @@ F0 "Thruster1" 60
 F1 "Thruster_Switch.sch" 60
 F2 "+Power" I R 5450 2650 60 
 F3 "Software_Switch" I R 5450 2750 60 
-F4 "Hardware_Switch" I R 5450 2850 60 
 $EndSheet
-Text Label 6050 3550 2    60   ~ 0
-Thruster_Off
 Wire Wire Line
 	1950 4200 2050 4200
 Wire Wire Line
 	2050 4200 2050 4350
 Wire Wire Line
 	2600 4100 1950 4100
-Text Label 7700 2850 0    60   ~ 0
-Thruster_Off
-Wire Wire Line
-	7700 2850 8300 2850
-Wire Wire Line
-	6050 2850 5450 2850
-Wire Wire Line
-	6050 3550 5450 3550
-Text Label 7700 3550 0    60   ~ 0
-Thruster_Off
-Wire Wire Line
-	7700 3550 8300 3550
 $Comp
 L +BATT #PWR3
 U 1 1 58EB597A
@@ -214,10 +194,10 @@ Wire Wire Line
 Wire Wire Line
 	5600 4750 5600 4650
 $Comp
-L +BATT #PWR14
+L +BATT #PWR10
 U 1 1 58EC0437
 P 8150 2550
-F 0 "#PWR14" H 8150 2400 50  0001 C CNN
+F 0 "#PWR10" H 8150 2400 50  0001 C CNN
 F 1 "+BATT" H 8150 2690 50  0000 C CNN
 F 2 "" H 8150 2550 50  0001 C CNN
 F 3 "" H 8150 2550 50  0001 C CNN
@@ -229,10 +209,10 @@ Wire Wire Line
 Wire Wire Line
 	8150 2650 8300 2650
 $Comp
-L +BATT #PWR15
+L +BATT #PWR11
 U 1 1 58ECB208
 P 8150 3250
-F 0 "#PWR15" H 8150 3100 50  0001 C CNN
+F 0 "#PWR11" H 8150 3100 50  0001 C CNN
 F 1 "+BATT" H 8150 3390 50  0000 C CNN
 F 2 "" H 8150 3250 50  0001 C CNN
 F 3 "" H 8150 3250 50  0001 C CNN
@@ -288,10 +268,10 @@ F5 "DSP_Switch_C" O L 8300 4850 60
 F6 "DSP_Switch_E" I L 8300 4950 60 
 $EndSheet
 $Comp
-L +BATT #PWR13
+L +BATT #PWR9
 U 1 1 58E67F6C
 P 8100 4200
-F 0 "#PWR13" H 8100 4050 50  0001 C CNN
+F 0 "#PWR9" H 8100 4050 50  0001 C CNN
 F 1 "+BATT" H 8100 4340 50  0000 C CNN
 F 2 "" H 8100 4200 50  0001 C CNN
 F 3 "" H 8100 4200 50  0001 C CNN
@@ -332,31 +312,9 @@ Wire Wire Line
 	7450 3450 8300 3450
 $Comp
 L GND #PWR7
-U 1 1 58E667A4
-P 6300 2850
-F 0 "#PWR7" H 6300 2600 50  0001 C CNN
-F 1 "GND" H 6300 2700 50  0000 C CNN
-F 2 "" H 6300 2850 50  0001 C CNN
-F 3 "" H 6300 2850 50  0001 C CNN
-	1    6300 2850
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR8
-U 1 1 58E66896
-P 6300 3550
-F 0 "#PWR8" H 6300 3300 50  0001 C CNN
-F 1 "GND" H 6300 3400 50  0000 C CNN
-F 2 "" H 6300 3550 50  0001 C CNN
-F 3 "" H 6300 3550 50  0001 C CNN
-	1    6300 3550
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR9
 U 1 1 58E66A79
 P 6300 4250
-F 0 "#PWR9" H 6300 4000 50  0001 C CNN
+F 0 "#PWR7" H 6300 4000 50  0001 C CNN
 F 1 "GND" H 6300 4100 50  0000 C CNN
 F 2 "" H 6300 4250 50  0001 C CNN
 F 3 "" H 6300 4250 50  0001 C CNN
@@ -364,48 +322,34 @@ F 3 "" H 6300 4250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR10
+L GND #PWR8
 U 1 1 58E66B6B
 P 6300 4950
-F 0 "#PWR10" H 6300 4700 50  0001 C CNN
+F 0 "#PWR8" H 6300 4700 50  0001 C CNN
 F 1 "GND" H 6300 4800 50  0000 C CNN
 F 2 "" H 6300 4950 50  0001 C CNN
 F 3 "" H 6300 4950 50  0001 C CNN
 	1    6300 4950
 	1    0    0    -1  
 $EndComp
-$Comp
-L GND #PWR12
-U 1 1 58E66C5D
-P 7600 3550
-F 0 "#PWR12" H 7600 3300 50  0001 C CNN
-F 1 "GND" H 7600 3400 50  0000 C CNN
-F 2 "" H 7600 3550 50  0001 C CNN
-F 3 "" H 7600 3550 50  0001 C CNN
-	1    7600 3550
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR11
-U 1 1 58E66D4F
-P 7600 2850
-F 0 "#PWR11" H 7600 2600 50  0001 C CNN
-F 1 "GND" H 7600 2700 50  0000 C CNN
-F 2 "" H 7600 2850 50  0001 C CNN
-F 3 "" H 7600 2850 50  0001 C CNN
-	1    7600 2850
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
-	6450 2850 6300 2850
+	6100 2850 6450 2850
 Wire Wire Line
-	6450 3550 6300 3550
+	6100 3550 6450 3550
 Wire Wire Line
 	6300 4250 6450 4250
 Wire Wire Line
 	6450 4950 6300 4950
 Wire Wire Line
-	7450 3550 7600 3550
+	7450 3550 7800 3550
 Wire Wire Line
-	7450 2850 7600 2850
+	7450 2850 7800 2850
+Text Label 6100 2850 0    60   ~ 0
+Kill_SW
+Text Label 6100 3550 0    60   ~ 0
+Kill_SW
+Text Label 7800 2850 2    60   ~ 0
+Kill_SW
+Text Label 7800 3550 2    60   ~ 0
+Kill_SW
 $EndSCHEMATC
