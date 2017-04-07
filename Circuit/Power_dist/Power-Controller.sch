@@ -34,11 +34,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-<<<<<<< HEAD
-Sheet 12 12
-=======
 Sheet 12 10
->>>>>>> Power_distributor_Dome_Pong
 Title "Power Controller"
 Date "2017-04-06"
 Rev "1.0.0"
