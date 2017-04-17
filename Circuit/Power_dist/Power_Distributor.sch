@@ -35,7 +35,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 10
+Sheet 1 9
 Title "Power Distributor"
 Date "2017-04-06"
 Rev "1.0.0"
@@ -76,14 +76,6 @@ F0 "Thruster_Switch_Spare1" 60
 F1 "Thruster_Switch.sch" 60
 F2 "+Power" I L 8300 2650 60 
 F3 "Software_Switch" I L 8300 2750 60 
-$EndSheet
-$Sheet
-S 8300 3250 900  400 
-U 58E6D43E
-F0 "Thruster_Switch_Spare2" 60
-F1 "Thruster_Switch.sch" 60
-F2 "+Power" I L 8300 3350 60 
-F3 "Software_Switch" I L 8300 3450 60 
 $EndSheet
 $Comp
 L +BATT #PWR2
@@ -209,21 +201,6 @@ Wire Wire Line
 	8150 2550 8150 2650
 Wire Wire Line
 	8150 2650 8300 2650
-$Comp
-L +BATT #PWR11
-U 1 1 58ECB208
-P 8150 3250
-F 0 "#PWR11" H 8150 3100 50  0001 C CNN
-F 1 "+BATT" H 8150 3390 50  0000 C CNN
-F 2 "" H 8150 3250 50  0001 C CNN
-F 3 "" H 8150 3250 50  0001 C CNN
-	1    8150 3250
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	8150 3250 8150 3350
-Wire Wire Line
-	8150 3350 8300 3350
 $Sheet
 S 6450 2550 1000 3200
 U 58E54EC3
@@ -309,8 +286,6 @@ Wire Wire Line
 	6450 2750 5450 2750
 Wire Wire Line
 	7450 2750 8300 2750
-Wire Wire Line
-	7450 3450 8300 3450
 $Comp
 L GND #PWR7
 U 1 1 58E66A79
@@ -342,15 +317,11 @@ Wire Wire Line
 Wire Wire Line
 	6450 4950 6300 4950
 Wire Wire Line
-	7450 3550 7800 3550
-Wire Wire Line
 	7450 2850 7800 2850
 Text Label 6100 2850 0    60   ~ 0
 Kill_SW
 Text Label 6100 3550 0    60   ~ 0
 Kill_SW
 Text Label 7800 2850 2    60   ~ 0
-Kill_SW
-Text Label 7800 3550 2    60   ~ 0
 Kill_SW
 $EndSCHEMATC
