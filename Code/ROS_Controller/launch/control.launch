@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+    
+    <node name="Controller" pkg="controller" type="Controller" output="screen"/>
+    <node name="thrust_mapper_2016" pkg="controller" type="thrust_mapper_2016.py" output="screen"/>
+    <!--node name="TranformFrameBroadcaster" pkg="zeabus_controller" type="TranformFrameBroadcaster" output="screen"/-->
+    
+</launch>
