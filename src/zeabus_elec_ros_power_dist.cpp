@@ -68,23 +68,31 @@ int main( int argc, char** argv )
 		/* Unable to find any devices */
 		free( xDevInfo );	/* Free-up the previous allocation */
 		ROS_FATAL( "Unable to retrieve any FTDI chip information" );
-		return( -1 );
+		return( -3 );
 	}
+	free( xDevInfo );	/* Free-up the previous allocation */
 
 	/* Attempt to open the Power Distributor module described by its serial number */
 	xFTStatus = FT_OpenEx( (void*)( "PowerDist" ), FT_OPEN_BY_SERIAL_NUMBER, &( xHandle ) );
 	if (xFTStatus != FT_OK)
 	{
 		/* Fail - unable to open the device with the serial number "PowerDist" */
-		free( xDevInfo );	/* Free-up the previous allocation */
-		ROS_FATAL( "Unable to retrieve any FTDI chip information" );
-		return( -1 );
+		ROS_FATAL( "Unable to open Power Distribution device" );
+		return( -4 );
 	}
 
 	/* All FTDI initialization completed successfully. The xHandle is valid */
 	
 	/* Create the device manager class to implement chip functions */
 	pxMssp = new Zeabus_Elec::ftdi_mssp_impl( FT_DEVICE_232H, xHandle );
+	if( pxMssp->GetCurrentStatus() != FT_OK )
+	{
+		/* Fail - unable to initialize Power Distribution module */
+		delete pxMssp;
+		ROS_FATAL( "Unable to initialize Power Distribution module" );
+		return( -5 );
+		
+	}
 	pxMssp->SetGPIODirection( 0xFFFF );	/* All bits are output */
 	
 	/*=================================================================================
