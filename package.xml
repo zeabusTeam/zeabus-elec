@@ -1,19 +1,19 @@
 <?xml version="1.0"?>
-<package>
+<package format="2">
   <name>zeabus_elec_ros_power_dist</name>
-  <version>0.0.0</version>
-  <description>The zeabus_elec_ros_power_dist package</description>
+  <version>0.0.1</version>
+  <description>The ROS power distributor package for Zeabus</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag --> 
   <!-- Example:  -->
   <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
-  <maintainer email="stp@todo.todo">stp</maintainer>
+  <maintainer email="akrapong.p@ku.ac.th">Akrapong Patchararungruang</maintainer>
 
 
   <!-- One license tag required, multiple allowed, one license per tag -->
   <!-- Commonly used license strings: -->
   <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
-  <license>TODO</license>
+  <license>BSD</license>
 
 
   <!-- Url tags are optional, but multiple are allowed, one per tag -->
@@ -22,10 +22,7 @@
   <!-- <url type="website">http://wiki.ros.org/zeabus_elec_ros_power_dist</url> -->
 
 
-  <!-- Author tags are optional, multiple are allowed, one per tag -->
-  <!-- Authors do not have to be maintainers, but could be -->
-  <!-- Example: -->
-  <!-- <author email="jane.doe@example.com">Jane Doe</author> -->
+  <author email="akrapong.p@ku.ac.th">Akrapong Patchararungruang</author>
 
 
   <!-- The *_depend tags are used to specify dependencies -->
@@ -40,15 +37,14 @@
   <!-- Use test_depend for packages you need only for testing: -->
   <!--   <test_depend>gtest</test_depend> -->
   <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>roscpp</build_depend>
-  <build_depend>std_msgs</build_depend>
-  <run_depend>roscpp</run_depend>
-  <run_depend>std_msgs</run_depend>
-
+  <depend>roscpp</depend>
+  <depend>std_msgs</depend>
+  <build_depend>message_generation</build_depend>
+  <exec_depend>message_runtime</exec_depend>
 
   <!-- The export tag contains other, unspecified, tags -->
   <export>
     <!-- Other tools can request additional information be placed here -->
-
+  	<cpp cflags="-I${prefix}/../zeabus_elec_library"/>
   </export>
 </package>
