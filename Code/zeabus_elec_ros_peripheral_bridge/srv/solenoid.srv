@@ -1,0 +1,3 @@
+uint8 solenoidState
+---
+uint32 retStat
