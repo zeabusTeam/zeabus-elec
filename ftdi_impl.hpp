@@ -121,6 +121,50 @@ namespace Zeabus_Elec
 	protected:
 	};
 	/*===================================================================*/
+	
+	/* Generic implementation class for SPI mode. This class only manipulate low byte of the port. 
+	   The SPI specifications are:
+	     - CPOL0/1 => Idle of clock line is 0 or 1
+	     - CPHA0/1 => Data is captured by host at the frist/second edge 
+	     	and by device at the second/first edge of clock (rising or falling edge depends on
+	     	the clock polarity (CPOL)
+	     - MSB/LSB => Data are communicated with MSB first or LSB first. */
+	class ftdi_spi_impl : public ftdi_mssp_impl
+	{
+	public:
+		ftdi_spi_impl( FT_DEVICE xFTDevice, FT_HANDLE xHandle );
+		
+		/* Send data to communication channel */
+		virtual uint32_t Send( uint8_t* pucData, uint32_t ulLen );
+		/* Receive data from communication channel */
+		virtual uint32_t Receive( uint8_t* pucData, uint32_t ulMaxLen );
+		/* Set I/O direction of GPIO pins (if available). The parameter is the mask. 0 = Input, 1 = Output */
+		virtual FT_STATUS SetGPIODirection( uint16_t usData);
+		/* Out data to low-byte GPIO pins */
+		virtual FT_STATUS SetLoGPIOData( uint8_t ucData );
+		/* Read data from low-byte GPIO pins */
+		virtual uint8_t ReadLoGPIOData();
+	
+	protected:
+		const uint16_t SPIMaskOut_ = 0xFFF0;
+		
+		virtual const uint16_t GetSPIIOMask() = 0;
+		virtual const uint8_t GetSPIIdleState() = 0;
+		virtual const uint8_t GetSPIWriteBlockCmd() = 0;
+	};
+	/*===================================================================*/
+	
+	/* Implementation for CPOL1+CHA0+MSB SPI used by the barometer and IMU IC*/
+	class ftdi_spi_cpol1_cha0_msb_impl : public ftdi_spi_impl
+	{
+	public:
+		ftdi_spi_cpol1_cha0_msb_impl( FT_DEVICE xFTDevice, FT_HANDLE xHandle );
+		
+	protected:
+		virtual const uint16_t GetSPIIOMask() { return( 0xFFFB ); };
+		virtual const uint8_t GetSPIIdleState() { return( 0x0B ); };
+		virtual const uint8_t GetSPIWriteBlockCmd() { return( 0x31 ); };
+	};
 }
 
 #endif
