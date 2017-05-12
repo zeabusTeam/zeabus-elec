@@ -9,6 +9,8 @@
  * File-scope global variables
  * ===================================================
  */
+static const char* cstPowerDistSerial = "PowerDist";
+
 static FT_HANDLE	xHandle;		/* Storage of device handle */
 static Zeabus_Elec::ftdi_mssp_impl *pxMssp;
 
@@ -19,9 +21,15 @@ static Zeabus_Elec::ftdi_mssp_impl *pxMssp;
 bool ZeabusElec_SetSwitch(zeabus_elec_ros_power_dist::power_dist::Request  &req,
         zeabus_elec_ros_power_dist::power_dist::Response &res)
 {
-	req.switchStat = true;	/* dummy */
-	pxMssp->SetHiGPIOData( res.dummy );
-	return( true );
+	res.retStat = pxMssp->SetHiGPIOData( req.switchState );
+	if( res.retStat == FT_OK )
+	{
+		return( true );
+	}
+	else
+	{
+		return( false );
+	}
 }
 
 /* ===================================================
@@ -73,7 +81,7 @@ int main( int argc, char** argv )
 	free( xDevInfo );	/* Free-up the previous allocation */
 
 	/* Attempt to open the Power Distributor module described by its serial number */
-	xFTStatus = FT_OpenEx( (void*)( "PowerDist" ), FT_OPEN_BY_SERIAL_NUMBER, &( xHandle ) );
+	xFTStatus = FT_OpenEx( (void*)( cstPowerDistSerial ), FT_OPEN_BY_SERIAL_NUMBER, &( xHandle ) );
 	if (xFTStatus != FT_OK)
 	{
 		/* Fail - unable to open the device with the serial number "PowerDist" */
@@ -100,7 +108,7 @@ int main( int argc, char** argv )
 	  =================================================================================*/
 	
 	/* Register ROS service node for power-distributor switch controller */
-	ros::ServiceServer service_mb_device_scan = nh.advertiseService("Power_dist", ZeabusElec_SetSwitch);
+	ros::ServiceServer service_zeabus_elec_power_dist = nh.advertiseService("Power_dist", ZeabusElec_SetSwitch);
 
 	/* Main-loop. Just a spin-lock */
 	ros::Rate rate(100);

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <package format="2">
   <name>zeabus_elec_ros_power_dist</name>
-  <version>0.0.1</version>
+  <version>1.0.0</version>
   <description>The ROS power distributor package for Zeabus</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag --> 
