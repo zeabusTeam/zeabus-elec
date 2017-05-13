@@ -1,12 +1,14 @@
 #include <ros/ros.h>
+#include <std_msgs/String.h>
 #include <zeabus_elec_ros_peripheral_bridge/barometer.h>
-#include <zeabus_elec_ros_peripheral_bridge/solenoid.h>
-#include <zeabus_elec_ros_peripheral_bridge/senddata.h>
-#include <zeabus_elec_ros_peripheral_bridge/receivedata.h>
+#include <zeabus_elec_ros_peripheral_bridge/solenoid_sw.h>
+#include <zeabus_elec_ros_peripheral_bridge/comm_data.h>
 #include <sys/syscall.h>
 #include <fcntl.h>
 #include <stdlib.h>
 #include <ftdi_impl.hpp>
+
+#include <sstream>
 
 /* ===================================================
  * File-scope global variables
@@ -22,6 +24,13 @@ static const char* cstPeripheralSerial[] =
 
 static FT_HANDLE	xHandle[4];		/* Storage of device handles. FT4232 has 4 sub-modules */
 static Zeabus_Elec::ftdi_impl *pxMsspA, *pxMsspB, *pxUartA, *pxUartB;
+static ros::Publisher errMsgPublisher;	/* Publisher for error message */
+static ros::Publisher barometerPublisher;	/* Publisher for barometer message */
+static ros::Publisher comm1RecvPublisher;	/* Publisher for comm1 received-data message */
+static ros::Publisher comm2RecvPublisher;	/* Publisher for comm2 received-data message */
+static ros::Subscriber solenoidSubscriber; /* Subscriber for solenoid-controlling message */
+static ros::Subscriber comm1SendSubscriber; /* Subscriber for comm1 sent-data message */
+static ros::Subscriber comm2SendSubscriber; /* Subscriber for comm2 sent-data message */
 
 /* ===================================================
  * ROS service subroutines
@@ -30,31 +39,95 @@ static Zeabus_Elec::ftdi_impl *pxMsspA, *pxMsspB, *pxUartA, *pxUartB;
 
 /* Set the solenoid switches. We have maximum 8 switches. The low-nibble 4 switches 
 is controlled by MSSP_A and the other 4 switches is controlled by MSSP_B */
-bool ZeabusElec_SetSolenoid(zeabus_elec_ros_peripheral_bridge::solenoid::Request  &req,
-        zeabus_elec_ros_peripheral_bridge::solenoid::Response &res)
+void ZeabusElec_SetSolenoid( const zeabus_elec_ros_peripheral_bridge::solenoid_sw::ConstPtr& msg )
 {
 	uint8_t swNibble;
 	
+	FT_STATUS ftStat;
+	
 	/* Low nibble */
-	swNibble = req.solenoidState & 0x0F;
-	res.retStat = pxMsspA->SetHiGPIOData( swNibble );
+	swNibble = ( msg->switchState ) & 0x0F;
+	ftStat = pxMsspA->SetLoGPIOData( swNibble );
+	if( ftStat != FT_OK )
+	{
+		/* Some Error occurred. So, we publish the error message */
+		std_msgs::String msg;
+		std::stringstream ss;
+		ss << "Error in solenoid controller with the code " << ftStat;
+		msg.data = ss.str();
+		
+		errMsgPublisher.publish( msg );
+	}
 
 	/* High nibble */
-	swNibble = req.solenoidState >> 4;
-	res.retStat |= pxMsspB->SetHiGPIOData( swNibble );
-	if( res.retStat == FT_OK )
+	swNibble = ( msg->switchState ) >> 4;
+	ftStat = pxMsspA->SetLoGPIOData( swNibble );
+	if( ftStat != FT_OK )
 	{
-		return( true );
+		/* Some Error occurred. So, we publish the error message */
+		std_msgs::String msg;
+		std::stringstream ss;
+		ss << "Error in solenoid controller with the code " << ftStat;
+		msg.data = ss.str();
+		
+		errMsgPublisher.publish( msg );
 	}
-	else
+}
+
+/* Send a stream of uint8 to RS232 port 1 */
+void ZeabusElec_SendComm1( const zeabus_elec_ros_peripheral_bridge::comm_data::ConstPtr& msg )
+{
+	uint8_t* pucBuffer;
+	uint32_t ulDataDone;
+	
+	pucBuffer = (uint8_t*)malloc( msg->len );
+	for( int i = 0; i < msg->len; i++ )
 	{
-		return( false );
+		pucBuffer[i] = ( msg->data )[i];
+	}
+	ulDataDone = pxUartA->Send( pucBuffer, msg->len );
+	free( pucBuffer );
+	
+	if( ( pxUartA->GetCurrentStatus() != FT_OK ) || ( ulDataDone != msg->len ) )
+	{
+		/* Some Error occurred. So, we publish the error message */
+		std_msgs::String eMsg;
+		std::stringstream ss;
+		ss << "Fail to send " << ( msg->len ) << " bytes to COMM1. Only " << ulDataDone << " are sent and error code is " << pxUartA->GetCurrentStatus();
+		eMsg.data = ss.str();
+		
+		errMsgPublisher.publish( eMsg );
+	}
+}
+
+/* Send a stream of uint8 to RS232 port 1 */
+void ZeabusElec_SendComm2( const zeabus_elec_ros_peripheral_bridge::comm_data::ConstPtr& msg )
+{
+	uint8_t* pucBuffer;
+	uint32_t ulDataDone;
+	
+	pucBuffer = (uint8_t*)malloc( msg->len );
+	for( int i = 0; i < msg->len; i++ )
+	{
+		pucBuffer[i] = ( msg->data )[i];
+	}
+	ulDataDone = pxUartA->Send( pucBuffer, msg->len );
+	free( pucBuffer );
+	
+	if( ( pxUartB->GetCurrentStatus() != FT_OK ) || ( ulDataDone != msg->len ) )
+	{
+		/* Some Error occurred. So, we publish the error message */
+		std_msgs::String eMsg;
+		std::stringstream ss;
+		ss << "Unable to send " << ( msg->len ) << " bytes to COMM2. Only " << ulDataDone << " are sent and error code is " << pxUartA->GetCurrentStatus();
+		eMsg.data = ss.str();
+		
+		errMsgPublisher.publish( eMsg );
 	}
 }
 
 /* Read barometer value. The barometer is connected by SPI protocol through MSSP_A */
-bool ZeabusElec_GetPressure(zeabus_elec_ros_peripheral_bridge::barometer::Request  &req,
-        zeabus_elec_ros_peripheral_bridge::barometer::Response &res)
+bool ZeabusElec_GetPressure( uint16_t& barometerVal)
 {
 	uint8_t aucVal[3]; /* Data buffer. The raw data are in 2 bytes as a stream */
 	FT_STATUS xFTStatus;
@@ -63,7 +136,7 @@ bool ZeabusElec_GetPressure(zeabus_elec_ros_peripheral_bridge::barometer::Reques
 	xFTStatus = pxMsspA->Send( aucVal, 2 );
 	if( xFTStatus != FT_OK )
 	{
-		res.barometerVal = 0;
+		barometerVal = 0;
 		return( false );
 	}
 	
@@ -73,114 +146,92 @@ bool ZeabusElec_GetPressure(zeabus_elec_ros_peripheral_bridge::barometer::Reques
 	xFTStatus = pxMsspA->Receive( aucVal, 2 );
 	if( xFTStatus != FT_OK )
 	{
-		res.barometerVal = 0;
+		barometerVal = 0;
 		return( false );
 	}
-	res.barometerVal = (uint16_t)( aucVal[ 0 ] ); /* High byte */
-	res.barometerVal <<= 8;
-	res.barometerVal |= (uint16_t)( aucVal[ 1 ] ); /* Low byte */
-	res.barometerVal >>= 3;	/* Suppress 3 tailing zero bits */
+	
+	/* Extract the data from 2-byte message */
+	barometerVal = (uint16_t)( aucVal[ 0 ] ); /* High byte */
+	barometerVal <<= 8;
+	barometerVal |= (uint16_t)( aucVal[ 1 ] ); /* Low byte */
+	barometerVal >>= 3;	/* Suppress 3 tailing zero bits */
 
 	return( true );	/* All success */	
 }
 
-bool ZeabusElec_SendComm1(zeabus_elec_ros_peripheral_bridge::senddata::Request  &req,
-        zeabus_elec_ros_peripheral_bridge::senddata::Response &res)
+/* Receive available data from either COMM1 or COMM2 */
+void ZeabusElec_ReceiveComm( Zeabus_Elec::ftdi_impl* commPort, uint8_t commID, ros::Publisher& commPublisher )
 {
 	uint8_t* pucBuffer;
-	
-	pucBuffer = (uint8_t*)malloc( req.len );
-	for( int i = 0; i < req.len; i++ )
+	uint32_t ulDataDone, ulDataAvailable;
+
+	ulDataAvailable = commPort->CheckWaitingData();
+	if( commPort->GetCurrentStatus() != FT_OK )
 	{
-		pucBuffer[i] = req.buffer[i];
-	}
-	res.totalWritten = pxUartA->Send( pucBuffer, req.len );
-	free( pucBuffer );
-	if( pxUartA->GetCurrentStatus() != FT_OK )
-	{
-		return( false );
+		/* Cannot check the available data in COMM */
+		std_msgs::String msg;
+		std::stringstream ss;
+		ss << "Fail to check available data in COMM" << commID << " with error code " << commPort->GetCurrentStatus();
+		msg.data = ss.str();
+		
+		errMsgPublisher.publish( msg );
 	}
 	else
 	{
-		return( true );
-	}
-}
-
-bool ZeabusElec_SendComm2(zeabus_elec_ros_peripheral_bridge::senddata::Request  &req,
-        zeabus_elec_ros_peripheral_bridge::senddata::Response &res)
-{
-	uint8_t* pucBuffer;
+		if( ulDataAvailable > 0 )
+		{
+			/* We have some data waiting */
+			pucBuffer = (uint8_t*)malloc( ulDataAvailable );
+			if( pucBuffer == NULL )
+			{
+				/* Cannot allocate buffer for COMM data */
+				std_msgs::String msg;
+				std::stringstream ss;
+				ss << "Fail to allocate buffer to receive COMM" << commID << " data";
+				msg.data = ss.str();
+		
+				errMsgPublisher.publish( msg );
+			}
+			else
+			{
+				/* Reading from the COMM port */
+				ulDataDone = commPort->Receive( pucBuffer, ulDataAvailable );
+				if( commPort->GetCurrentStatus() != FT_OK )
+				{
+					/* Reading finished with error */
+					std_msgs::String msg;
+					std::stringstream ss;
+					ss << "Fail to receive data from COMM" << commID << " with error code " << commPort->GetCurrentStatus();
+					msg.data = ss.str();
 	
-	pucBuffer = (uint8_t*)malloc( req.len );
-	for( int i = 0; i < req.len; i++ )
-	{
-		pucBuffer[i] = req.buffer[i];
-	}
-	res.totalWritten = pxUartB->Send( pucBuffer, req.len );
-	free( pucBuffer );
-	if( pxUartB->GetCurrentStatus() != FT_OK )
-	{
-		return( false );
-	}
-	else
-	{
-		return( true );
-	}
-}
+					errMsgPublisher.publish( msg );
+				}
+				else
+				{
+					if( ulDataAvailable != ulDataDone )
+					{
+						/* Successfully read but got only part of data */
+						std_msgs::String msg;
+						std::stringstream ss;
+						ss << "Reading from COMM" << commID << " was successful but we get " << ulDataDone 
+								<< " bytes instead of " << ulDataAvailable << " bytes.";
+						msg.data = ss.str();
+		
+						errMsgPublisher.publish( msg );
+					}
 
-bool ZeabusElec_ReceiveComm1(zeabus_elec_ros_peripheral_bridge::receivedata::Request  &req,
-        zeabus_elec_ros_peripheral_bridge::receivedata::Response &res)
-{
-	uint8_t* pucBuffer;
-	
-	pucBuffer = (uint8_t*)malloc( req.maxLen );
-	if( pucBuffer == NULL )
-	{
-		res.totalReceived = 0;
-		return( false );
-	}
-	res.totalReceived = pxUartA->Receive( pucBuffer, req.maxLen );
-	for( int i = 0; i < res.totalReceived; i++ )
-	{
-		req.buffer[i] = pucBuffer[i];
-	}
-	free( pucBuffer );
-
-	if( pxUartA->GetCurrentStatus() != FT_OK )
-	{
-		return( false );
-	}
-	else
-	{
-		return( true );
-	}
-}
-
-bool ZeabusElec_ReceiveComm2(zeabus_elec_ros_peripheral_bridge::receivedata::Request  &req,
-        zeabus_elec_ros_peripheral_bridge::receivedata::Response &res)
-{
-	uint8_t* pucBuffer;
-	
-	pucBuffer = (uint8_t*)malloc( req.maxLen );
-	if( pucBuffer == NULL )
-	{
-		res.totalReceived = 0;
-		return( false );
-	}
-	res.totalReceived = pxUartB->Receive( pucBuffer, req.maxLen );
-	for( int i = 0; i < res.totalReceived; i++ )
-	{
-		req.buffer[i] = pucBuffer[i];
-	}
-	free( pucBuffer );
-
-	if( pxUartB->GetCurrentStatus() != FT_OK )
-	{
-		return( false );
-	}
-	else
-	{
-		return( true );
+					/* Send the data to the topic channel */
+					zeabus_elec_ros_peripheral_bridge::comm_data commMsg;
+					for( int i = 0; i < ulDataDone; i++ )
+					{
+						commMsg.data[i] = pucBuffer[i];
+					}
+					commMsg.len = ulDataDone;
+					commPublisher.publish( commMsg );
+				}
+				free( pucBuffer );
+			}
+		}
 	}
 }
 
@@ -194,10 +245,16 @@ int main( int argc, char** argv )
 	FT_STATUS xFTStatus;
 	FT_DEVICE_LIST_INFO_NODE *xDevInfo;
 	uint32_t ulTotalDevs, ulNumFoundDev;
+	uint16_t usBarometerVal;
+	int comm1BaudRate, comm2BaudRate;
 
 	/* Initialize ROS functionalities */	
 	ros::init(argc, argv, "Zeabus_Elec_Peripheral_bridge");
- 	ros::NodeHandle nh("~");
+ 	ros::NodeHandle nh("Elec");
+ 	
+ 	/* Retrieve parameter from launch file */
+	nh.param < int > ("comm1baudrate", comm1BaudRate, 115200);
+	nh.param < int > ("comm2baudrate", comm1BaudRate, 115200);
 	
 	/* Remove all kernel modules that occupied the FTDI chips */
 	iSysCallStat = syscall( SYS_delete_module, "ftdi_sio", O_NONBLOCK | O_TRUNC );
@@ -271,7 +328,7 @@ int main( int argc, char** argv )
 	}
 	pxMsspB->SetGPIODirection( 0xFFFF );	/* All bits are output */
 	
-	pxUartA = new Zeabus_Elec::ftdi_uart_impl( FT_DEVICE_4232H, xHandle[2] );
+	pxUartA = new Zeabus_Elec::ftdi_uart_impl( FT_DEVICE_4232H, xHandle[2], (uint32_t)comm1BaudRate );
 	if( pxUartA->GetCurrentStatus() != FT_OK )
 	{
 		/* Fail - unable to initialize Power Distribution module */
@@ -283,7 +340,7 @@ int main( int argc, char** argv )
 		
 	}
 
-	pxUartB = new Zeabus_Elec::ftdi_uart_impl( FT_DEVICE_4232H, xHandle[3] );
+	pxUartB = new Zeabus_Elec::ftdi_uart_impl( FT_DEVICE_4232H, xHandle[3], (uint32_t)comm2BaudRate );
 	if( pxUartB->GetCurrentStatus() != FT_OK )
 	{
 		/* Fail - unable to initialize Power Distribution module */
@@ -300,20 +357,42 @@ int main( int argc, char** argv )
 	  Now the FTDI chip is opened and hooked. We can continue ROS registration process 
 	  =================================================================================*/
 	
-	/* Register ROS service node for power-distributor switch controller */
-	ros::ServiceServer service_zeabus_elec_solenoid_sw = nh.advertiseService("Solenoid_SW", ZeabusElec_SetSolenoid);
-	ros::ServiceServer service_zeabus_elec_barometer = nh.advertiseService("Barometer", ZeabusElec_GetPressure);
-	ros::ServiceServer service_zeabus_elec_send_comm1 = nh.advertiseService("SendComm1", ZeabusElec_SendComm1);
-	ros::ServiceServer service_zeabus_elec_send_comm2 = nh.advertiseService("SendComm2", ZeabusElec_SendComm2);
-	ros::ServiceServer service_zeabus_elec_receive_comm1 = nh.advertiseService("ReceiveComm1", ZeabusElec_ReceiveComm1);
-	ros::ServiceServer service_zeabus_elec_receive_comm2 = nh.advertiseService("ReceiveComm2", ZeabusElec_ReceiveComm2);
+	/* Register ROS publishers for power-distributor switch controller */
+	errMsgPublisher = nh.advertise<std_msgs::String>( "Hw_error", 1000 );	/* Publisher for error message */
+	barometerPublisher = nh.advertise<zeabus_elec_ros_peripheral_bridge::barometer>( "Barometer", 100 );	/* Publisher for barometer message */
+	comm1RecvPublisher = nh.advertise<zeabus_elec_ros_peripheral_bridge::comm_data>( "Comm1/Recv", 100 );	/* Publisher for comm1 received-data message */
+	comm2RecvPublisher = nh.advertise<zeabus_elec_ros_peripheral_bridge::comm_data>( "Comm2/Recv", 100 );	/* Publisher for comm2 received-data message */
 
-	/* Main-loop. Just a spin-lock */
+	/* Register ROS subscribers for power-distributor switch controller */
+	solenoidSubscriber = nh.subscribe( "Solenoid_sw", 100, ZeabusElec_SetSolenoid ); /* Subscriber for solenoid-controlling message */
+	comm1SendSubscriber = nh.subscribe( "Comm1/Send", 100, ZeabusElec_SendComm1 ); /* Subscriber for comm1 sent-data message */
+	comm2SendSubscriber = nh.subscribe( "Comm2/Send", 100, ZeabusElec_SendComm2 ); /* Subscriber for comm2 sent-data message */
+
+	/* Main-loop. Just a spin-lock and wakeup at every 10ms (100Hz) */
 	ros::Rate rate(100);
 	while( ros::ok() )
 	{
+		/* Wait for the next cycle */
 		rate.sleep();
 		ros::spinOnce();
+		
+		/* Read barometer */
+		if( !( ZeabusElec_GetPressure( usBarometerVal ) ) )
+		{
+			/* Fail to read from barometer */
+			std_msgs::String msg;
+			std::stringstream ss;
+			ss << "Fail to read from barometer with error code " << pxMsspA->GetCurrentStatus();
+			msg.data = ss.str();
+		
+			errMsgPublisher.publish( msg );
+		}
+		
+		/* Read from COMM1 */
+		ZeabusElec_ReceiveComm( pxUartA, 1, comm1RecvPublisher );
+			
+		/* Read from COMM2 */
+		ZeabusElec_ReceiveComm( pxUartB, 2, comm2RecvPublisher );
 	}
 	
 	/*=================================================================================

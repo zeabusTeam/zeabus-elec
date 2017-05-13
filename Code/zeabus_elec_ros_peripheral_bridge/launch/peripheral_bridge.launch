@@ -1,0 +1,6 @@
+<launch>
+	<node pkg="zeabus_elec_peripheral_bridge" type="peripheral_bridge_node" name="Zeabus_Elec_Peripheral_bridge" output="screen">
+		<param name="comm1baudrate" value="115200"/>
+		<param name="comm2baudrate" value="115200"/>		
+	</node>
+</launch>
