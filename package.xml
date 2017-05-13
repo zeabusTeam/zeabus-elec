@@ -2,7 +2,7 @@
 <package format="2">
   <name>zeabus_elec_ros_peripheral_bridge</name>
   <version>1.0.0</version>
-  <description>The set of ROS server packages for Zeabus</description>
+  <description>The set of ROS publishers and subscribers for Zeabus</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag --> 
   <!-- Example:  -->
@@ -45,6 +45,6 @@
   <!-- The export tag contains other, unspecified, tags -->
   <export>
     <!-- Other tools can request additional information be placed here -->
-  	<cpp cflags="-I${prefix}/../zeabus_elec_library"/>
+  	<cpp cflags="-I${prefix}/../zeabus_elec_ftdi_lib"/>
   </export>
 </package>

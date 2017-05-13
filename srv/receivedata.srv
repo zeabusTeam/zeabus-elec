@@ -1,4 +1,0 @@
-uint8[] buffer
-uint32 maxLen
----
-uint32 totalReceived
