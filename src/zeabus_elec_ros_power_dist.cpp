@@ -116,7 +116,7 @@ int main( int argc, char** argv )
 	  =================================================================================*/
 	
 	/* Register ROS publisher to Elec/Hw_error topic */
-	errMsgPublisher = nh.advertise<std_msgs::String>( "Hw_error", 100 );
+	errMsgPublisher = nh.advertise<std_msgs::String>( "Hw_error", 1000 );
 	/* Register ROS subscriber to Elec/Power_dist topic */
 	switchSubscriber = nh.subscribe( "Power_switch", 100, ZeabusElec_SetSwitch );
 
