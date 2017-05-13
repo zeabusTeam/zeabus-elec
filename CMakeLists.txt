@@ -16,7 +16,6 @@ find_package(catkin REQUIRED COMPONENTS
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
-
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
 ## See http://ros.org/doc/api/catkin/html/user_guide/setup_dot_py.html
@@ -47,16 +46,16 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   power_dist.msg
-# )
+add_message_files(
+  FILES
+  power_dist.msg
+)
 
 ## Generate services in the 'srv' folder
-add_service_files(
-  FILES
-  power_dist.srv
-)
+# add_service_files(
+#   FILES
+#   power_dist.srv
+# )
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -101,10 +100,10 @@ generate_messages(
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
- INCLUDE_DIRS ../zeabus_elec_library
+ INCLUDE_DIRS ../zeabus_elec_ftdi_lib
  LIBRARIES zeabus_elec_ros_power_dist
  CATKIN_DEPENDS roscpp std_msgs message_runtime
-#  DEPENDS ../zeabus_elec_library/libftd2xx.a
+#  DEPENDS ../zeabus_elec_ftdi_lib/libftd2xx.a
 )
 
 ###########
@@ -116,14 +115,14 @@ catkin_package(
 # include_directories(include)
 include_directories(
   ${catkin_INCLUDE_DIRS}
-  ../zeabus_elec_library
+  ../zeabus_elec_ftdi_lib
 )
 
 ## Declare a C++ library
 add_library(${PROJECT_NAME}
   src/zeabus_elec_ros_power_dist.cpp
-  ../zeabus_elec_library/libftd2xx.a
-  ../zeabus_elec_library/ftdi_impl.cpp
+  ../zeabus_elec_ftdi_lib/libftd2xx.a
+  ../zeabus_elec_ftdi_lib/ftdi_impl.cpp
 )
 
 ## Add cmake target dependencies of the library
