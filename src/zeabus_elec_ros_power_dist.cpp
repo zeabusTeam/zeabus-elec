@@ -1,9 +1,12 @@
 #include <ros/ros.h>
+#include <std_msgs/String.h>
 #include <zeabus_elec_ros_power_dist/power_dist.h>
 #include <sys/syscall.h>
 #include <fcntl.h>
 #include <stdlib.h>
 #include <ftdi_impl.hpp>
+
+#include <sstream>
 
 /* ===================================================
  * File-scope global variables
@@ -13,22 +16,27 @@ static const char* cstPowerDistSerial = "PowerDist";
 
 static FT_HANDLE	xHandle;		/* Storage of device handle */
 static Zeabus_Elec::ftdi_mssp_impl *pxMssp;
+static ros::Publisher errMsgPublisher;	/* Publisher for error message */
+static ros::Subscriber switchSubscriber; /* Subscriber for switch-controlling message */
 
 /* ===================================================
  * ROS service subroutines
  * ===================================================
  */
-bool ZeabusElec_SetSwitch(zeabus_elec_ros_power_dist::power_dist::Request  &req,
-        zeabus_elec_ros_power_dist::power_dist::Response &res)
+void ZeabusElec_SetSwitch( const zeabus_elec_ros_power_dist::power_dist::ConstPtr& msg )
 {
-	res.retStat = pxMssp->SetHiGPIOData( req.switchState );
-	if( res.retStat == FT_OK )
+	FT_STATUS ftStat;
+	
+	ftStat = pxMssp->SetHiGPIOData( msg->switchState );
+	if( ftStat != FT_OK )
 	{
-		return( true );
-	}
-	else
-	{
-		return( false );
+		/* Some Error occurred. So, we publish the error message */
+		std_msgs::String msg;
+		std::stringstream ss;
+		ss << "Error in power-distributor controller with the code " << ftStat;
+		msg.data = ss.str();
+		
+		errMsgPublisher.publish( msg );
 	}
 }
 
@@ -45,7 +53,7 @@ int main( int argc, char** argv )
 
 	/* Initialize ROS functionalities */	
 	ros::init(argc, argv, "Zeabus_Elec_Power_dist");
- 	ros::NodeHandle nh("~");
+ 	ros::NodeHandle nh("Elec");
 	
 	/* Remove all kernel modules that occupied the FTDI chips */
 	iSysCallStat = syscall( SYS_delete_module, "ftdi_sio", O_NONBLOCK | O_TRUNC );
@@ -107,16 +115,13 @@ int main( int argc, char** argv )
 	  Now the FTDI chip is opened and hooked. We can continue ROS registration process 
 	  =================================================================================*/
 	
-	/* Register ROS service node for power-distributor switch controller */
-	ros::ServiceServer service_zeabus_elec_power_dist = nh.advertiseService("Power_dist", ZeabusElec_SetSwitch);
+	/* Register ROS publisher to Elec/Hw_error topic */
+	errMsgPublisher = nh.advertise<std_msgs::String>( "Hw_error", 100 );
+	/* Register ROS subscriber to Elec/Power_dist topic */
+	switchSubscriber = nh.subscribe( "Power_switch", 100, ZeabusElec_SetSwitch );
 
 	/* Main-loop. Just a spin-lock */
-	ros::Rate rate(100);
-	while( ros::ok() )
-	{
-		rate.sleep();
-		ros::spinOnce();
-	}
+	ros::spin();
 	
 	/*=================================================================================
 	  At this point of code. ROS has some fatal errors or just normal shutdown. Also us. 
