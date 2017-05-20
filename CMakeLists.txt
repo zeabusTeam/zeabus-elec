@@ -124,11 +124,11 @@ include_directories(
 )
 
 ## Declare a C++ library
-add_library(${PROJECT_NAME}
-  src/zeabus_elec_ros_peripheral_bridge.cpp
-  ../zeabus_elec_ftdi_lib/libftd2xx.a
-  ../zeabus_elec_ftdi_lib/ftdi_impl.cpp
-)
+# add_library(${PROJECT_NAME}
+#   src/zeabus_elec_ros_peripheral_bridge.cpp
+#   ../zeabus_elec_ftdi_lib/libftd2xx.a
+#   ../zeabus_elec_ftdi_lib/ftdi_impl.cpp
+# )
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -138,7 +138,10 @@ add_library(${PROJECT_NAME}
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/zeabus_elec_ros_peripheral_bridge_node.cpp)
+add_executable(${PROJECT_NAME}
+  src/zeabus_elec_ros_peripheral_bridge.cpp
+  ../zeabus_elec_ftdi_lib/ftdi_impl.cpp
+)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -151,9 +154,12 @@ add_library(${PROJECT_NAME}
 # add_dependencies(${PROJECT_NAME}_node ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Specify libraries to link a library or executable target against
-# target_link_libraries(${PROJECT_NAME}_node
-#   ${catkin_LIBRARIES}
-# )
+target_link_libraries(${PROJECT_NAME}
+  ${catkin_LIBRARIES}
+  ${CMAKE_SOURCE_DIR}/../src/zeabus_elec_ftdi_lib/libftdi.a
+  pthread
+  udev
+)
 
 #############
 ## Install ##
