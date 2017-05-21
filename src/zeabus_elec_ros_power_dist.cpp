@@ -52,7 +52,7 @@ int main( int argc, char** argv )
 	  =================================================================================*/
 
 	/* Create the device manager class to implement chip functions */
-	pxMssp = std::make_shared<Zeabus_Elec::ftdi_mpsse_impl>( Zeabus_Elec::ftdi_mpsse_impl( Zeabus_Elec::FT232H, cstPowerDistSerial ) );
+	pxMssp = std::make_shared<Zeabus_Elec::ftdi_mpsse_impl>( Zeabus_Elec::FT232H, cstPowerDistSerial );
 	
 	if( pxMssp->GetCurrentStatus() != 0 )
 	{
