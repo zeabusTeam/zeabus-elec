@@ -288,7 +288,7 @@ bool Link_3dm_gx4::AsyncWrite( const MIPPacket& packet, int iTimeOut_ms )
 /* Constructor */	
 imu_3dm_gx4::imu_3dm_gx4( const std::string& port )
 {
-	linklayer_ = std::make_shared<Link_3dm_gx4>( Link_3dm_gx4( port ) );
+	linklayer_ = std::make_shared<Link_3dm_gx4>( port );
 }
 
 /*=============== Fundamental functions ================*/
