@@ -11,10 +11,12 @@ This makes the final library consists of 2 layers as:
 
 ## Normally, Zeabus team use only Implementation layer and let the library manipulate the Physical layer.
 
-For Ubuntu16.04, we must install the _udev_ with the command `sudo apt-get install libudev-dev` first.
+## Pre-requisite
+For Ubuntu16.04, we must install the _udev_ with the command `sudo apt-get install libudev-dev`.
 The _libudev_ allow us to access the USB bus from user space with normal user privilege instead of `root`.
 A rule file must be created in _/etc/udev/rules.d_ to allow that. However, we already provide the rule file under the directory _udev-rules_.
-To install it, we just copy the files inside it to _/etc/udev/rules.d_ and restart the system.
+To install it, we just copy the files inside it to _/etc/udev/rules.d/_. We also need to prevent the Ubuntu from loading _ftdi\_sio_ modules
+by copying the file under _modprobe-blacklist_ to _/etc/modprobe.d/_. Finally, restart the system.
 
 The library requires "pthread" and "udev" libraries provided by the system.
 Therefore, to build the program, we need _-lpthread -ludev_ option. 
