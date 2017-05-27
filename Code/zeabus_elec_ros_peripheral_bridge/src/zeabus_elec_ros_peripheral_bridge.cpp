@@ -75,7 +75,7 @@ void ZeabusElec_SendComm1( const zeabus_elec_ros_peripheral_bridge::comm_data::C
 	uint32_t ulDataDone;
 	
 	pucBuffer.reserve( msg->len );
-	for(int i = 0; i < msg->len; i++ )
+	for(uint32_t i = 0; i < msg->len; i++ )
 	{
 		pucBuffer.push_back( ( msg->data )[ i ] );
 	}
@@ -100,7 +100,7 @@ void ZeabusElec_SendComm2( const zeabus_elec_ros_peripheral_bridge::comm_data::C
 	uint32_t ulDataDone;
 	
 	pucBuffer.reserve( msg->len );
-	for(int i = 0; i < msg->len; i++ )
+	for(uint32_t i = 0; i < msg->len; i++ )
 	{
 		pucBuffer.push_back( ( msg->data )[ i ] );
 	}
@@ -173,7 +173,7 @@ void ZeabusElec_ReceiveComm( std::shared_ptr<Zeabus_Elec::ftdi_impl> commPort, u
 	{
 		/* Send the data to the topic channel */
 		zeabus_elec_ros_peripheral_bridge::comm_data commMsg;
-		for( int i = 0; i < pucBuffer.size(); i++ )
+		for( uint32_t i = 0; i < pucBuffer.size(); i++ )
 		{
 			commMsg.data[i] = pucBuffer[i];
 		}
@@ -197,7 +197,7 @@ int main( int argc, char** argv )
  	
  	/* Retrieve parameter from launch file */
 	nh.param < int > ("comm1baudrate", comm1BaudRate, 115200);
-	nh.param < int > ("comm2baudrate", comm1BaudRate, 115200);
+	nh.param < int > ("comm2baudrate", comm2BaudRate, 115200);
 	
 	/*=================================================================================
 	  Discover the Power Distributor and also open handles for it.
