@@ -565,7 +565,6 @@ uint32_t ftdi_uart_impl::Send( const std::vector<uint8_t>& pucData )
 /* Receive data from communication channel */
 uint32_t ftdi_uart_impl::Receive( std::vector<uint8_t>& pucData )
 {
-	uint32_t ulDataToRead, ulTotalReceived;
 	uint8_t buffer[128];
 	
 	/* If there was an unrecoverable error, we cannot do anything */
@@ -661,7 +660,7 @@ uint32_t ftdi_spi_impl::Send( const std::vector<uint8_t>& pucData )
 {
 	std::vector<uint8_t> pucBuffer;
 	uint8_t ucPortValue;
-	uint32_t ulSizeDone, ulAccWritten, ulLen;
+	uint32_t ulAccWritten, ulLen;
 	
 	/* If there was an unrecoverable error, we cannot do anything */
 	if( ( xCurrentStatus_ != 0 ) && ( xCurrentStatus_ != ERR_UNSUPPORTED_FUNCTION ) )
@@ -796,7 +795,6 @@ int ftdi_spi_impl::SetLoGPIOData( uint8_t ucData )
 ftdi_spi_cpol1_cha0_msb_impl::ftdi_spi_cpol1_cha0_msb_impl( enum ChipType xChipID, std::string stDeviceDesc, int iIndex )
 		: ftdi_spi_impl( xChipID, stDeviceDesc, iIndex )
 {
-	uint32_t ulNumBytesDone;
 	uint8_t aucUSBDataBuffer[9];
 	
 	/* If there was an unrecoverable error, we cannot do anything */
