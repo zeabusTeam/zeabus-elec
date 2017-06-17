@@ -30,7 +30,6 @@ LIBS:contrib
 LIBS:valves
 LIBS:ftdi
 LIBS:zeabus
-LIBS:Comm_Bridge-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -1773,10 +1772,7 @@ $EndComp
 Wire Wire Line
 	5800 950  5800 1400
 Wire Wire Line
-	5800 1200 5850 1200
-Wire Wire Line
 	5600 950  5600 1400
-Connection ~ 5600 1300
 Wire Wire Line
 	5700 950  5700 1100
 Connection ~ 5700 1100
@@ -2129,7 +2125,6 @@ F 3 "" H 5700 1400 60  0000 C CNN
 	1    5700 1400
 	0    -1   -1   0   
 $EndComp
-Connection ~ 5800 1200
 Wire Wire Line
 	6850 4450 7000 4450
 Wire Wire Line
@@ -2645,8 +2640,6 @@ F 3 "" H 5100 1100 60  0000 C CNN
 $EndComp
 Connection ~ 5450 1100
 Wire Wire Line
-	5450 1300 5850 1300
-Wire Wire Line
 	5000 1100 4900 1100
 Wire Wire Line
 	4900 1100 4900 1050
@@ -2687,4 +2680,13 @@ Wire Wire Line
 Wire Wire Line
 	1050 3250 1050 3200
 Connection ~ 1050 3200
+Wire Wire Line
+	5450 1300 5600 1300
+Connection ~ 5600 1300
+Wire Wire Line
+	5600 1200 5850 1200
+Connection ~ 5600 1200
+Wire Wire Line
+	5850 1300 5800 1300
+Connection ~ 5800 1300
 $EndSCHEMATC
