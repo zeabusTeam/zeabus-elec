@@ -39,11 +39,6 @@ $CMP GND_CBA
 K POWER, PWR
 $ENDCMP
 #
-$CMP IPI120P04P4L
-D -40V Vds, -120A Id, P-Channel MOSFET, TO-263
-K IPI120P04P4L
-$ENDCMP
-#
 $CMP LM1117-XX
 D LM1117-xx, 0.8A 35V Linear Regulator, SOT-223
 K Fixed Voltage Regulator 0.8A Positive
