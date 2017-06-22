@@ -1,8 +1,8 @@
-# Zeabus-Elec-2017-Peripheral_bridge
-Bridge circuit for several peripherals. It communicates to NUC via a USB (through USB hub). The specifications are:
-* Use 5V power from USB connector
-* Has 2 **isolated** RS-232 ports (use ADM3251E as the tranceiver/receiver) for:
- * DSP board
- * DVL board
-* Has an analog input including power supply for a presure sensor.
-* Has 8-channel digital output with **opto-isolator** for solinoid valves.
+# Zeabus-Elec-2017
+Electronic parts for Zeabus 2017. The design must follow these rules:
+* All circuits should be compatible to __Kicad Stable Version 4.0.5__.
+* USB connectors should be __Mini-USB Type B__ receptacles.
+* All components, which comminicate via USB, should consume the power from their USB bus, which is 5V, with the current not more than 1A
+* The USB hub must be able to provide 5V with 1A through all USB devices.
+* All USB cables must be shielded.
+* All communications and control buses linked between modules apart from USB and Ethernet (for example, solenoid valves control and servo signals) must be isolated with appropriate ways.

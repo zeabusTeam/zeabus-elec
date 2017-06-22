@@ -1,0 +1,454 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:zeabus
+LIBS:PWM_Isolator-cache
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Si8660BA-B-IS1 U1
+U 1 1 58BD70E7
+P 5150 2500
+F 0 "U1" H 5450 2600 60  0000 C CNN
+F 1 "Si8660BA-B-IS1" H 5650 1500 60  0000 C CNN
+F 2 "Zeabus:Narrow-SOIC-16" H 5150 2500 60  0001 C CNN
+F 3 "" H 5150 2500 60  0001 C CNN
+	1    5150 2500
+	1    0    0    -1  
+$EndComp
+$Comp
+L Si8660BA-B-IS1 U2
+U 1 1 58BD7124
+P 5150 3900
+F 0 "U2" H 5450 4000 60  0000 C CNN
+F 1 "Si8660BA-B-IS1" H 5650 2900 60  0000 C CNN
+F 2 "Zeabus:Narrow-SOIC-16" H 5150 3900 60  0001 C CNN
+F 3 "" H 5150 3900 60  0001 C CNN
+	1    5150 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X13 P3
+U 1 1 58BD71B6
+P 2550 3600
+F 0 "P3" H 2550 4300 50  0000 C CNN
+F 1 "Pololu PWM + Power rail" V 2650 3600 50  0000 C CNN
+F 2 "Socket_Strips:Socket_Strip_Straight_1x13" H 2550 3600 50  0001 C CNN
+F 3 "" H 2550 3600 50  0000 C CNN
+	1    2550 3600
+	-1   0    0    -1  
+$EndComp
+$Comp
+L CONN_02X06 P2
+U 1 1 58BD71DC
+P 1850 3850
+F 0 "P2" H 1850 4200 50  0000 C CNN
+F 1 "GND_IN_2" H 1850 3500 50  0000 C CNN
+F 2 "Socket_Strips:Socket_Strip_Straight_2x06" H 1850 2650 50  0001 C CNN
+F 3 "" H 1850 2650 50  0000 C CNN
+	1    1850 3850
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X07 P10
+U 1 1 58BD7246
+P 10350 3650
+F 0 "P10" H 10350 4050 50  0000 C CNN
+F 1 "NC" V 10450 3650 50  0000 C CNN
+F 2 "Socket_Strips:Socket_Strip_Straight_1x07" H 10350 3650 50  0001 C CNN
+F 3 "" H 10350 3650 50  0000 C CNN
+	1    10350 3650
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_02X06 P1
+U 1 1 58BD72FA
+P 1850 2950
+F 0 "P1" H 1850 3300 50  0000 C CNN
+F 1 "GND_IN_1" H 1850 2600 50  0000 C CNN
+F 2 "Socket_Strips:Socket_Strip_Straight_2x06" H 1850 1750 50  0001 C CNN
+F 3 "" H 1850 1750 50  0000 C CNN
+	1    1850 2950
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_02X06 P6
+U 1 1 58BD7333
+P 8400 3050
+F 0 "P6" H 8400 3400 50  0000 C CNN
+F 1 "Motor_Pwr1" H 8400 2700 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_2x06" H 8400 1850 50  0001 C CNN
+F 3 "" H 8400 1850 50  0000 C CNN
+	1    8400 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X06 P4
+U 1 1 58BD73C1
+P 7100 2950
+F 0 "P4" H 7100 3300 50  0000 C CNN
+F 1 "PWM_OUT_1" V 7200 2950 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x06" H 7100 2950 50  0001 C CNN
+F 3 "" H 7100 2950 50  0000 C CNN
+	1    7100 2950
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X06 P5
+U 1 1 58BD7462
+P 7100 4350
+F 0 "P5" H 7100 4700 50  0000 C CNN
+F 1 "PWM_OUT_2" V 7200 4350 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x06" H 7100 4350 50  0001 C CNN
+F 3 "" H 7100 4350 50  0000 C CNN
+	1    7100 4350
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_02X06 P7
+U 1 1 58BD7515
+P 8400 4050
+F 0 "P7" H 8400 4400 50  0000 C CNN
+F 1 "Motor_Pwr2" H 8400 3700 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_2x06" H 8400 2850 50  0001 C CNN
+F 3 "" H 8400 2850 50  0000 C CNN
+	1    8400 4050
+	1    0    0    -1  
+$EndComp
+$Comp
+L GNDA #PWR01
+U 1 1 58BD7AF0
+P 1600 4200
+F 0 "#PWR01" H 1600 3950 50  0001 C CNN
+F 1 "GNDA" H 1600 4050 50  0000 C CNN
+F 2 "" H 1600 4200 50  0000 C CNN
+F 3 "" H 1600 4200 50  0000 C CNN
+	1    1600 4200
+	1    0    0    -1  
+$EndComp
+$Comp
+L GNDA #PWR02
+U 1 1 58BD7B26
+P 5150 4800
+F 0 "#PWR02" H 5150 4550 50  0001 C CNN
+F 1 "GNDA" H 5150 4650 50  0000 C CNN
+F 2 "" H 5150 4800 50  0000 C CNN
+F 3 "" H 5150 4800 50  0000 C CNN
+	1    5150 4800
+	1    0    0    -1  
+$EndComp
+$Comp
+L GNDA #PWR03
+U 1 1 58BD7BC9
+P 5150 3400
+F 0 "#PWR03" H 5150 3150 50  0001 C CNN
+F 1 "GNDA" H 5150 3250 50  0000 C CNN
+F 2 "" H 5150 3400 50  0000 C CNN
+F 3 "" H 5150 3400 50  0000 C CNN
+	1    5150 3400
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2750 3000 2900 3000
+Wire Wire Line
+	2900 3000 2900 2700
+Wire Wire Line
+	2900 2700 5150 2700
+Wire Wire Line
+	2750 3100 3000 3100
+Wire Wire Line
+	3000 3100 3000 2800
+Wire Wire Line
+	3000 2800 5150 2800
+Wire Wire Line
+	2750 3200 3100 3200
+Wire Wire Line
+	3100 3200 3100 2900
+Wire Wire Line
+	3100 2900 5150 2900
+Wire Wire Line
+	2750 3300 3200 3300
+Wire Wire Line
+	3200 3300 3200 3000
+Wire Wire Line
+	3200 3000 5150 3000
+Wire Wire Line
+	2750 3400 3300 3400
+Wire Wire Line
+	3300 3400 3300 3100
+Wire Wire Line
+	3300 3100 5150 3100
+Wire Wire Line
+	2750 3500 3400 3500
+Wire Wire Line
+	3400 3500 3400 3200
+Wire Wire Line
+	3400 3200 5150 3200
+Wire Wire Line
+	2750 3700 3400 3700
+Wire Wire Line
+	3400 3700 3400 4100
+Wire Wire Line
+	3400 4100 5150 4100
+Wire Wire Line
+	2750 3800 3300 3800
+Wire Wire Line
+	3300 3800 3300 4200
+Wire Wire Line
+	3300 4200 5150 4200
+Wire Wire Line
+	5150 4300 3200 4300
+Wire Wire Line
+	3200 4300 3200 3900
+Wire Wire Line
+	3200 3900 2750 3900
+Wire Wire Line
+	2750 4000 3100 4000
+Wire Wire Line
+	3100 4000 3100 4400
+Wire Wire Line
+	3100 4400 5150 4400
+Wire Wire Line
+	5150 4500 3000 4500
+Wire Wire Line
+	3000 4500 3000 4100
+Wire Wire Line
+	3000 4100 2750 4100
+Wire Wire Line
+	2750 4200 2900 4200
+Wire Wire Line
+	2900 4200 2900 4600
+Wire Wire Line
+	2900 4600 5150 4600
+$Comp
+L +5VD #PWR04
+U 1 1 58BD81D8
+P 9300 2650
+F 0 "#PWR04" H 9300 2500 50  0001 C CNN
+F 1 "+5VD" H 9300 2790 50  0000 C CNN
+F 2 "" H 9300 2650 50  0000 C CNN
+F 3 "" H 9300 2650 50  0000 C CNN
+	1    9300 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5VD #PWR05
+U 1 1 58BD826E
+P 6150 2500
+F 0 "#PWR05" H 6150 2350 50  0001 C CNN
+F 1 "+5VD" H 6150 2640 50  0000 C CNN
+F 2 "" H 6150 2500 50  0000 C CNN
+F 3 "" H 6150 2500 50  0000 C CNN
+	1    6150 2500
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5VD #PWR06
+U 1 1 58BD829D
+P 6150 3900
+F 0 "#PWR06" H 6150 3750 50  0001 C CNN
+F 1 "+5VD" H 6150 4040 50  0000 C CNN
+F 2 "" H 6150 3900 50  0000 C CNN
+F 3 "" H 6150 3900 50  0000 C CNN
+	1    6150 3900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2750 3600 3700 3600
+Wire Wire Line
+	6150 2700 6900 2700
+Wire Wire Line
+	6150 2800 6900 2800
+Wire Wire Line
+	6150 2900 6900 2900
+Wire Wire Line
+	6150 3000 6900 3000
+Wire Wire Line
+	6150 3100 6900 3100
+Wire Wire Line
+	6150 3200 6900 3200
+Wire Wire Line
+	6150 4100 6900 4100
+Wire Wire Line
+	6150 4200 6900 4200
+Wire Wire Line
+	6900 4300 6150 4300
+Wire Wire Line
+	6150 4400 6900 4400
+Wire Wire Line
+	6900 4500 6150 4500
+Wire Wire Line
+	6150 4600 6900 4600
+$Comp
+L GNDD #PWR07
+U 1 1 58BD98A2
+P 8150 4450
+F 0 "#PWR07" H 8150 4200 50  0001 C CNN
+F 1 "GNDD" H 8150 4300 50  0000 C CNN
+F 2 "" H 8150 4450 50  0000 C CNN
+F 3 "" H 8150 4450 50  0000 C CNN
+	1    8150 4450
+	1    0    0    -1  
+$EndComp
+$Comp
+L GNDD #PWR08
+U 1 1 58BD9977
+P 6150 3400
+F 0 "#PWR08" H 6150 3150 50  0001 C CNN
+F 1 "GNDD" H 6150 3250 50  0000 C CNN
+F 2 "" H 6150 3400 50  0000 C CNN
+F 3 "" H 6150 3400 50  0000 C CNN
+	1    6150 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L GNDD #PWR09
+U 1 1 58BD99A6
+P 6150 4800
+F 0 "#PWR09" H 6150 4550 50  0001 C CNN
+F 1 "GNDD" H 6150 4650 50  0000 C CNN
+F 2 "" H 6150 4800 50  0000 C CNN
+F 3 "" H 6150 4800 50  0000 C CNN
+	1    6150 4800
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5VA #PWR010
+U 1 1 58BDA111
+P 3700 3600
+F 0 "#PWR010" H 3700 3450 50  0001 C CNN
+F 1 "+5VA" H 3700 3740 50  0000 C CNN
+F 2 "" H 3700 3600 50  0000 C CNN
+F 3 "" H 3700 3600 50  0000 C CNN
+	1    3700 3600
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5VA #PWR011
+U 1 1 58BDA1D1
+P 5150 2500
+F 0 "#PWR011" H 5150 2350 50  0001 C CNN
+F 1 "+5VA" H 5150 2640 50  0000 C CNN
+F 2 "" H 5150 2500 50  0000 C CNN
+F 3 "" H 5150 2500 50  0000 C CNN
+	1    5150 2500
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5VA #PWR012
+U 1 1 58BDA200
+P 5150 3900
+F 0 "#PWR012" H 5150 3750 50  0001 C CNN
+F 1 "+5VA" H 5150 4040 50  0000 C CNN
+F 2 "" H 5150 3900 50  0000 C CNN
+F 3 "" H 5150 3900 50  0000 C CNN
+	1    5150 3900
+	1    0    0    -1  
+$EndComp
+Text Notes 8050 6950 0    206  ~ 41
+PWM Isolator\n
+Text Notes 8250 7650 0    60   ~ 0
+6 March 2017
+Text Notes 10650 7650 0    60   ~ 0
+1.0.0
+Text Notes 7550 7500 0    60   ~ 0
+PWM Isolator\n
+Wire Wire Line
+	1600 2700 1600 4200
+Connection ~ 1600 2800
+Connection ~ 1600 2900
+Connection ~ 1600 3000
+Connection ~ 1600 3100
+Connection ~ 1600 3200
+Connection ~ 1600 3600
+Connection ~ 1600 3700
+Connection ~ 1600 3800
+Connection ~ 1600 3900
+Connection ~ 1600 4000
+Connection ~ 1600 4100
+Wire Wire Line
+	8150 2800 8150 4450
+Connection ~ 8150 2900
+Connection ~ 8150 3000
+Connection ~ 8150 3100
+Connection ~ 8150 3200
+Connection ~ 8150 3300
+Connection ~ 8150 3800
+Connection ~ 8150 3900
+Connection ~ 8150 4000
+Connection ~ 8150 4100
+Connection ~ 8150 4200
+Connection ~ 8150 4300
+$Comp
+L CONN_01X01 P8
+U 1 1 58BE358F
+P 9300 2850
+F 0 "P8" H 9300 2950 50  0000 C CNN
+F 1 "Motor PWR" V 9400 2850 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x01" H 9300 2850 50  0001 C CNN
+F 3 "" H 9300 2850 50  0000 C CNN
+	1    9300 2850
+	0    1    1    0   
+$EndComp
+$Comp
+L +5VD #PWR013
+U 1 1 58BE3A9C
+P 9800 2650
+F 0 "#PWR013" H 9800 2500 50  0001 C CNN
+F 1 "+5VD" H 9800 2790 50  0000 C CNN
+F 2 "" H 9800 2650 50  0000 C CNN
+F 3 "" H 9800 2650 50  0000 C CNN
+	1    9800 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X01 P9
+U 1 1 58BE3AA2
+P 9800 2850
+F 0 "P9" H 9800 2950 50  0000 C CNN
+F 1 "Motor PWR" V 9900 2850 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x01" H 9800 2850 50  0001 C CNN
+F 3 "" H 9800 2850 50  0000 C CNN
+	1    9800 2850
+	0    1    1    0   
+$EndComp
+$EndSCHEMATC
