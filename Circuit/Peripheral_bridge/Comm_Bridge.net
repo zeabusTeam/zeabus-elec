@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source /Users/Pongkemon/Copy/AUV/Zeabus-Elec-2017/Circuit/Peripheral_bridge/Comm_Bridge.sch)
-    (date "Thursday, 22 June 2017 'amt' 08:27:19")
+    (date "Thursday, 22 June 2017 'pmt' 14:06:02")
     (tool "Eeschema 4.0.6")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -172,7 +172,7 @@
       (sheetpath (names /) (tstamps /))
       (tstamp 5648C0DC))
     (comp (ref R14)
-      (value 10k)
+      (value "12k 1%")
       (footprint Resistors_SMD:R_0603)
       (libsource (lib device) (part R))
       (sheetpath (names /) (tstamps /))
@@ -934,14 +934,14 @@
         (pin (num 1) (name P1) (type passive))
         (pin (num 2) (name P2) (type passive)))))
   (libraries
-    (library (logical conn)
-      (uri "/Library/Application Support/kicad/library/conn.lib"))
     (library (logical device)
       (uri "/Library/Application Support/kicad/library/device.lib"))
-    (library (logical zeabus)
-      (uri /Users/Pongkemon/Copy/AUV/Zeabus-Elec-2017/Circuit/Kicad-Libraries/zeabus.lib))
+    (library (logical conn)
+      (uri "/Library/Application Support/kicad/library/conn.lib"))
     (library (logical ftdi)
-      (uri "/Library/Application Support/kicad/library/ftdi.lib")))
+      (uri "/Library/Application Support/kicad/library/ftdi.lib"))
+    (library (logical zeabus)
+      (uri /Users/Pongkemon/Copy/AUV/Zeabus-Elec-2017/Circuit/Kicad-Libraries/zeabus.lib)))
   (nets
     (net (code 1) (name "Net-(U1-Pad52)")
       (node (ref U11) (pin 8))
