@@ -1,8 +1,45 @@
-# Zeabus-Elec-2017
-Electronic parts for Zeabus 2017. The design must follow these rules:
-* All circuits should be compatible to __Kicad Stable Version 4.0.5__.
-* USB connectors should be __Mini-USB Type B__ receptacles.
-* All components, which comminicate via USB, should consume the power from their USB bus, which is 5V, with the current not more than 1A
-* The USB hub must be able to provide 5V with 1A through all USB devices.
-* All USB cables must be shielded.
-* All communications and control buses linked between modules apart from USB and Ethernet (for example, solenoid valves control and servo signals) must be isolated with appropriate ways.
+# Zeabus-Elec-2017-Peripheral_bridge
+## Use relative path to ../Kicad-Libraries for specific components
+Bridge circuit for several peripherals. It communicates to NUC via a USB (through USB hub). The specifications are:
+1. Use 5V power from USB connector
+2. Has 2 **isolated** RS-232 ports (use ADM3251E as the tranceiver/receiver) for:
+ * DSP board
+ * DVL board
+3. Has an analog input and a 5V power-supply for a presure sensor.
+4. Has 8-channel digital output with **opto-isolator** for solinoid valves.
+
+Because this module has many sub-modules, there are several subscriber and publisher topics links to this module. Sub-modules are:
+1. Solenoid-valve switches
+2. Barometer
+3. Rs-232 Communication channel 1
+4. Rs-232 Communication channel 2
+
+The diagram of these sub-modules (each of them can be cosidered as a node) is as:
+
+<pre>
++------------------+
+|                  |-------- /zeabus/elec/barometer ------&gt;
+| Barometer        |
+|                  |-----+
++------------------+     |
+                         |
++------------------+     |
+|                  |&lt;------ /zeabus/elec/solenoid_sw -----
+| Solenoid Switches|     |
+|                  |-----+
++------------------+     |
+                         +--- /zeabus/elec/hw_error ------&gt;
++------------------+     |
+|                  |-----+ 
+| RS-232 Channel 1 |&lt;------ /zeabus/elec/comm1/send ------
+|                  |---------- /zeabus/elec/comm1/recv ---&gt;
++------------------+     |
+                         |
++------------------+     |
+|                  |-----+
+| RS-232 Channel 2 |&lt;------ /zeabus/elec/comm2/send ------
+|                  |---------- /zeabus/elec/comm1/recv ---&gt;
++------------------+
+</pre>
+
+The topic **/zeabus/elec/hw_error** is commonly used among all nodes and modules (including the Power Distributor) to announce error messages of the modules. 
