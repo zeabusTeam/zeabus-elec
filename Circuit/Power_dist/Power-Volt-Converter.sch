@@ -30,7 +30,6 @@ LIBS:contrib
 LIBS:valves
 LIBS:zeabus
 LIBS:ftdi
-LIBS:Power_Distributor-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -196,7 +195,7 @@ U 1 1 58C8A24F
 P 1850 2500
 F 0 "JP1" H 1850 2650 50  0000 C CNN
 F 1 "Main Switch (N.O.)" H 1850 2420 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.00mm" H 1850 2500 60  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm" H 1850 2500 60  0001 C CNN
 F 3 "" H 1850 2500 60  0000 C CNN
 	1    1850 2500
 	1    0    0    -1  
