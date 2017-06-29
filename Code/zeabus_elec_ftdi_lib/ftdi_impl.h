@@ -147,9 +147,9 @@ namespace Zeabus_Elec
 	protected:
 		const uint16_t SPIMaskOut_ = 0xFFF0;
 		
-		virtual uint16_t GetSPIIOMask() = 0;
-		virtual uint8_t GetSPIIdleState() = 0;
-		virtual uint8_t GetSPIWriteBlockCmd() = 0;
+		virtual uint16_t GetSPIIOMask() const = 0;
+		virtual uint8_t GetSPIIdleState() const = 0;
+		virtual uint8_t GetSPIWriteBlockCmd() const = 0;
 	};
 	/*===================================================================*/
 	
@@ -160,9 +160,9 @@ namespace Zeabus_Elec
 		ftdi_spi_cpol1_cha0_msb_impl( enum ChipType xChipID, std::string stDeviceDesc, int iIndex = 0 );
 		
 	protected:
-		virtual uint16_t GetSPIIOMask() { return( 0xFFFB ); };
-		virtual uint8_t GetSPIIdleState() { return( 0x0B ); };
-		virtual uint8_t GetSPIWriteBlockCmd() { return( 0x31 ); };
+		virtual uint16_t GetSPIIOMask() const { return( 0xFFFB ); };
+		virtual uint8_t GetSPIIdleState() const { return( 0x0B ); };
+		virtual uint8_t GetSPIWriteBlockCmd() const { return( 0x31 ); };
 	};
 }
 

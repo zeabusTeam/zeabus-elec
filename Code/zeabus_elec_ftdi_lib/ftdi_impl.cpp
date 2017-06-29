@@ -50,9 +50,18 @@ ftdi_impl::ftdi_impl( enum ChipType xChipID, std::string stDeviceDesc, int iInde
 		xCurrentStatus_ = ERR_DISCOVERY_FAILED;
 		return;
 	}
-
+	
+	/* Set the interface instance of the chip */
+	xCurrentStatus_ = ftdi_set_interface( xHwContext_, (ftdi_interface)( iIndex ) );
+	if( xCurrentStatus_ < 0 )
+	{
+		fprintf( stderr, "Unable to select FTDI unit with error = %d\n", xCurrentStatus_ );
+		xCurrentStatus_ = ERR_DISCOVERY_FAILED;
+		return;
+	}
+	
 	/* Then open the specified port */
-	xCurrentStatus_ = ftdi_usb_open_desc_index( xHwContext_, VendorID, xChipID, stDeviceDesc.c_str(), NULL, iIndex );
+	xCurrentStatus_ = ftdi_usb_open_desc( xHwContext_, VendorID, xChipID, stDeviceDesc.c_str(), NULL );
 	if( xCurrentStatus_ < 0 )
 	{
 		fprintf( stderr, "Failed to open FTDI device\n" );		
@@ -259,7 +268,7 @@ int ftdi_mpsse_impl::SetGPIODirection( uint16_t usData )
 	if( xCurrentStatus_ != 3 )
 	{
 		/* Write the command failed */
-		fprintf( stderr, "Setting direction of LSB failed\n" );
+		fprintf( stderr, "Setting direction of LSB failed with error code %d (%s)\n", xCurrentStatus_, ftdi_get_error_string( xHwContext_ ) );
 		xCurrentStatus_ = ERR_GPIO_FAILED;
 		return( xCurrentStatus_ );
 	}
