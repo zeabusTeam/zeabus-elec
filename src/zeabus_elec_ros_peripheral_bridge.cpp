@@ -207,7 +207,7 @@ int main( int argc, char** argv )
 	/* The module utilizes FT4232H consisting of 4 module instances inside */
 
 	/* Create the device manager classes to implement chip functions */
-	pxMsspA = std::make_shared<Zeabus_Elec::ftdi_spi_cpol1_cha0_msb_impl>( Zeabus_Elec::FT4232H, stPeripheralSerial, 0 );
+	pxMsspA = std::make_shared<Zeabus_Elec::ftdi_spi_cpol1_cha0_msb_impl>( Zeabus_Elec::FT4232H, stPeripheralSerial, 1 );
 	if( pxMsspA->GetCurrentStatus() != 0 )
 	{
 		/* Fail - unable to initialize Power Distribution module */
@@ -217,7 +217,7 @@ int main( int argc, char** argv )
 	}
 	pxMsspA->SetGPIODirection( 0xFFFF );	/* All bits are output */
 
-	pxMsspB = std::make_shared<Zeabus_Elec::ftdi_spi_cpol1_cha0_msb_impl>( Zeabus_Elec::FT4232H, stPeripheralSerial, 1 );
+	pxMsspB = std::make_shared<Zeabus_Elec::ftdi_spi_cpol1_cha0_msb_impl>( Zeabus_Elec::FT4232H, stPeripheralSerial, 2 );
 	if( pxMsspB->GetCurrentStatus() != 0 )
 	{
 		/* Fail - unable to initialize Power Distribution module */
@@ -227,7 +227,7 @@ int main( int argc, char** argv )
 	}
 	pxMsspB->SetGPIODirection( 0xFFFF );	/* All bits are output */
 	
-	pxUartA = std::make_shared<Zeabus_Elec::ftdi_uart_impl>( Zeabus_Elec::FT4232H, stPeripheralSerial, 2, (uint32_t)comm1BaudRate );
+	pxUartA = std::make_shared<Zeabus_Elec::ftdi_uart_impl>( Zeabus_Elec::FT4232H, stPeripheralSerial, 3, (uint32_t)comm1BaudRate );
 	if( pxUartA->GetCurrentStatus() != 0 )
 	{
 		/* Fail - unable to initialize Power Distribution module */
@@ -236,7 +236,7 @@ int main( int argc, char** argv )
 		
 	}
 
-	pxUartB = std::make_shared<Zeabus_Elec::ftdi_uart_impl>( Zeabus_Elec::FT4232H, stPeripheralSerial, 3, (uint32_t)comm2BaudRate );
+	pxUartB = std::make_shared<Zeabus_Elec::ftdi_uart_impl>( Zeabus_Elec::FT4232H, stPeripheralSerial, 4, (uint32_t)comm2BaudRate );
 	if( pxUartB->GetCurrentStatus() != 0 )
 	{
 		/* Fail - unable to initialize Power Distribution module */
