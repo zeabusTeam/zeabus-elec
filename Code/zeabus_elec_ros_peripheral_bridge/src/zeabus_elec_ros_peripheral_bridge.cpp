@@ -151,6 +151,11 @@ bool ZeabusElec_GetPressure( uint16_t& barometerVal)
 	barometerVal >>= 3;	/* Suppress 3 tailing zero bits */
         barometerVal >>= 1;     /* Shift right by 1 clock according to invalid first clock from command 0x31 */
 
+        zeabus_elec_ros_peripheral_bridge::barometer barometerMsg;
+        barometerMsg.pressureValue = barometerVal;
+
+        barometerPublisher.publish( barometerMsg );
+
 	return( true );	/* All success */	
 }
 
