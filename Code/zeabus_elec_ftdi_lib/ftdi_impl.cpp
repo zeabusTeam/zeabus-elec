@@ -264,7 +264,7 @@ int ftdi_mpsse_impl::SetGPIODirection( uint16_t usData, uint16_t ucData )
 	/* Write out the command */
 	xCurrentStatus_ = ftdi_write_data( xHwContext_, aucUSBDataBuffer, 3 );
 	
-	/* if xCurrentSttus_ >= 0, it indicates the number of byte successfully written */
+	/* if xCurrentStatus_ >= 0, it indicates the number of byte successfully written */
 	if( xCurrentStatus_ != 3 )
 	{
 		/* Write the command failed */
@@ -283,7 +283,7 @@ int ftdi_mpsse_impl::SetGPIODirection( uint16_t usData, uint16_t ucData )
 		/* Write out the command */
 		xCurrentStatus_ = ftdi_write_data( xHwContext_, aucUSBDataBuffer, 3 );
 	
-		/* if xCurrentSttus_ >= 0, it indicates the number of byte successfully written */
+		/* if xCurrentStatus_ >= 0, it indicates the number of byte successfully written */
 		if( xCurrentStatus_ != 3 )
 		{
 			/* Write the command failed */
@@ -324,7 +324,7 @@ int ftdi_mpsse_impl::SetHiGPIOData( uint8_t ucData )
 		/* Write out the command */
 		xCurrentStatus_ = ftdi_write_data( xHwContext_, aucUSBDataBuffer, 3 );
 	
-		/* if xCurrentSttus_ >= 0, it indicates the number of byte successfully written */
+		/* if xCurrentStatus_ >= 0, it indicates the number of byte successfully written */
 		if( xCurrentStatus_ != 3 )
 		{
 			/* Write the command failed */
@@ -361,7 +361,7 @@ int ftdi_mpsse_impl::SetLoGPIOData( uint8_t ucData )
 	/* Write out the command */
 	xCurrentStatus_ = ftdi_write_data( xHwContext_, aucUSBDataBuffer, 3 );
 	
-	/* if xCurrentSttus_ >= 0, it indicates the number of byte successfully written */
+	/* if xCurrentStatus_ >= 0, it indicates the number of byte successfully written */
 	if( xCurrentStatus_ != 3 )
 	{
 		/* Write the command failed */
@@ -403,7 +403,7 @@ uint8_t ftdi_mpsse_impl::ReadHiGPIOData()
 		/* Write out the command */
 		xCurrentStatus_ = ftdi_write_data( xHwContext_, aucUSBDataBuffer, 1 );
 	
-		/* if xCurrentSttus_ >= 0, it indicates the number of byte successfully written */
+		/* if xCurrentStatus_ >= 0, it indicates the number of byte successfully written */
 		if( xCurrentStatus_ != 1 )
 		{
 			/* Write the command failed */
@@ -419,7 +419,7 @@ uint8_t ftdi_mpsse_impl::ReadHiGPIOData()
 				xCurrentStatus_ = ftdi_read_data( xHwContext_, aucUSBDataBuffer, 1 );
 			}while( xCurrentStatus_ == 0 );
 			
-			/* if xCurrentSttus_ >= 0, it indicates the number of byte successfully received */
+			/* if xCurrentStatus_ >= 0, it indicates the number of byte successfully received */
 			if( xCurrentStatus_ != 1 )
 			{
 				/* Write the command failed */
@@ -452,7 +452,7 @@ uint8_t ftdi_mpsse_impl::ReadLoGPIOData()
 	/* Write out the command */
 	xCurrentStatus_ = ftdi_write_data( xHwContext_, aucUSBDataBuffer, 1 );
 	
-	/* if xCurrentSttus_ >= 0, it indicates the number of byte successfully written */
+	/* if xCurrentStatus_ >= 0, it indicates the number of byte successfully written */
 	if( xCurrentStatus_ != 1 )
 	{
 		/* Write the command failed */
@@ -469,7 +469,7 @@ uint8_t ftdi_mpsse_impl::ReadLoGPIOData()
 		}while( xCurrentStatus_ == 0 );
 
 		
-		/* if xCurrentSttus_ >= 0, it indicates the number of byte successfully received */
+		/* if xCurrentStatus_ >= 0, it indicates the number of byte successfully received */
 		if( xCurrentStatus_ != 1 )
 		{
 			/* Write the command failed */
@@ -557,7 +557,7 @@ uint32_t ftdi_uart_impl::Send( const std::vector<uint8_t>& pucData )
 	do
 	{
 		xCurrentStatus_ = ftdi_write_data( xHwContext_, ( const_cast<uint8_t*>( pucData.data() ) + ulAccWritten ) , ulLen );
-		/* if xCurrentSttus_ >= 0, it indicates the number of byte successfully sent */
+		/* if xCurrentStatus_ >= 0, it indicates the number of byte successfully sent */
 		if( xCurrentStatus_ < 0 )
 		{
 			break;
@@ -592,7 +592,7 @@ uint32_t ftdi_uart_impl::Receive( std::vector<uint8_t>& pucData )
 	{
 		xCurrentStatus_ = ftdi_read_data( xHwContext_, buffer, 128 );
 		
-		/* if xCurrentSttus_ >= 0, it indicates the number of byte successfully received */
+		/* if xCurrentStatus_ >= 0, it indicates the number of byte successfully received */
 		if( xCurrentStatus_ > 0 )
 		{
 			/* Append the read-in data */
@@ -724,7 +724,7 @@ uint32_t ftdi_spi_impl::Send( const std::vector<uint8_t>& pucData )
 	do
 	{
 		xCurrentStatus_ = ftdi_write_data( xHwContext_, ( const_cast<uint8_t*>( pucBuffer.data() ) + ulAccWritten ) , ulLen );
-		/* if xCurrentSttus_ >= 0, it indicates the number of byte successfully sent */
+		/* if xCurrentStatus_ >= 0, it indicates the number of byte successfully sent */
 		if( xCurrentStatus_ < 0 )
 		{
 			break;
@@ -767,7 +767,7 @@ uint32_t ftdi_spi_impl::Receive( std::vector<uint8_t>& pucData )
 	{
 		xCurrentStatus_ = ftdi_read_data( xHwContext_, buffer, 128 );
 		
-		/* if xCurrentSttus_ >= 0, it indicates the number of byte successfully received */
+		/* if xCurrentStatus_ >= 0, it indicates the number of byte successfully received */
 		if( xCurrentStatus_ > 0 )
 		{
 			/* Append the read-in data */
@@ -849,7 +849,7 @@ ftdi_spi_cpol1_cha0_msb_impl::ftdi_spi_cpol1_cha0_msb_impl( enum ChipType xChipI
 	/* Write out the commands (2 commands at once) */
 	xCurrentStatus_ = ftdi_write_data( xHwContext_, aucUSBDataBuffer, 9 );
 		
-	/* if xCurrentSttus_ also indicates the number of byte successfully sent and it should equal to 9 */
+	/* if xCurrentStatus_ also indicates the number of byte successfully sent and it should equal to 9 */
 	if( xCurrentStatus_ != 9 )
 	{
 		xCurrentStatus_ = ERR_INIT_FAILED;

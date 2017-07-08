@@ -44,7 +44,7 @@ void ZeabusElec_SetSolenoid( const zeabus_elec_ros_peripheral_bridge::solenoid_s
         swNibble <<= 4;     /* Shift switch data to GPIO position */
 	ftStat = pxMsspA->SetLoGPIOData( swNibble );
 
-	if( ftStat <= 0 )
+	if( ftStat != 0 )
 	{
 		/* Some Error occurred. So, we publish the error message */
 		std_msgs::String msg;
@@ -58,7 +58,7 @@ void ZeabusElec_SetSolenoid( const zeabus_elec_ros_peripheral_bridge::solenoid_s
 	/* High nibble */
 	swNibble = ( msg->switchState ) & 0xF0 ;
 	ftStat = pxMsspB->SetLoGPIOData( swNibble );
-	if( ftStat <= 0 )
+	if( ftStat != 0 )
 	{
 		/* Some Error occurred. So, we publish the error message */
 		std_msgs::String msg;
@@ -219,8 +219,8 @@ int main( int argc, char** argv )
 	pxMsspA = std::make_shared<Zeabus_Elec::ftdi_spi_cpol1_cha0_msb_impl>( Zeabus_Elec::FT4232H, stPeripheralSerial, 1 );
 	if( pxMsspA->GetCurrentStatus() != 0 )
 	{
-		/* Fail - unable to initialize Power Distribution module */
-		ROS_FATAL( "Unable to initialize Power Distribution module A" );
+		/* Fail - unable to initialize pressure sensor and LOW solenoid switch interface*/
+		ROS_FATAL( "Unable to initialize Pressure sensor and LOW Solenoid switch interface" );
 		return( -5 );
 		
 	}
@@ -229,8 +229,8 @@ int main( int argc, char** argv )
 	pxMsspB = std::make_shared<Zeabus_Elec::ftdi_spi_cpol1_cha0_msb_impl>( Zeabus_Elec::FT4232H, stPeripheralSerial, 2 );
 	if( pxMsspB->GetCurrentStatus() != 0 )
 	{
-		/* Fail - unable to initialize Power Distribution module */
-		ROS_FATAL( "Unable to initialize Power Distribution module B" );
+		/* Fail - unable to initialize HI solenoid switch interface*/
+		ROS_FATAL( "Unable to initialize HI Solenoid switch interface" );
 		return( -6 );
 		
 	}
@@ -239,8 +239,8 @@ int main( int argc, char** argv )
 	pxUartA = std::make_shared<Zeabus_Elec::ftdi_uart_impl>( Zeabus_Elec::FT4232H, stPeripheralSerial, 3, (uint32_t)comm1BaudRate );
 	if( pxUartA->GetCurrentStatus() != 0 )
 	{
-		/* Fail - unable to initialize Power Distribution module */
-		ROS_FATAL( "Unable to initialize Power Distribution module C" );
+		/* Fail - unable to initialize COM1 interface*/
+		ROS_FATAL( "Unable to initialize COM1 interface" );
 		return( -7 );
 		
 	}
@@ -248,8 +248,8 @@ int main( int argc, char** argv )
 	pxUartB = std::make_shared<Zeabus_Elec::ftdi_uart_impl>( Zeabus_Elec::FT4232H, stPeripheralSerial, 4, (uint32_t)comm2BaudRate );
 	if( pxUartB->GetCurrentStatus() != 0 )
 	{
-		/* Fail - unable to initialize Power Distribution module */
-		ROS_FATAL( "Unable to initialize Power Distribution module D" );
+		/* Fail - unable to initialize COM2 interface*/
+		ROS_FATAL( "Unable to initialize COM2 interface" );
 		return( -8 );
 		
 	}

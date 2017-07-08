@@ -62,7 +62,7 @@ int main( int argc, char** argv )
 		
 	}
 	
-	/* Set GPIO direction to all output, bit=1 means output, 0 means input */
+	/* Set GPIO direction and pin intial state to all output, bit=1 means output, 0 means input */
 	pxMssp->SetGPIODirection( 0xFFFF , 0x0000 );	/* All bits are output, initial pin state is low */
 	if( pxMssp->GetCurrentStatus() != 0 )
 	{
