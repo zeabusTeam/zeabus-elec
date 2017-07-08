@@ -82,7 +82,7 @@ void ZeabusElec_SendComm1( const zeabus_elec_ros_peripheral_bridge::comm_data::C
 		pucBuffer.push_back( ( msg->data )[ i ] );
 	}
 	ulDataDone = pxUartA->Send( pucBuffer );
-	
+
 	if( ( pxUartA->GetCurrentStatus() != 0 ) || ( ulDataDone != msg->len ) )
 	{
 		/* Some Error occurred. So, we publish the error message */
@@ -167,7 +167,7 @@ void ZeabusElec_ReceiveComm( std::shared_ptr<Zeabus_Elec::ftdi_impl> commPort, u
 
 	/* Reading from the COMM port */
 	ulDataDone = commPort->Receive( pucBuffer );
-	if( commPort->GetCurrentStatus() != 0 )
+	if( commPort->GetCurrentStatus() <= 0 )
 	{
 		/* Reading finished with error */
 		std_msgs::String msg;
@@ -181,9 +181,10 @@ void ZeabusElec_ReceiveComm( std::shared_ptr<Zeabus_Elec::ftdi_impl> commPort, u
 	{
 		/* Send the data to the topic channel */
 		zeabus_elec_ros_peripheral_bridge::comm_data commMsg;
+
 		for( uint32_t i = 0; i < pucBuffer.size(); i++ )
 		{
-			commMsg.data[i] = pucBuffer[i];
+			commMsg.data.push_back(pucBuffer[i]);
 		}
 		commMsg.len = ulDataDone;
 		commPublisher.publish( commMsg );
@@ -273,7 +274,6 @@ int main( int argc, char** argv )
 
 	while( ros::ok() )
 	{
-
 		/* Wait for the next cycle */
 		rate.sleep();
 		ros::spinOnce();
