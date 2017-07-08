@@ -126,7 +126,7 @@ bool ZeabusElec_GetPressure( uint16_t& barometerVal)
 	
 	/* To read barometer value, we need to send a 16-bit dummy data first */
 	xFTStatus = pxMsspA->Send( aucVal );
-	if( xFTStatus != 0 )
+	if( xFTStatus < 0 )
 	{
 		barometerVal = 0;
 		return( false );
@@ -136,7 +136,7 @@ bool ZeabusElec_GetPressure( uint16_t& barometerVal)
 		   0 0 0 D D D D D  D D D D D x x x
 		where the first byte is the MSB. */
 	xFTStatus = pxMsspA->Receive( aucVal );
-	if( xFTStatus != 0 )
+	if( xFTStatus < 0 )
 	{
 		barometerVal = 0;
 		return( false );
@@ -147,6 +147,7 @@ bool ZeabusElec_GetPressure( uint16_t& barometerVal)
 	barometerVal <<= 8;
 	barometerVal |= (uint16_t)( aucVal[ 1 ] ); /* Low byte */
 	barometerVal >>= 3;	/* Suppress 3 tailing zero bits */
+        barometerVal >>= 1;     /* Shift right by 1 clock according to invalid first clock from command 0x31 */
 
 	return( true );	/* All success */	
 }
@@ -215,7 +216,7 @@ int main( int argc, char** argv )
 		return( -5 );
 		
 	}
-	pxMsspA->SetGPIODirection( 0xFFFF );	/* All bits are output */
+	pxMsspA->SetGPIODirection( 0xFFFF, 0x0000 );	/* All bits are output, initial pin state is low*/
 
 	pxMsspB = std::make_shared<Zeabus_Elec::ftdi_spi_cpol1_cha0_msb_impl>( Zeabus_Elec::FT4232H, stPeripheralSerial, 2 );
 	if( pxMsspB->GetCurrentStatus() != 0 )
@@ -225,7 +226,7 @@ int main( int argc, char** argv )
 		return( -6 );
 		
 	}
-	pxMsspB->SetGPIODirection( 0xFFFF );	/* All bits are output */
+	pxMsspB->SetGPIODirection( 0xFFFF, 0x0000 );	/* All bits are output, initial pin state is low*/
 	
 	pxUartA = std::make_shared<Zeabus_Elec::ftdi_uart_impl>( Zeabus_Elec::FT4232H, stPeripheralSerial, 3, (uint32_t)comm1BaudRate );
 	if( pxUartA->GetCurrentStatus() != 0 )
@@ -279,7 +280,7 @@ int main( int argc, char** argv )
 		
 			errMsgPublisher.publish( msg );
 		}
-		
+
 		/* Read from COMM1 */
 		ZeabusElec_ReceiveComm( pxUartA, 1, comm1RecvPublisher );
 			
