@@ -41,8 +41,10 @@ void ZeabusElec_SetSolenoid( const zeabus_elec_ros_peripheral_bridge::solenoid_s
 	
 	/* Low nibble */
 	swNibble = ( msg->switchState ) & 0x0F;
+        swNibble <<= 4;     /* Shift switch data to GPIO position */
 	ftStat = pxMsspA->SetLoGPIOData( swNibble );
-	if( ftStat != 0 )
+
+	if( ftStat <= 0 )
 	{
 		/* Some Error occurred. So, we publish the error message */
 		std_msgs::String msg;
@@ -54,9 +56,9 @@ void ZeabusElec_SetSolenoid( const zeabus_elec_ros_peripheral_bridge::solenoid_s
 	}
 
 	/* High nibble */
-	swNibble = ( msg->switchState ) >> 4;
-	ftStat = pxMsspA->SetLoGPIOData( swNibble );
-	if( ftStat != 0 )
+	swNibble = ( msg->switchState ) & 0xF0 ;
+	ftStat = pxMsspB->SetLoGPIOData( swNibble );
+	if( ftStat <= 0 )
 	{
 		/* Some Error occurred. So, we publish the error message */
 		std_msgs::String msg;
@@ -263,8 +265,10 @@ int main( int argc, char** argv )
 
 	/* Main-loop. Just a spin-lock and wakeup at every 10ms (100Hz) */
 	ros::Rate rate(100);
+
 	while( ros::ok() )
 	{
+
 		/* Wait for the next cycle */
 		rate.sleep();
 		ros::spinOnce();
