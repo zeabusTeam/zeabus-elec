@@ -22,9 +22,9 @@ static ros::Publisher errMsgPublisher;	/* Publisher for error message */
 static ros::Publisher barometerPublisher;	/* Publisher for barometer message */
 static ros::Publisher comm1RecvPublisher;	/* Publisher for comm1 received-data message */
 static ros::Publisher comm2RecvPublisher;	/* Publisher for comm2 received-data message */
-static ros::Subscriber solenoidSubscriber; /* Subscriber for solenoid-controlling message */
 static ros::Subscriber comm1SendSubscriber; /* Subscriber for comm1 sent-data message */
 static ros::Subscriber comm2SendSubscriber; /* Subscriber for comm2 sent-data message */
+static ros::ServiceServer solenoidServiceServer; /* ServiceServer for solenoid-controlling */
 
 /* ===================================================
  * ROS service subroutines
@@ -33,14 +33,17 @@ static ros::Subscriber comm2SendSubscriber; /* Subscriber for comm2 sent-data me
 
 /* Set the solenoid switches. We have maximum 8 switches. The low-nibble 4 switches 
 is controlled by MSSP_A and the other 4 switches is controlled by MSSP_B */
-void ZeabusElec_SetSolenoid( const zeabus_elec_ros_peripheral_bridge::solenoid_sw::ConstPtr& msg )
+bool ZeabusElec_SetSolenoid( zeabus_elec_ros_peripheral_bridge::solenoid_sw::Request &req,
+                            zeabus_elec_ros_peripheral_bridge::solenoid_sw::Response &res )
 {
 	uint8_t swNibble;
 	
 	int ftStat;
+
+        res.result = true;
 	
 	/* Low nibble */
-	swNibble = ( msg->switchState ) & 0x0F;
+	swNibble = ( req.switchState ) & 0x0F;
         swNibble <<= 4;     /* Shift switch data to GPIO position */
 	ftStat = pxMsspA->SetLoGPIOData( swNibble );
 
@@ -53,10 +56,12 @@ void ZeabusElec_SetSolenoid( const zeabus_elec_ros_peripheral_bridge::solenoid_s
 		msg.data = ss.str();
 		
 		errMsgPublisher.publish( msg );
+
+                res.result = false;
 	}
 
 	/* High nibble */
-	swNibble = ( msg->switchState ) & 0xF0 ;
+	swNibble = ( req.switchState ) & 0xF0 ;
 	ftStat = pxMsspB->SetLoGPIOData( swNibble );
 	if( ftStat != 0 )
 	{
@@ -67,7 +72,10 @@ void ZeabusElec_SetSolenoid( const zeabus_elec_ros_peripheral_bridge::solenoid_s
 		msg.data = ss.str();
 		
 		errMsgPublisher.publish( msg );
+
+                res.result = false;
 	}
+        return res.result;
 }
 
 /* Send a stream of uint8 to RS232 port 1 */
@@ -258,16 +266,18 @@ int main( int argc, char** argv )
 	  Now the FTDI chip is opened and hooked. We can continue ROS registration process 
 	  =================================================================================*/
 	
-	/* Register ROS publishers for power-distributor switch controller */
+	/* Register ROS publishers for hardware error message, baromenter message and RS232 received-data message */
 	errMsgPublisher = nh.advertise<std_msgs::String>( "/hw_error", 1000 );	/* Publisher for error message */
 	barometerPublisher = nh.advertise<zeabus_elec_ros_peripheral_bridge::barometer>( "/barometer", 100 );	/* Publisher for barometer message */
 	comm1RecvPublisher = nh.advertise<zeabus_elec_ros_peripheral_bridge::comm_data>( "/comm1/recv", 100 );	/* Publisher for comm1 received-data message */
 	comm2RecvPublisher = nh.advertise<zeabus_elec_ros_peripheral_bridge::comm_data>( "/comm2/recv", 100 );	/* Publisher for comm2 received-data message */
 
-	/* Register ROS subscribers for power-distributor switch controller */
-	solenoidSubscriber = nh.subscribe( "/solenoid_sw", 100, ZeabusElec_SetSolenoid ); /* Subscriber for solenoid-controlling message */
+	/* Register ROS subscribers for RS232 send-data message */
 	comm1SendSubscriber = nh.subscribe( "/comm1/send", 100, ZeabusElec_SendComm1 ); /* Subscriber for comm1 sent-data message */
 	comm2SendSubscriber = nh.subscribe( "/comm2/send", 100, ZeabusElec_SendComm2 ); /* Subscriber for comm2 sent-data message */
+
+        /* Register ROS service server for solenoid switch controller */
+	solenoidServiceServer = nh.advertiseService( "/solenoid_sw", ZeabusElec_SetSolenoid ); /* Service server for solenoid-controlling */
 
 	/* Main-loop. Just a spin-lock and wakeup at every 10ms (100Hz) */
 	ros::Rate rate(100);

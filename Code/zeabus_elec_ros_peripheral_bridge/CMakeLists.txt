@@ -48,19 +48,15 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate messages in the 'msg' folder
 add_message_files(
   FILES
-  solenoid_sw.msg
   barometer.msg
   comm_data.msg
 )
 
 ## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   barometer.srv
-#   solenoid.srv
-#   senddata.srv
-#   receivedata.srv
-# )
+add_service_files(
+  FILES
+  solenoid_sw.srv
+)
 
 ## Generate actions in the 'action' folder
 # add_action_files(
