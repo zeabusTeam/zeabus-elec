@@ -46,7 +46,7 @@ int main(int argc, char **argv)
     ros::NodeHandle nodeHandle("/zeabus/elec");
     
     odometryPublisher = nodeHandle.advertise<nav_msgs::Odometry>("/baro/odom", 10);
-    barometerSubscriber = nodeHandle.subscribe("barometer", 10, ZeabusElec_BarometerValToDepth);
+    barometerSubscriber = nodeHandle.subscribe("/barometer", 10, ZeabusElec_BarometerValToDepth);
 
     ros::spin();
 

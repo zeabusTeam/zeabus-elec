@@ -259,15 +259,15 @@ int main( int argc, char** argv )
 	  =================================================================================*/
 	
 	/* Register ROS publishers for power-distributor switch controller */
-	errMsgPublisher = nh.advertise<std_msgs::String>( "hw_error", 1000 );	/* Publisher for error message */
-	barometerPublisher = nh.advertise<zeabus_elec_ros_peripheral_bridge::barometer>( "barometer", 100 );	/* Publisher for barometer message */
-	comm1RecvPublisher = nh.advertise<zeabus_elec_ros_peripheral_bridge::comm_data>( "comm1/recv", 100 );	/* Publisher for comm1 received-data message */
-	comm2RecvPublisher = nh.advertise<zeabus_elec_ros_peripheral_bridge::comm_data>( "comm2/recv", 100 );	/* Publisher for comm2 received-data message */
+	errMsgPublisher = nh.advertise<std_msgs::String>( "/hw_error", 1000 );	/* Publisher for error message */
+	barometerPublisher = nh.advertise<zeabus_elec_ros_peripheral_bridge::barometer>( "/barometer", 100 );	/* Publisher for barometer message */
+	comm1RecvPublisher = nh.advertise<zeabus_elec_ros_peripheral_bridge::comm_data>( "/comm1/recv", 100 );	/* Publisher for comm1 received-data message */
+	comm2RecvPublisher = nh.advertise<zeabus_elec_ros_peripheral_bridge::comm_data>( "/comm2/recv", 100 );	/* Publisher for comm2 received-data message */
 
 	/* Register ROS subscribers for power-distributor switch controller */
-	solenoidSubscriber = nh.subscribe( "solenoid_sw", 100, ZeabusElec_SetSolenoid ); /* Subscriber for solenoid-controlling message */
-	comm1SendSubscriber = nh.subscribe( "comm1/send", 100, ZeabusElec_SendComm1 ); /* Subscriber for comm1 sent-data message */
-	comm2SendSubscriber = nh.subscribe( "comm2/send", 100, ZeabusElec_SendComm2 ); /* Subscriber for comm2 sent-data message */
+	solenoidSubscriber = nh.subscribe( "/solenoid_sw", 100, ZeabusElec_SetSolenoid ); /* Subscriber for solenoid-controlling message */
+	comm1SendSubscriber = nh.subscribe( "/comm1/send", 100, ZeabusElec_SendComm1 ); /* Subscriber for comm1 sent-data message */
+	comm2SendSubscriber = nh.subscribe( "/comm2/send", 100, ZeabusElec_SendComm2 ); /* Subscriber for comm2 sent-data message */
 
 	/* Main-loop. Just a spin-lock and wakeup at every 10ms (100Hz) */
 	ros::Rate rate(100);
