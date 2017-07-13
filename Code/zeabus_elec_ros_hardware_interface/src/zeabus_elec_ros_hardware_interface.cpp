@@ -6,13 +6,22 @@
 #include <ros/ros.h>
 #include <nav_msgs/Odometry.h>
 
+#include <zeabus_elec_ros_hardware_interface/IOCommand.h>
+
 #include <zeabus_elec_ros_peripheral_bridge/barometer.h>
+#include <zeabus_elec_ros_peripheral_bridge/solenoid_sw.h>
 
 #define PSI_AT_ATMOSPHERE 14.6959
 #define PSI_PER_DEPTH 0.6859
 
 ros::Publisher odometryPublisher;
+
 ros::Subscriber barometerSubscriber;
+
+ros::ServiceServer setSolenoidOnServiceServer;
+ros::ServiceServer setSolenoidOffServiceServer;
+
+ros::ServiceClient SolenoidServiceClient;
 
 nav_msgs::Odometry odometry;
 
@@ -40,13 +49,43 @@ void ZeabusElec_BarometerValToDepth(const zeabus_elec_ros_peripheral_bridge::bar
     ROS_INFO("depth : %.4lf meter\n", depth);
 }
 
+bool ZeabusElec_setSolenoidOn(zeabus_elec_ros_hardware_interface::IOCommand::Request &req, zeabus_elec_ros_hardware_interface::IOCommand::Response &res)
+{
+    zeabus_elec_ros_peripheral_bridge::solenoid_sw solenoidService;
+
+    solenoidService.request.switchIndex = req.channel;
+    solenoidService.request.isSwitchHigh = true;
+
+    res.result = SolenoidServiceClient.call(solenoidService);
+
+    return res.result;
+}
+
+bool ZeabusElec_setSolenoidOff(zeabus_elec_ros_hardware_interface::IOCommand::Request &req, zeabus_elec_ros_hardware_interface::IOCommand::Response &res)
+{
+    zeabus_elec_ros_peripheral_bridge::solenoid_sw solenoidService;
+
+    solenoidService.request.switchIndex = req.channel;
+    solenoidService.request.isSwitchHigh = false;
+
+    res.result = SolenoidServiceClient.call(solenoidService);
+
+    return res.result;
+}
+
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "Zeabus_Elec_Hardware_interface");
     ros::NodeHandle nodeHandle("/zeabus/elec");
     
     odometryPublisher = nodeHandle.advertise<nav_msgs::Odometry>("/baro/odom", 10);
+
     barometerSubscriber = nodeHandle.subscribe("/barometer", 10, ZeabusElec_BarometerValToDepth);
+
+    setSolenoidOnServiceServer = nodeHandle.advertiseService("/io_and_pressure/IO_ON", ZeabusElec_setSolenoidOn);
+    setSolenoidOffServiceServer = nodeHandle.advertiseService("/io_and_pressure/IO_OFF", ZeabusElec_setSolenoidOff);
+
+    SolenoidServiceClient = nodeHandle.serviceClient<zeabus_elec_ros_peripheral_bridge::solenoid_sw>("/solenoid_sw");
 
     ros::spin();
 

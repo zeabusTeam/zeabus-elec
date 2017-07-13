@@ -24,7 +24,7 @@ static ros::Publisher comm1RecvPublisher;	/* Publisher for comm1 received-data m
 static ros::Publisher comm2RecvPublisher;	/* Publisher for comm2 received-data message */
 static ros::Subscriber comm1SendSubscriber; /* Subscriber for comm1 sent-data message */
 static ros::Subscriber comm2SendSubscriber; /* Subscriber for comm2 sent-data message */
-static ros::ServiceServer solenoidServiceServer; /* ServiceServer for solenoid-controlling */
+static ros::ServiceServer setSolenoidServiceServer; /* ServiceServer for solenoid-controlling */
 
 /* ===================================================
  * ROS service subroutines
@@ -33,18 +33,30 @@ static ros::ServiceServer solenoidServiceServer; /* ServiceServer for solenoid-c
 
 /* Set the solenoid switches. We have maximum 8 switches. The low-nibble 4 switches 
 is controlled by MSSP_A and the other 4 switches is controlled by MSSP_B */
-bool ZeabusElec_SetSolenoid( zeabus_elec_ros_peripheral_bridge::solenoid_sw::Request &req,
-                            zeabus_elec_ros_peripheral_bridge::solenoid_sw::Response &res )
+bool ZeabusElec_SetSolenoid( zeabus_elec_ros_peripheral_bridge::solenoid_sw::Request &req, zeabus_elec_ros_peripheral_bridge::solenoid_sw::Response &res )
 {
-	uint8_t swNibble;
+	uint8_t swNibble, switchState, currentSwitchState, switchMask;
 	
 	int ftStat;
 
         res.result = true;
-	
+
+        switchMask = 0x01 << ( req.switchIndex );
+
+        currentSwitchState = pxMsspA->ReadLoGPIOData() >> 4;
+        currentSwitchState |= pxMsspB->ReadLoGPIOData() & 0xF0;
+
+        if( req.isSwitchHigh )
+        {
+            switchState = ( currentSwitchState | switchMask );
+        }
+        else
+        {
+            switchState = ( currentSwitchState & ~( switchMask ) );
+        }
+
 	/* Low nibble */
-	swNibble = ( req.switchState ) & 0x0F;
-        swNibble <<= 4;     /* Shift switch data to GPIO position */
+        swNibble = ( switchState << 4 );
 	ftStat = pxMsspA->SetLoGPIOData( swNibble );
 
 	if( ftStat != 0 )
@@ -61,7 +73,7 @@ bool ZeabusElec_SetSolenoid( zeabus_elec_ros_peripheral_bridge::solenoid_sw::Req
 	}
 
 	/* High nibble */
-	swNibble = ( req.switchState ) & 0xF0 ;
+	swNibble = ( switchState & 0xF0 );
 	ftStat = pxMsspB->SetLoGPIOData( swNibble );
 	if( ftStat != 0 )
 	{
@@ -277,7 +289,7 @@ int main( int argc, char** argv )
 	comm2SendSubscriber = nh.subscribe( "/comm2/send", 100, ZeabusElec_SendComm2 ); /* Subscriber for comm2 sent-data message */
 
         /* Register ROS service server for solenoid switch controller */
-	solenoidServiceServer = nh.advertiseService( "/solenoid_sw", ZeabusElec_SetSolenoid ); /* Service server for solenoid-controlling */
+	setSolenoidServiceServer = nh.advertiseService( "/solenoid_sw", ZeabusElec_SetSolenoid ); /* Service server for solenoid-controlling */
 
 	/* Main-loop. Just a spin-lock and wakeup at every 10ms (100Hz) */
 	ros::Rate rate(100);

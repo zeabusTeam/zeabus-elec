@@ -3,9 +3,19 @@ project(zeabus_elec_ros_hardware_interface)
 
 find_package(catkin REQUIRED COMPONENTS
   roscpp
+  message_generation
   nav_msgs
   zeabus_elec_ros_peripheral_bridge
 )
+
+add_service_files(FILES
+    IOCommand.srv
+)
+
+generate_messages(DEPENDENCIES
+    nav_msgs
+)
+
 catkin_package(
   CATKIN_DEPENDS roscpp message_runtime nav_msgs zeabus_elec_ros_peripheral_bridge
 )
