@@ -14,63 +14,71 @@
 #define ONE_ATM_AS_PSI 14.6959
 #define PSI_PER_DEPTH 0.6859
 
-ros::Publisher odometryPublisher;
+ros::Publisher odometry_publisher;
 
-ros::Subscriber barometerSubscriber;
+ros::Subscriber barometer_subsciber;
 
-ros::ServiceServer setSolenoidOnServiceServer;
-ros::ServiceServer setSolenoidOffServiceServer;
+ros::ServiceServer set_solenoid_on_service_server;
+ros::ServiceServer set_solenoid_off_service_server;
 
-ros::ServiceClient SolenoidServiceClient;
+ros::ServiceClient solenoid_service_client;
 
-nav_msgs::Odometry odometry;
+double atm_pressure, depth_offset;
 
-double atmPressure, depthOffset;
-
-void ZeabusElec_BarometerValToDepth(const zeabus_elec_ros_peripheral_bridge::barometer::ConstPtr& msg)
+double barometer_value_to_depth(uint16_t barometer_value)
 {
-    double baromenterVoltage, psi, depth;
-    uint16_t barometerVal;
+    double barometer_voltage, psi, depth;
 
-    barometerVal = msg->pressureValue;
+    barometer_voltage = barometer_value * (5.0 / 1023.0);
+    psi = (barometer_voltage - 0.5) * (30.0 / 4.0);
 
-    baromenterVoltage = barometerVal * (5.0 / 1023.0);
-    psi = (baromenterVoltage - 0.5) * (30.0 / 4.0);
+    depth = ((psi - atm_pressure) * PSI_PER_DEPTH) + depth_offset;
 
-    depth = ((psi - atmPressure) * PSI_PER_DEPTH) + depthOffset;
+    ROS_INFO("pressure sensor analog value : %.4d", barometer_value);
+    ROS_INFO("pressure sensor voltage : %.4lf V", barometer_voltage);
+    ROS_INFO("pressure : %.4lf psi", psi);
+    ROS_INFO("depth : %.4lf meter\n", depth);
+
+    return depth;
+}
+
+void send_depth(const zeabus_elec_ros_peripheral_bridge::barometer::ConstPtr& msg)
+{
+    nav_msgs::Odometry odometry;
+
+    double depth;
+
+    depth = barometer_value_to_depth(msg->pressureValue);
     
     odometry.header.stamp = ros::Time::now();
 
     odometry.pose.pose.position.z = -depth;
 
-    odometryPublisher.publish(odometry);
-
-    ROS_INFO("pressure sensor analog value : %.4d\n", msg->pressureValue);
-    ROS_INFO("pressure sensor voltage : %.4lf V\n", baromenterVoltage);
-    ROS_INFO("pressure : %.4lf psi\n", psi);
-    ROS_INFO("depth : %.4lf meter\n", depth);
+    odometry_publisher.publish(odometry);
 }
 
-bool ZeabusElec_setSolenoidOn(zeabus_elec_ros_hardware_interface::IOCommand::Request &req, zeabus_elec_ros_hardware_interface::IOCommand::Response &res)
+bool set_solenoid_on(zeabus_elec_ros_hardware_interface::IOCommand::Request &req,
+                    zeabus_elec_ros_hardware_interface::IOCommand::Response &res)
 {
-    zeabus_elec_ros_peripheral_bridge::solenoid_sw solenoidService;
+    zeabus_elec_ros_peripheral_bridge::solenoid_sw solenoid_service;
 
-    solenoidService.request.switchIndex = req.channel;
-    solenoidService.request.isSwitchHigh = true;
+    solenoid_service.request.switchIndex = req.channel;
+    solenoid_service.request.isSwitchHigh = true;
 
-    res.result = SolenoidServiceClient.call(solenoidService);
+    res.result = solenoid_service_client.call(solenoid_service);
 
     return res.result;
 }
 
-bool ZeabusElec_setSolenoidOff(zeabus_elec_ros_hardware_interface::IOCommand::Request &req, zeabus_elec_ros_hardware_interface::IOCommand::Response &res)
+bool set_solenoid_off(zeabus_elec_ros_hardware_interface::IOCommand::Request &req,
+                    zeabus_elec_ros_hardware_interface::IOCommand::Response &res)
 {
-    zeabus_elec_ros_peripheral_bridge::solenoid_sw solenoidService;
+    zeabus_elec_ros_peripheral_bridge::solenoid_sw solenoid_service;
 
-    solenoidService.request.switchIndex = req.channel;
-    solenoidService.request.isSwitchHigh = false;
+    solenoid_service.request.switchIndex = req.channel;
+    solenoid_service.request.isSwitchHigh = false;
 
-    res.result = SolenoidServiceClient.call(solenoidService);
+    res.result = solenoid_service_client.call(solenoid_service);
 
     return res.result;
 }
@@ -78,19 +86,19 @@ bool ZeabusElec_setSolenoidOff(zeabus_elec_ros_hardware_interface::IOCommand::Re
 int main(int argc, char **argv)
 {
     ros::init(argc, argv, "Zeabus_Elec_Hardware_interface");
-    ros::NodeHandle nodeHandle("/zeabus/elec");
+    ros::NodeHandle nh("/zeabus/elec");
 
-    nodeHandle.param<double>("atmPressure", atmPressure, ONE_ATM_AS_PSI);
-    nodeHandle.param<double>("depthOffset", depthOffset, 0);
+    nh.param<double>("atm_pressure", atm_pressure, ONE_ATM_AS_PSI);
+    nh.param<double>("depth_offset", depth_offset, 0);
     
-    odometryPublisher = nodeHandle.advertise<nav_msgs::Odometry>("/baro/odom", 10);
+    odometry_publisher = nh.advertise<nav_msgs::Odometry>("/baro/odom", 10);
 
-    barometerSubscriber = nodeHandle.subscribe("/barometer", 10, ZeabusElec_BarometerValToDepth);
+    barometer_subsciber = nh.subscribe("/barometer", 10, send_depth);
 
-    setSolenoidOnServiceServer = nodeHandle.advertiseService("/io_and_pressure/IO_ON", ZeabusElec_setSolenoidOn);
-    setSolenoidOffServiceServer = nodeHandle.advertiseService("/io_and_pressure/IO_OFF", ZeabusElec_setSolenoidOff);
+    set_solenoid_on_service_server = nh.advertiseService("/io_and_pressure/IO_ON", set_solenoid_on);
+    set_solenoid_off_service_server = nh.advertiseService("/io_and_pressure/IO_OFF", set_solenoid_off);
 
-    SolenoidServiceClient = nodeHandle.serviceClient<zeabus_elec_ros_peripheral_bridge::solenoid_sw>("/solenoid_sw");
+    solenoid_service_client = nh.serviceClient<zeabus_elec_ros_peripheral_bridge::solenoid_sw>("/solenoid_sw");
 
     ros::spin();
 
