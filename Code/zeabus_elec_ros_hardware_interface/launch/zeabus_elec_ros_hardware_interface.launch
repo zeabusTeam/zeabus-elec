@@ -1,9 +1,9 @@
 <launch>
 
-    <node name="Zeabus_Elec_Hardware_Interface" pkg="zeabus_ros_hardware_interface" type="zeabus_elec_ros_hardware_interface" output="screen">
+    <node name="Zeabus_Elec_Hardware_interface" pkg="zeabus_elec_ros_hardware_interface" type="zeabus_elec_ros_hardware_interface" output="screen">
 
-        <param name="atmPressure" value="18.516"/>
-        <param name="depthOffset" value="0"/>
+        <param name="atm_pressure" value="18.516"/>
+        <param name="depth_offset" value="0"/>
 
     </node>
 

@@ -88,9 +88,9 @@ int main(int argc, char **argv)
     ros::init(argc, argv, "Zeabus_Elec_Hardware_interface");
     ros::NodeHandle nh("/zeabus/elec");
 
-    nh.param<double>("atm_pressure", atm_pressure, ONE_ATM_AS_PSI);
-    nh.param<double>("depth_offset", depth_offset, 0);
-    
+    nh.param<double>("/Zeabus_Elec_Hardware_interface/atm_pressure", atm_pressure, ONE_ATM_AS_PSI);
+    nh.param<double>("/Zeabus_Elec_Hardware_interface/depth_offset", depth_offset, 0);
+
     odometry_publisher = nh.advertise<nav_msgs::Odometry>("/baro/odom", 10);
 
     barometer_subsciber = nh.subscribe("/barometer", 10, send_depth);
