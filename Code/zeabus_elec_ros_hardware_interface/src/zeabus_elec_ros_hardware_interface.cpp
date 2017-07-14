@@ -11,7 +11,7 @@
 #include <zeabus_elec_ros_peripheral_bridge/barometer.h>
 #include <zeabus_elec_ros_peripheral_bridge/solenoid_sw.h>
 
-#define PSI_AT_ATMOSPHERE 14.6959
+#define ONE_ATM_AS_PSI 14.6959
 #define PSI_PER_DEPTH 0.6859
 
 ros::Publisher odometryPublisher;
@@ -25,6 +25,8 @@ ros::ServiceClient SolenoidServiceClient;
 
 nav_msgs::Odometry odometry;
 
+double atmPressure, depthOffset;
+
 void ZeabusElec_BarometerValToDepth(const zeabus_elec_ros_peripheral_bridge::barometer::ConstPtr& msg)
 {
     double baromenterVoltage, psi, depth;
@@ -35,7 +37,7 @@ void ZeabusElec_BarometerValToDepth(const zeabus_elec_ros_peripheral_bridge::bar
     baromenterVoltage = barometerVal * (5.0 / 1023.0);
     psi = (baromenterVoltage - 0.5) * (30.0 / 4.0);
 
-    depth = (psi - PSI_AT_ATMOSPHERE) * PSI_PER_DEPTH;
+    depth = ((psi - atmPressure) * PSI_PER_DEPTH) + depthOffset;
     
     odometry.header.stamp = ros::Time::now();
 
@@ -77,6 +79,9 @@ int main(int argc, char **argv)
 {
     ros::init(argc, argv, "Zeabus_Elec_Hardware_interface");
     ros::NodeHandle nodeHandle("/zeabus/elec");
+
+    nodeHandle.param<double>("atmPressure", atmPressure, ONE_ATM_AS_PSI);
+    nodeHandle.param<double>("depthOffset", depthOffset, 0);
     
     odometryPublisher = nodeHandle.advertise<nav_msgs::Odometry>("/baro/odom", 10);
 
