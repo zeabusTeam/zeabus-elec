@@ -225,8 +225,8 @@ int main( int argc, char** argv )
  	ros::NodeHandle nh("/zeabus/elec");
  	
  	/* Retrieve parameter from launch file */
-	nh.param < int > ("comm1baudrate", comm1BaudRate, 115200);
-	nh.param < int > ("comm2baudrate", comm2BaudRate, 115200);
+	nh.param < int > ("/Zeabus_Elec_Peripheral_bridge/comm1baudrate", comm1BaudRate, 115200);
+	nh.param < int > ("/Zeabus_Elec_Peripheral_bridge/comm2baudrate", comm2BaudRate, 115200);
 	
 	/*=================================================================================
 	  Discover the Power Distributor and also open handles for it.
