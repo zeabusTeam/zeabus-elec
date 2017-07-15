@@ -93,12 +93,12 @@ int main(int argc, char **argv)
 
     odometry_publisher = nh.advertise<nav_msgs::Odometry>("/baro/odom", 10);
 
-    barometer_subsciber = nh.subscribe("/barometer", 10, send_depth);
+    barometer_subsciber = nh.subscribe("barometer", 10, send_depth);
 
     set_solenoid_on_service_server = nh.advertiseService("/io_and_pressure/IO_ON", set_solenoid_on);
     set_solenoid_off_service_server = nh.advertiseService("/io_and_pressure/IO_OFF", set_solenoid_off);
 
-    solenoid_service_client = nh.serviceClient<zeabus_elec_ros_peripheral_bridge::solenoid_sw>("/solenoid_sw");
+    solenoid_service_client = nh.serviceClient<zeabus_elec_ros_peripheral_bridge::solenoid_sw>("solenoid_sw");
 
     ros::spin();
 
