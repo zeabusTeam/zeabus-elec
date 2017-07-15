@@ -14,17 +14,20 @@ static const char* cstPowerDistSerial = "PowerDist";
 
 static std::shared_ptr<Zeabus_Elec::ftdi_mpsse_impl> pxMssp;
 static ros::Publisher errMsgPublisher;	/* Publisher for error message */
-static ros::Subscriber switchSubscriber; /* Subscriber for switch-controlling message */
+static ros::ServiceServer switchServiceServer; /* Service server for switch-controlling */
 
 /* ===================================================
  * ROS service subroutines
  * ===================================================
  */
-void ZeabusElec_SetSwitch( const zeabus_elec_ros_power_dist::power_dist::ConstPtr& msg )
+bool ZeabusElec_SetSwitch( zeabus_elec_ros_power_dist::power_dist::Request &req,
+                            zeabus_elec_ros_power_dist::power_dist::Response &res )
 {
 	int ftStat;
+
+        res.result = true;
 	
-	ftStat = pxMssp->SetHiGPIOData( msg->switchState );
+	ftStat = pxMssp->SetHiGPIOData( req.switchState );
 	if( ftStat != 0 )
 	{
 		/* Some Error occurred. So, we publish the error message */
@@ -34,7 +37,11 @@ void ZeabusElec_SetSwitch( const zeabus_elec_ros_power_dist::power_dist::ConstPt
 		msg.data = ss.str();
 		
 		errMsgPublisher.publish( msg );
+
+                res.result = false;
 	}
+
+        return res.result;
 }
 
 /* ===================================================
@@ -78,8 +85,8 @@ int main( int argc, char** argv )
 	
 	/* Register ROS publisher to Elec/Hw_error topic */
 	errMsgPublisher = nh.advertise<std_msgs::String>( "hw_error", 1000 );
-	/* Register ROS subscriber to Elec/Power_dist topic */
-	switchSubscriber = nh.subscribe( "power_switch", 100, ZeabusElec_SetSwitch );
+	/* Register ROS service server to Elec/Power_switch topic */
+	switchServiceServer = nh.advertiseService( "power_switch", ZeabusElec_SetSwitch );
 
 	/* Main-loop. Just a spin-lock */
 	ros::spin();
