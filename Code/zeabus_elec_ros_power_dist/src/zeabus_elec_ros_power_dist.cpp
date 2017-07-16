@@ -24,10 +24,24 @@ bool ZeabusElec_SetSwitch( zeabus_elec_ros_power_dist::power_dist::Request &req,
                             zeabus_elec_ros_power_dist::power_dist::Response &res )
 {
 	int ftStat;
+        uint8_t switchState, currentSwitchState, switchMask;
 
         res.result = true;
+
+        switchMask = 0x01 << ( req.switchIndex );
+
+        currentSwitchState = pxMssp->ReadHiGPIOData();
+
+        if( req.isSwitchHigh )
+        {
+            switchState = ( currentSwitchState | switchMask );
+        }
+        else
+        {
+            switchState = ( currentSwitchState & ~( switchMask ) );
+        }
 	
-	ftStat = pxMssp->SetHiGPIOData( req.switchState );
+	ftStat = pxMssp->SetHiGPIOData( switchState );
 	if( ftStat != 0 )
 	{
 		/* Some Error occurred. So, we publish the error message */

@@ -6,8 +6,10 @@
 #include <ros/ros.h>
 #include <nav_msgs/Odometry.h>
 
+#include <zeabus_elec_ros_hardware_interface/PowerSwitchCommand.h>
 #include <zeabus_elec_ros_hardware_interface/IOCommand.h>
 
+#include <zeabus_elec_ros_power_dist/power_dist.h>
 #include <zeabus_elec_ros_peripheral_bridge/barometer.h>
 #include <zeabus_elec_ros_peripheral_bridge/solenoid_sw.h>
 
@@ -18,9 +20,12 @@ ros::Publisher odometry_publisher;
 
 ros::Subscriber barometer_subsciber;
 
+ros::ServiceServer set_power_switch_on_service_server;
+ros::ServiceServer set_power_switch_off_service_server;
 ros::ServiceServer set_solenoid_on_service_server;
 ros::ServiceServer set_solenoid_off_service_server;
 
+ros::ServiceClient power_dist_service_client;
 ros::ServiceClient solenoid_service_client;
 
 double atm_pressure, depth_offset;
@@ -55,6 +60,48 @@ void send_depth(const zeabus_elec_ros_peripheral_bridge::barometer::ConstPtr& ms
     odometry.pose.pose.position.z = -depth;
 
     odometry_publisher.publish(odometry);
+}
+
+bool set_power_switch_on(zeabus_elec_ros_hardware_interface::PowerSwitchCommand::Request &req,
+                    zeabus_elec_ros_hardware_interface::PowerSwitchCommand::Response &res)
+{
+    zeabus_elec_ros_power_dist::power_dist power_dist_service;
+
+    power_dist_service.request.switchIndex = req.channel;
+
+    if(req.channel >= 6)
+    {
+        power_dist_service.request.isSwitchHigh = false;
+    }
+    else
+    {
+        power_dist_service.request.isSwitchHigh = true;
+    }
+
+    res.result = power_dist_service_client.call(power_dist_service);
+
+    return res.result;
+}
+
+bool set_power_switch_off(zeabus_elec_ros_hardware_interface::PowerSwitchCommand::Request &req,
+                        zeabus_elec_ros_hardware_interface::PowerSwitchCommand::Response &res)
+{
+    zeabus_elec_ros_power_dist::power_dist power_dist_service;
+
+    power_dist_service.request.switchIndex = req.channel;
+
+    if(req.channel >= 6)
+    {
+        power_dist_service.request.isSwitchHigh = true;
+    }
+    else
+    {
+        power_dist_service.request.isSwitchHigh = false;
+    }
+
+    res.result = power_dist_service_client.call(power_dist_service);
+
+    return res.result;
 }
 
 bool set_solenoid_on(zeabus_elec_ros_hardware_interface::IOCommand::Request &req,
@@ -95,9 +142,12 @@ int main(int argc, char **argv)
 
     barometer_subsciber = nh.subscribe("barometer", 10, send_depth);
 
+    set_power_switch_on_service_server = nh.advertiseService("/power_distribution/switch_on", set_power_switch_on);
+    set_power_switch_off_service_server = nh.advertiseService("/power_distribution/switch_off", set_power_switch_off);
     set_solenoid_on_service_server = nh.advertiseService("/io_and_pressure/IO_ON", set_solenoid_on);
     set_solenoid_off_service_server = nh.advertiseService("/io_and_pressure/IO_OFF", set_solenoid_off);
 
+    power_dist_service_client = nh.serviceClient<zeabus_elec_ros_power_dist::power_dist>("power_switch");
     solenoid_service_client = nh.serviceClient<zeabus_elec_ros_peripheral_bridge::solenoid_sw>("solenoid_sw");
 
     ros::spin();

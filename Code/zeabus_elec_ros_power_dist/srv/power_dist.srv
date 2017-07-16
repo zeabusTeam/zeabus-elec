@@ -1,3 +1,4 @@
-uint8 switchState
+uint8 switchIndex
+bool isSwitchHigh
 ---
 bool result
