@@ -16,19 +16,19 @@
 #define ONE_ATM_AS_PSI 14.6959
 #define PSI_PER_DEPTH 0.6859
 
-ros::Publisher odometry_publisher;
+static ros::Publisher odometry_publisher;
 
-ros::Subscriber barometer_subsciber;
+static ros::Subscriber barometer_subsciber;
 
-ros::ServiceServer set_power_switch_on_service_server;
-ros::ServiceServer set_power_switch_off_service_server;
-ros::ServiceServer set_solenoid_on_service_server;
-ros::ServiceServer set_solenoid_off_service_server;
+static ros::ServiceServer set_power_switch_on_service_server;
+static ros::ServiceServer set_power_switch_off_service_server;
+static ros::ServiceServer set_solenoid_on_service_server;
+static ros::ServiceServer set_solenoid_off_service_server;
 
-ros::ServiceClient power_dist_service_client;
-ros::ServiceClient solenoid_service_client;
+static ros::ServiceClient power_dist_service_client;
+static ros::ServiceClient solenoid_service_client;
 
-double atm_pressure, depth_offset;
+static double atm_pressure, depth_offset;
 
 double barometer_value_to_depth(uint16_t barometer_value)
 {
@@ -50,7 +50,6 @@ double barometer_value_to_depth(uint16_t barometer_value)
 void send_depth(const zeabus_elec_ros_peripheral_bridge::barometer::ConstPtr& msg)
 {
     nav_msgs::Odometry odometry;
-
     double depth;
 
     depth = barometer_value_to_depth(msg->pressureValue);
