@@ -33,10 +33,10 @@ static ros::ServiceServer setSolenoidServiceServer; /* ServiceServer for solenoi
 
 /* Set the solenoid switches. We have maximum 8 switches. The low-nibble 4 switches 
 is controlled by MSSP_A and the other 4 switches is controlled by MSSP_B */
-bool ZeabusElec_SetSolenoid( zeabus_elec_ros_peripheral_bridge::solenoid_sw::Request &req, zeabus_elec_ros_peripheral_bridge::solenoid_sw::Response &res )
+bool ZeabusElec_SetSolenoid( zeabus_elec_ros_peripheral_bridge::solenoid_sw::Request &req,
+                            zeabus_elec_ros_peripheral_bridge::solenoid_sw::Response &res )
 {
 	uint8_t swNibble, switchState, currentSwitchState, switchMask;
-	
 	int ftStat;
 
         res.result = true;
