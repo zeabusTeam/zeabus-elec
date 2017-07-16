@@ -1,3 +1,3 @@
 <launch>
-	<node pkg="zeabus_elec_ros_power_dist" type="power_dist_node" name="Zeabus_Elec_Power_dist" output="screen" respawn="true" />
+	<node pkg="zeabus_elec_ros_power_dist" type="zeabus_elec_ros_power_dist" name="Zeabus_Elec_Power_dist" output="screen" respawn="true" />
 </launch>
