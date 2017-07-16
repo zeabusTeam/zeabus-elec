@@ -217,8 +217,8 @@ void ZeabusElec_ReceiveComm( std::shared_ptr<Zeabus_Elec::ftdi_impl> commPort, u
  */
 int main( int argc, char** argv )
 {
-	uint16_t usBarometerVal;
-	int comm1BaudRate, comm2BaudRate;
+	uint16_t usBarometerVal, initIODirectionA, initIOStateA, initIODirectionB, initIOStateB;
+	int comm1BaudRate, comm2BaudRate, paramInitIODirectionA, paramInitIOStateA, paramInitIODirectionB, paramInitIOStateB;
 
 	/* Initialize ROS functionalities */	
 	ros::init(argc, argv, "Zeabus_Elec_Peripheral_bridge");
@@ -227,6 +227,16 @@ int main( int argc, char** argv )
  	/* Retrieve parameter from launch file */
 	nh.param < int > ("/Zeabus_Elec_Peripheral_bridge/comm1baudrate", comm1BaudRate, 115200);
 	nh.param < int > ("/Zeabus_Elec_Peripheral_bridge/comm2baudrate", comm2BaudRate, 115200);
+        nh.param < int > ("/Zeabus_Elec_Peripheral_bridge/IODirectionA", paramInitIODirectionA, 0xFFFF);
+        nh.param < int > ("/Zeabus_Elec_Peripheral_bridge/IOStateA", paramInitIOStateA, 0x0000);
+        nh.param < int > ("/Zeabus_Elec_Peripheral_bridge/IODirectionB", paramInitIODirectionB, 0xFFFF);
+        nh.param < int > ("/Zeabus_Elec_Peripheral_bridge/IOStateB", paramInitIOStateB, 0x0000);
+
+        /* cast int to uint16_t because NodeHandle::param doesn't support uint16_t */
+        initIODirectionA = static_cast<uint16_t>(paramInitIODirectionA);
+        initIOStateA = static_cast<uint16_t>(paramInitIOStateA);
+        initIODirectionB = static_cast<uint16_t>(paramInitIODirectionB);
+        initIOStateB = static_cast<uint16_t>(paramInitIOStateB);
 	
 	/*=================================================================================
 	  Discover the Power Distributor and also open handles for it.
@@ -244,7 +254,7 @@ int main( int argc, char** argv )
 		return( -5 );
 		
 	}
-	pxMsspA->SetGPIODirection( 0xFFFF, 0x0000 );	/* All bits are output, initial pin state is low*/
+	pxMsspA->SetGPIODirection( initIODirectionA, initIOStateA );	/* All bits are output, initial pin state is low*/
 
 	pxMsspB = std::make_shared<Zeabus_Elec::ftdi_spi_cpol1_cha0_msb_impl>( Zeabus_Elec::FT4232H, stPeripheralSerial, 2 );
 	if( pxMsspB->GetCurrentStatus() != 0 )
@@ -254,7 +264,7 @@ int main( int argc, char** argv )
 		return( -6 );
 		
 	}
-	pxMsspB->SetGPIODirection( 0xFFFF, 0x0000 );	/* All bits are output, initial pin state is low*/
+	pxMsspB->SetGPIODirection( initIODirectionB, initIOStateB );	/* All bits are output, initial pin state is low*/
 	
 	pxUartA = std::make_shared<Zeabus_Elec::ftdi_uart_impl>( Zeabus_Elec::FT4232H, stPeripheralSerial, 3, (uint32_t)comm1BaudRate );
 	if( pxUartA->GetCurrentStatus() != 0 )
