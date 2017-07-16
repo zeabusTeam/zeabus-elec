@@ -64,9 +64,20 @@ bool ZeabusElec_SetSwitch( zeabus_elec_ros_power_dist::power_dist::Request &req,
  */
 int main( int argc, char** argv )
 {
+        int paramInitIODirection, paramInitIOPinState;
+        uint16_t initIODirection, initIOPinState;
+
 	/* Initialize ROS functionalities */	
 	ros::init(argc, argv, "Zeabus_Elec_Power_dist");
  	ros::NodeHandle nh("/zeabus/elec");
+
+        /* Retrieve parameter from launch file */
+        nh.param < int > ("/Zeabus_Elec_Power_dist/IODirection", paramInitIODirection, 0xFFFF);
+        nh.param < int > ("/Zeabus_Elec_Power_dist/IOPinState", paramInitIOPinState, 0x0000);
+
+        /* cast int to uint16_t because NodeHandle::param doesn't support uint16_t */
+        initIODirection = static_cast<uint16_t>(paramInitIODirection);
+        initIOPinState = static_cast<uint16_t>(paramInitIOPinState);
 
 	/*=================================================================================
 	  Discover the Power Distributor and also open handles for it.
@@ -84,7 +95,7 @@ int main( int argc, char** argv )
 	}
 	
 	/* Set GPIO direction and pin intial state to all output, bit=1 means output, 0 means input */
-	pxMssp->SetGPIODirection( 0xFFFF , 0x0000 );	/* All bits are output, initial pin state is low */
+	pxMssp->SetGPIODirection( initIODirection , initIOPinState );	/* All bits are output, initial pin state is low */
 	if( pxMssp->GetCurrentStatus() != 0 )
 	{
 		/* Fail - unable to initialize Power Distribution module */
