@@ -54,6 +54,8 @@ void send_depth(const zeabus_elec_ros_peripheral_bridge::barometer::ConstPtr& ms
 
     depth = barometer_value_to_depth(msg->pressureValue);
     
+    odometry.header.frame_id = "odom";
+    odometry.child_frame_id = "base_link";
     odometry.header.stamp = ros::Time::now();
 
     odometry.pose.pose.position.z = -depth;
