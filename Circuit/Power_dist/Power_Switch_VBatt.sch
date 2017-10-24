@@ -30,12 +30,11 @@ LIBS:contrib
 LIBS:valves
 LIBS:zeabus
 LIBS:ftdi
-LIBS:Power_Distributor-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 4 9
+Sheet 3 9
 Title "DVL and Sonar Switch"
 Date "2017-04-06"
 Rev "1.0.0"
@@ -65,7 +64,7 @@ P 5850 3300
 AR Path="/58E51F99/58E5219E" Ref="R5"  Part="1" 
 AR Path="/58E527AF/58E5219E" Ref="R8"  Part="1" 
 F 0 "R8" V 5930 3300 50  0000 C CNN
-F 1 "1k" V 5850 3300 50  0000 C CNN
+F 1 "2.2k" V 5850 3300 50  0000 C CNN
 F 2 "Resistors_SMD:R_0603" V 5780 3300 50  0001 C CNN
 F 3 "" H 5850 3300 50  0001 C CNN
 	1    5850 3300
