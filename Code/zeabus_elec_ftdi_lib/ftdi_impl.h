@@ -55,7 +55,7 @@ namespace Zeabus_Elec
 		/* Receive data from communication channel */
 		virtual uint32_t Receive( std::vector<uint8_t>& ) = 0;
 		/* Set I/O direction of GPIO pins (if available). The parameter is the mask. 0 = Input, 1 = Output */
-		virtual int SetGPIODirection( uint16_t ) = 0;
+		virtual int SetGPIODirection( uint16_t, uint16_t ) = 0;
 		/* Out data to high-byte GPIO pins */
 		virtual int SetHiGPIOData( uint8_t ) = 0;
 		/* Out data to low-byte GPIO pins */
@@ -82,7 +82,7 @@ namespace Zeabus_Elec
 		/* Receive data from communication channel */
 		virtual uint32_t Receive( std::vector<uint8_t>& pucData );
 		/* Set I/O direction of GPIO pins (if available). The parameter is the mask. 0 = Input, 1 = Output */
-		virtual int SetGPIODirection( uint16_t usData);
+		virtual int SetGPIODirection( uint16_t usData, uint16_t ucData );
 		/* Out data to high-byte GPIO pins */
 		virtual int SetHiGPIOData( uint8_t ucData );
 		/* Out data to low-byte GPIO pins */
@@ -111,7 +111,7 @@ namespace Zeabus_Elec
 		/* Receive data from communication channel */
 		virtual uint32_t Receive( std::vector<uint8_t>& pucData );
 		/* Set I/O direction of GPIO pins (if available). The parameter is the mask. 0 = Input, 1 = Output */
-		virtual int SetGPIODirection( uint16_t );
+		virtual int SetGPIODirection( uint16_t, uint16_t );
 		/* Out data to high-byte GPIO pins */
 		virtual int SetHiGPIOData( uint8_t );
 		/* Out data to low-byte GPIO pins */
@@ -140,7 +140,7 @@ namespace Zeabus_Elec
 		/* Receive data from communication channel */
 		virtual uint32_t Receive( std::vector<uint8_t>& pucData );
 		/* Set I/O direction of GPIO pins (if available). The parameter is the mask. 0 = Input, 1 = Output */
-		virtual int SetGPIODirection( uint16_t usData);
+		virtual int SetGPIODirection( uint16_t usData, uint16_t ucData );
 		/* Out data to low-byte GPIO pins */
 		virtual int SetLoGPIOData( uint8_t ucData );
 	
@@ -160,7 +160,7 @@ namespace Zeabus_Elec
 		ftdi_spi_cpol1_cha0_msb_impl( enum ChipType xChipID, std::string stDeviceDesc, int iIndex = 0 );
 		
 	protected:
-		virtual uint16_t GetSPIIOMask() { return( 0xFFFB ); };
+		virtual uint16_t GetSPIIOMask() { return( 0x000B ); };
 		virtual uint8_t GetSPIIdleState() { return( 0x0B ); };
 		virtual uint8_t GetSPIWriteBlockCmd() { return( 0x31 ); };
 	};

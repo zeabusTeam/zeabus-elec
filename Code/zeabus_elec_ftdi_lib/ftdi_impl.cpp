@@ -50,9 +50,18 @@ ftdi_impl::ftdi_impl( enum ChipType xChipID, std::string stDeviceDesc, int iInde
 		xCurrentStatus_ = ERR_DISCOVERY_FAILED;
 		return;
 	}
-
+	
+	/* Set the interface instance of the chip */
+	xCurrentStatus_ = ftdi_set_interface( xHwContext_, (ftdi_interface)( iIndex ) );
+	if( xCurrentStatus_ < 0 )
+	{
+		fprintf( stderr, "Unable to select FTDI unit with error = %d\n", xCurrentStatus_ );
+		xCurrentStatus_ = ERR_DISCOVERY_FAILED;
+		return;
+	}
+	
 	/* Then open the specified port */
-	xCurrentStatus_ = ftdi_usb_open_desc_index( xHwContext_, VendorID, xChipID, stDeviceDesc.c_str(), NULL, iIndex );
+	xCurrentStatus_ = ftdi_usb_open_desc( xHwContext_, VendorID, xChipID, stDeviceDesc.c_str(), NULL );
 	if( xCurrentStatus_ < 0 )
 	{
 		fprintf( stderr, "Failed to open FTDI device\n" );		
@@ -234,8 +243,8 @@ inline uint32_t ftdi_mpsse_impl::Receive( std::vector<uint8_t>& )
 	return( 0 );
 }
 
-/* Set I/O direction of GPIO pins (if available). The parameter is the mask. 0 = Input, 1 = Output */
-int ftdi_mpsse_impl::SetGPIODirection( uint16_t usData )
+/* Set I/O direction and initial state of GPIO pins (if available). The parameter is the mask. 0 = Input, 1 = Output */
+int ftdi_mpsse_impl::SetGPIODirection( uint16_t usData, uint16_t ucData )
 {
 	uint8_t aucUSBDataBuffer[3];
 	
@@ -249,17 +258,17 @@ int ftdi_mpsse_impl::SetGPIODirection( uint16_t usData )
 	usIODirection_ = usData;
 
 	aucUSBDataBuffer[0] = SET_BITS_LOW;
-	aucUSBDataBuffer[1] = 0; /* Pin state (Output data) */
-	aucUSBDataBuffer[2] =  static_cast<uint8_t>( usData & 0xFF ); /* Get only low byte */
+	aucUSBDataBuffer[1] = static_cast<uint8_t>( ucData & 0xFF ); /* Initial pin state (Output data) */
+	aucUSBDataBuffer[2] = static_cast<uint8_t>( usData & 0xFF ); /* Get only low byte */
 	
 	/* Write out the command */
 	xCurrentStatus_ = ftdi_write_data( xHwContext_, aucUSBDataBuffer, 3 );
 	
-	/* if xCurrentSttus_ >= 0, it indicates the number of byte successfully written */
+	/* if xCurrentStatus_ >= 0, it indicates the number of byte successfully written */
 	if( xCurrentStatus_ != 3 )
 	{
 		/* Write the command failed */
-		fprintf( stderr, "Setting direction of LSB failed\n" );
+		fprintf( stderr, "Setting direction of LSB failed with error code %d (%s)\n", xCurrentStatus_, ftdi_get_error_string( xHwContext_ ) );
 		xCurrentStatus_ = ERR_GPIO_FAILED;
 		return( xCurrentStatus_ );
 	}
@@ -268,13 +277,13 @@ int ftdi_mpsse_impl::SetGPIODirection( uint16_t usData )
 	if( xHwContext_->type != TYPE_4232H )
 	{
 		aucUSBDataBuffer[0] = SET_BITS_HIGH;
-		aucUSBDataBuffer[1] = 0;	/* Output data */
+		aucUSBDataBuffer[1] = static_cast<uint8_t>( ( ucData >> 8 ) & 0xFF );	/* initial pin state (Output data) */
 		aucUSBDataBuffer[2] = static_cast<uint8_t>( ( usData >> 8 ) & 0xFF ); /* High byte direction */
 			
 		/* Write out the command */
 		xCurrentStatus_ = ftdi_write_data( xHwContext_, aucUSBDataBuffer, 3 );
 	
-		/* if xCurrentSttus_ >= 0, it indicates the number of byte successfully written */
+		/* if xCurrentStatus_ >= 0, it indicates the number of byte successfully written */
 		if( xCurrentStatus_ != 3 )
 		{
 			/* Write the command failed */
@@ -315,7 +324,7 @@ int ftdi_mpsse_impl::SetHiGPIOData( uint8_t ucData )
 		/* Write out the command */
 		xCurrentStatus_ = ftdi_write_data( xHwContext_, aucUSBDataBuffer, 3 );
 	
-		/* if xCurrentSttus_ >= 0, it indicates the number of byte successfully written */
+		/* if xCurrentStatus_ >= 0, it indicates the number of byte successfully written */
 		if( xCurrentStatus_ != 3 )
 		{
 			/* Write the command failed */
@@ -347,12 +356,12 @@ int ftdi_mpsse_impl::SetLoGPIOData( uint8_t ucData )
 
 	aucUSBDataBuffer[0] = SET_BITS_LOW;
 	aucUSBDataBuffer[1] = ucData;	/* Output data */
-	aucUSBDataBuffer[2] = static_cast<uint8_t>( ( usIODirection_ >> 8 ) & 0xFF ); /* High byte direction */
+	aucUSBDataBuffer[2] = static_cast<uint8_t>( usIODirection_ & 0xFF ); /* Low byte direction */
 
 	/* Write out the command */
 	xCurrentStatus_ = ftdi_write_data( xHwContext_, aucUSBDataBuffer, 3 );
 	
-	/* if xCurrentSttus_ >= 0, it indicates the number of byte successfully written */
+	/* if xCurrentStatus_ >= 0, it indicates the number of byte successfully written */
 	if( xCurrentStatus_ != 3 )
 	{
 		/* Write the command failed */
@@ -394,7 +403,7 @@ uint8_t ftdi_mpsse_impl::ReadHiGPIOData()
 		/* Write out the command */
 		xCurrentStatus_ = ftdi_write_data( xHwContext_, aucUSBDataBuffer, 1 );
 	
-		/* if xCurrentSttus_ >= 0, it indicates the number of byte successfully written */
+		/* if xCurrentStatus_ >= 0, it indicates the number of byte successfully written */
 		if( xCurrentStatus_ != 1 )
 		{
 			/* Write the command failed */
@@ -410,7 +419,7 @@ uint8_t ftdi_mpsse_impl::ReadHiGPIOData()
 				xCurrentStatus_ = ftdi_read_data( xHwContext_, aucUSBDataBuffer, 1 );
 			}while( xCurrentStatus_ == 0 );
 			
-			/* if xCurrentSttus_ >= 0, it indicates the number of byte successfully received */
+			/* if xCurrentStatus_ >= 0, it indicates the number of byte successfully received */
 			if( xCurrentStatus_ != 1 )
 			{
 				/* Write the command failed */
@@ -443,7 +452,7 @@ uint8_t ftdi_mpsse_impl::ReadLoGPIOData()
 	/* Write out the command */
 	xCurrentStatus_ = ftdi_write_data( xHwContext_, aucUSBDataBuffer, 1 );
 	
-	/* if xCurrentSttus_ >= 0, it indicates the number of byte successfully written */
+	/* if xCurrentStatus_ >= 0, it indicates the number of byte successfully written */
 	if( xCurrentStatus_ != 1 )
 	{
 		/* Write the command failed */
@@ -458,8 +467,9 @@ uint8_t ftdi_mpsse_impl::ReadLoGPIOData()
 		{
 			xCurrentStatus_ = ftdi_read_data( xHwContext_, aucUSBDataBuffer, 1 );
 		}while( xCurrentStatus_ == 0 );
+
 		
-		/* if xCurrentSttus_ >= 0, it indicates the number of byte successfully received */
+		/* if xCurrentStatus_ >= 0, it indicates the number of byte successfully received */
 		if( xCurrentStatus_ != 1 )
 		{
 			/* Write the command failed */
@@ -547,7 +557,7 @@ uint32_t ftdi_uart_impl::Send( const std::vector<uint8_t>& pucData )
 	do
 	{
 		xCurrentStatus_ = ftdi_write_data( xHwContext_, ( const_cast<uint8_t*>( pucData.data() ) + ulAccWritten ) , ulLen );
-		/* if xCurrentSttus_ >= 0, it indicates the number of byte successfully sent */
+		/* if xCurrentStatus_ >= 0, it indicates the number of byte successfully sent */
 		if( xCurrentStatus_ < 0 )
 		{
 			break;
@@ -577,17 +587,21 @@ uint32_t ftdi_uart_impl::Receive( std::vector<uint8_t>& pucData )
 	pucData.clear();
 	
 	/* Read the data */
+        uint8_t round = 0;      /* limit the waiting time */
 	do
 	{
 		xCurrentStatus_ = ftdi_read_data( xHwContext_, buffer, 128 );
 		
-		/* if xCurrentSttus_ >= 0, it indicates the number of byte successfully received */
+		/* if xCurrentStatus_ >= 0, it indicates the number of byte successfully received */
 		if( xCurrentStatus_ > 0 )
 		{
 			/* Append the read-in data */
 			pucData.insert( pucData.end(), buffer, ( buffer + xCurrentStatus_ ) );
 		}
-	}while( ( xCurrentStatus_ == 0 ) || ( xCurrentStatus_ == 128 ) );
+
+                round++;
+
+	}while( ( ( xCurrentStatus_ == 0 ) || ( xCurrentStatus_ == 128 ) ) && ( round <= 10 ) );
 	
 	if( xCurrentStatus_ >= 0 )
 	{
@@ -604,7 +618,7 @@ uint32_t ftdi_uart_impl::Receive( std::vector<uint8_t>& pucData )
 }
 
 /* Set I/O direction of GPIO pins (if available). The parameter is the mask. 0 = Input, 1 = Output */
-inline int ftdi_uart_impl::SetGPIODirection( uint16_t )
+inline int ftdi_uart_impl::SetGPIODirection( uint16_t, uint16_t )
 {
 	/* UART mode does not have any GPIO */
 	xCurrentStatus_ = ERR_UNSUPPORTED_FUNCTION;
@@ -670,7 +684,7 @@ uint32_t ftdi_spi_impl::Send( const std::vector<uint8_t>& pucData )
 	}
 
 	/* Prepare the buffer */
-	pucBuffer.reserve( pucData.size() + 5 );
+	pucBuffer.reserve( pucData.size() + 9 );
 
 	/* Prepare the commands */
 	
@@ -686,26 +700,31 @@ uint32_t ftdi_spi_impl::Send( const std::vector<uint8_t>& pucData )
 
 	/* Step 1: Set CS to low (active) */
 	pucBuffer.push_back( SET_DATA_LOW_BYTE );
-	pucBuffer.push_back( ucPortValue | ( GetSPIIdleState() & 0x07 ) );
-	
+	pucBuffer.push_back( ( ucPortValue & 0xF0 ) | ( GetSPIIdleState() & 0x07 ) );
+        pucBuffer.push_back( usIODirection_ );
+
 	/* Step 2: Get 16-bit data at rising edge clock without any data out. 
 	The data size 0 means 1 byte and so on. */
-	pucBuffer.push_back( GetSPIWriteBlockCmd() );
+	pucBuffer.push_back( GetSPIWriteBlockCmd());
+        pucBuffer.push_back( ( pucData.size() - 1 ) & 0xFF );
+        pucBuffer.push_back( ( ( pucData.size() - 1 ) >> 8 ) & 0xFF );
 	pucBuffer.insert( pucBuffer.end(), pucData.begin(), pucData.end() );
 	
 	/* Step 3: Set CS back to high (idle) */
 	pucBuffer.push_back( SET_DATA_LOW_BYTE );
-	pucBuffer.push_back( ucPortValue | GetSPIIdleState() );
-	
+	pucBuffer.push_back( ( ucPortValue & 0xF0 ) | ( GetSPIIdleState() & 0x0F ) );
+        pucBuffer.push_back( usIODirection_ );
+
 	/* Write the commands */
 
 	/* Loop writing data when the amount of written data is still less than the required one 
 	and ftdi_write_data still return value >= 0 */
 	ulAccWritten = 0;
+        ulLen = pucBuffer.size();
 	do
 	{
 		xCurrentStatus_ = ftdi_write_data( xHwContext_, ( const_cast<uint8_t*>( pucBuffer.data() ) + ulAccWritten ) , ulLen );
-		/* if xCurrentSttus_ >= 0, it indicates the number of byte successfully sent */
+		/* if xCurrentStatus_ >= 0, it indicates the number of byte successfully sent */
 		if( xCurrentStatus_ < 0 )
 		{
 			break;
@@ -748,7 +767,7 @@ uint32_t ftdi_spi_impl::Receive( std::vector<uint8_t>& pucData )
 	{
 		xCurrentStatus_ = ftdi_read_data( xHwContext_, buffer, 128 );
 		
-		/* if xCurrentSttus_ >= 0, it indicates the number of byte successfully received */
+		/* if xCurrentStatus_ >= 0, it indicates the number of byte successfully received */
 		if( xCurrentStatus_ > 0 )
 		{
 			/* Append the read-in data */
@@ -771,13 +790,17 @@ uint32_t ftdi_spi_impl::Receive( std::vector<uint8_t>& pucData )
 }
 
 /* Override of set I/O direction of GPIO pins (if available). The parameter is the mask. 0 = Input, 1 = Output */
-int ftdi_spi_impl::SetGPIODirection( uint16_t usData )
+int ftdi_spi_impl::SetGPIODirection( uint16_t usData, uint16_t ucData )
 {
 	/* This method should mask out the direction setting to prevent interfering to SPI */
 	usData &= SPIMaskOut_;
 	usData |= GetSPIIOMask();
+
+        /* mask out the initial state setting to prevent interfering to SPI */
+        ucData &= SPIMaskOut_;
+        ucData |= GetSPIIdleState();
 	
-	return( ftdi_mpsse_impl::SetGPIODirection( usData ) );
+	return( ftdi_mpsse_impl::SetGPIODirection( usData, ucData) );
 }
 
 /* Out data to low-byte GPIO pins */
@@ -820,11 +843,13 @@ ftdi_spi_cpol1_cha0_msb_impl::ftdi_spi_cpol1_cha0_msb_impl( enum ChipType xChipI
 	aucUSBDataBuffer[6] = SET_DATA_LOW_BYTE;
 	aucUSBDataBuffer[7] = GetSPIIdleState(); /* Pin state (Output data). CLK, DI, and CS are normally high. */
 	aucUSBDataBuffer[8] = GetSPIIdleState(); /* All pins are output except the DI pin (bit value 1 means the corresponding pin is output) */
-		
+
+        usIODirection_ = GetSPIIdleState();
+
 	/* Write out the commands (2 commands at once) */
 	xCurrentStatus_ = ftdi_write_data( xHwContext_, aucUSBDataBuffer, 9 );
 		
-	/* if xCurrentSttus_ also indicates the number of byte successfully sent and it should equal to 9 */
+	/* if xCurrentStatus_ also indicates the number of byte successfully sent and it should equal to 9 */
 	if( xCurrentStatus_ != 9 )
 	{
 		xCurrentStatus_ = ERR_INIT_FAILED;

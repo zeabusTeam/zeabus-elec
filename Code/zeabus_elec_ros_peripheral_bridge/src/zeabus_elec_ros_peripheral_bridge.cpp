@@ -22,9 +22,9 @@ static ros::Publisher errMsgPublisher;	/* Publisher for error message */
 static ros::Publisher barometerPublisher;	/* Publisher for barometer message */
 static ros::Publisher comm1RecvPublisher;	/* Publisher for comm1 received-data message */
 static ros::Publisher comm2RecvPublisher;	/* Publisher for comm2 received-data message */
-static ros::Subscriber solenoidSubscriber; /* Subscriber for solenoid-controlling message */
 static ros::Subscriber comm1SendSubscriber; /* Subscriber for comm1 sent-data message */
 static ros::Subscriber comm2SendSubscriber; /* Subscriber for comm2 sent-data message */
+static ros::ServiceServer setSolenoidServiceServer; /* ServiceServer for solenoid-controlling */
 
 /* ===================================================
  * ROS service subroutines
@@ -33,15 +33,32 @@ static ros::Subscriber comm2SendSubscriber; /* Subscriber for comm2 sent-data me
 
 /* Set the solenoid switches. We have maximum 8 switches. The low-nibble 4 switches 
 is controlled by MSSP_A and the other 4 switches is controlled by MSSP_B */
-void ZeabusElec_SetSolenoid( const zeabus_elec_ros_peripheral_bridge::solenoid_sw::ConstPtr& msg )
+bool ZeabusElec_SetSolenoid( zeabus_elec_ros_peripheral_bridge::solenoid_sw::Request &req,
+                            zeabus_elec_ros_peripheral_bridge::solenoid_sw::Response &res )
 {
-	uint8_t swNibble;
-	
+	uint8_t swNibble, switchState, currentSwitchState, switchMask;
 	int ftStat;
-	
+
+        res.result = true;
+
+        switchMask = 0x01 << ( req.switchIndex );
+
+        currentSwitchState = pxMsspA->ReadLoGPIOData() >> 4;
+        currentSwitchState |= pxMsspB->ReadLoGPIOData() & 0xF0;
+
+        if( req.isSwitchHigh )
+        {
+            switchState = ( currentSwitchState | switchMask );
+        }
+        else
+        {
+            switchState = ( currentSwitchState & ~( switchMask ) );
+        }
+
 	/* Low nibble */
-	swNibble = ( msg->switchState ) & 0x0F;
+        swNibble = ( switchState << 4 );
 	ftStat = pxMsspA->SetLoGPIOData( swNibble );
+
 	if( ftStat != 0 )
 	{
 		/* Some Error occurred. So, we publish the error message */
@@ -51,11 +68,13 @@ void ZeabusElec_SetSolenoid( const zeabus_elec_ros_peripheral_bridge::solenoid_s
 		msg.data = ss.str();
 		
 		errMsgPublisher.publish( msg );
+
+                res.result = false;
 	}
 
 	/* High nibble */
-	swNibble = ( msg->switchState ) >> 4;
-	ftStat = pxMsspA->SetLoGPIOData( swNibble );
+	swNibble = ( switchState & 0xF0 );
+	ftStat = pxMsspB->SetLoGPIOData( swNibble );
 	if( ftStat != 0 )
 	{
 		/* Some Error occurred. So, we publish the error message */
@@ -65,7 +84,10 @@ void ZeabusElec_SetSolenoid( const zeabus_elec_ros_peripheral_bridge::solenoid_s
 		msg.data = ss.str();
 		
 		errMsgPublisher.publish( msg );
+
+                res.result = false;
 	}
+        return res.result;
 }
 
 /* Send a stream of uint8 to RS232 port 1 */
@@ -75,12 +97,12 @@ void ZeabusElec_SendComm1( const zeabus_elec_ros_peripheral_bridge::comm_data::C
 	uint32_t ulDataDone;
 	
 	pucBuffer.reserve( msg->len );
-	for(int i = 0; i < msg->len; i++ )
+	for(uint32_t i = 0; i < msg->len; i++ )
 	{
 		pucBuffer.push_back( ( msg->data )[ i ] );
 	}
 	ulDataDone = pxUartA->Send( pucBuffer );
-	
+
 	if( ( pxUartA->GetCurrentStatus() != 0 ) || ( ulDataDone != msg->len ) )
 	{
 		/* Some Error occurred. So, we publish the error message */
@@ -100,7 +122,7 @@ void ZeabusElec_SendComm2( const zeabus_elec_ros_peripheral_bridge::comm_data::C
 	uint32_t ulDataDone;
 	
 	pucBuffer.reserve( msg->len );
-	for(int i = 0; i < msg->len; i++ )
+	for(uint32_t i = 0; i < msg->len; i++ )
 	{
 		pucBuffer.push_back( ( msg->data )[ i ] );
 	}
@@ -126,7 +148,7 @@ bool ZeabusElec_GetPressure( uint16_t& barometerVal)
 	
 	/* To read barometer value, we need to send a 16-bit dummy data first */
 	xFTStatus = pxMsspA->Send( aucVal );
-	if( xFTStatus != 0 )
+	if( xFTStatus < 0 )
 	{
 		barometerVal = 0;
 		return( false );
@@ -136,7 +158,7 @@ bool ZeabusElec_GetPressure( uint16_t& barometerVal)
 		   0 0 0 D D D D D  D D D D D x x x
 		where the first byte is the MSB. */
 	xFTStatus = pxMsspA->Receive( aucVal );
-	if( xFTStatus != 0 )
+	if( xFTStatus < 0 )
 	{
 		barometerVal = 0;
 		return( false );
@@ -147,6 +169,12 @@ bool ZeabusElec_GetPressure( uint16_t& barometerVal)
 	barometerVal <<= 8;
 	barometerVal |= (uint16_t)( aucVal[ 1 ] ); /* Low byte */
 	barometerVal >>= 3;	/* Suppress 3 tailing zero bits */
+        barometerVal >>= 1;     /* Shift right by 1 clock according to invalid first clock from command 0x31 */
+
+        zeabus_elec_ros_peripheral_bridge::barometer barometerMsg;
+        barometerMsg.pressureValue = barometerVal;
+
+        barometerPublisher.publish( barometerMsg );
 
 	return( true );	/* All success */	
 }
@@ -159,7 +187,7 @@ void ZeabusElec_ReceiveComm( std::shared_ptr<Zeabus_Elec::ftdi_impl> commPort, u
 
 	/* Reading from the COMM port */
 	ulDataDone = commPort->Receive( pucBuffer );
-	if( commPort->GetCurrentStatus() != 0 )
+	if( commPort->GetCurrentStatus() <= 0 )
 	{
 		/* Reading finished with error */
 		std_msgs::String msg;
@@ -173,9 +201,10 @@ void ZeabusElec_ReceiveComm( std::shared_ptr<Zeabus_Elec::ftdi_impl> commPort, u
 	{
 		/* Send the data to the topic channel */
 		zeabus_elec_ros_peripheral_bridge::comm_data commMsg;
-		for( int i = 0; i < pucBuffer.size(); i++ )
+
+		for( uint32_t i = 0; i < pucBuffer.size(); i++ )
 		{
-			commMsg.data[i] = pucBuffer[i];
+			commMsg.data.push_back(pucBuffer[i]);
 		}
 		commMsg.len = ulDataDone;
 		commPublisher.publish( commMsg );
@@ -188,16 +217,26 @@ void ZeabusElec_ReceiveComm( std::shared_ptr<Zeabus_Elec::ftdi_impl> commPort, u
  */
 int main( int argc, char** argv )
 {
-	uint16_t usBarometerVal;
-	int comm1BaudRate, comm2BaudRate;
+	uint16_t usBarometerVal, initIODirectionA, initIOStateA, initIODirectionB, initIOStateB;
+	int comm1BaudRate, comm2BaudRate, paramInitIODirectionA, paramInitIOStateA, paramInitIODirectionB, paramInitIOStateB;
 
 	/* Initialize ROS functionalities */	
 	ros::init(argc, argv, "Zeabus_Elec_Peripheral_bridge");
  	ros::NodeHandle nh("/zeabus/elec");
  	
  	/* Retrieve parameter from launch file */
-	nh.param < int > ("comm1baudrate", comm1BaudRate, 115200);
-	nh.param < int > ("comm2baudrate", comm1BaudRate, 115200);
+	nh.param < int > ("/Zeabus_Elec_Peripheral_bridge/comm1baudrate", comm1BaudRate, 115200);
+	nh.param < int > ("/Zeabus_Elec_Peripheral_bridge/comm2baudrate", comm2BaudRate, 115200);
+        nh.param < int > ("/Zeabus_Elec_Peripheral_bridge/IODirectionA", paramInitIODirectionA, 0xFFFF);
+        nh.param < int > ("/Zeabus_Elec_Peripheral_bridge/IOStateA", paramInitIOStateA, 0x0000);
+        nh.param < int > ("/Zeabus_Elec_Peripheral_bridge/IODirectionB", paramInitIODirectionB, 0xFFFF);
+        nh.param < int > ("/Zeabus_Elec_Peripheral_bridge/IOStateB", paramInitIOStateB, 0x0000);
+
+        /* cast int to uint16_t because NodeHandle::param doesn't support uint16_t */
+        initIODirectionA = static_cast<uint16_t>(paramInitIODirectionA);
+        initIOStateA = static_cast<uint16_t>(paramInitIOStateA);
+        initIODirectionB = static_cast<uint16_t>(paramInitIODirectionB);
+        initIOStateB = static_cast<uint16_t>(paramInitIOStateB);
 	
 	/*=================================================================================
 	  Discover the Power Distributor and also open handles for it.
@@ -207,40 +246,40 @@ int main( int argc, char** argv )
 	/* The module utilizes FT4232H consisting of 4 module instances inside */
 
 	/* Create the device manager classes to implement chip functions */
-	pxMsspA = std::make_shared<Zeabus_Elec::ftdi_spi_cpol1_cha0_msb_impl>( Zeabus_Elec::FT4232H, stPeripheralSerial, 0 );
+	pxMsspA = std::make_shared<Zeabus_Elec::ftdi_spi_cpol1_cha0_msb_impl>( Zeabus_Elec::FT4232H, stPeripheralSerial, 1 );
 	if( pxMsspA->GetCurrentStatus() != 0 )
 	{
-		/* Fail - unable to initialize Power Distribution module */
-		ROS_FATAL( "Unable to initialize Power Distribution module A" );
+		/* Fail - unable to initialize pressure sensor and LOW solenoid switch interface*/
+		ROS_FATAL( "Unable to initialize Pressure sensor and LOW Solenoid switch interface" );
 		return( -5 );
 		
 	}
-	pxMsspA->SetGPIODirection( 0xFFFF );	/* All bits are output */
+	pxMsspA->SetGPIODirection( initIODirectionA, initIOStateA );	/* All bits are output, initial pin state is low*/
 
-	pxMsspB = std::make_shared<Zeabus_Elec::ftdi_spi_cpol1_cha0_msb_impl>( Zeabus_Elec::FT4232H, stPeripheralSerial, 1 );
+	pxMsspB = std::make_shared<Zeabus_Elec::ftdi_spi_cpol1_cha0_msb_impl>( Zeabus_Elec::FT4232H, stPeripheralSerial, 2 );
 	if( pxMsspB->GetCurrentStatus() != 0 )
 	{
-		/* Fail - unable to initialize Power Distribution module */
-		ROS_FATAL( "Unable to initialize Power Distribution module B" );
+		/* Fail - unable to initialize HI solenoid switch interface*/
+		ROS_FATAL( "Unable to initialize HI Solenoid switch interface" );
 		return( -6 );
 		
 	}
-	pxMsspB->SetGPIODirection( 0xFFFF );	/* All bits are output */
+	pxMsspB->SetGPIODirection( initIODirectionB, initIOStateB );	/* All bits are output, initial pin state is low*/
 	
-	pxUartA = std::make_shared<Zeabus_Elec::ftdi_uart_impl>( Zeabus_Elec::FT4232H, stPeripheralSerial, 2, (uint32_t)comm1BaudRate );
+	pxUartA = std::make_shared<Zeabus_Elec::ftdi_uart_impl>( Zeabus_Elec::FT4232H, stPeripheralSerial, 3, (uint32_t)comm1BaudRate );
 	if( pxUartA->GetCurrentStatus() != 0 )
 	{
-		/* Fail - unable to initialize Power Distribution module */
-		ROS_FATAL( "Unable to initialize Power Distribution module C" );
+		/* Fail - unable to initialize COM1 interface*/
+		ROS_FATAL( "Unable to initialize COM1 interface" );
 		return( -7 );
 		
 	}
 
-	pxUartB = std::make_shared<Zeabus_Elec::ftdi_uart_impl>( Zeabus_Elec::FT4232H, stPeripheralSerial, 3, (uint32_t)comm2BaudRate );
+	pxUartB = std::make_shared<Zeabus_Elec::ftdi_uart_impl>( Zeabus_Elec::FT4232H, stPeripheralSerial, 4, (uint32_t)comm2BaudRate );
 	if( pxUartB->GetCurrentStatus() != 0 )
 	{
-		/* Fail - unable to initialize Power Distribution module */
-		ROS_FATAL( "Unable to initialize Power Distribution module D" );
+		/* Fail - unable to initialize COM2 interface*/
+		ROS_FATAL( "Unable to initialize COM2 interface" );
 		return( -8 );
 		
 	}
@@ -249,19 +288,22 @@ int main( int argc, char** argv )
 	  Now the FTDI chip is opened and hooked. We can continue ROS registration process 
 	  =================================================================================*/
 	
-	/* Register ROS publishers for power-distributor switch controller */
+	/* Register ROS publishers for hardware error message, baromenter message and RS232 received-data message */
 	errMsgPublisher = nh.advertise<std_msgs::String>( "hw_error", 1000 );	/* Publisher for error message */
 	barometerPublisher = nh.advertise<zeabus_elec_ros_peripheral_bridge::barometer>( "barometer", 100 );	/* Publisher for barometer message */
 	comm1RecvPublisher = nh.advertise<zeabus_elec_ros_peripheral_bridge::comm_data>( "comm1/recv", 100 );	/* Publisher for comm1 received-data message */
 	comm2RecvPublisher = nh.advertise<zeabus_elec_ros_peripheral_bridge::comm_data>( "comm2/recv", 100 );	/* Publisher for comm2 received-data message */
 
-	/* Register ROS subscribers for power-distributor switch controller */
-	solenoidSubscriber = nh.subscribe( "solenoid_sw", 100, ZeabusElec_SetSolenoid ); /* Subscriber for solenoid-controlling message */
+	/* Register ROS subscribers for RS232 send-data message */
 	comm1SendSubscriber = nh.subscribe( "comm1/send", 100, ZeabusElec_SendComm1 ); /* Subscriber for comm1 sent-data message */
 	comm2SendSubscriber = nh.subscribe( "comm2/send", 100, ZeabusElec_SendComm2 ); /* Subscriber for comm2 sent-data message */
 
+        /* Register ROS service server for solenoid switch controller */
+	setSolenoidServiceServer = nh.advertiseService( "solenoid_sw", ZeabusElec_SetSolenoid ); /* Service server for solenoid-controlling */
+
 	/* Main-loop. Just a spin-lock and wakeup at every 10ms (100Hz) */
 	ros::Rate rate(100);
+
 	while( ros::ok() )
 	{
 		/* Wait for the next cycle */
@@ -279,7 +321,7 @@ int main( int argc, char** argv )
 		
 			errMsgPublisher.publish( msg );
 		}
-		
+
 		/* Read from COMM1 */
 		ZeabusElec_ReceiveComm( pxUartA, 1, comm1RecvPublisher );
 			

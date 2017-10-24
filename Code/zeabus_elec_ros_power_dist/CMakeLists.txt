@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(zeabus_elec_ros_power_dist)
 
 ## Add support for C++11, supported in ROS Kinetic and newer
-add_definitions(-std=c++11)
+add_definitions(-std=c++11 -Wall -Wextra)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -46,16 +46,16 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-add_message_files(
-  FILES
-  power_dist.msg
-)
+#add_message_files(
+#  FILES
+#  power_dist.msg
+#)
 
-## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   power_dist.srv
-# )
+# Generate services in the 'srv' folder
+add_service_files(
+  FILES
+  power_dist.srv
+)
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -152,7 +152,7 @@ add_dependencies( ${PROJECT_NAME}
 ## Specify libraries to link a library or executable target against
 target_link_libraries( ${PROJECT_NAME}
   ${catkin_LIBRARIES}
-  ${CMAKE_SOURCE_DIR}/../src/zeabus_elec_ftdi_lib/libftdi.a
+  ${PROJECT_SOURCE_DIR}/../zeabus_elec_ftdi_lib/libftdi.a
   pthread
   udev
 )
