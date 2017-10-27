@@ -311,4 +311,8 @@ $CMP TLV33
 D Fixed-output LDO
 $ENDCMP
 #
+$CMP TLV733
+D Fixed-output LDO
+$ENDCMP
+#
 #End Doc Library
