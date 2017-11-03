@@ -35,10 +35,10 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
-Title ""
-Date ""
-Rev ""
-Comp ""
+Title "BLDC ESC"
+Date "03-Nov-2017"
+Rev "2.0.0"
+Comp "Zeabus"
 Comment1 ""
 Comment2 ""
 Comment3 ""
