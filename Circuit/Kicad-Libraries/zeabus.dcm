@@ -49,6 +49,10 @@ D 45V Vce, 0.1A Ic, NPN, SOT-23
 K BC847B
 $ENDCMP
 #
+$CMP Conn-Edge-PCIE-x1
+D PCIE x1 Edge Connector
+$ENDCMP
+#
 $CMP GND_CBA
 K POWER, PWR
 $ENDCMP
