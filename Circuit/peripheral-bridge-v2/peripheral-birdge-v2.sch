@@ -1420,7 +1420,7 @@ Wire Wire Line
 Wire Wire Line
 	9800 2050 9900 2050
 Wire Wire Line
-	9800 2150 10400 2150
+	9800 2150 10600 2150
 Wire Wire Line
 	10400 2150 10400 1350
 Wire Wire Line
@@ -2013,4 +2013,204 @@ Wire Wire Line
 	1900 3200 2000 3200
 Wire Wire Line
 	1700 3200 1450 3200
+Text GLabel 2600 6750 2    60   Input ~ 0
+Sol1
+Text GLabel 2600 6850 2    60   Input ~ 0
+Sol2
+Text GLabel 2600 6950 2    60   Input ~ 0
+Sol3
+Text GLabel 2600 7050 2    60   Input ~ 0
+Sol4
+Text GLabel 2600 7150 2    60   Input ~ 0
+Sol5
+Text GLabel 2600 7250 2    60   Input ~ 0
+Sol6
+Text GLabel 2600 7350 2    60   Input ~ 0
+Sol7
+Text GLabel 2600 6050 2    60   Input ~ 0
+Rx
+Text GLabel 2600 6150 2    60   Input ~ 0
+Tx
+Text GLabel 1100 6950 0    60   Input ~ 0
+D+
+Text GLabel 1100 7050 0    60   Input ~ 0
+D-
+Text GLabel 1100 6050 0    60   Input ~ 0
+Analog_In
+Text GLabel 10600 2550 2    60   Input ~ 0
+Analog_In
+Text GLabel 10600 2150 2    60   Input ~ 0
+232_GND
+Text GLabel 10600 2050 2    60   Input ~ 0
+Tx
+Text GLabel 10600 1950 2    60   Input ~ 0
+Rx
+$Comp
+L +12V #PWR?
+U 1 1 5A23ABAC
+P 2650 5500
+F 0 "#PWR?" H 2650 5350 50  0001 C CNN
+F 1 "+12V" H 2650 5640 50  0000 C CNN
+F 2 "" H 2650 5500 50  0001 C CNN
+F 3 "" H 2650 5500 50  0001 C CNN
+	1    2650 5500
+	1    0    0    -1  
+$EndComp
+Text GLabel 2600 6350 2    60   Input ~ 0
++5Vin
+Wire Wire Line
+	10600 2550 10450 2550
+Wire Wire Line
+	10450 2550 10450 2850
+Connection ~ 10450 2850
+Connection ~ 10400 2150
+Wire Wire Line
+	10600 1950 10550 1950
+Wire Wire Line
+	10550 1950 10550 1650
+Connection ~ 10550 1650
+Wire Wire Line
+	10500 1550 10500 2050
+Wire Wire Line
+	10500 2050 10600 2050
+Connection ~ 10500 1550
+Wire Wire Line
+	2400 5850 2600 5850
+Wire Wire Line
+	2600 6050 2400 6050
+Text GLabel 2600 5850 2    60   Input ~ 0
+232_GND
+Wire Wire Line
+	2400 6150 2600 6150
+Wire Wire Line
+	2600 6350 2400 6350
+Wire Wire Line
+	2400 6450 2450 6450
+Wire Wire Line
+	2450 6450 2450 6350
+Connection ~ 2450 6350
+Wire Wire Line
+	2400 5750 2450 5750
+Wire Wire Line
+	2450 5750 2450 5550
+Wire Wire Line
+	2400 5550 2650 5550
+Wire Wire Line
+	2650 5550 2650 5500
+Connection ~ 2450 5550
+Wire Wire Line
+	2400 5650 2450 5650
+Connection ~ 2450 5650
+$Comp
+L +12V #PWR?
+U 1 1 5A24059C
+P 1100 5500
+F 0 "#PWR?" H 1100 5350 50  0001 C CNN
+F 1 "+12V" H 1100 5640 50  0000 C CNN
+F 2 "" H 1100 5500 50  0001 C CNN
+F 3 "" H 1100 5500 50  0001 C CNN
+	1    1100 5500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1250 5750 1200 5750
+Wire Wire Line
+	1200 5750 1200 5550
+Wire Wire Line
+	1100 5550 1250 5550
+Wire Wire Line
+	1100 5550 1100 5500
+Connection ~ 1200 5550
+Wire Wire Line
+	1250 5650 1200 5650
+Connection ~ 1200 5650
+Wire Wire Line
+	1250 6050 1100 6050
+Wire Wire Line
+	1250 6950 1100 6950
+Wire Wire Line
+	1250 7050 1100 7050
+Wire Wire Line
+	2400 6750 2600 6750
+Wire Wire Line
+	2600 6850 2400 6850
+Wire Wire Line
+	2400 6950 2600 6950
+Wire Wire Line
+	2600 7050 2400 7050
+Wire Wire Line
+	2400 7150 2600 7150
+Wire Wire Line
+	2600 7250 2400 7250
+Wire Wire Line
+	2400 7350 2600 7350
+Wire Wire Line
+	1250 5850 1200 5850
+Wire Wire Line
+	1200 5850 1200 7450
+Wire Wire Line
+	1200 7350 1250 7350
+Wire Wire Line
+	1250 7150 1200 7150
+Connection ~ 1200 7150
+Wire Wire Line
+	1250 6850 1200 6850
+Connection ~ 1200 6850
+Wire Wire Line
+	1250 6150 1200 6150
+Connection ~ 1200 6150
+Text GLabel 1100 6250 0    60   Input ~ 0
++5Vin
+Wire Wire Line
+	1250 6250 1100 6250
+$Comp
+L GND #PWR?
+U 1 1 5A24336B
+P 1200 7450
+F 0 "#PWR?" H 1200 7200 50  0001 C CNN
+F 1 "GND" H 1200 7300 50  0000 C CNN
+F 2 "" H 1200 7450 50  0001 C CNN
+F 3 "" H 1200 7450 50  0001 C CNN
+	1    1200 7450
+	1    0    0    -1  
+$EndComp
+Connection ~ 1200 7350
+NoConn ~ 1250 7250
+NoConn ~ 1250 6750
+NoConn ~ 2400 5950
+NoConn ~ 2400 6250
+NoConn ~ 1250 6350
+NoConn ~ 1250 5950
+NoConn ~ 1250 6450
+NoConn ~ 1250 6550
+$Comp
+L GND #PWR?
+U 1 1 5A2581B8
+P 1200 4300
+F 0 "#PWR?" H 1200 4050 50  0001 C CNN
+F 1 "GND" H 1200 4150 50  0000 C CNN
+F 2 "" H 1200 4300 50  0001 C CNN
+F 3 "" H 1200 4300 50  0001 C CNN
+	1    1200 4300
+	1    0    0    -1  
+$EndComp
+$Comp
+L GNDPWR #PWR?
+U 1 1 5A258493
+P 1550 4300
+F 0 "#PWR?" H 1550 4100 50  0001 C CNN
+F 1 "GNDPWR" H 1550 4170 50  0000 C CNN
+F 2 "" H 1550 4250 50  0001 C CNN
+F 3 "" H 1550 4250 50  0001 C CNN
+	1    1550 4300
+	1    0    0    -1  
+$EndComp
+Text Notes 1050 4650 0    60   ~ 0
+Ground Connection
+Wire Wire Line
+	1200 4300 1250 4250
+Wire Wire Line
+	1250 4250 1500 4250
+Wire Wire Line
+	1500 4250 1550 4300
 $EndSCHEMATC
