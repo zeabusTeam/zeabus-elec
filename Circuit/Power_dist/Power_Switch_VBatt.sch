@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:Power_Distributor-rescue
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -30,11 +31,12 @@ LIBS:contrib
 LIBS:valves
 LIBS:zeabus
 LIBS:ftdi
+LIBS:Power_Distributor-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 3 9
+Sheet 4 9
 Title "DVL and Sonar Switch"
 Date "2017-04-06"
 Rev "1.0.0"
@@ -52,7 +54,7 @@ AR Path="/58E51F99/58E52089" Ref="Q2"  Part="1"
 AR Path="/58E527AF/58E52089" Ref="Q3"  Part="1" 
 F 0 "Q3" H 6550 3350 50  0000 L CNN
 F 1 "IPD90P03P4L" H 6550 3250 50  0000 L CNN
-F 2 "TO_SOT_Packages_SMD:TO-252-2Lead" H 6550 3400 50  0001 C CNN
+F 2 "TO_SOT_Packages_SMD:TO-252-2" H 6550 3400 50  0001 C CNN
 F 3 "" H 6350 3300 50  0001 C CNN
 	1    6350 3300
 	1    0    0    1   
@@ -123,12 +125,12 @@ F 3 "" H 6450 4150 50  0001 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L GND #PWR012
+L GND #PWR021
 U 1 1 58E527F8
 P 6450 4950
-AR Path="/58E51F99/58E527F8" Ref="#PWR012"  Part="1" 
-AR Path="/58E527AF/58E527F8" Ref="#PWR013"  Part="1" 
-F 0 "#PWR013" H 6450 4700 50  0001 C CNN
+AR Path="/58E51F99/58E527F8" Ref="#PWR021"  Part="1" 
+AR Path="/58E527AF/58E527F8" Ref="#PWR022"  Part="1" 
+F 0 "#PWR022" H 6450 4700 50  0001 C CNN
 F 1 "GND" H 6450 4800 50  0000 C CNN
 F 2 "" H 6450 4950 50  0001 C CNN
 F 3 "" H 6450 4950 50  0001 C CNN
@@ -180,7 +182,7 @@ AR Path="/58E51F99/58E651FD" Ref="F2"  Part="1"
 AR Path="/58E527AF/58E651FD" Ref="F3"  Part="1" 
 F 0 "F3" V 6530 3750 50  0000 C CNN
 F 1 "Fuse" V 6375 3750 50  0000 C CNN
-F 2 "Zeabus:FUSE_AUTO" V 6380 3750 50  0001 C CNN
+F 2 "zeabus:FUSE_AUTO" V 6380 3750 50  0001 C CNN
 F 3 "" H 6450 3750 50  0001 C CNN
 	1    6450 3750
 	1    0    0    -1  
