@@ -1,0 +1,56 @@
+Title,Peripheral Bridge,,
+Revision,2.0.0,,
+Date,5-¸.¤.-17,,
+Generated,18/12/2560 11:40,,
+Company,Zeabus,,
+Comment 1,,,
+Comment 2,,,
+Comment 3,,,
+Comment 4,,,
+Total Parts,74,,
+Total Unique Parts,29,,
+,,,
+,,,
+,,,
+Ref,Qty,Value,Footprint
+"C1 C2 C3 C4 C5 C6
+ C7 C8 C9 C12
+ C13 C14 C15 C16 C17 
+C19 C20 C22 C23 C24 ",20,100nF,Capacitors_SMD:C_0603
+C10 C11 C18 ,3,4.7uF,Capacitors_SMD:C_0805
+C21 ,1,3.3uF,Capacitors_SMD:C_0805
+C25 C26 ,2,27pF,Capacitors_SMD:C_0603
+CON1 ,1,Conn-Edge-PCIE-x1,Zeabus:pcie-x1-edge
+D1 ,1,RX_LED,LEDs:LED_0603
+D2 ,1,TX_LED,LEDs:LED_0603
+D3 D4 D5 D6 D7 D8 D9 ,7,FDLL4148,Zeabus:SOD-80
+F1 ,1,PGB102ST23,TO_SOT_Packages_SMD:SOT-23
+J1 ,1,To DVL,Zeabus:90136-2013
+J2 ,1,Pressure Sensor,Zeabus:90136-2013
+J3 ,1,Solenoid,Zeabus:Pin_Header_Straight_2x04
+J4 ,1,USB_OTG,Connectors:USB_Mini-B
+L1 L2 L3 L4 ,4,600R 0.5A,Capacitors_SMD:C_0805
+P1 ,1,Solenoid Power,Zeabus:XT60
+Q1 ,1,BSS138,TO_SOT_Packages_SMD:SOT-23
+R1 R2 R8 R9 R10 R11 ,6,10k,Resistors_SMD:R_0603
+R3 R5 ,2,10,Resistors_SMD:R_0603
+R4 R6 ,2,330,Resistors_SMD:R_0603
+R7 ,1,12k,Resistors_SMD:R_0603
+"R12 R13 R14 R15
+ R17 R18 R19 ",7,150,Resistors_SMD:R_0603
+R16 ,1,2.2k,Resistors_SMD:R_0603
+U1 ,1,FT2232H,"Housings_QFP:LQFP-64
+_10x10mm_Pitch0.5mm"
+U2 ,1,93LC56BT-I/OT,TO_SOT_Packages_SMD:SOT-23-6
+U3 ,1,ADM3251E,"Housings_SOIC:SOIC-20W
+_7.5x12.8mm_Pitch1.27mm"
+U4 ,1,ADC101S021,TO_SOT_Packages_SMD:SOT-23-6
+U5 U6 ,2,ACPL-247-500E,Zeabus:SO16_4.4x10.3mm_Pitch1.27mm
+U7 ,1,LM1117-33,TO_SOT_Packages_SMD:SOT-223
+Y1 ,1,12MHz,Crystals:Crystal_FOX-FE_SMD
+,,,
+,,,
+,,,
+,,,
+BOM made with KICAD_BOM_WIZARD (https://github.com/HashDefineElectronics/KiCad_BOM_Wizard.git),,,
+Generated 18/12/2560 11:40:56,,,
