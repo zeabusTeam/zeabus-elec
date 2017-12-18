@@ -95,7 +95,7 @@ U 1 1 58E6ABEA
 P 8050 1500
 F 0 "J1" H 8050 1650 50  0000 C CNN
 F 1 "Thruster_Off_Switch" V 8150 1500 50  0000 C CNN
-F 2 "Socket_Strips:Socket_Strip_Straight_1x02_Pitch2.54mm" H 8050 1500 50  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm" H 8050 1500 50  0001 C CNN
 F 3 "" H 8050 1500 50  0001 C CNN
 	1    8050 1500
 	-1   0    0    1   
