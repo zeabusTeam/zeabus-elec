@@ -36,7 +36,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 4 9
+Sheet 4 8
 Title "DVL and Sonar Switch"
 Date "2017-04-06"
 Rev "1.0.0"
@@ -71,19 +71,6 @@ F 2 "Resistors_SMD:R_0603" V 5780 3300 50  0001 C CNN
 F 3 "" H 5850 3300 50  0001 C CNN
 	1    5850 3300
 	0    1    1    0   
-$EndComp
-$Comp
-L XT60 P5
-U 1 1 58E521F9
-P 7050 4250
-AR Path="/58E51F99/58E521F9" Ref="P5"  Part="1" 
-AR Path="/58E527AF/58E521F9" Ref="P6"  Part="1" 
-F 0 "P6" H 7050 4400 50  0000 C CNN
-F 1 "XT60" H 7050 4100 50  0000 C CNN
-F 2 "zeabus:XT60" H 7150 4000 60  0001 C CNN
-F 3 "" H 7050 4250 60  0000 C CNN
-	1    7050 4250
-	1    0    0    -1  
 $EndComp
 $Comp
 L LED_Small D4
@@ -207,4 +194,17 @@ Wire Wire Line
 	5550 2700 5550 3300
 Wire Wire Line
 	6850 4850 6450 4850
+$Comp
+L XT30 P?
+U 1 1 5A39572B
+P 7050 4250
+AR Path="/58E51F99/5A39572B" Ref="P?"  Part="1" 
+AR Path="/58E527AF/5A39572B" Ref="P?"  Part="1" 
+F 0 "P?" H 7050 4400 50  0000 C CNN
+F 1 "XT30" H 7050 4100 50  0000 C CNN
+F 2 "" H 7050 4250 60  0000 C CNN
+F 3 "" H 7050 4250 60  0000 C CNN
+	1    7050 4250
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
