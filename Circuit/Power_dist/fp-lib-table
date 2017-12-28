@@ -1,3 +1,4 @@
 (fp_lib_table
-  (lib (name zeabus)(type KiCad)(uri ../Kicad-Libraries/zeabus.pretty)(options "")(descr ""))
+  (lib (name Zeabus)(type KiCad)(uri C:/Users/SasichaS/Desktop/Jabb/Zeabus/zeabus-elec/Circuit/Kicad-Libraries/zeabus.pretty)(options "")(descr ""))
+  (lib (name zeabus)(type KiCad)(uri C:/Users/SasichaS/Desktop/Jabb/Zeabus/zeabus-elec/Circuit/Kicad-Libraries/zeabus.pretty)(options "")(descr ""))
 )
