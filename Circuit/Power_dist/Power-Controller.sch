@@ -1303,4 +1303,18 @@ NoConn ~ 6800 4450
 NoConn ~ 6800 4550
 NoConn ~ 6800 4650
 NoConn ~ 6800 4750
+Wire Wire Line
+	3350 3350 3350 3550
+Wire Wire Line
+	3350 3550 3150 3550
+Connection ~ 3350 3350
+Wire Wire Line
+	3650 3250 3650 3450
+Wire Wire Line
+	3650 3450 3150 3450
+Connection ~ 3650 3250
+Text GLabel 3150 3450 0    60   Input ~ 0
+D-
+Text GLabel 3150 3550 0    60   Input ~ 0
+D+
 $EndSCHEMATC

@@ -565,4 +565,8 @@ Wire Wire Line
 	800  2450 800  2550
 Wire Wire Line
 	800  2850 800  2950
+Text GLabel 1450 2650 0    60   Input ~ 0
+D+
+Text GLabel 1450 2750 0    60   Input ~ 0
+D-
 $EndSCHEMATC
