@@ -1,4 +1,4 @@
-update=พ. 10 ม.ค. 2561, 02:43:33
+update=พ. 10 ม.ค. 2561, 17:44:19
 version=1
 last_client=kicad
 [pcbnew]
@@ -23,6 +23,8 @@ ModuleOutlineThickness=0.150000000000
 [cvpcb]
 version=1
 NetIExt=net
+[general]
+version=1
 [eeschema]
 version=1
 LibDir=
@@ -61,5 +63,3 @@ LibName31=atmel
 LibName32=contrib
 LibName33=valves
 LibName34=/home/hamuroos/Zeabus/zeabus-elec/Circuit/Kicad-Libraries/zeabus
-[general]
-version=1
