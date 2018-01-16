@@ -1,4 +1,4 @@
-update=1/10/2018 8:35:17 AM
+update=16-Jan-18 6:31:57 PM
 version=1
 last_client=kicad
 [pcbnew]
@@ -62,3 +62,4 @@ LibName30=atmel
 LibName31=contrib
 LibName32=C:/Zeabuselec/zeabus-elec/Circuit/Kicad-Libraries/zeabus
 LibName33=valves
+LibName34=conn_jumper
