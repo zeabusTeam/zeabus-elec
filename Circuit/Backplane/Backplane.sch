@@ -52,7 +52,7 @@ L Conn-PCIE-x1 CON?
 U 1 1 5A5640D4
 P 7400 1550
 F 0 "CON?" H 7550 1600 60  0000 C CNN
-F 1 "Conn-PCIE-x1" H 7800 -550 60  0000 C CNN
+F 1 "Power_dist" H 7800 -550 60  0000 C CNN
 F 2 "" H 7400 1550 60  0001 C CNN
 F 3 "" H 7400 1550 60  0001 C CNN
 	1    7400 1550
@@ -63,7 +63,7 @@ L Conn-PCIE-x1 CON?
 U 1 1 5A5641E3
 P 7450 4250
 F 0 "CON?" H 7600 4300 60  0000 C CNN
-F 1 "Conn-PCIE-x1" H 7850 2150 60  0000 C CNN
+F 1 "Peripheral_bridge" H 7850 2150 60  0000 C CNN
 F 2 "" H 7450 4250 60  0001 C CNN
 F 3 "" H 7450 4250 60  0001 C CNN
 	1    7450 4250
@@ -565,8 +565,6 @@ Text GLabel 7150 4450 0    60   Input ~ 0
 12V
 Text GLabel 8500 4500 2    60   Input ~ 0
 12V
-Text GLabel 8450 1800 2    60   Input ~ 0
-12V
 $Comp
 L C C?
 U 1 1 5A57A9A0
@@ -593,10 +591,6 @@ Text GLabel 7100 2350 0    60   Input ~ 0
 VPCIE
 Text GLabel 8450 2500 2    60   Input ~ 0
 VPCIE
-Text GLabel 7150 5050 0    60   Input ~ 0
-Vin
-Text GLabel 8500 5200 2    60   Input ~ 0
-Vin
 $Comp
 L C C?
 U 1 1 5A57E400
@@ -621,19 +615,6 @@ F 3 "" H 6300 5350 50  0001 C CNN
 $EndComp
 Text GLabel 5750 5050 0    60   Input ~ 0
 5V
-Text GLabel 6450 5050 2    60   Input ~ 0
-Vin
-$Comp
-L XT30 P?
-U 1 1 5A58183A
-P 10450 2000
-F 0 "P?" H 10450 2150 50  0000 C CNN
-F 1 "InnerPoe" H 10450 1850 50  0000 C CNN
-F 2 "" H 10450 2000 60  0000 C CNN
-F 3 "" H 10450 2000 60  0000 C CNN
-	1    10450 2000
-	1    0    0    -1  
-$EndComp
 $Comp
 L XT30 P?
 U 1 1 5A581965
@@ -661,7 +642,7 @@ L XT30 P?
 U 1 1 5A581BC8
 P 10450 3200
 F 0 "P?" H 10450 3350 50  0000 C CNN
-F 1 "General1" H 10450 3050 50  0000 C CNN
+F 1 "Computer1" H 10450 3050 50  0000 C CNN
 F 2 "" H 10450 3200 60  0000 C CNN
 F 3 "" H 10450 3200 60  0000 C CNN
 	1    10450 3200
@@ -672,21 +653,10 @@ L XT30 P?
 U 1 1 5A581C5D
 P 10450 3600
 F 0 "P?" H 10450 3750 50  0000 C CNN
-F 1 "General2" H 10450 3450 50  0000 C CNN
+F 1 "Computer2" H 10450 3450 50  0000 C CNN
 F 2 "" H 10450 3600 60  0000 C CNN
 F 3 "" H 10450 3600 60  0000 C CNN
 	1    10450 3600
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR?
-U 1 1 5A58301B
-P 10150 2100
-F 0 "#PWR?" H 10150 1850 50  0001 C CNN
-F 1 "GND" H 10150 1950 50  0000 C CNN
-F 2 "" H 10150 2100 50  0001 C CNN
-F 3 "" H 10150 2100 50  0001 C CNN
-	1    10150 2100
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -733,10 +703,6 @@ F 3 "" H 10150 3700 50  0001 C CNN
 	1    10150 3700
 	1    0    0    -1  
 $EndComp
-Text GLabel 10150 1950 0    60   Input ~ 0
-12V
-Text GLabel 10150 2350 0    60   Input ~ 0
-12V
 Text GLabel 10150 3150 0    60   Input ~ 0
 12V
 Text GLabel 10150 3550 0    60   Input ~ 0
@@ -744,16 +710,14 @@ Text GLabel 10150 3550 0    60   Input ~ 0
 $Comp
 L Conn_01x03 J?
 U 1 1 5A584C3E
-P 9550 2050
-F 0 "J?" H 9550 2250 50  0000 C CNN
-F 1 "Rs232DVL" H 9550 1850 50  0000 C CNN
-F 2 "" H 9550 2050 50  0001 C CNN
-F 3 "" H 9550 2050 50  0001 C CNN
-	1    9550 2050
+P 9550 4250
+F 0 "J?" H 9550 4450 50  0000 C CNN
+F 1 "Rs232DVL" H 9550 4050 50  0000 C CNN
+F 2 "" H 9550 4250 50  0001 C CNN
+F 3 "" H 9550 4250 50  0001 C CNN
+	1    9550 4250
 	1    0    0    -1  
 $EndComp
-Text GLabel 10150 2750 0    60   Input ~ 0
-12V
 $Comp
 L Conn_01x03 J?
 U 1 1 5A5725F7
@@ -943,24 +907,17 @@ Wire Wire Line
 	7200 1650 7200 1850
 Connection ~ 7200 1750
 Wire Wire Line
-	8350 1750 8350 1850
-Wire Wire Line
 	7200 1950 7150 1950
 Wire Wire Line
 	7150 1950 7150 3700
 Wire Wire Line
-	7150 2250 7200 2250
-Wire Wire Line
 	7150 2950 7200 2950
-Connection ~ 7150 2250
 Wire Wire Line
 	7150 3250 7200 3250
 Connection ~ 7150 2950
 Wire Wire Line
 	7150 3450 7200 3450
 Connection ~ 7150 3250
-Wire Wire Line
-	8350 1950 9350 1950
 Wire Wire Line
 	8400 2850 8350 2850
 Wire Wire Line
@@ -1010,9 +967,6 @@ Wire Wire Line
 Wire Wire Line
 	7200 1750 7100 1750
 Wire Wire Line
-	8350 1800 8450 1800
-Connection ~ 8350 1800
-Wire Wire Line
 	7250 4450 7150 4450
 Wire Wire Line
 	8400 4500 8500 4500
@@ -1026,24 +980,15 @@ Wire Wire Line
 	7200 2350 7100 2350
 Connection ~ 6550 2550
 Wire Wire Line
-	7250 5050 7150 5050
+	6050 5050 7250 5050
 Wire Wire Line
 	8400 5150 8400 5250
-Wire Wire Line
-	8400 5200 8500 5200
-Connection ~ 8400 5200
 Connection ~ 6300 5050
 Wire Wire Line
 	7200 6400 8450 6400
 Connection ~ 8450 6400
 Wire Wire Line
 	7150 3700 8400 3700
-Wire Wire Line
-	10250 1950 10150 1950
-Wire Wire Line
-	10250 2050 10150 2050
-Wire Wire Line
-	10150 2050 10150 2100
 Wire Wire Line
 	10250 2350 10150 2350
 Wire Wire Line
@@ -1068,19 +1013,6 @@ Wire Wire Line
 	10250 3650 10150 3650
 Wire Wire Line
 	10150 3650 10150 3700
-Connection ~ 8400 1950
-Wire Wire Line
-	8350 2250 8450 2250
-Wire Wire Line
-	8450 2250 8450 2050
-Wire Wire Line
-	8450 2050 9350 2050
-Wire Wire Line
-	8500 2150 9350 2150
-Wire Wire Line
-	8500 2150 8500 2350
-Wire Wire Line
-	8500 2350 8350 2350
 Wire Wire Line
 	6850 4950 7250 4950
 Wire Wire Line
@@ -1116,8 +1048,6 @@ F 3 "" H 5900 5050 50  0001 C CNN
 	1    5900 5050
 	0    1    1    0   
 $EndComp
-Wire Wire Line
-	6050 5050 6450 5050
 $Comp
 L Ferrite_Bead L?
 U 1 1 5A5CF6BA
@@ -1138,7 +1068,7 @@ L Conn_02x04_Counter_Clockwise J?
 U 1 1 5A5D0A10
 P 9600 5400
 F 0 "J?" H 9650 5600 50  0000 C CNN
-F 1 "PressureSensor" H 9650 5100 50  0000 C CNN
+F 1 "Pneumatic" H 9650 5100 50  0000 C CNN
 F 2 "" H 9600 5400 50  0001 C CNN
 F 3 "" H 9600 5400 50  0001 C CNN
 	1    9600 5400
@@ -1298,4 +1228,40 @@ $EndComp
 Wire Wire Line
 	2700 6750 4400 6750
 Connection ~ 3500 6750
+Wire Wire Line
+	8350 1750 8500 1750
+Wire Wire Line
+	8500 1750 8500 1650
+Wire Wire Line
+	8500 1650 8650 1650
+Wire Wire Line
+	8350 1850 8650 1850
+Text GLabel 8650 1650 2    60   Input ~ 0
+12V
+Text GLabel 8650 1850 2    60   Input ~ 0
+Vbatt
+Wire Wire Line
+	7200 2250 6800 2250
+Wire Wire Line
+	6800 2250 6800 1450
+Wire Wire Line
+	6800 1450 6850 1450
+Text GLabel 6850 1450 2    60   Input ~ 0
+GND_Vbatt
+Text GLabel 10150 2350 0    60   Input ~ 0
+VPCIE
+Text GLabel 10150 2750 0    60   Input ~ 0
+Vbatt
+Wire Wire Line
+	8400 1950 8350 1950
+Wire Wire Line
+	8400 5200 8550 5200
+Wire Wire Line
+	8550 5200 8550 6600
+Wire Wire Line
+	8550 6600 6550 6600
+Wire Wire Line
+	6550 6600 6550 5050
+Connection ~ 6550 5050
+Connection ~ 8400 5200
 $EndSCHEMATC
