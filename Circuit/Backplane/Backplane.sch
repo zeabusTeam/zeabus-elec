@@ -31,7 +31,7 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
-LIBS:conn_jumper
+LIBS:zeabus
 LIBS:Backplane-cache
 EELAYER 25 0
 EELAYER END
@@ -1255,7 +1255,7 @@ F 1 "+3.3V" H 1650 6390 50  0000 C CNN
 F 2 "" H 1650 6250 50  0001 C CNN
 F 3 "" H 1650 6250 50  0001 C CNN
 	1    1650 6250
-	0    -1   -1   0   
+	1    0    0    -1  
 $EndComp
 $Comp
 L +3.3V #PWR?
@@ -1299,7 +1299,7 @@ F 1 "+3.3V" H 1650 6090 50  0000 C CNN
 F 2 "" H 1650 5950 50  0001 C CNN
 F 3 "" H 1650 5950 50  0001 C CNN
 	1    1650 5950
-	0    -1   -1   0   
+	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	2550 6900 4400 6900
