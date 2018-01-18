@@ -1,4 +1,4 @@
-update=16-Jan-18 6:31:57 PM
+update=18-Jan-18 10:03:09 PM
 version=1
 last_client=kicad
 [pcbnew]
@@ -27,7 +27,7 @@ NetIExt=net
 version=1
 [eeschema]
 version=1
-LibDir=
+LibDir=../Kicad-Libraries
 [eeschema/libraries]
 LibName1=power
 LibName2=device
@@ -60,6 +60,6 @@ LibName28=siliconi
 LibName29=opto
 LibName30=atmel
 LibName31=contrib
-LibName32=C:/Zeabuselec/zeabus-elec/Circuit/Kicad-Libraries/zeabus
-LibName33=valves
-LibName34=conn_jumper
+LibName32=valves
+LibName33=conn_jumper
+LibName34=zeabus
