@@ -1,4 +1,4 @@
-update=18-Jan-18 10:03:09 PM
+update=18-Jan-18 10:08:23 PM
 version=1
 last_client=kicad
 [pcbnew]
@@ -61,5 +61,4 @@ LibName29=opto
 LibName30=atmel
 LibName31=contrib
 LibName32=valves
-LibName33=conn_jumper
-LibName34=zeabus
+LibName33=zeabus
