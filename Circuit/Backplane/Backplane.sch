@@ -1335,8 +1335,6 @@ Wire Wire Line
 Connection ~ 7250 5900
 Wire Wire Line
 	8450 4600 9500 4600
-Wire Wire Line
-	8450 5500 9100 5500
 Connection ~ 7250 6100
 Wire Wire Line
 	5700 3350 6800 3350
@@ -1381,34 +1379,6 @@ Wire Wire Line
 	3500 7450 3500 7500
 Wire Wire Line
 	8950 1650 9850 1650
-Wire Wire Line
-	9100 5500 9100 5250
-Wire Wire Line
-	9100 5250 9450 5250
-Wire Wire Line
-	9450 5350 9150 5350
-Wire Wire Line
-	9150 5350 9150 5600
-Wire Wire Line
-	9150 5600 8450 5600
-Wire Wire Line
-	8450 5700 9200 5700
-Wire Wire Line
-	9200 5700 9200 5450
-Wire Wire Line
-	9200 5450 9450 5450
-Wire Wire Line
-	9450 5550 9250 5550
-Wire Wire Line
-	9250 5550 9250 5800
-Wire Wire Line
-	9250 5800 8450 5800
-Wire Wire Line
-	8450 5900 10050 5900
-Wire Wire Line
-	8450 6000 10100 6000
-Wire Wire Line
-	8450 6100 10150 6100
 Wire Wire Line
 	1400 2450 1600 2450
 Wire Wire Line
@@ -1634,18 +1604,6 @@ Wire Wire Line
 Wire Wire Line
 	9300 2950 5700 2950
 Wire Wire Line
-	9950 5550 10050 5550
-Wire Wire Line
-	10050 5550 10050 5900
-Wire Wire Line
-	9950 5450 10100 5450
-Wire Wire Line
-	10100 5450 10100 6000
-Wire Wire Line
-	9950 5350 10150 5350
-Wire Wire Line
-	10150 5350 10150 6100
-Wire Wire Line
 	7300 4900 7250 4900
 Connection ~ 7250 4900
 Wire Wire Line
@@ -1666,4 +1624,57 @@ Wire Wire Line
 Wire Wire Line
 	9300 3950 9300 3800
 Connection ~ 9200 4250
+Wire Wire Line
+	9450 5250 8650 5250
+Wire Wire Line
+	8650 5250 8650 5500
+Wire Wire Line
+	8650 5500 8450 5500
+Wire Wire Line
+	9450 5350 8700 5350
+Wire Wire Line
+	8700 5350 8700 5600
+Wire Wire Line
+	8700 5600 8450 5600
+Wire Wire Line
+	9450 5450 8750 5450
+Wire Wire Line
+	8750 5450 8750 5700
+Wire Wire Line
+	8750 5700 8450 5700
+Wire Wire Line
+	9450 5550 8800 5550
+Wire Wire Line
+	8800 5550 8800 5800
+Wire Wire Line
+	8800 5800 8450 5800
+Wire Wire Line
+	9950 5550 9950 5900
+Wire Wire Line
+	9950 5900 8450 5900
+Wire Wire Line
+	9950 5450 10050 5450
+Wire Wire Line
+	10050 5450 10050 6000
+Wire Wire Line
+	10050 6000 8450 6000
+Wire Wire Line
+	9950 5350 10150 5350
+Wire Wire Line
+	10150 5350 10150 6100
+Wire Wire Line
+	10150 6100 8450 6100
+Wire Wire Line
+	9950 5250 10150 5250
+$Comp
+L +12V #PWR?
+U 1 1 5A696562
+P 10150 5250
+F 0 "#PWR?" H 10150 5100 50  0001 C CNN
+F 1 "+12V" H 10150 5390 50  0000 C CNN
+F 2 "" H 10150 5250 50  0001 C CNN
+F 3 "" H 10150 5250 50  0001 C CNN
+	1    10150 5250
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
