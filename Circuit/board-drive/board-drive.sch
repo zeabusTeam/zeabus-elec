@@ -529,7 +529,6 @@ NoConn ~ 5250 4000
 NoConn ~ 5250 5500
 NoConn ~ 8250 5500
 NoConn ~ 8250 4000
-NoConn ~ 8250 2500
 NoConn ~ 8250 1000
 NoConn ~ 5350 5100
 Text Label 4950 1200 0    60   ~ 0
@@ -883,11 +882,13 @@ Wire Wire Line
 	6350 4700 6800 4700
 Wire Wire Line
 	6800 6200 6350 6200
+Text Label 4250 2500 0    60   ~ 0
++5v_BEC
+Text Label 4250 5100 0    60   ~ 0
++5v_BEC
+Text Label 7900 2500 0    60   ~ 0
++5v_BEC
 Wire Wire Line
-	4250 2500 5250 2500
-Wire Wire Line
-	4850 2500 4850 5100
-Wire Wire Line
-	4850 5100 4250 5100
-Connection ~ 4850 2500
+	7900 2500 8250 2500
+NoConn ~ 5250 2500
 $EndSCHEMATC
