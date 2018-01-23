@@ -1349,7 +1349,7 @@ Connection ~ 4200 2350
 Wire Wire Line
 	4300 1700 4300 2350
 Wire Wire Line
-	2400 1700 3700 1700
+	2400 1700 3900 1700
 Connection ~ 2650 1700
 Connection ~ 2900 1700
 Connection ~ 3150 1700
@@ -1359,7 +1359,7 @@ Connection ~ 3150 2000
 Connection ~ 2900 2000
 Connection ~ 2650 2000
 Wire Wire Line
-	6500 1700 4300 1700
+	4300 1700 7050 1700
 Connection ~ 5000 1700
 Connection ~ 5250 1700
 Connection ~ 5500 1700
@@ -1386,7 +1386,7 @@ Connection ~ 2000 2650
 Wire Wire Line
 	1400 2650 1550 2650
 Wire Wire Line
-	5950 950  6500 950 
+	5950 950  6550 950 
 Wire Wire Line
 	5950 1100 6100 1100
 Wire Wire Line
@@ -1396,18 +1396,14 @@ Wire Wire Line
 Wire Wire Line
 	1650 1300 3200 1300
 Wire Wire Line
-	2850 1000 3400 1000
+	2850 1000 3450 1000
 Wire Wire Line
 	2850 1100 2900 1100
 Wire Wire Line
 	2900 1100 2900 1000
 Connection ~ 2900 1000
 Connection ~ 2450 1300
-Wire Wire Line
-	6500 950  6500 1700
 Connection ~ 6300 950 
-Wire Wire Line
-	3400 1000 3400 1700
 Connection ~ 3200 1000
 Wire Wire Line
 	7300 4300 7300 4500
@@ -1816,4 +1812,36 @@ F 3 "" H 6200 3050 50  0001 C CNN
 	1    6200 3050
 	0    1    1    0   
 $EndComp
+$Comp
+L Ferrite_Bead L?
+U 1 1 5A674946
+P 6700 950
+F 0 "L?" V 6550 975 50  0000 C CNN
+F 1 "220 @ 100Mhz" V 6850 950 50  0000 C CNN
+F 2 "Capacitors_SMD:C_0603_HandSoldering" V 6630 950 50  0001 C CNN
+F 3 "" H 6700 950 50  0001 C CNN
+	1    6700 950 
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6850 950  7050 950 
+Wire Wire Line
+	7050 950  7050 1700
+Connection ~ 6500 1700
+$Comp
+L Ferrite_Bead L?
+U 1 1 5A6757E6
+P 3600 1000
+F 0 "L?" V 3450 1025 50  0000 C CNN
+F 1 "220 @ 100Mhz" V 3750 1000 50  0000 C CNN
+F 2 "Capacitors_SMD:C_0603_HandSoldering" V 3530 1000 50  0001 C CNN
+F 3 "" H 3600 1000 50  0001 C CNN
+	1    3600 1000
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	3750 1000 3900 1000
+Wire Wire Line
+	3900 1000 3900 1700
+Connection ~ 3700 1700
 $EndSCHEMATC
