@@ -502,7 +502,7 @@ F 3 "" H 9200 1950 50  0001 C CNN
 $EndComp
 Text GLabel 9500 1450 0    60   Input ~ 0
 VPCIE
-Text GLabel 11150 1600 2    60   Input ~ 0
+Text GLabel 11250 1600 2    60   Input ~ 0
 VPCIE
 $Comp
 L C C23
@@ -609,7 +609,7 @@ U 1 1 5A584C3E
 P 9700 4700
 F 0 "J6" H 9700 4900 50  0000 C CNN
 F 1 "RS232_DVL" H 9700 4500 50  0000 C CNN
-F 2 "Zeabus:70543-0002" H 9700 4700 50  0001 C CNN
+F 2 "Zeabus:90136-2013" H 9700 4700 50  0001 C CNN
 F 3 "" H 9700 4700 50  0001 C CNN
 	1    9700 4700
 	1    0    0    -1  
@@ -620,7 +620,7 @@ U 1 1 5A5725F7
 P 9700 4250
 F 0 "J5" H 9700 4450 50  0000 C CNN
 F 1 "pressure_sensor" H 9700 4050 50  0000 C CNN
-F 2 "Zeabus:70543-0002" H 9700 4250 50  0001 C CNN
+F 2 "Zeabus:90136-2013" H 9700 4250 50  0001 C CNN
 F 3 "" H 9700 4250 50  0001 C CNN
 	1    9700 4250
 	1    0    0    -1  
@@ -637,10 +637,10 @@ F 3 "" H 8500 6250 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Ferrite_Bead L2
+L Ferrite_Bead L1
 U 1 1 5A5CEB74
 P 5900 4850
-F 0 "L2" V 5750 4875 50  0000 C CNN
+F 0 "L1" V 5750 4875 50  0000 C CNN
 F 1 "220 @ 100Mhz" V 6050 4850 50  0000 C CNN
 F 2 "Capacitors_SMD:C_0603_HandSoldering" V 5830 4850 50  0001 C CNN
 F 3 "" H 5900 4850 50  0001 C CNN
@@ -648,10 +648,10 @@ F 3 "" H 5900 4850 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L Ferrite_Bead L4
+L Ferrite_Bead L2
 U 1 1 5A5CF6BA
 P 8800 1650
-F 0 "L4" V 8650 1675 50  0000 C CNN
+F 0 "L2" V 8650 1675 50  0000 C CNN
 F 1 "220 @ 100Mhz" V 8950 1650 50  0000 C CNN
 F 2 "Capacitors_SMD:C_0603_HandSoldering" V 8730 1650 50  0001 C CNN
 F 3 "" H 8800 1650 50  0001 C CNN
@@ -677,7 +677,7 @@ U 1 1 5A5DEBD0
 P 1050 5700
 F 0 "J2" H 1050 5900 50  0000 C CNN
 F 1 "power_source_mode" H 1050 5500 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm" H 1100 5700 50  0001 C CNN
+F 2 "Zeabus:90136-2013" H 1100 5700 50  0001 C CNN
 F 3 "" H 1100 5700 50  0001 C CNN
 	1    1050 5700
 	1    0    0    -1  
@@ -1173,10 +1173,10 @@ F 3 "" H 9200 4400 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L L_Core_Iron L5
+L L_Core_Iron L3
 U 1 1 5A6930CD
 P 9100 3800
-F 0 "L5" V 9050 3800 50  0000 C CNN
+F 0 "L3" V 9050 3800 50  0000 C CNN
 F 1 "600R  0.5A" V 9210 3800 50  0000 C CNN
 F 2 "Capacitors_SMD:C_0805_HandSoldering" H 9100 3800 50  0001 C CNN
 F 3 "" H 9100 3800 50  0001 C CNN
@@ -1292,82 +1292,10 @@ U 1 1 5A65DF87
 P 1050 6500
 F 0 "J3" H 1050 6700 50  0000 C CNN
 F 1 "general_power_source" H 1050 6300 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm" H 1100 6500 50  0001 C CNN
+F 2 "Zeabus:90136-2013" H 1100 6500 50  0001 C CNN
 F 3 "" H 1100 6500 50  0001 C CNN
 	1    1050 6500
 	1    0    0    -1  
-$EndComp
-$Comp
-L +12V #PWR051
-U 1 1 5A65EB25
-P 650 6350
-F 0 "#PWR051" H 650 6200 50  0001 C CNN
-F 1 "+12V" H 650 6490 50  0000 C CNN
-F 2 "" H 650 6350 50  0001 C CNN
-F 3 "" H 650 6350 50  0001 C CNN
-	1    650  6350
-	1    0    0    -1  
-$EndComp
-Text GLabel 850  6600 0    60   Input ~ 0
-VPCIE
-Text GLabel 1450 6500 2    60   Input ~ 0
-genPow
-Text GLabel 5400 7350 0    60   Input ~ 0
-genPow
-$Comp
-L R R13
-U 1 1 5A6653B8
-P 6200 4050
-F 0 "R13" V 6280 4050 50  0000 C CNN
-F 1 "4.7k" V 6200 4050 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603_HandSoldering" V 6130 4050 50  0001 C CNN
-F 3 "" H 6200 4050 50  0001 C CNN
-	1    6200 4050
-	0    1    1    0   
-$EndComp
-$Comp
-L R R12
-U 1 1 5A665459
-P 6200 3550
-F 0 "R12" V 6280 3550 50  0000 C CNN
-F 1 "4.7k" V 6200 3550 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603_HandSoldering" V 6130 3550 50  0001 C CNN
-F 3 "" H 6200 3550 50  0001 C CNN
-	1    6200 3550
-	0    1    1    0   
-$EndComp
-$Comp
-L R R11
-U 1 1 5A6655FC
-P 6200 3050
-F 0 "R11" V 6280 3050 50  0000 C CNN
-F 1 "4.7k" V 6200 3050 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603_HandSoldering" V 6130 3050 50  0001 C CNN
-F 3 "" H 6200 3050 50  0001 C CNN
-	1    6200 3050
-	0    1    1    0   
-$EndComp
-$Comp
-L Ferrite_Bead L3
-U 1 1 5A674946
-P 6700 950
-F 0 "L3" V 6550 975 50  0000 C CNN
-F 1 "220 @ 100Mhz" V 6850 950 50  0000 C CNN
-F 2 "Capacitors_SMD:C_0603_HandSoldering" V 6630 950 50  0001 C CNN
-F 3 "" H 6700 950 50  0001 C CNN
-	1    6700 950 
-	0    1    1    0   
-$EndComp
-$Comp
-L Ferrite_Bead L1
-U 1 1 5A6757E6
-P 3600 1000
-F 0 "L1" V 3450 1025 50  0000 C CNN
-F 1 "220 @ 100Mhz" V 3750 1000 50  0000 C CNN
-F 2 "Capacitors_SMD:C_0603_HandSoldering" V 3530 1000 50  0001 C CNN
-F 3 "" H 3600 1000 50  0001 C CNN
-	1    3600 1000
-	0    1    1    0   
 $EndComp
 Wire Wire Line
 	650  6400 650  6350
@@ -1409,6 +1337,17 @@ Connection ~ 3600 2350
 Connection ~ 3700 2350
 Wire Wire Line
 	3700 1700 3700 2350
+Wire Wire Line
+	4000 2350 4600 2350
+Connection ~ 4100 2350
+Connection ~ 4300 2350
+Connection ~ 4400 2350
+Connection ~ 4500 2350
+Wire Wire Line
+	4100 2350 4200 2350
+Connection ~ 4200 2350
+Wire Wire Line
+	4300 1700 4300 2350
 Wire Wire Line
 	2400 1700 3900 1700
 Connection ~ 2650 1700
@@ -1669,6 +1608,17 @@ Wire Wire Line
 Wire Wire Line
 	6900 4100 6900 4600
 Wire Wire Line
+	9850 750  9800 750 
+Wire Wire Line
+	9750 850  9850 850 
+Wire Wire Line
+	9800 950  9850 950 
+Wire Wire Line
+	9800 750  9800 950 
+Connection ~ 9800 850 
+Wire Wire Line
+	9750 850  9750 800 
+Wire Wire Line
 	11000 850  11050 850 
 Wire Wire Line
 	11050 850  11050 650 
@@ -1676,6 +1626,13 @@ Wire Wire Line
 	11000 950  11150 950 
 Wire Wire Line
 	11150 950  11150 800 
+Wire Wire Line
+	11000 1550 11050 1550
+Wire Wire Line
+	11050 1650 11000 1650
+Wire Wire Line
+	11050 1550 11050 1650
+Connection ~ 11050 1600
 Wire Wire Line
 	11000 1950 11100 1950
 Wire Wire Line
@@ -1799,59 +1756,92 @@ Wire Wire Line
 	2600 3650 2600 3800
 Wire Wire Line
 	2600 3800 2900 3800
+$Comp
+L +12V #PWR051
+U 1 1 5A65EB25
+P 650 6350
+F 0 "#PWR051" H 650 6200 50  0001 C CNN
+F 1 "+12V" H 650 6490 50  0000 C CNN
+F 2 "" H 650 6350 50  0001 C CNN
+F 3 "" H 650 6350 50  0001 C CNN
+	1    650  6350
+	1    0    0    -1  
+$EndComp
+Text GLabel 850  6600 0    60   Input ~ 0
+VPCIE
 Wire Wire Line
 	1250 6500 1450 6500
 Wire Wire Line
 	5600 7350 5400 7350
+Text GLabel 1450 6500 2    60   Input ~ 0
+genPow
+Text GLabel 5400 7350 0    60   Input ~ 0
+genPow
+$Comp
+L R R13
+U 1 1 5A6653B8
+P 6200 4050
+F 0 "R13" V 6280 4050 50  0000 C CNN
+F 1 "4.7k" V 6200 4050 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 6130 4050 50  0001 C CNN
+F 3 "" H 6200 4050 50  0001 C CNN
+	1    6200 4050
+	0    1    1    0   
+$EndComp
+$Comp
+L R R12
+U 1 1 5A665459
+P 6200 3550
+F 0 "R12" V 6280 3550 50  0000 C CNN
+F 1 "4.7k" V 6200 3550 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 6130 3550 50  0001 C CNN
+F 3 "" H 6200 3550 50  0001 C CNN
+	1    6200 3550
+	0    1    1    0   
+$EndComp
+$Comp
+L R R11
+U 1 1 5A6655FC
+P 6200 3050
+F 0 "R11" V 6280 3050 50  0000 C CNN
+F 1 "4.7k" V 6200 3050 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 6130 3050 50  0001 C CNN
+F 3 "" H 6200 3050 50  0001 C CNN
+	1    6200 3050
+	0    1    1    0   
+$EndComp
+$Comp
+L Ferrite_Bead L5
+U 1 1 5A674946
+P 6700 950
+F 0 "L5" V 6550 975 50  0000 C CNN
+F 1 "220 @ 100Mhz" V 6850 950 50  0000 C CNN
+F 2 "Capacitors_SMD:C_0603_HandSoldering" V 6630 950 50  0001 C CNN
+F 3 "" H 6700 950 50  0001 C CNN
+	1    6700 950 
+	0    1    1    0   
+$EndComp
 Wire Wire Line
 	6850 950  7050 950 
 Wire Wire Line
 	7050 950  7050 1700
 Connection ~ 6500 1700
+$Comp
+L Ferrite_Bead L4
+U 1 1 5A6757E6
+P 3600 1000
+F 0 "L4" V 3450 1025 50  0000 C CNN
+F 1 "220 @ 100Mhz" V 3750 1000 50  0000 C CNN
+F 2 "Capacitors_SMD:C_0603_HandSoldering" V 3530 1000 50  0001 C CNN
+F 3 "" H 3600 1000 50  0001 C CNN
+	1    3600 1000
+	0    1    1    0   
+$EndComp
 Wire Wire Line
 	3750 1000 3900 1000
 Wire Wire Line
 	3900 1000 3900 1700
 Connection ~ 3700 1700
 Wire Wire Line
-	4000 2350 4000 2250
-Wire Wire Line
-	4000 2250 4600 2250
-Wire Wire Line
-	4300 1700 4300 2350
-Wire Wire Line
-	4100 2350 4100 2250
-Connection ~ 4100 2250
-Wire Wire Line
-	4200 2350 4200 2250
-Connection ~ 4200 2250
-Connection ~ 4300 2250
-Wire Wire Line
-	4600 2250 4600 2350
-Wire Wire Line
-	4500 2350 4500 2250
-Connection ~ 4500 2250
-Wire Wire Line
-	4400 2350 4400 2250
-Connection ~ 4400 2250
-Wire Wire Line
-	9750 850  9750 800 
-Wire Wire Line
-	9800 950  9850 950 
-Wire Wire Line
-	9750 850  9850 850 
-Connection ~ 9800 850 
-Wire Wire Line
-	9800 750  9800 950 
-Wire Wire Line
-	9850 750  9800 750 
-Wire Wire Line
-	11000 1550 11050 1550
-Wire Wire Line
-	11050 1550 11050 1650
-Wire Wire Line
-	11050 1600 11150 1600
-Wire Wire Line
-	11050 1650 11000 1650
-Connection ~ 11050 1600
+	11050 1600 11250 1600
 $EndSCHEMATC
