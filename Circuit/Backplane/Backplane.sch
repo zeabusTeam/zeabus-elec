@@ -184,7 +184,7 @@ L C C13
 U 1 1 5A5671EC
 P 3400 1850
 F 0 "C13" H 3425 1950 50  0000 L CNN
-F 1 "0.1uF" H 3425 1750 50  0000 L CNN
+F 1 "10uF" H 3425 1750 50  0000 L CNN
 F 2 "Capacitors_SMD:C_0603_HandSoldering" H 3438 1700 50  0001 C CNN
 F 3 "" H 3400 1850 50  0001 C CNN
 	1    3400 1850
@@ -1332,12 +1332,6 @@ Wire Wire Line
 Wire Wire Line
 	3100 3950 3100 4050
 Wire Wire Line
-	3500 2350 3800 2350
-Connection ~ 3600 2350
-Connection ~ 3700 2350
-Wire Wire Line
-	3700 1700 3700 2350
-Wire Wire Line
 	4000 2350 4600 2350
 Connection ~ 4100 2350
 Connection ~ 4300 2350
@@ -1349,7 +1343,7 @@ Connection ~ 4200 2350
 Wire Wire Line
 	4300 1700 4300 2350
 Wire Wire Line
-	2400 1700 3900 1700
+	2250 1700 3900 1700
 Connection ~ 2650 1700
 Connection ~ 2900 1700
 Connection ~ 3150 1700
@@ -1841,7 +1835,22 @@ Wire Wire Line
 	3750 1000 3900 1000
 Wire Wire Line
 	3900 1000 3900 1700
-Connection ~ 3700 1700
 Wire Wire Line
 	11050 1600 11250 1600
+Wire Wire Line
+	3800 2350 3800 2250
+Wire Wire Line
+	3800 2250 2250 2250
+Wire Wire Line
+	2250 2250 2250 1700
+Connection ~ 2400 1700
+Wire Wire Line
+	3700 2350 3700 2250
+Connection ~ 3700 2250
+Wire Wire Line
+	3600 2350 3600 2250
+Connection ~ 3600 2250
+Wire Wire Line
+	3500 2350 3500 2250
+Connection ~ 3500 2250
 $EndSCHEMATC
