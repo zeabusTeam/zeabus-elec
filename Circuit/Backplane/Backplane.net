@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source C:/elec2/zeabus-elec/Circuit/Backplane/Backplane.sch)
-    (date "25-Jan-18 1:39:23 AM")
+    (date "25-Jan-18 1:57:29 AM")
     (tool "Eeschema 4.0.7")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -992,12 +992,12 @@
         (pin (num 1) (name P1) (type passive))
         (pin (num 2) (name P2) (type passive)))))
   (libraries
+    (library (logical conn)
+      (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\conn.lib"))
     (library (logical texas)
       (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\texas.lib"))
     (library (logical zeabus)
       (uri C:\elec2\zeabus-elec\Circuit\Kicad-Libraries\zeabus.lib))
-    (library (logical conn)
-      (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\conn.lib"))
     (library (logical device)
       (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\device.lib")))
   (nets
