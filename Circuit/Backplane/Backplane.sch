@@ -677,7 +677,7 @@ U 1 1 5A5DEBD0
 P 1050 5700
 F 0 "J2" H 1050 5900 50  0000 C CNN
 F 1 "power_source_mode" H 1050 5500 50  0000 C CNN
-F 2 "Zeabus:70543-0002" H 1100 5700 50  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm" H 1100 5700 50  0001 C CNN
 F 3 "" H 1100 5700 50  0001 C CNN
 	1    1050 5700
 	1    0    0    -1  
@@ -1292,7 +1292,7 @@ U 1 1 5A65DF87
 P 1050 6500
 F 0 "J3" H 1050 6700 50  0000 C CNN
 F 1 "general_power_source" H 1050 6300 50  0000 C CNN
-F 2 "Zeabus:70543-0002" H 1100 6500 50  0001 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x03_Pitch2.54mm" H 1100 6500 50  0001 C CNN
 F 3 "" H 1100 6500 50  0001 C CNN
 	1    1050 6500
 	1    0    0    -1  
