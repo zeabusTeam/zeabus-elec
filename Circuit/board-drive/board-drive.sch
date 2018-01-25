@@ -32,7 +32,6 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
-LIBS:zeabus
 LIBS:board-drive-cache
 EELAYER 25 0
 EELAYER END
@@ -361,10 +360,10 @@ F 3 "" H 7150 5750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Pololu_SimpleMotorController24v23_withnoPowerDist U7
+L Pololu_SimpleMotorController24v23_withnoPowerDist Board_Drive_No.3
 U 1 1 5A5AF0D1
 P 5900 5950
-F 0 "U7" H 5500 6850 60  0000 C CNN
+F 0 "Board_Drive_No.3" H 5500 6850 60  0000 C CNN
 F 1 "Pololu_SimpleMotorController24v23_withnoPowerDist" H 6250 6750 60  0000 C CNN
 F 2 "zeabus:pololu_motorcontroller24v23" H 6250 6750 60  0001 C CNN
 F 3 "" H 6250 6750 60  0001 C CNN
@@ -383,10 +382,10 @@ F 3 "" H 7150 4250 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Pololu_SimpleMotorController24v23_withnoPowerDist U6
+L Pololu_SimpleMotorController24v23_withnoPowerDist Board_Drive_No.2
 U 1 1 5A5AF030
 P 5900 4450
-F 0 "U6" H 5500 5350 60  0000 C CNN
+F 0 "Board_Drive_No.2" H 5500 5350 60  0000 C CNN
 F 1 "Pololu_SimpleMotorController24v23_withnoPowerDist" H 6250 5250 60  0000 C CNN
 F 2 "zeabus:pololu_motorcontroller24v23" H 6250 5250 60  0001 C CNN
 F 3 "" H 6250 5250 60  0001 C CNN
@@ -405,10 +404,10 @@ F 3 "" H 7150 2700 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Pololu_SimpleMotorController24v23_withnoPowerDist U5
+L Pololu_SimpleMotorController24v23_withnoPowerDist Board_Drive_No.1
 U 1 1 5A5AEF8D
 P 5900 2950
-F 0 "U5" H 5500 3850 60  0000 C CNN
+F 0 "Board_Drive_No.1" H 5500 3850 60  0000 C CNN
 F 1 "Pololu_SimpleMotorController24v23_withnoPowerDist" H 6250 3750 60  0000 C CNN
 F 2 "zeabus:pololu_motorcontroller24v23" H 6250 3750 60  0001 C CNN
 F 3 "" H 6250 3750 60  0001 C CNN
@@ -427,10 +426,10 @@ F 3 "" H 7150 1250 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Pololu_SimpleMotorController24v23_withnoPowerDist U4
+L Pololu_SimpleMotorController24v23_withnoPowerDist Board_Drive_No.0
 U 1 1 5A5AE339
 P 5900 1450
-F 0 "U4" H 5500 2350 60  0000 C CNN
+F 0 "Board_Drive_No.0" H 5500 2350 60  0000 C CNN
 F 1 "Pololu_SimpleMotorController24v23_withnoPowerDist" H 6250 2250 60  0000 C CNN
 F 2 "zeabus:pololu_motorcontroller24v23" H 6250 2250 60  0001 C CNN
 F 3 "" H 6250 2250 60  0001 C CNN
@@ -449,10 +448,10 @@ F 3 "" H 10150 5750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Pololu_SimpleMotorController24v23_withnoPowerDist U15
+L Pololu_SimpleMotorController24v23_withnoPowerDist Board_Drive_No.7
 U 1 1 5A5AFE93
 P 8900 5950
-F 0 "U15" H 8500 6850 60  0000 C CNN
+F 0 "Board_Drive_No.7" H 8500 6850 60  0000 C CNN
 F 1 "Pololu_SimpleMotorController24v23_withnoPowerDist" H 9250 6750 60  0000 C CNN
 F 2 "zeabus:pololu_motorcontroller24v23" H 9250 6750 60  0001 C CNN
 F 3 "" H 9250 6750 60  0001 C CNN
@@ -471,10 +470,10 @@ F 3 "" H 10150 4250 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Pololu_SimpleMotorController24v23_withnoPowerDist U14
+L Pololu_SimpleMotorController24v23_withnoPowerDist Board_Drive_No.6
 U 1 1 5A5AFE9F
 P 8900 4450
-F 0 "U14" H 8500 5350 60  0000 C CNN
+F 0 "Board_Drive_No.6" H 8500 5350 60  0000 C CNN
 F 1 "Pololu_SimpleMotorController24v23_withnoPowerDist" H 9250 5250 60  0000 C CNN
 F 2 "zeabus:pololu_motorcontroller24v23" H 9250 5250 60  0001 C CNN
 F 3 "" H 9250 5250 60  0001 C CNN
@@ -493,10 +492,10 @@ F 3 "" H 10150 2750 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Pololu_SimpleMotorController24v23_withnoPowerDist U13
+L Pololu_SimpleMotorController24v23_withnoPowerDist Board_Drive_No.5
 U 1 1 5A5AFEAB
 P 8900 2950
-F 0 "U13" H 8500 3850 60  0000 C CNN
+F 0 "Board_Drive_No.5" H 8500 3850 60  0000 C CNN
 F 1 "Pololu_SimpleMotorController24v23_withnoPowerDist" H 9250 3750 60  0000 C CNN
 F 2 "zeabus:pololu_motorcontroller24v23" H 9250 3750 60  0001 C CNN
 F 3 "" H 9250 3750 60  0001 C CNN
@@ -515,10 +514,10 @@ F 3 "" H 10150 1250 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L Pololu_SimpleMotorController24v23_withnoPowerDist U12
+L Pololu_SimpleMotorController24v23_withnoPowerDist Board_Drive_No.4
 U 1 1 5A5AFEB7
 P 8900 1450
-F 0 "U12" H 8500 2350 60  0000 C CNN
+F 0 "Board_Drive_No.4" H 8500 2350 60  0000 C CNN
 F 1 "Pololu_SimpleMotorController24v23_withnoPowerDist" H 9250 2250 60  0000 C CNN
 F 2 "zeabus:pololu_motorcontroller24v23" H 9250 2250 60  0001 C CNN
 F 3 "" H 9250 2250 60  0001 C CNN
