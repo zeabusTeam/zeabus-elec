@@ -32,6 +32,7 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
+LIBS:zeabus
 LIBS:board-drive-cache
 EELAYER 25 0
 EELAYER END
@@ -854,14 +855,6 @@ Wire Wire Line
 Wire Wire Line
 	6800 3150 6350 3150
 Wire Wire Line
-	6450 4300 6800 4300
-Wire Wire Line
-	6800 4500 6350 4500
-Wire Wire Line
-	6450 5800 6800 5800
-Wire Wire Line
-	6800 6000 6350 6000
-Wire Wire Line
 	9350 6200 9800 6200
 Wire Wire Line
 	9800 6000 9450 6000
@@ -890,4 +883,8 @@ Text Label 7900 2500 0    60   ~ 0
 Wire Wire Line
 	7900 2500 8250 2500
 NoConn ~ 5250 2500
+Wire Wire Line
+	6450 4500 6800 4500
+Wire Wire Line
+	6450 6000 6800 6000
 $EndSCHEMATC
