@@ -2113,4 +2113,17 @@ Wire Wire Line
 Wire Wire Line
 	2550 5950 2550 6550
 Connection ~ 2550 6250
+$Comp
+L +1V1 #PWR?
+U 1 1 5A6CF6AF
+P 6300 850
+F 0 "#PWR?" H 6300 700 50  0001 C CNN
+F 1 "+1V1" H 6300 990 50  0000 C CNN
+F 2 "" H 6300 850 50  0001 C CNN
+F 3 "" H 6300 850 50  0001 C CNN
+	1    6300 850 
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6300 950  6300 850 
 $EndSCHEMATC
