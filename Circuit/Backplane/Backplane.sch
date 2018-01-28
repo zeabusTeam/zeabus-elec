@@ -81,61 +81,6 @@ F 3 "" H 1000 3850 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C1
-U 1 1 5A565759
-P 1100 4500
-F 0 "C1" H 1125 4600 50  0000 L CNN
-F 1 "0.1uF" H 1125 4400 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0603_HandSoldering" H 1138 4350 50  0001 C CNN
-F 3 "" H 1100 4500 50  0001 C CNN
-	1    1100 4500
-	1    0    0    -1  
-$EndComp
-$Comp
-L C C3
-U 1 1 5A5657D2
-P 1400 4500
-F 0 "C3" H 1425 4600 50  0000 L CNN
-F 1 "0.1uF" H 1425 4400 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0603_HandSoldering" H 1438 4350 50  0001 C CNN
-F 3 "" H 1400 4500 50  0001 C CNN
-	1    1400 4500
-	1    0    0    -1  
-$EndComp
-$Comp
-L R R2
-U 1 1 5A565988
-P 1700 4500
-F 0 "R2" V 1780 4500 50  0000 C CNN
-F 1 "1M" V 1700 4500 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603_HandSoldering" V 1630 4500 50  0001 C CNN
-F 3 "" H 1700 4500 50  0001 C CNN
-	1    1700 4500
-	1    0    0    -1  
-$EndComp
-$Comp
-L GNDPWR #PWR2
-U 1 1 5A565F4A
-P 750 4350
-F 0 "#PWR2" H 750 4150 50  0001 C CNN
-F 1 "GNDPWR" H 750 4220 50  0000 C CNN
-F 2 "" H 750 4300 50  0001 C CNN
-F 3 "" H 750 4300 50  0001 C CNN
-	1    750  4350
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR6
-U 1 1 5A565F9E
-P 1400 4650
-F 0 "#PWR6" H 1400 4400 50  0001 C CNN
-F 1 "GND" H 1400 4500 50  0000 C CNN
-F 2 "" H 1400 4650 50  0001 C CNN
-F 3 "" H 1400 4650 50  0001 C CNN
-	1    1400 4650
-	1    0    0    -1  
-$EndComp
-$Comp
 L C C6
 U 1 1 5A5670AE
 P 2400 1850
@@ -1577,18 +1522,6 @@ Wire Wire Line
 Wire Wire Line
 	3000 4000 1150 4000
 Wire Wire Line
-	750  4350 1700 4350
-Connection ~ 1100 4350
-Wire Wire Line
-	850  4650 1700 4650
-Connection ~ 1100 4650
-Connection ~ 1400 4350
-Connection ~ 1400 4650
-Wire Wire Line
-	750  4300 750  4350
-Wire Wire Line
-	850  4300 850  4650
-Wire Wire Line
 	3100 3950 3100 4050
 Wire Wire Line
 	4000 2350 4600 2350
@@ -2126,4 +2059,22 @@ F 3 "" H 6300 850 50  0001 C CNN
 $EndComp
 Wire Wire Line
 	6300 950  6300 850 
+Wire Wire Line
+	750  4300 750  4400
+Wire Wire Line
+	750  4400 850  4400
+Wire Wire Line
+	850  4300 850  4500
+Connection ~ 850  4400
+$Comp
+L GND #PWR?
+U 1 1 5A6DFFC1
+P 850 4500
+F 0 "#PWR?" H 850 4250 50  0001 C CNN
+F 1 "GND" H 850 4350 50  0000 C CNN
+F 2 "" H 850 4500 50  0001 C CNN
+F 3 "" H 850 4500 50  0001 C CNN
+	1    850  4500
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
