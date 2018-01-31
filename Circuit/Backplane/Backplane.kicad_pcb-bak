@@ -2,7 +2,7 @@
 
   (general
     (links 258)
-    (no_connects 67)
+    (no_connects 3)
     (area 76.124999 -26.745001 166.445001 261.949001)
     (thickness 1.6)
     (drawings 32)
@@ -4231,7 +4231,7 @@
     (fp_text reference R22 (at 0 -1.45) (layer F.SilkS)
       (effects (font (size 1 1) (thickness 0.15)))
     )
-    (fp_text value 40 (at 0 1.55) (layer F.Fab)
+    (fp_text value 150 (at 0 1.55) (layer F.Fab)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (fp_text user %R (at 0 0) (layer F.Fab)
@@ -4612,6 +4612,7 @@
     (arrow2b (pts (xy 91.44 119.634) (xy 90.853579 118.507496)))
   )
 
+  (segment (start 162.758 255.778) (end 163.068 255.778) (width 0.254) (layer F.Cu) (net 0))
   (segment (start 156.579408 -14.478) (end 153.416 -14.478) (width 0.254) (layer F.Cu) (net 1))
   (segment (start 153.416 -14.478) (end 151.638 -16.256) (width 0.254) (layer F.Cu) (net 1))
   (segment (start 164.16016 -6.897248) (end 156.579408 -14.478) (width 0.254) (layer F.Cu) (net 1))
@@ -5976,7 +5977,6 @@
   (segment (start 158.798 259.032) (end 158.75 259.08) (width 0.254) (layer F.Cu) (net 103))
   (via (at 158.75 259.08) (size 1.10236) (drill 0.6096) (layers F.Cu B.Cu) (net 103))
   (segment (start 162.016 253.532) (end 162.016 255.036) (width 0.254) (layer F.Cu) (net 103))
-  (segment (start 162.758 255.778) (end 163.068 255.778) (width 0.254) (layer F.Cu) (net 103))
   (segment (start 151.08 244.87) (end 152.668 244.87) (width 0.254) (layer F.Cu) (net 103))
   (via (at 153.67 245.872) (size 1.10236) (drill 0.6096) (layers F.Cu B.Cu) (net 103))
   (segment (start 152.668 244.87) (end 153.67 245.872) (width 0.254) (layer F.Cu) (net 103))
