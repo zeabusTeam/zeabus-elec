@@ -1,7 +1,7 @@
 (export (version D)
   (design
-    (source C:/Users/ADMINS/Desktop/zeabus-elec/Circuit/Backplane/Backplane.sch)
-    (date "1/2/2561 3:02:58")
+    (source C:/ws/zeabus-elec/Circuit/Backplane/Backplane.sch)
+    (date "1/31/2018 12:12:09 PM")
     (tool "Eeschema 4.0.7")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -960,13 +960,13 @@
         (pin (num 2) (name P2) (type passive)))))
   (libraries
     (library (logical zeabus)
-      (uri C:\Users\ADMINS\Desktop\zeabus-elec\Circuit\Kicad-Libraries\zeabus.lib))
+      (uri C:\ws\zeabus-elec\Circuit\Kicad-Libraries\zeabus.lib))
+    (library (logical device)
+      (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\device.lib"))
     (library (logical conn)
       (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\conn.lib"))
     (library (logical texas)
-      (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\texas.lib"))
-    (library (logical device)
-      (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\device.lib")))
+      (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\texas.lib")))
   (nets
     (net (code 1) (name "Net-(R9-Pad1)")
       (node (ref R9) (pin 1))
