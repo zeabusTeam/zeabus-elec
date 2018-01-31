@@ -4322,7 +4322,7 @@
     )
   )
 
-  (gr_line (start 134.62 160.02) (end 134.62 -7.62) (layer F.SilkS) (width 0.2))
+  (gr_line (start 134.62 -7.62) (end 134.62 156.972) (layer F.SilkS) (width 0.2))
   (gr_line (start 91.44 119.888) (end 91.44 260.096) (layer F.SilkS) (width 0.2))
   (dimension 139.7 (width 0.3) (layer Eco1.User)
     (gr_text "139.700 mm" (at 124.126 62.268443 270) (layer Eco1.User)
