@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 update=Friday, 24 November 2017 'amt' 07:35:43
+=======
+update=9/12/2560 11:13:36
+>>>>>>> 3eda1dba5ca6e598d51cb20764784284330d387d
 version=1
 last_client=kicad
 [cvpcb]

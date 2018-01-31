@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:Power_Distributor-rescue
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -30,11 +31,12 @@ LIBS:contrib
 LIBS:valves
 LIBS:zeabus
 LIBS:ftdi
+LIBS:Power_Distributor-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 6 9
+Sheet 5 8
 Title "Thruster Switch"
 Date "2017-04-06"
 Rev "1.0.0"
@@ -67,7 +69,7 @@ AR Path="/58E62AD5/58E01A68" Ref="R12"  Part="1"
 AR Path="/58E0048C/58E01A68" Ref="R15"  Part="1" 
 F 0 "R15" V 6330 4150 50  0000 C CNN
 F 1 "10k" V 6250 4150 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603" V 6180 4150 50  0001 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 6180 4150 50  0001 C CNN
 F 3 "" H 6250 4150 50  0001 C CNN
 	1    6250 4150
 	1    0    0    -1  
@@ -81,7 +83,7 @@ AR Path="/58E62AD5/58E01A8B" Ref="D8"  Part="1"
 AR Path="/58E0048C/58E01A8B" Ref="D10"  Part="1" 
 F 0 "D10" H 6200 4675 50  0000 L CNN
 F 1 "LED_Small" H 6075 4450 50  0000 L CNN
-F 2 "LEDs:LED_0603" V 6250 4550 50  0001 C CNN
+F 2 "LEDs:LED_0603_HandSoldering" V 6250 4550 50  0001 C CNN
 F 3 "" V 6250 4550 50  0001 C CNN
 	1    6250 4550
 	0    -1   -1   0   
@@ -95,7 +97,7 @@ AR Path="/58E62AD5/58E01FA8" Ref="R10"  Part="1"
 AR Path="/58E0048C/58E01FA8" Ref="R13"  Part="1" 
 F 0 "R13" V 5630 2500 50  0000 C CNN
 F 1 "10k" V 5550 2500 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603" V 5480 2500 50  0001 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 5480 2500 50  0001 C CNN
 F 3 "" H 5550 2500 50  0001 C CNN
 	1    5550 2500
 	0    1    1    0   
@@ -109,19 +111,19 @@ AR Path="/58E62AD5/58E01FFB" Ref="R11"  Part="1"
 AR Path="/58E0048C/58E01FFB" Ref="R14"  Part="1" 
 F 0 "R14" V 5630 3050 50  0000 C CNN
 F 1 "2.2k" V 5550 3050 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603" V 5480 3050 50  0001 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 5480 3050 50  0001 C CNN
 F 3 "" H 5550 3050 50  0001 C CNN
 	1    5550 3050
 	0    1    1    0   
 $EndComp
 $Comp
-L GND #PWR011
+L GND #PWR026
 U 1 1 58E0369B
 P 6250 4800
-AR Path="/58E52973/58E0369B" Ref="#PWR011"  Part="1" 
-AR Path="/58E62AD5/58E0369B" Ref="#PWR014"  Part="1" 
-AR Path="/58E0048C/58E0369B" Ref="#PWR015"  Part="1" 
-F 0 "#PWR015" H 6250 4550 50  0001 C CNN
+AR Path="/58E52973/58E0369B" Ref="#PWR026"  Part="1" 
+AR Path="/58E62AD5/58E0369B" Ref="#PWR023"  Part="1" 
+AR Path="/58E0048C/58E0369B" Ref="#PWR029"  Part="1" 
+F 0 "#PWR029" H 6250 4550 50  0001 C CNN
 F 1 "GND" H 6250 4650 50  0000 C CNN
 F 2 "" H 6250 4800 50  0001 C CNN
 F 3 "" H 6250 4800 50  0001 C CNN
@@ -132,64 +134,6 @@ Text HLabel 3700 2300 0    60   Input ~ 0
 +Power
 Text HLabel 3700 3050 0    60   Input ~ 0
 Software_Switch
-$Comp
-L XT60 P2
-U 1 1 58E0D2A0
-P 7400 4300
-AR Path="/58E52973/58E0D2A0" Ref="P2"  Part="1" 
-AR Path="/58E62AD5/58E0D2A0" Ref="P8"  Part="1" 
-AR Path="/58E0048C/58E0D2A0" Ref="P12"  Part="1" 
-F 0 "P12" H 7400 4450 50  0000 C CNN
-F 1 "XT60" H 7400 4150 50  0000 C CNN
-F 2 "zeabus:XT60" H 7500 4050 60  0001 C CNN
-F 3 "" H 7400 4300 60  0000 C CNN
-	1    7400 4300
-	1    0    0    -1  
-$EndComp
-$Comp
-L XT60 P3
-U 1 1 58E0D2E8
-P 7950 4300
-AR Path="/58E52973/58E0D2E8" Ref="P3"  Part="1" 
-AR Path="/58E62AD5/58E0D2E8" Ref="P9"  Part="1" 
-AR Path="/58E0048C/58E0D2E8" Ref="P13"  Part="1" 
-F 0 "P13" H 7950 4450 50  0000 C CNN
-F 1 "XT60" H 7950 4150 50  0000 C CNN
-F 2 "zeabus:XT60" H 8050 4050 60  0001 C CNN
-F 3 "" H 7950 4300 60  0000 C CNN
-	1    7950 4300
-	1    0    0    -1  
-$EndComp
-$Comp
-L XT60 P4
-U 1 1 58E0D33F
-P 8500 4300
-AR Path="/58E52973/58E0D33F" Ref="P4"  Part="1" 
-AR Path="/58E62AD5/58E0D33F" Ref="P10"  Part="1" 
-AR Path="/58E0048C/58E0D33F" Ref="P14"  Part="1" 
-F 0 "P14" H 8500 4450 50  0000 C CNN
-F 1 "XT60" H 8500 4150 50  0000 C CNN
-F 2 "zeabus:XT60" H 8600 4050 60  0001 C CNN
-F 3 "" H 8500 4300 60  0000 C CNN
-	1    8500 4300
-	1    0    0    -1  
-$EndComp
-$Comp
-L Fuse F1
-U 1 1 58E4FE30
-P 6250 3550
-AR Path="/58E52973/58E4FE30" Ref="F1"  Part="1" 
-AR Path="/58E62AD5/58E4FE30" Ref="F4"  Part="1" 
-AR Path="/58E0048C/58E4FE30" Ref="F5"  Part="1" 
-F 0 "F5" V 6330 3550 50  0000 C CNN
-F 1 "Fuse" V 6175 3550 50  0000 C CNN
-F 2 "zeabus:FUSE_AUTO" V 6180 3550 50  0001 C CNN
-F 3 "" H 6250 3550 50  0001 C CNN
-	1    6250 3550
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	6250 3850 8300 3850
 Wire Wire Line
 	6650 3850 6650 4250
 Connection ~ 6250 3850
@@ -207,32 +151,14 @@ Wire Wire Line
 Wire Wire Line
 	5250 2500 5400 2500
 Connection ~ 5250 3050
-Wire Wire Line
-	8300 3850 8300 4250
 Connection ~ 6650 3850
-Wire Wire Line
-	8300 4750 8300 4350
-Wire Wire Line
-	7200 4250 7200 3850
-Connection ~ 7200 3850
-Wire Wire Line
-	7750 4250 7750 3850
-Connection ~ 7750 3850
 Wire Wire Line
 	6250 4450 6250 4300
 Connection ~ 6650 4750
 Wire Wire Line
-	7750 4750 7750 4350
-Connection ~ 7750 4750
-Wire Wire Line
-	7200 4750 7200 4350
-Connection ~ 7200 4750
-Wire Wire Line
 	6250 4650 6250 4800
 Wire Wire Line
-	6250 3250 6250 3400
-Wire Wire Line
-	6250 3700 6250 4000
+	6250 3250 6250 4000
 $Comp
 L Q_PMOS_GDS Q1
 U 1 1 58E51C6A
@@ -242,7 +168,7 @@ AR Path="/58E62AD5/58E51C6A" Ref="Q4"  Part="1"
 AR Path="/58E0048C/58E51C6A" Ref="Q5"  Part="1" 
 F 0 "Q5" H 6350 3100 50  0000 L CNN
 F 1 "IPD90P03P4L" H 6350 3000 50  0000 L CNN
-F 2 "TO_SOT_Packages_SMD:TO-252-2Lead" H 6350 3150 50  0001 C CNN
+F 2 "TO_SOT_Packages_SMD:TO-252-2" H 6350 3150 50  0001 C CNN
 F 3 "" H 6150 3050 50  0001 C CNN
 	1    6150 3050
 	1    0    0    1   
@@ -267,11 +193,13 @@ Connection ~ 5850 2500
 Wire Wire Line
 	5850 2900 5850 3050
 Connection ~ 5850 3050
-Wire Wire Line
-	6250 4750 8300 4750
 Connection ~ 6250 4750
 Wire Wire Line
 	5250 3050 5250 2500
 Wire Wire Line
 	3700 2300 6250 2300
+Wire Wire Line
+	6250 4750 6650 4750
+Wire Wire Line
+	6650 3850 6250 3850
 $EndSCHEMATC
