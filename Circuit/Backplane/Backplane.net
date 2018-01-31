@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source C:/Users/ADMINS/Desktop/zeabus-elec/Circuit/Backplane/Backplane.sch)
-    (date "31/1/2561 4:38:48")
+    (date "31/1/2561 17:57:40")
     (tool "Eeschema 4.0.7")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -473,12 +473,12 @@
       (tstamp 5A6F87A2))
     (comp (ref Q1)
       (value Q_NPN_BCE)
-      (footprint TO_SOT_Packages_SMD:SOT-323_SC-70_Handsoldering)
+      (footprint TO_SOT_Packages_SMD:SOT-23)
       (libsource (lib device) (part Q_NPN_BCE))
       (sheetpath (names /) (tstamps /))
       (tstamp 5A6F8E99))
     (comp (ref R22)
-      (value 500)
+      (value 40)
       (footprint Resistors_SMD:R_0603_HandSoldering)
       (libsource (lib device) (part R))
       (sheetpath (names /) (tstamps /))
@@ -959,12 +959,12 @@
         (pin (num 1) (name P1) (type passive))
         (pin (num 2) (name P2) (type passive)))))
   (libraries
+    (library (logical conn)
+      (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\conn.lib"))
     (library (logical device)
       (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\device.lib"))
     (library (logical texas)
       (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\texas.lib"))
-    (library (logical conn)
-      (uri "C:\\Program Files\\KiCad\\share\\kicad\\library\\conn.lib"))
     (library (logical zeabus)
       (uri C:\Users\ADMINS\Desktop\zeabus-elec\Circuit\Kicad-Libraries\zeabus.lib)))
   (nets
