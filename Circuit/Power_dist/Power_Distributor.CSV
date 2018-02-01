@@ -1,0 +1,52 @@
+Title,Power Distributor
+Revision,1.0.0
+Date,2017-04-06
+Generated,2/1/2018 12:55:12 PM
+Company,Kasetsart University
+Comment 1,
+Comment 2,
+Comment 3,
+Comment 4,
+Total Parts,97
+Total Unique Parts,31
+
+
+
+Ref,Qty,Value,Footprint,Datasheet,
+C1 C2 C4 C5 C8 C9 C10 C14 C15 C16 C17 C18 ,12,100nF,Capacitors_SMD:C_0603_HandSoldering,
+C3 C6 C12 C13 ,4,4.7uF,Capacitors_SMD:C_0805_HandSoldering,
+C7 C11 ,2,27pF,Capacitors_SMD:C_0603_HandSoldering,
+CON1 ,1,Conn-PCIE-x16,zeabus:pcie-x16-edge,
+D1 D3 D5 D9 ,4,BZX585-C12,Diodes_SMD:D_SOD-523,
+D2 D4 D6 D7 D8 D10 D13 D14 ,8,LED_Small,LEDs:LED_0603_HandSoldering,
+D11 D12 ,2,Led_Small,LEDs:LED_0603_HandSoldering,
+F2 F3 ,2,Fuse,zeabus:FUSE_AUTO,
+J1 ,1,Thruster_Off_Switch,Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm,
+JP1 ,1,Main Switch (N.O.),Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm,
+JP2 ,1,Jumper,Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm,
+L1 L2 L3 ,3,600R 500mA,Capacitors_SMD:C_0603_HandSoldering,
+P1 P11 P16 P17 ,4,XT60,zeabus:XT60,
+P2 P3 P4 P5 ,4,XT30,zeabus:XT30,
+P15 ,1,USB_B,Connectors:USB_Mini-B,
+Q1 Q2 Q3 Q5 ,4,IPD90P03P4L,TO_SOT_Packages_SMD:TO-252-2,
+Q6 Q7 ,2,AUIRFS8409-7P,Zeabus:D2PAK-7,
+R1 R3 R11 R12 R13 R15 R16 R17 R19 R20 R29 ,11,10k,Resistors_SMD:R_0603_HandSoldering,
+R2 R14 R18 ,3,2.2k,Resistors_SMD:R_0603_HandSoldering,
+R4 R6 R7 R9 ,4,10k,Resistors_SMD:R_0603,
+R5 R8 ,2,2.2k,Resistors_SMD:R_0603,
+R9 R22 R23 R24 R25 R26 R27 R28 ,8,150,Resistors_SMD:R_0603_HandSoldering,
+R10 R30 R31 ,3,1k,Resistors_SMD:R_0603_HandSoldering,
+R21 ,1,12k 1%,Resistors_SMD:R_0603_HandSoldering,
+U1 ,1,93LC56BT-I/OT,TO_SOT_Packages_SMD:SOT-23-6,
+U2 ,1,FT232H,Housings_QFP:LQFP-48_7x7mm_Pitch0.5mm,
+U3 U4 ,2,ACPL-247-500E,zeabus:SO16_4.4x10.3mm_Pitch1.27mm,
+U5 U6 ,2,LTC4357,Housings_SSOP:MSOP-8_3x3mm_Pitch0.65mm,
+U7 ,1,UWE-12/6-Q12P,zeabus:UWE-xxxx,
+U8 ,1,TEN_20-2411WIN,zeabus:TEN_20WIN,
+Y1 ,1,12MHz,Crystals:Crystal_SMD_FOX_FE-2pin_7.5x5.0mm,
+
+
+
+
+BOM made with KICAD_BOM_WIZARD (https://github.com/HashDefineElectronics/KiCad_BOM_Wizard.git)
+Generated 2/1/2018 12:55:12 PM
