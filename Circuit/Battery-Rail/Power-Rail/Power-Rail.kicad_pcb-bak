@@ -230,10 +230,10 @@
       (net 2 GND))
   )
 
-  (gr_line (start 169.672 106.68) (end 125.984 106.68) (layer Edge.Cuts) (width 0.15))
-  (gr_line (start 169.672 86.868) (end 169.672 106.68) (layer Edge.Cuts) (width 0.15))
-  (gr_line (start 125.984 86.868) (end 169.672 86.868) (layer Edge.Cuts) (width 0.15))
-  (gr_line (start 125.984 106.68) (end 125.984 86.868) (layer Edge.Cuts) (width 0.15))
+  (gr_line (start 169.672 106.172) (end 125.984 106.172) (layer Edge.Cuts) (width 0.15))
+  (gr_line (start 169.672 87.376) (end 169.672 106.172) (layer Edge.Cuts) (width 0.15))
+  (gr_line (start 125.984 87.376) (end 169.672 87.376) (layer Edge.Cuts) (width 0.15))
+  (gr_line (start 125.984 106.172) (end 125.984 87.376) (layer Edge.Cuts) (width 0.15))
 
   (zone (net 1) (net_name +BATT) (layer F.Cu) (tstamp 0) (hatch edge 0.508)
     (connect_pads yes (clearance 0.508))
