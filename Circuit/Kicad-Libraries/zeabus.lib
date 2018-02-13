@@ -1255,11 +1255,11 @@ X HSO15- B79 -200 -4800 200 R 50 50 2 1 O
 ENDDRAW
 ENDDEF
 #
-# Conn_Jumper
+# Conn_01x03_Selection_Source
 #
-DEF Conn_Jumper J 0 40 Y N 1 F N
+DEF Conn_01x03_Selection_Source J 0 40 Y N 1 F N
 F0 "J" 0 200 50 H V C CNN
-F1 "Conn_Jumper" 0 -200 50 H V C CNN
+F1 "Conn_01x03_Selection_Source" 0 -200 50 H V C CNN
 F2 "" 50 0 50 H I C CNN
 F3 "" 50 0 50 H I C CNN
 $FPLIST
