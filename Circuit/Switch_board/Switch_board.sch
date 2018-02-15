@@ -1,1 +1,289 @@
 EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:switches
+LIBS:relays
+LIBS:motors
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:zeabus
+LIBS:Switch_board-cache
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L XT30 P?
+U 1 1 5A826541
+P 2600 2050
+F 0 "P?" H 2600 2200 50  0000 C CNN
+F 1 "XT30" H 2600 1900 50  0000 C CNN
+F 2 "" H 2600 2050 60  0001 C CNN
+F 3 "" H 2600 2050 60  0000 C CNN
+	1    2600 2050
+	-1   0    0    -1  
+$EndComp
+$Comp
+L DRV5023 U?
+U 1 1 5A8265E8
+P 3950 2000
+F 0 "U?" H 3700 2150 60  0000 C CNN
+F 1 "DRV5023" H 4150 2150 60  0000 C CNN
+F 2 "" H 3950 2000 60  0001 C CNN
+F 3 "" H 3950 2000 60  0001 C CNN
+	1    3950 2000
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C?
+U 1 1 5A8266C7
+P 3300 2250
+F 0 "C?" H 3325 2350 50  0000 L CNN
+F 1 "C" H 3325 2150 50  0000 L CNN
+F 2 "" H 3338 2100 50  0001 C CNN
+F 3 "" H 3300 2250 50  0001 C CNN
+	1    3300 2250
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 5A826833
+P 3950 2550
+F 0 "#PWR?" H 3950 2300 50  0001 C CNN
+F 1 "GND" H 3950 2400 50  0000 C CNN
+F 2 "" H 3950 2550 50  0001 C CNN
+F 3 "" H 3950 2550 50  0001 C CNN
+	1    3950 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 5A826918
+P 2900 2150
+F 0 "#PWR?" H 2900 1900 50  0001 C CNN
+F 1 "GND" H 2900 2000 50  0000 C CNN
+F 2 "" H 2900 2150 50  0001 C CNN
+F 3 "" H 2900 2150 50  0001 C CNN
+	1    2900 2150
+	1    0    0    -1  
+$EndComp
+$Comp
+L +BATT #PWR?
+U 1 1 5A82694E
+P 3300 1700
+F 0 "#PWR?" H 3300 1550 50  0001 C CNN
+F 1 "+BATT" H 3300 1840 50  0000 C CNN
+F 2 "" H 3300 1700 50  0001 C CNN
+F 3 "" H 3300 1700 50  0001 C CNN
+	1    3300 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R?
+U 1 1 5A826B45
+P 4750 1700
+F 0 "R?" V 4830 1700 50  0000 C CNN
+F 1 "R" V 4750 1700 50  0000 C CNN
+F 2 "" V 4680 1700 50  0001 C CNN
+F 3 "" H 4750 1700 50  0001 C CNN
+	1    4750 1700
+	1    0    0    -1  
+$EndComp
+$Comp
+L +BATT #PWR?
+U 1 1 5A826C2B
+P 4750 1450
+F 0 "#PWR?" H 4750 1300 50  0001 C CNN
+F 1 "+BATT" H 4750 1590 50  0000 C CNN
+F 2 "" H 4750 1450 50  0001 C CNN
+F 3 "" H 4750 1450 50  0001 C CNN
+	1    4750 1450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Conn_01x03_Selection_Source J?
+U 1 1 5A82740B
+P 5450 2000
+F 0 "J?" H 5450 2200 50  0000 C CNN
+F 1 "switch_mode" H 5450 1800 50  0000 C CNN
+F 2 "" H 5500 2000 50  0001 C CNN
+F 3 "" H 5500 2000 50  0001 C CNN
+	1    5450 2000
+	-1   0    0    1   
+$EndComp
+$Comp
+L Conn_01x02 J?
+U 1 1 5A82779E
+P 7200 1900
+F 0 "J?" H 7200 2000 50  0000 C CNN
+F 1 "switch" H 7200 1700 50  0000 C CNN
+F 2 "" H 7200 1900 50  0001 C CNN
+F 3 "" H 7200 1900 50  0001 C CNN
+	1    7200 1900
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R?
+U 1 1 5A82867B
+P 5750 2800
+F 0 "R?" V 5830 2800 50  0000 C CNN
+F 1 "R" V 5750 2800 50  0000 C CNN
+F 2 "" V 5680 2800 50  0001 C CNN
+F 3 "" H 5750 2800 50  0001 C CNN
+	1    5750 2800
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R?
+U 1 1 5A8289F3
+P 6000 2500
+F 0 "R?" V 6080 2500 50  0000 C CNN
+F 1 "R" V 6000 2500 50  0000 C CNN
+F 2 "" V 5930 2500 50  0001 C CNN
+F 3 "" H 6000 2500 50  0001 C CNN
+	1    6000 2500
+	0    -1   -1   0   
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 5A829801
+P 6900 2050
+F 0 "#PWR?" H 6900 1800 50  0001 C CNN
+F 1 "GND" H 6900 1900 50  0000 C CNN
+F 2 "" H 6900 2050 50  0001 C CNN
+F 3 "" H 6900 2050 50  0001 C CNN
+	1    6900 2050
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 5A829CAE
+P 6100 3150
+F 0 "#PWR?" H 6100 2900 50  0001 C CNN
+F 1 "GND" H 6100 3000 50  0000 C CNN
+F 2 "" H 6100 3150 50  0001 C CNN
+F 3 "" H 6100 3150 50  0001 C CNN
+	1    6100 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L BSS138 Q?
+U 1 1 5A856C21
+P 6400 2500
+F 0 "Q?" H 6600 2575 50  0000 L CNN
+F 1 "BSS138" H 6600 2500 50  0000 L CNN
+F 2 "TO_SOT_Packages_SMD:SOT-23" H 6600 2425 50  0001 L CIN
+F 3 "" H 6400 2500 50  0001 L CNN
+	1    6400 2500
+	1    0    0    -1  
+$EndComp
+$Comp
+L D_Zener D?
+U 1 1 5A857F4A
+P 4750 2300
+F 0 "D?" H 4750 2400 50  0000 C CNN
+F 1 "BZX585-C12" H 4750 2200 50  0000 C CNN
+F 2 "" H 4750 2300 50  0001 C CNN
+F 3 "" H 4750 2300 50  0001 C CNN
+	1    4750 2300
+	0    1    1    0   
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 5A859AB3
+P 4750 2550
+F 0 "#PWR?" H 4750 2300 50  0001 C CNN
+F 1 "GND" H 4750 2400 50  0000 C CNN
+F 2 "" H 4750 2550 50  0001 C CNN
+F 3 "" H 4750 2550 50  0001 C CNN
+	1    4750 2550
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3300 1700 3300 2100
+Wire Wire Line
+	3950 2450 3950 2550
+Wire Wire Line
+	3300 2400 3300 2500
+Wire Wire Line
+	3300 2500 3950 2500
+Connection ~ 3950 2500
+Connection ~ 3300 2000
+Wire Wire Line
+	2800 2100 2900 2100
+Wire Wire Line
+	4750 1850 4750 2150
+Connection ~ 4750 2000
+Wire Wire Line
+	7000 2000 6900 2000
+Wire Wire Line
+	2900 2100 2900 2150
+Wire Wire Line
+	6900 2000 6900 2050
+Wire Wire Line
+	4750 1450 4750 1550
+Wire Wire Line
+	4750 2550 4750 2450
+Wire Wire Line
+	4450 2000 5250 2000
+Wire Wire Line
+	6500 2300 6500 1900
+Connection ~ 6500 1900
+Wire Wire Line
+	6500 3100 6500 2700
+Wire Wire Line
+	6200 2500 6150 2500
+Wire Wire Line
+	5850 2500 5750 2500
+Wire Wire Line
+	5750 2100 5750 2650
+Wire Wire Line
+	6100 3150 6100 3100
+Wire Wire Line
+	5750 3100 6500 3100
+Wire Wire Line
+	5750 3100 5750 2950
+Connection ~ 6100 3100
+Wire Wire Line
+	5650 2100 5750 2100
+Connection ~ 5750 2500
+Wire Wire Line
+	5650 1900 7000 1900
+Wire Wire Line
+	2800 2000 3450 2000
+$EndSCHEMATC
