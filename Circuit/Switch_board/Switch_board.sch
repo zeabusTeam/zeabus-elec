@@ -38,10 +38,10 @@ EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
 Sheet 1 1
-Title ""
-Date ""
-Rev ""
-Comp ""
+Title "Switch_board"
+Date "2018-02-21"
+Rev "1.0.0"
+Comp "Zeabus"
 Comment1 ""
 Comment2 ""
 Comment3 ""
