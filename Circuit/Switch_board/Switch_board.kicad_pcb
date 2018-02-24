@@ -3,7 +3,7 @@
   (general
     (links 44)
     (no_connects 0)
-    (area 139.624999 107.874999 179.780001 139.775001)
+    (area 136.041714 98.395524 189.841 146.591001)
     (thickness 1.6)
     (drawings 17)
     (tracks 155)
@@ -14,8 +14,8 @@
 
   (page A4)
   (layers
-    (0 F.Cu signal hide)
-    (31 B.Cu signal hide)
+    (0 F.Cu signal)
+    (31 B.Cu signal)
     (32 B.Adhes user hide)
     (33 F.Adhes user hide)
     (34 B.Paste user)
@@ -1272,10 +1272,10 @@
     (pad 1 np_thru_hole circle (at 0 0) (size 3 3) (drill 3) (layers *.Cu *.Mask))
   )
 
-  (gr_text NO_MODE (at 169.164 134.747 360) (layer F.SilkS) (tstamp 5A9158FA)
+  (gr_text NO_MODE (at 169.164 134.747) (layer F.SilkS) (tstamp 5A9158FA)
     (effects (font (size 0.7 0.7) (thickness 0.175)))
   )
-  (gr_text NC_MODE (at 161.29 134.747 360) (layer F.SilkS) (tstamp 5A915892)
+  (gr_text NC_MODE (at 161.29 134.747) (layer F.SilkS) (tstamp 5A915892)
     (effects (font (size 0.7 0.7) (thickness 0.175)))
   )
   (gr_text SW_MODE (at 156.972 137.033) (layer F.SilkS) (tstamp 5A915866)
@@ -1496,7 +1496,7 @@
     (fill yes (arc_segments 16) (thermal_gap 0.508) (thermal_bridge_width 0.508))
     (polygon
       (pts
-        (xy 139.7 107.95) (xy 181.229 107.95) (xy 181.229 139.7) (xy 139.7 139.7)
+        (xy 139.7 107.95) (xy 179.705 107.95) (xy 179.705 139.7) (xy 139.7 139.7)
       )
     )
     (filled_polygon
@@ -1612,7 +1612,7 @@
     (fill yes (arc_segments 16) (thermal_gap 0.508) (thermal_bridge_width 0.508))
     (polygon
       (pts
-        (xy 181.229 139.7) (xy 181.229 107.95) (xy 139.7 107.95) (xy 139.7 139.7)
+        (xy 179.705 139.7) (xy 179.705 107.95) (xy 139.7 107.95) (xy 139.7 139.7)
       )
     )
     (filled_polygon
