@@ -5,6 +5,7 @@
 
 #include <ros/ros.h>
 #include <nav_msgs/Odometry.h>
+#include <cmath>
 
 #include <zeabus_elec_ros_hardware_interface/PowerSwitchCommand.h>
 #include <zeabus_elec_ros_hardware_interface/IOCommand.h>
@@ -15,6 +16,9 @@
 
 #define ONE_ATM_AS_PSI 14.6959
 #define PSI_PER_DEPTH 0.6859
+
+#define MAXIMUM_DEPTH_DIFFERENTIAL 0.5
+#define LAST_DEPTH_INITIAL_VALUE 0xFFFFFFFFFFFFFFFF
 
 static ros::Publisher odometry_publisher;
 
@@ -30,6 +34,8 @@ static ros::ServiceClient solenoid_service_client;
 
 static double atm_pressure, depth_offset;
 
+static double last_depth;
+
 double barometer_value_to_depth(uint16_t barometer_value)
 {
     double barometer_voltage, psi, depth;
@@ -39,10 +45,10 @@ double barometer_value_to_depth(uint16_t barometer_value)
 
     depth = ((psi - atm_pressure) * PSI_PER_DEPTH) + depth_offset;
 
-    ROS_INFO("pressure sensor analog value : %.4d", barometer_value);
-    ROS_INFO("pressure sensor voltage : %.4lf V", barometer_voltage);
+    //ROS_INFO("pressure sensor analog value : %.4d", barometer_value);
+    //ROS_INFO("pressure sensor voltage : %.4lf V", barometer_voltage);
     ROS_INFO("pressure : %.4lf psi", psi);
-    ROS_INFO("depth : %.4lf meter\n", depth);
+    //ROS_INFO("depth : %.4lf meter\n", depth);
 
     return depth;
 }
@@ -50,9 +56,26 @@ double barometer_value_to_depth(uint16_t barometer_value)
 void send_depth(const zeabus_elec_ros_peripheral_bridge::barometer::ConstPtr& msg)
 {
     nav_msgs::Odometry odometry;
-    double depth;
+    double depth, depth_differential;
 
     depth = barometer_value_to_depth(msg->pressureValue);
+
+    if(last_depth == LAST_DEPTH_INITIAL_VALUE)
+    {
+        last_depth = depth;
+    }
+    depth_differential = depth - last_depth;
+
+    if(fabs(depth_differential) > MAXIMUM_DEPTH_DIFFERENTIAL)
+    {
+        depth = last_depth;
+    }
+    else
+    {
+        last_depth = depth;
+    }
+
+    ROS_INFO("depth : %.4lf meter\n", -depth);
     
     odometry.header.frame_id = "odom";
     odometry.child_frame_id = "base_link";
@@ -150,6 +173,8 @@ int main(int argc, char **argv)
 
     power_dist_service_client = nh.serviceClient<zeabus_elec_ros_power_dist::power_dist>("power_switch");
     solenoid_service_client = nh.serviceClient<zeabus_elec_ros_peripheral_bridge::solenoid_sw>("solenoid_sw");
+
+    last_depth = LAST_DEPTH_INITIAL_VALUE;
 
     ros::spin();
 
