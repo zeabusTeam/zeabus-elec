@@ -5,6 +5,7 @@
 
 #include <ros/ros.h>
 #include <nav_msgs/Odometry.h>
+#include <std_msgs/Bool.h>
 #include <cmath>
 
 #include <zeabus_elec_ros_hardware_interface/PowerSwitchCommand.h>
@@ -12,6 +13,7 @@
 
 #include <zeabus_elec_ros_power_dist/power_dist.h>
 #include <zeabus_elec_ros_peripheral_bridge/barometer.h>
+#include <zeabus_elec_ros_peripheral_bridge/ios_state.h>
 #include <zeabus_elec_ros_peripheral_bridge/solenoid_sw.h>
 
 #define ONE_ATM_AS_PSI 14.6959
@@ -21,8 +23,10 @@
 #define LAST_DEPTH_INITIAL_VALUE 0xFFFFFFFFFFFFFFFF
 
 static ros::Publisher odometry_publisher;
+static ros::Publisher planner_switch_publisher;
 
 static ros::Subscriber barometer_subsciber;
+static ros::Subscriber ios_state_subsciber;
 
 static ros::ServiceServer set_power_switch_on_service_server;
 static ros::ServiceServer set_power_switch_off_service_server;
@@ -84,6 +88,18 @@ void send_depth(const zeabus_elec_ros_peripheral_bridge::barometer::ConstPtr& ms
     odometry.pose.pose.position.z = -depth;
 
     odometry_publisher.publish(odometry);
+}
+
+void send_planner_switch(const zeabus_elec_ros_peripheral_bridge::ios_state::ConstPtr& msg)
+{
+    std_msgs::Bool planner_switch_msg;
+    bool planner_switch_state;
+
+    planner_switch_state = (msg->iosState) & 0x04;
+
+    planner_switch_msg.data = planner_switch_state;
+
+    planner_switch_publisher.publish(planner_switch_msg);
 }
 
 bool set_power_switch_on(zeabus_elec_ros_hardware_interface::PowerSwitchCommand::Request &req,
@@ -163,8 +179,10 @@ int main(int argc, char **argv)
     nh.param<double>("/Zeabus_Elec_Hardware_interface/depth_offset", depth_offset, 0);
 
     odometry_publisher = nh.advertise<nav_msgs::Odometry>("/baro/odom", 10);
+    planner_switch_publisher = nh.advertise<std_msgs::Bool>("/planner_switch", 10);
 
     barometer_subsciber = nh.subscribe("barometer", 10, send_depth);
+    ios_state_subsciber = nh.subscribe("ios_state", 10, send_planner_switch);
 
     set_power_switch_on_service_server = nh.advertiseService("/power_distribution/switch_on", set_power_switch_on);
     set_power_switch_off_service_server = nh.advertiseService("/power_distribution/switch_off", set_power_switch_off);
