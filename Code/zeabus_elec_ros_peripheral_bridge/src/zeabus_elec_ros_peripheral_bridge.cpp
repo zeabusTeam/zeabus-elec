@@ -2,6 +2,7 @@
 #include <std_msgs/String.h>
 #include <zeabus_elec_ros_peripheral_bridge/barometer.h>
 #include <zeabus_elec_ros_peripheral_bridge/solenoid_sw.h>
+#include <zeabus_elec_ros_peripheral_bridge/ios_state.h>
 #include <zeabus_elec_ros_peripheral_bridge/comm_data.h>
 #include <ftdi_impl.h>
 
@@ -18,8 +19,9 @@
 static const char* stPeripheralSerial = "PeripheralBridge";
 
 static std::shared_ptr<Zeabus_Elec::ftdi_impl> pxMsspA, pxMsspB, pxUartA, pxUartB;
-static ros::Publisher errMsgPublisher;	/* Publisher for error message */
+static ros::Publisher errMsgPublisher;      /* Publisher for error message */
 static ros::Publisher barometerPublisher;	/* Publisher for barometer message */
+static ros::Publisher iosStatePublisher;     /* Publisher for IOs state message*/
 static ros::Publisher comm1RecvPublisher;	/* Publisher for comm1 received-data message */
 static ros::Publisher comm2RecvPublisher;	/* Publisher for comm2 received-data message */
 static ros::Subscriber comm1SendSubscriber; /* Subscriber for comm1 sent-data message */
@@ -179,6 +181,22 @@ bool ZeabusElec_GetPressure( uint16_t& barometerVal)
 	return( true );	/* All success */	
 }
 
+/* Read IOs state. */
+bool ZeabusElec_GetIOsState()
+{
+        uint8_t currentSwitchState;
+
+        currentSwitchState = pxMsspA->ReadLoGPIOData() >> 4;
+        currentSwitchState |= pxMsspB->ReadLoGPIOData() & 0xF0;
+
+        zeabus_elec_ros_peripheral_bridge::ios_state iosStateMsg;
+        iosStateMsg.iosState = currentSwitchState;
+
+        iosStatePublisher.publish( iosStateMsg );
+
+	return( true );	/* All success */	
+}
+
 /* Receive available data from either COMM1 or COMM2 */
 void ZeabusElec_ReceiveComm( std::shared_ptr<Zeabus_Elec::ftdi_impl> commPort, uint8_t commID, ros::Publisher& commPublisher )
 {
@@ -291,6 +309,7 @@ int main( int argc, char** argv )
 	/* Register ROS publishers for hardware error message, baromenter message and RS232 received-data message */
 	errMsgPublisher = nh.advertise<std_msgs::String>( "hw_error", 1000 );	/* Publisher for error message */
 	barometerPublisher = nh.advertise<zeabus_elec_ros_peripheral_bridge::barometer>( "barometer", 100 );	/* Publisher for barometer message */
+        iosStatePublisher = nh.advertise<zeabus_elec_ros_peripheral_bridge::ios_state>( "ios_state", 100 );	/* Publisher for IOs state message */
 	comm1RecvPublisher = nh.advertise<zeabus_elec_ros_peripheral_bridge::comm_data>( "comm1/recv", 100 );	/* Publisher for comm1 received-data message */
 	comm2RecvPublisher = nh.advertise<zeabus_elec_ros_peripheral_bridge::comm_data>( "comm2/recv", 100 );	/* Publisher for comm2 received-data message */
 
@@ -321,6 +340,18 @@ int main( int argc, char** argv )
 		
 			errMsgPublisher.publish( msg );
 		}
+
+                /* read IOs state */
+                if( !(ZeabusElec_GetIOsState() ) )
+                {
+                        /* Fail to read IOs state */
+			std_msgs::String msg;
+			std::stringstream ss;
+			ss << "Fail to get IOs state with error code " << pxMsspA->GetCurrentStatus();
+			msg.data = ss.str();
+		
+			errMsgPublisher.publish( msg );
+                }
 
 		/* Read from COMM1 */
 		ZeabusElec_ReceiveComm( pxUartA, 1, comm1RecvPublisher );
