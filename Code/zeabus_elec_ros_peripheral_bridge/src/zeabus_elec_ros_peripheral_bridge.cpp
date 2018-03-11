@@ -284,23 +284,23 @@ int main( int argc, char** argv )
 	}
 	pxMsspB->SetGPIODirection( initIODirectionB, initIOStateB );	/* All bits are output, initial pin state is low*/
 	
-	pxUartA = std::make_shared<Zeabus_Elec::ftdi_uart_impl>( Zeabus_Elec::FT4232H, stPeripheralSerial, 3, (uint32_t)comm1BaudRate );
-	if( pxUartA->GetCurrentStatus() != 0 )
-	{
-		/* Fail - unable to initialize COM1 interface*/
-		ROS_FATAL( "Unable to initialize COM1 interface" );
-		return( -7 );
-		
-	}
+	//pxUartA = std::make_shared<Zeabus_Elec::ftdi_uart_impl>( Zeabus_Elec::FT4232H, stPeripheralSerial, 3, (uint32_t)comm1BaudRate );
+	//if( pxUartA->GetCurrentStatus() != 0 )
+	//{
+	//	/* Fail - unable to initialize COM1 interface*/
+	//	ROS_FATAL( "Unable to initialize COM1 interface" );
+	//	return( -7 );
+	//	
+	//}
 
-	pxUartB = std::make_shared<Zeabus_Elec::ftdi_uart_impl>( Zeabus_Elec::FT4232H, stPeripheralSerial, 4, (uint32_t)comm2BaudRate );
-	if( pxUartB->GetCurrentStatus() != 0 )
-	{
-		/* Fail - unable to initialize COM2 interface*/
-		ROS_FATAL( "Unable to initialize COM2 interface" );
-		return( -8 );
-		
-	}
+	//pxUartB = std::make_shared<Zeabus_Elec::ftdi_uart_impl>( Zeabus_Elec::FT4232H, stPeripheralSerial, 4, (uint32_t)comm2BaudRate );
+	//if( pxUartB->GetCurrentStatus() != 0 )
+	//{
+	//	/* Fail - unable to initialize COM2 interface*/
+	//	ROS_FATAL( "Unable to initialize COM2 interface" );
+	//	return( -8 );
+	//	
+	//}
 
 	/*=================================================================================
 	  Now the FTDI chip is opened and hooked. We can continue ROS registration process 
@@ -310,12 +310,12 @@ int main( int argc, char** argv )
 	errMsgPublisher = nh.advertise<std_msgs::String>( "hw_error", 1000 );	/* Publisher for error message */
 	barometerPublisher = nh.advertise<zeabus_elec_ros_peripheral_bridge::barometer>( "barometer", 100 );	/* Publisher for barometer message */
         iosStatePublisher = nh.advertise<zeabus_elec_ros_peripheral_bridge::ios_state>( "ios_state", 100 );	/* Publisher for IOs state message */
-	comm1RecvPublisher = nh.advertise<zeabus_elec_ros_peripheral_bridge::comm_data>( "comm1/recv", 100 );	/* Publisher for comm1 received-data message */
-	comm2RecvPublisher = nh.advertise<zeabus_elec_ros_peripheral_bridge::comm_data>( "comm2/recv", 100 );	/* Publisher for comm2 received-data message */
+	//comm1RecvPublisher = nh.advertise<zeabus_elec_ros_peripheral_bridge::comm_data>( "comm1/recv", 100 );	/* Publisher for comm1 received-data message */
+	//comm2RecvPublisher = nh.advertise<zeabus_elec_ros_peripheral_bridge::comm_data>( "comm2/recv", 100 );	/* Publisher for comm2 received-data message */
 
 	/* Register ROS subscribers for RS232 send-data message */
-	comm1SendSubscriber = nh.subscribe( "comm1/send", 100, ZeabusElec_SendComm1 ); /* Subscriber for comm1 sent-data message */
-	comm2SendSubscriber = nh.subscribe( "comm2/send", 100, ZeabusElec_SendComm2 ); /* Subscriber for comm2 sent-data message */
+	//comm1SendSubscriber = nh.subscribe( "comm1/send", 100, ZeabusElec_SendComm1 ); /* Subscriber for comm1 sent-data message */
+	//comm2SendSubscriber = nh.subscribe( "comm2/send", 100, ZeabusElec_SendComm2 ); /* Subscriber for comm2 sent-data message */
 
         /* Register ROS service server for solenoid switch controller */
 	setSolenoidServiceServer = nh.advertiseService( "solenoid_sw", ZeabusElec_SetSolenoid ); /* Service server for solenoid-controlling */
@@ -353,11 +353,11 @@ int main( int argc, char** argv )
 			errMsgPublisher.publish( msg );
                 }
 
-		/* Read from COMM1 */
-		ZeabusElec_ReceiveComm( pxUartA, 1, comm1RecvPublisher );
-			
-		/* Read from COMM2 */
-		ZeabusElec_ReceiveComm( pxUartB, 2, comm2RecvPublisher );
+		///* Read from COMM1 */
+		//ZeabusElec_ReceiveComm( pxUartA, 1, comm1RecvPublisher );
+		//	
+		///* Read from COMM2 */
+		//ZeabusElec_ReceiveComm( pxUartB, 2, comm2RecvPublisher );
 	}
 	
 	/*=================================================================================
