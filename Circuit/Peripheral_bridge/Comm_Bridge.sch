@@ -30,6 +30,7 @@ LIBS:contrib
 LIBS:valves
 LIBS:ftdi
 LIBS:zeabus
+LIBS:Comm_Bridge-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -611,7 +612,7 @@ F 3 "" H 1900 2450 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L CONN_01X03 P6
+L Conn_01x03 P6
 U 1 1 5648C117
 P 11050 5750
 F 0 "P6" H 11050 5950 50  0000 C CNN
@@ -710,7 +711,7 @@ F 3 "" H 8850 5450 60  0000 C CNN
 	-1   0    0    1   
 $EndComp
 $Comp
-L CONN_01X03 P5
+L Conn_01x03 P5
 U 1 1 564BB4DC
 P 11050 4200
 F 0 "P5" H 11050 4400 50  0000 C CNN
@@ -1748,7 +1749,7 @@ $EndComp
 Wire Wire Line
 	5200 1100 5850 1100
 $Comp
-L CONN_01X03 P2
+L Conn_01x03 P2
 U 1 1 58CBB843
 P 5700 750
 F 0 "P2" H 5700 950 50  0000 C CNN
@@ -2396,17 +2397,6 @@ Wire Wire Line
 Text Notes 10350 1900 0    60   ~ 12
 Solenoid Power\n
 $Comp
-L CONN_02X04 P3
-U 1 1 58CE0E11
-P 10100 1150
-F 0 "P3" H 10100 1450 50  0000 C CNN
-F 1 "Solenoid" H 10100 1400 50  0000 C CNB
-F 2 "Zeabus:Pin_Header_Straight_2x04" H 10100 -50 50  0001 C CNN
-F 3 "" H 10100 -50 50  0000 C CNN
-	1    10100 1150
-	1    0    0    -1  
-$EndComp
-$Comp
 L +12V #PWR058
 U 1 1 58CE20D3
 P 10350 1300
@@ -2700,6 +2690,17 @@ F 1 "VBUS" H 8000 1960 30  0000 C CNN
 F 2 "" H 8000 1850 60  0000 C CNN
 F 3 "" H 8000 1850 60  0000 C CNN
 	1    8000 1850
+	1    0    0    -1  
+$EndComp
+$Comp
+L Conn_02x04_Odd_Even P3
+U 1 1 5B211298
+P 10050 1100
+F 0 "P3" H 10100 1300 50  0000 C CNN
+F 1 "Solenoid" H 10100 800 50  0000 C CNN
+F 2 "Zeabus:Pin_Header_Straight_2x04" H 10050 1100 50  0001 C CNN
+F 3 "" H 10050 1100 50  0001 C CNN
+	1    10050 1100
 	1    0    0    -1  
 $EndComp
 $EndSCHEMATC
