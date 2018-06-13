@@ -1,4 +1,4 @@
-update=2/1/2018 12:38:16 PM
+update=6/13/2018 7:47:26 PM
 version=1
 last_client=kicad
 [pcbnew]
@@ -70,4 +70,3 @@ LibName28=contrib
 LibName29=valves
 LibName30=zeabus
 LibName31=ftdi
-LibName32=peripheral-birdge-v3-cache
