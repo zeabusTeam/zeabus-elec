@@ -1,4 +1,4 @@
-update=6/24/2017 12:43:34 AM
+update=2/3/2018 10:41:25 AM
 version=1
 last_client=kicad
 [pcbnew]
@@ -58,4 +58,4 @@ LibName26=opto
 LibName27=atmel
 LibName28=contrib
 LibName29=valves
-LibName30=C:/Users/abz/Desktop/zeabus/Zeabus-Elec-2017/Circuit/Kicad-Libraries/zeabus
+LibName30=zeabus
