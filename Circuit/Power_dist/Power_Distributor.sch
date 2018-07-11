@@ -1,5 +1,4 @@
 EESchema Schematic File Version 2
-LIBS:Power_Distributor-rescue
 LIBS:power
 LIBS:device
 LIBS:transistors
@@ -31,7 +30,6 @@ LIBS:contrib
 LIBS:valves
 LIBS:zeabus
 LIBS:ftdi
-LIBS:Power_Distributor-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -548,9 +546,9 @@ F2 "SW1_C" I L 6450 2750 60
 F3 "SW2_C" I L 6450 3450 60 
 F4 "SW3_C" I L 6450 4150 60 
 F5 "SW4_C" I L 6450 4850 60 
-F10 "SW1_E" O L 6450 2850 60 
-F11 "SW2_E" O L 6450 3550 60 
-F12 "SW3_E" O L 6450 4250 60 
-F13 "SW4_E" O L 6450 4950 60 
+F6 "SW1_E" O L 6450 2850 60 
+F7 "SW2_E" O L 6450 3550 60 
+F8 "SW3_E" O L 6450 4250 60 
+F9 "SW4_E" O L 6450 4950 60 
 $EndSheet
 $EndSCHEMATC
