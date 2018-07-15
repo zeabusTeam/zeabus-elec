@@ -35,7 +35,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 8
+Sheet 1 9
 Title "Power Distributor"
 Date "2017-04-06"
 Rev "1.0.0"
@@ -551,5 +551,11 @@ F6 "SW1_E" O L 6450 2850 60
 F7 "SW2_E" O L 6450 3550 60 
 F8 "SW3_E" O L 6450 4250 60 
 F9 "SW4_E" O L 6450 4950 60 
+$EndSheet
+$Sheet
+S 5300 650  1050 400 
+U 5B4C0CAC
+F0 "Current_Monitor" 60
+F1 "Current_Monitor.sch" 60
 $EndSheet
 $EndSCHEMATC

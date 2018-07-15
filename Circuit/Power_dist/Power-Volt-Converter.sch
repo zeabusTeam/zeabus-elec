@@ -35,7 +35,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 7 8
+Sheet 7 9
 Title "Power Voltage Convertor"
 Date "2017-04-06"
 Rev "1.0.0"
