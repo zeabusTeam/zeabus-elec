@@ -122,7 +122,7 @@ F 3 "" H 6050 4575 60  0000 C CNN
 	1    6000 4675
 	1    0    0    -1  
 $EndComp
-Text HLabel 3875 2375 0    60   Input ~ 0
+Text HLabel 3875 2375 0    60   UnSpc ~ 0
 +VBatt
 $Comp
 L +BATT #PWR039
@@ -173,7 +173,7 @@ Wire Wire Line
 Wire Wire Line
 	6675 5075 7400 5075
 Wire Wire Line
-	6550 4525 7400 4525
+	6550 4525 8100 4525
 Wire Wire Line
 	6550 4675 6675 4675
 Wire Wire Line
@@ -280,7 +280,7 @@ Wire Wire Line
 	7050 2425 7050 2375
 Connection ~ 7050 2375
 Wire Wire Line
-	6550 2375 7400 2375
+	6550 2375 8100 2375
 Wire Wire Line
 	6550 2975 7400 2975
 NoConn ~ 6550 2675
@@ -469,4 +469,8 @@ Wire Wire Line
 	3875 2375 4425 2375
 Wire Wire Line
 	4100 2200 4100 2375
+Text HLabel 8100 2375 2    60   UnSpc ~ 0
++12V
+Text HLabel 8100 4525 2    60   UnSpc ~ 0
++5V
 $EndSCHEMATC
