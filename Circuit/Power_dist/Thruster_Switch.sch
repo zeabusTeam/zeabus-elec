@@ -115,20 +115,6 @@ F 3 "" H 5550 3050 50  0001 C CNN
 	1    5550 3050
 	0    1    1    0   
 $EndComp
-$Comp
-L GND #PWR026
-U 1 1 58E0369B
-P 6250 4800
-AR Path="/58E52973/58E0369B" Ref="#PWR026"  Part="1" 
-AR Path="/58E62AD5/58E0369B" Ref="#PWR023"  Part="1" 
-AR Path="/58E0048C/58E0369B" Ref="#PWR029"  Part="1" 
-F 0 "#PWR029" H 6250 4550 50  0001 C CNN
-F 1 "GND" H 6250 4650 50  0000 C CNN
-F 2 "" H 6250 4800 50  0001 C CNN
-F 3 "" H 6250 4800 50  0001 C CNN
-	1    6250 4800
-	1    0    0    -1  
-$EndComp
 Text HLabel 3700 2300 0    60   Input ~ 0
 +Power
 Text HLabel 3700 3050 0    60   Input ~ 0
@@ -150,10 +136,8 @@ Wire Wire Line
 Wire Wire Line
 	5250 2500 5400 2500
 Connection ~ 5250 3050
-Connection ~ 6650 3850
 Wire Wire Line
 	6250 4450 6250 4300
-Connection ~ 6650 4750
 Wire Wire Line
 	6250 4650 6250 4800
 Wire Wire Line
@@ -201,4 +185,17 @@ Wire Wire Line
 	6250 4750 6650 4750
 Wire Wire Line
 	6650 3850 6250 3850
+$Comp
+L GNDPWR #PWR?
+U 1 1 5B5DEA3D
+P 6250 4800
+AR Path="/58E0048C/5B5DEA3D" Ref="#PWR?"  Part="1" 
+AR Path="/58E52973/5B5DEA3D" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 6250 4600 50  0001 C CNN
+F 1 "GNDPWR" H 6250 4670 50  0000 C CNN
+F 2 "" H 6250 4750 50  0001 C CNN
+F 3 "" H 6250 4750 50  0001 C CNN
+	1    6250 4800
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
