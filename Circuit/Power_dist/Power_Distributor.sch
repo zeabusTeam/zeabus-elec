@@ -35,7 +35,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 9
+Sheet 1 10
 Title "Power Distributor"
 Date "2017-04-06"
 Rev "1.0.0"
@@ -83,25 +83,25 @@ $EndComp
 $Comp
 L Conn_01x02 J1
 U 1 1 58E6ABEA
-P 8775 1500
-F 0 "J1" H 8775 1650 50  0000 C CNN
-F 1 "Thruster_Off_Switch" V 8875 1500 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm" H 8775 1500 50  0001 C CNN
-F 3 "" H 8775 1500 50  0001 C CNN
-	1    8775 1500
+P 8725 3325
+F 0 "J1" H 8725 3475 50  0000 C CNN
+F 1 "Thruster_Off_Switch" V 8825 3325 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm" H 8725 3325 50  0001 C CNN
+F 3 "" H 8725 3325 50  0001 C CNN
+	1    8725 3325
 	-1   0    0    1   
 $EndComp
-Text Label 9625 1400 2    60   ~ 0
+Text Label 9575 3225 2    60   ~ 0
 Kill_SW
 $Comp
 L GND #PWR02
 U 1 1 58E6E6F3
-P 9075 1650
-F 0 "#PWR02" H 9075 1400 50  0001 C CNN
-F 1 "GND" H 9075 1500 50  0000 C CNN
-F 2 "" H 9075 1650 50  0001 C CNN
-F 3 "" H 9075 1650 50  0001 C CNN
-	1    9075 1650
+P 9025 3475
+F 0 "#PWR02" H 9025 3225 50  0001 C CNN
+F 1 "GND" H 9025 3325 50  0000 C CNN
+F 2 "" H 9025 3475 50  0001 C CNN
+F 3 "" H 9025 3475 50  0001 C CNN
+	1    9025 3475
 	1    0    0    -1  
 $EndComp
 $Sheet
@@ -256,11 +256,11 @@ F 3 "" H 1450 1900 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	8975 1500 9075 1500
+	8925 3325 9025 3325
 Wire Wire Line
-	9075 1500 9075 1650
+	9025 3325 9025 3475
 Wire Wire Line
-	9625 1400 8975 1400
+	9575 3225 8925 3225
 Wire Wire Line
 	5600 2550 5600 2650
 Wire Wire Line
@@ -553,13 +553,21 @@ F8 "SW3_E" O L 6450 4250 60
 F9 "SW4_E" O L 6450 4950 60 
 $EndSheet
 $Sheet
-S 6825 1400 1250 400 
+S 7025 1400 1250 400 
 U 5B4C0CAC
 F0 "Current_Monitor" 60
 F1 "Current_Monitor.sch" 60
-F2 "Current_IN" U L 6825 1500 60 
-F3 "Current_OUT" U R 8075 1500 60 
-F4 "OUT" O R 8075 1700 60 
-F5 "+5V_PWR" U L 6825 1700 60 
+F2 "Current_IN" U L 7025 1500 60 
+F3 "Current_OUT" U R 8275 1500 60 
+F4 "OUT" O R 8275 1700 60 
+F5 "+5V_PWR" U L 7025 1700 60 
+$EndSheet
+$Sheet
+S 8650 1400 1250 400 
+U 5B4C624E
+F0 "Soft_Start_Circuit" 60
+F1 "Soft_Start_Circuit.sch" 60
+F2 "Current_IN" U L 8650 1600 60 
+F3 "Current_OUT" U R 9900 1600 60 
 $EndSheet
 $EndSCHEMATC

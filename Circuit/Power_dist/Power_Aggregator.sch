@@ -35,7 +35,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 6 9
+Sheet 6 10
 Title "Power Aggregator"
 Date "2017-04-06"
 Rev "1.0.0"
@@ -333,7 +333,7 @@ P 5650 4000
 F 0 "Q7" H 5450 4300 50  0000 L CNN
 F 1 "AUIRFS8409-7P" H 5450 3650 50  0000 L CNN
 F 2 "TO_SOT_Packages_SMD:TO-263-6" H 5650 3550 50  0001 C CIN
-F 3 "" H 5450 4300 50  0001 L CNN
+F 3 "${KIPJTMOD}" H 5450 4300 50  0001 L CNN
 	1    5650 4000
 	-1   0    0    -1  
 $EndComp
