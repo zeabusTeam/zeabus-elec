@@ -50,24 +50,16 @@ S 4550 3650 900  400
 U 58E52973
 F0 "Thruster2" 60
 F1 "Thruster_Switch.sch" 60
-F2 "+Power" I R 5450 3750 60 
-F3 "Software_Switch" I R 5450 3850 60 
-$EndSheet
-$Sheet
-S 4550 4350 900  400 
-U 58E51F99
-F0 "DVL" 60
-F1 "Power_Switch_VBatt.sch" 60
-F2 "+Power" I R 5450 4450 60 
-F3 "Software_Switch" I R 5450 4550 60 
+F2 "+PWR" U R 5450 3750 60 
+F3 "Software_SW" U R 5450 3850 60 
 $EndSheet
 $Sheet
 S 4550 5050 900  400 
 U 58E527AF
 F0 "Imagine_Sonar" 60
 F1 "Power_Switch_VBatt.sch" 60
-F2 "+Power" I R 5450 5150 60 
-F3 "Software_Switch" I R 5450 5250 60 
+F2 "+PWR" U R 5450 5150 60 
+F3 "Software_SW" U R 5450 5250 60 
 $EndSheet
 $Comp
 L +BATT #PWR01
@@ -96,8 +88,8 @@ S 4550 2950 900  400
 U 58E0048C
 F0 "Thruster1" 60
 F1 "Thruster_Switch.sch" 60
-F2 "+Power" I R 5450 3050 60 
-F3 "Software_Switch" I R 5450 3150 60 
+F2 "+PWR" U R 5450 3050 60 
+F3 "Software_SW" U R 5450 3150 60 
 $EndSheet
 $Comp
 L +BATT #PWR03
@@ -961,4 +953,12 @@ Text GLabel 6325 3950 0    60   Input ~ 0
 KILL_SWITCH
 Wire Wire Line
 	6325 3950 6450 3950
+$Sheet
+S 4550 4350 900  400 
+U 58E51F99
+F0 "DVL" 60
+F1 "Power_Switch_VBatt.sch" 60
+F2 "+PWR" U R 5450 4450 60 
+F3 "Software_SW" U R 5450 4550 60 
+$EndSheet
 $EndSCHEMATC

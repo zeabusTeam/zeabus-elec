@@ -35,7 +35,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 5 10
+Sheet 4 10
 Title "Thruster Switch"
 Date "2017-04-06"
 Rev "1.0.0"
@@ -81,7 +81,7 @@ AR Path="/58E52973/58E01A8B" Ref="D2"  Part="1"
 AR Path="/58E62AD5/58E01A8B" Ref="D8"  Part="1" 
 AR Path="/58E0048C/58E01A8B" Ref="D10"  Part="1" 
 F 0 "D10" H 6200 4675 50  0000 L CNN
-F 1 "LED_Small" H 6075 4450 50  0000 L CNN
+F 1 "THRUSTER_SW_LED" H 6075 4400 50  0000 L CNN
 F 2 "LEDs:LED_0603_HandSoldering" V 6250 4550 50  0001 C CNN
 F 3 "" V 6250 4550 50  0001 C CNN
 	1    6250 4550
@@ -115,10 +115,10 @@ F 3 "" H 5550 3050 50  0001 C CNN
 	1    5550 3050
 	0    1    1    0   
 $EndComp
-Text HLabel 3700 2300 0    60   Input ~ 0
-+Power
-Text HLabel 3700 3050 0    60   Input ~ 0
-Software_Switch
+Text HLabel 3700 2300 0    60   UnSpc ~ 0
++PWR
+Text HLabel 3700 3050 0    60   UnSpc ~ 0
+Software_SW
 Wire Wire Line
 	6650 3850 6650 4250
 Connection ~ 6250 3850
@@ -180,8 +180,6 @@ Connection ~ 6250 4750
 Wire Wire Line
 	5250 3050 5250 2500
 Wire Wire Line
-	3700 2300 7250 2300
-Wire Wire Line
 	6250 4750 6650 4750
 Wire Wire Line
 	6650 3850 6250 3850
@@ -198,31 +196,35 @@ F 3 "" H 6250 4750 50  0001 C CNN
 	1    6250 4800
 	1    0    0    -1  
 $EndComp
-$Comp
-L C C?
-U 1 1 5B500BB4
-P 7250 2725
-F 0 "C?" H 7275 2825 50  0000 L CNN
-F 1 "470uF" H 7275 2625 50  0000 L CNN
-F 2 "" H 7288 2575 50  0001 C CNN
-F 3 "" H 7250 2725 50  0001 C CNN
-	1    7250 2725
-	1    0    0    -1  
-$EndComp
 Connection ~ 6250 2300
 $Comp
 L GNDPWR #PWR?
 U 1 1 5B500D71
-P 7250 2975
-F 0 "#PWR?" H 7250 2775 50  0001 C CNN
-F 1 "GNDPWR" H 7250 2845 50  0000 C CNN
-F 2 "" H 7250 2925 50  0001 C CNN
-F 3 "" H 7250 2925 50  0001 C CNN
-	1    7250 2975
+P 6500 2675
+AR Path="/58E0048C/5B500D71" Ref="#PWR?"  Part="1" 
+AR Path="/58E52973/5B500D71" Ref="#PWR?"  Part="1" 
+F 0 "#PWR?" H 6500 2475 50  0001 C CNN
+F 1 "GNDPWR" H 6500 2545 50  0000 C CNN
+F 2 "" H 6500 2625 50  0001 C CNN
+F 3 "" H 6500 2625 50  0001 C CNN
+	1    6500 2675
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	7250 2300 7250 2575
+	6500 2675 6500 2600
 Wire Wire Line
-	7250 2975 7250 2875
+	3700 2300 6500 2300
+$Comp
+L C_Small C?
+U 1 1 5B5067F0
+P 6500 2500
+F 0 "C?" H 6510 2570 50  0000 L CNN
+F 1 "470uF" H 6510 2420 50  0000 L CNN
+F 2 "" H 6500 2500 50  0001 C CNN
+F 3 "" H 6500 2500 50  0001 C CNN
+	1    6500 2500
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6500 2300 6500 2400
 $EndSCHEMATC
