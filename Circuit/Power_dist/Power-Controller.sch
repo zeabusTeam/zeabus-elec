@@ -454,11 +454,7 @@ Wire Wire Line
 	3650 2550 3650 2700
 Connection ~ 3400 2650
 Wire Wire Line
-	2250 3350 4200 3350
-Wire Wire Line
 	4200 3350 4200 3850
-Wire Wire Line
-	2250 3250 4300 3250
 Wire Wire Line
 	4300 3250 4300 3750
 Connection ~ 2850 2650
@@ -1412,4 +1408,34 @@ NoConn ~ 6800 4550
 NoConn ~ 6800 4650
 Text HLabel 10300 4425 2    60   UnSpc ~ 0
 SW5_C
+$Comp
+L R R?
+U 1 1 5B50FC60
+P 4025 3250
+F 0 "R?" V 4105 3250 50  0000 C CNN
+F 1 "10" V 4025 3250 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 3955 3250 30  0001 C CNN
+F 3 "" H 4025 3250 30  0000 C CNN
+	1    4025 3250
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4175 3250 4300 3250
+Wire Wire Line
+	2250 3250 3875 3250
+$Comp
+L R R?
+U 1 1 5B512710
+P 4025 3350
+F 0 "R?" V 3925 3350 50  0000 C CNN
+F 1 "10" V 4025 3350 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 3955 3350 30  0001 C CNN
+F 3 "" H 4025 3350 30  0000 C CNN
+	1    4025 3350
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	4200 3350 4175 3350
+Wire Wire Line
+	2250 3350 3875 3350
 $EndSCHEMATC
