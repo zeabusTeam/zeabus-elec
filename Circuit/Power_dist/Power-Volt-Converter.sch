@@ -35,7 +35,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 6 11
+Sheet 4 11
 Title "Power Voltage Convertor"
 Date "2017-04-06"
 Rev "1.0.0"
@@ -101,7 +101,7 @@ F 3 "" H 6050 4575 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Text HLabel 3875 2375 0    60   UnSpc ~ 0
-+VBatt
++PWR
 $Comp
 L +BATT #PWR039
 U 1 1 58C81568
