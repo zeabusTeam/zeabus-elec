@@ -1124,12 +1124,12 @@ Wire Wire Line
 $Comp
 L Jumper JP2
 U 1 1 5A39A4D1
-P 6850 1050
-F 0 "JP2" H 6850 1200 50  0000 C CNN
-F 1 "Manual_Software_Switch" H 6850 970 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm" H 6850 1050 50  0001 C CNN
-F 3 "" H 6850 1050 50  0001 C CNN
-	1    6850 1050
+P 8100 1050
+F 0 "JP2" H 8100 1200 50  0000 C CNN
+F 1 "Manual_Software_Switch" H 8100 970 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x02_Pitch2.54mm" H 8100 1050 50  0001 C CNN
+F 3 "" H 8100 1050 50  0001 C CNN
+	1    8100 1050
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -1217,10 +1217,6 @@ F 3 "" H 10450 3975 50  0001 C CNN
 $EndComp
 Text HLabel 2150 1050 0    60   UnSpc ~ 0
 +PWR
-Wire Wire Line
-	2150 1050 6550 1050
-Wire Wire Line
-	7150 1050 9200 1050
 $Comp
 L ACPL-247-500E U?
 U 1 1 5B53470F
@@ -1301,8 +1297,6 @@ Wire Wire Line
 	7450 1750 6925 1750
 Wire Wire Line
 	6925 1750 6925 4050
-Wire Wire Line
-	9200 1050 9200 4425
 Wire Wire Line
 	9200 1700 9350 1700
 $Comp
@@ -1438,4 +1432,10 @@ Wire Wire Line
 	4200 3350 4175 3350
 Wire Wire Line
 	2250 3350 3875 3350
+Wire Wire Line
+	8400 1050 9200 1050
+Wire Wire Line
+	9200 1050 9200 4425
+Wire Wire Line
+	7800 1050 2150 1050
 $EndSCHEMATC
