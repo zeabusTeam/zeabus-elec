@@ -35,7 +35,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 9 11
+Sheet 7 11
 Title "Power Aggregator"
 Date "2017-04-06"
 Rev "1.0.0"
@@ -161,17 +161,6 @@ F 1 "100" V 7000 4750 50  0000 C CNN
 F 2 "Resistors_SMD:R_0603_HandSoldering" V 6930 4750 50  0001 C CNN
 F 3 "" H 7000 4750 50  0001 C CNN
 	1    7000 4750
-	1    0    0    -1  
-$EndComp
-$Comp
-L C_Small C?
-U 1 1 5B4C70EB
-P 7650 2200
-F 0 "C?" H 7660 2270 50  0000 L CNN
-F 1 "47uF" H 7660 2120 50  0000 L CNN
-F 2 "Capacitors_SMD:CP_Elec_6.3x5.8" H 7650 2200 50  0001 C CNN
-F 3 "" H 7650 2200 50  0001 C CNN
-	1    7650 2200
 	1    0    0    -1  
 $EndComp
 Text HLabel 4125 2100 0    60   UnSpc ~ 0
@@ -363,4 +352,15 @@ Connection ~ 6700 5350
 Wire Wire Line
 	7000 3450 6700 3450
 Connection ~ 6700 3450
+$Comp
+L CP_Small C?
+U 1 1 5B53302F
+P 7650 2200
+F 0 "C?" H 7660 2270 50  0000 L CNN
+F 1 "47uF" H 7660 2120 50  0000 L CNN
+F 2 "" H 7650 2200 50  0001 C CNN
+F 3 "" H 7650 2200 50  0001 C CNN
+	1    7650 2200
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

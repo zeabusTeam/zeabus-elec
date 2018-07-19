@@ -35,7 +35,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 11 11
+Sheet 8 11
 Title "Thruster Switch"
 Date "2017-04-06"
 Rev "1.0.0"
@@ -223,13 +223,14 @@ Wire Wire Line
 	6500 2675 6500 2600
 Wire Wire Line
 	3700 2300 6500 2300
+Wire Wire Line
+	6500 2300 6500 2400
 $Comp
-L C_Small C?
-U 1 1 5B5067F0
+L CP_Small C?
+U 1 1 5B531C7E
 P 6500 2500
-AR Path="/58E0048C/5B5067F0" Ref="C?"  Part="1" 
-AR Path="/58E52973/5B5067F0" Ref="C?"  Part="1" 
-AR Path="/5B53D7CB/5B5067F0" Ref="C?"  Part="1" 
+AR Path="/58E0048C/5B531C7E" Ref="C?"  Part="1" 
+AR Path="/5B53D7CB/5B531C7E" Ref="C?"  Part="1" 
 F 0 "C?" H 6510 2570 50  0000 L CNN
 F 1 "470uF" H 6510 2420 50  0000 L CNN
 F 2 "" H 6500 2500 50  0001 C CNN
@@ -237,6 +238,4 @@ F 3 "" H 6500 2500 50  0001 C CNN
 	1    6500 2500
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	6500 2300 6500 2400
 $EndSCHEMATC

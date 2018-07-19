@@ -35,7 +35,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 10 11
+Sheet 9 11
 Title "DVL and Sonar Switch"
 Date "2017-04-06"
 Rev "1.0.0"
@@ -217,19 +217,6 @@ Wire Wire Line
 	3650 2450 6750 2450
 Connection ~ 6450 2450
 $Comp
-L C_Small C?
-U 1 1 5B510029
-P 6750 2650
-AR Path="/58E51F99/5B510029" Ref="C?"  Part="1" 
-AR Path="/5B530A41/5B510029" Ref="C?"  Part="1" 
-F 0 "C?" H 6760 2720 50  0000 L CNN
-F 1 "47uF" H 6760 2570 50  0000 L CNN
-F 2 "" H 6750 2650 50  0001 C CNN
-F 3 "" H 6750 2650 50  0001 C CNN
-	1    6750 2650
-	1    0    0    -1  
-$EndComp
-$Comp
 L GNDPWR #PWR?
 U 1 1 5B51011B
 P 6750 2800
@@ -246,4 +233,15 @@ Wire Wire Line
 	6750 2450 6750 2550
 Wire Wire Line
 	6750 2750 6750 2800
+$Comp
+L CP_Small C?
+U 1 1 5B532465
+P 6750 2650
+F 0 "C?" H 6760 2720 50  0000 L CNN
+F 1 "47uF" H 6760 2570 50  0000 L CNN
+F 2 "" H 6750 2650 50  0001 C CNN
+F 3 "" H 6750 2650 50  0001 C CNN
+	1    6750 2650
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
