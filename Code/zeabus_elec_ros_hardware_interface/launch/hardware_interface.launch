@@ -6,8 +6,11 @@
 
     <node name="Zeabus_Elec_Hardware_interface" pkg="zeabus_elec_ros_hardware_interface" type="zeabus_elec_ros_hardware_interface">
 
-        <param name="atm_pressure" value="18.516"/>
-        <param name="depth_offset" value="0"/>
+        <arg name="atm_pressure_arg" default="14.6959"/>
+        <arg name="depth_offset_arg" default="0"/>
+
+        <param name="atm_pressure" value="$(arg atm_pressure_arg)"/>
+        <param name="depth_offset" value="$(arg depth_offset_arg)"/>
 
     </node>
 
