@@ -54,7 +54,7 @@ double barometer_value_to_depth(uint16_t barometer_value)
 void send_depth(const zeabus_elec_ros_peripheral_bridge::barometer::ConstPtr& msg)
 {
     nav_msgs::Odometry odometry;
-    double depth, depth_differential;
+    double depth;
 
     depth = barometer_value_to_depth(msg->pressureValue);
 
