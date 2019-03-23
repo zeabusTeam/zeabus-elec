@@ -1657,7 +1657,7 @@ F 3 "" H -3200 4050 50  0001 C CNN
 $EndComp
 Text GLabel 1800 4400 2    60   UnSpc ~ 0
 +5_CTRL
-Text GLabel 1650 1900 0    60   UnSpc ~ 0
+Text GLabel 1800 1750 0    60   UnSpc ~ 0
 +5_CTRL
 Wire Wire Line
 	4900 1450 4900 1400
@@ -1677,8 +1677,6 @@ Connection ~ 4400 1450
 Wire Wire Line
 	4650 1450 4650 1400
 Connection ~ 4650 1450
-Wire Wire Line
-	1900 1950 1900 1900
 Wire Wire Line
 	2350 1900 2600 1900
 Wire Wire Line
@@ -2280,8 +2278,6 @@ Wire Wire Line
 Wire Wire Line
 	1200 4700 1050 4700
 Wire Wire Line
-	1650 1900 2150 1900
-Wire Wire Line
 	7350 1750 7350 1850
 Wire Wire Line
 	7350 1450 7350 1350
@@ -2465,4 +2461,259 @@ F 3 "" H 9300 2750 50  0001 C CNN
 	1    9300 2750
 	1    0    0    -1  
 $EndComp
+Text GLabel -1400 1300 0    60   UnSpc ~ 0
++5_USB
+Text GLabel -1400 1800 0    60   UnSpc ~ 0
++5_PCIE
+Text GLabel -1400 2300 0    60   UnSpc ~ 0
++5_CTRL
+Wire Wire Line
+	1900 1900 2150 1900
+Wire Wire Line
+	1800 1750 1900 1750
+Wire Wire Line
+	1900 1750 1900 1950
+$Comp
+L +12V #PWR?
+U 1 1 5C9D6C5D
+P -1300 750
+F 0 "#PWR?" H -1300 600 50  0001 C CNN
+F 1 "+12V" H -1300 890 50  0000 C CNN
+F 2 "" H -1300 750 50  0001 C CNN
+F 3 "" H -1300 750 50  0001 C CNN
+	1    -1300 750 
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3.3V #PWR?
+U 1 1 5C9E24A8
+P -1300 2850
+F 0 "#PWR?" H -1300 2700 50  0001 C CNN
+F 1 "+3.3V" H -1300 2990 50  0000 C CNN
+F 2 "" H -1300 2850 50  0001 C CNN
+F 3 "" H -1300 2850 50  0001 C CNN
+	1    -1300 2850
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R?
+U 1 1 5C9E9CFF
+P -1050 850
+F 0 "R?" V -1150 850 50  0000 C CNN
+F 1 "1k" V -1050 850 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V -1120 850 50  0001 C CNN
+F 3 "" H -1050 850 50  0001 C CNN
+	1    -1050 850 
+	0    1    1    0   
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 5C9EA273
+P -500 950
+F 0 "#PWR?" H -500 700 50  0001 C CNN
+F 1 "GND" H -500 800 50  0000 C CNN
+F 2 "" H -500 950 50  0001 C CNN
+F 3 "" H -500 950 50  0001 C CNN
+	1    -500 950 
+	1    0    0    -1  
+$EndComp
+$Comp
+L LED_Small D?
+U 1 1 5C9EC37B
+P -700 850
+F 0 "D?" H -750 975 50  0000 L CNN
+F 1 "LED_Small" H -875 750 50  0000 L CNN
+F 2 "" V -700 850 50  0001 C CNN
+F 3 "" V -700 850 50  0001 C CNN
+	1    -700 850 
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	-600 850  -500 850 
+Wire Wire Line
+	-500 850  -500 950 
+Wire Wire Line
+	-800 850  -900 850 
+Wire Wire Line
+	-1300 750  -1300 850 
+Wire Wire Line
+	-1300 850  -1200 850 
+$Comp
+L R R?
+U 1 1 5C9F0760
+P -1050 1450
+F 0 "R?" V -1150 1450 50  0000 C CNN
+F 1 "1k" V -1050 1450 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V -1120 1450 50  0001 C CNN
+F 3 "" H -1050 1450 50  0001 C CNN
+	1    -1050 1450
+	0    1    1    0   
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 5C9F0766
+P -500 1550
+F 0 "#PWR?" H -500 1300 50  0001 C CNN
+F 1 "GND" H -500 1400 50  0000 C CNN
+F 2 "" H -500 1550 50  0001 C CNN
+F 3 "" H -500 1550 50  0001 C CNN
+	1    -500 1550
+	1    0    0    -1  
+$EndComp
+$Comp
+L LED_Small D?
+U 1 1 5C9F076C
+P -700 1450
+F 0 "D?" H -750 1575 50  0000 L CNN
+F 1 "LED_Small" H -875 1350 50  0000 L CNN
+F 2 "" V -700 1450 50  0001 C CNN
+F 3 "" V -700 1450 50  0001 C CNN
+	1    -700 1450
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	-600 1450 -500 1450
+Wire Wire Line
+	-500 1450 -500 1550
+Wire Wire Line
+	-800 1450 -900 1450
+Wire Wire Line
+	-1200 1450 -1300 1450
+Wire Wire Line
+	-1300 1450 -1300 1300
+Wire Wire Line
+	-1300 1300 -1400 1300
+$Comp
+L R R?
+U 1 1 5C9F1E2D
+P -1050 1950
+F 0 "R?" V -1150 1950 50  0000 C CNN
+F 1 "1k" V -1050 1950 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V -1120 1950 50  0001 C CNN
+F 3 "" H -1050 1950 50  0001 C CNN
+	1    -1050 1950
+	0    1    1    0   
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 5C9F1E33
+P -500 2050
+F 0 "#PWR?" H -500 1800 50  0001 C CNN
+F 1 "GND" H -500 1900 50  0000 C CNN
+F 2 "" H -500 2050 50  0001 C CNN
+F 3 "" H -500 2050 50  0001 C CNN
+	1    -500 2050
+	1    0    0    -1  
+$EndComp
+$Comp
+L LED_Small D?
+U 1 1 5C9F1E39
+P -700 1950
+F 0 "D?" H -750 2075 50  0000 L CNN
+F 1 "LED_Small" H -875 1850 50  0000 L CNN
+F 2 "" V -700 1950 50  0001 C CNN
+F 3 "" V -700 1950 50  0001 C CNN
+	1    -700 1950
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	-600 1950 -500 1950
+Wire Wire Line
+	-500 1950 -500 2050
+Wire Wire Line
+	-800 1950 -900 1950
+Wire Wire Line
+	-1200 1950 -1300 1950
+Wire Wire Line
+	-1300 1950 -1300 1800
+Wire Wire Line
+	-1300 1800 -1400 1800
+$Comp
+L R R?
+U 1 1 5C9F3792
+P -1050 2450
+F 0 "R?" V -1150 2450 50  0000 C CNN
+F 1 "1k" V -1050 2450 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V -1120 2450 50  0001 C CNN
+F 3 "" H -1050 2450 50  0001 C CNN
+	1    -1050 2450
+	0    1    1    0   
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 5C9F3798
+P -500 2550
+F 0 "#PWR?" H -500 2300 50  0001 C CNN
+F 1 "GND" H -500 2400 50  0000 C CNN
+F 2 "" H -500 2550 50  0001 C CNN
+F 3 "" H -500 2550 50  0001 C CNN
+	1    -500 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L LED_Small D?
+U 1 1 5C9F379E
+P -700 2450
+F 0 "D?" H -750 2575 50  0000 L CNN
+F 1 "LED_Small" H -875 2350 50  0000 L CNN
+F 2 "" V -700 2450 50  0001 C CNN
+F 3 "" V -700 2450 50  0001 C CNN
+	1    -700 2450
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	-600 2450 -500 2450
+Wire Wire Line
+	-500 2450 -500 2550
+Wire Wire Line
+	-800 2450 -900 2450
+Wire Wire Line
+	-1200 2450 -1300 2450
+Wire Wire Line
+	-1300 2450 -1300 2300
+Wire Wire Line
+	-1300 2300 -1400 2300
+$Comp
+L R R?
+U 1 1 5C9F74E5
+P -1050 2950
+F 0 "R?" V -1150 2950 50  0000 C CNN
+F 1 "150" V -1050 2950 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603" V -1120 2950 50  0001 C CNN
+F 3 "" H -1050 2950 50  0001 C CNN
+	1    -1050 2950
+	0    1    1    0   
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 5C9F74EB
+P -500 3050
+F 0 "#PWR?" H -500 2800 50  0001 C CNN
+F 1 "GND" H -500 2900 50  0000 C CNN
+F 2 "" H -500 3050 50  0001 C CNN
+F 3 "" H -500 3050 50  0001 C CNN
+	1    -500 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L LED_Small D?
+U 1 1 5C9F74F1
+P -700 2950
+F 0 "D?" H -750 3075 50  0000 L CNN
+F 1 "LED_Small" H -875 2850 50  0000 L CNN
+F 2 "" V -700 2950 50  0001 C CNN
+F 3 "" V -700 2950 50  0001 C CNN
+	1    -700 2950
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	-600 2950 -500 2950
+Wire Wire Line
+	-500 2950 -500 3050
+Wire Wire Line
+	-800 2950 -900 2950
+Wire Wire Line
+	-1300 2850 -1300 2950
+Wire Wire Line
+	-1300 2950 -1200 2950
 $EndSCHEMATC
