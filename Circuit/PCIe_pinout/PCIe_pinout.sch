@@ -32,6 +32,7 @@ LIBS:atmel
 LIBS:contrib
 LIBS:valves
 LIBS:zeabus
+LIBS:PCIe_pinout-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -139,9 +140,9 @@ F 3 "" H 2050 4000 50  0001 C CNN
 	1    2050 4000
 	1    0    0    -1  
 $EndComp
-Text GLabel 1650 3400 0    60   Input ~ 0
+Text GLabel 1650 3400 0    60   BiDi ~ 0
 Data+
-Text GLabel 1650 3700 0    60   Input ~ 0
+Text GLabel 1650 3700 0    60   BiDi ~ 0
 Data-
 $Comp
 L Conn-PCIE-x16 CON2
@@ -217,11 +218,11 @@ Wire Wire Line
 	1700 3700 1700 3600
 Wire Wire Line
 	1700 3600 2250 3600
-Text GLabel 7000 2200 2    60   Input ~ 0
+Text GLabel 7000 2200 2    60   Output ~ 0
 +VBatt
 Wire Wire Line
 	6950 2200 7000 2200
-Text GLabel 5150 2800 0    60   Input ~ 0
+Text GLabel 5150 2800 0    60   Output ~ 0
 GND_VBatt
 Wire Wire Line
 	5150 2800 5200 2800
@@ -260,13 +261,13 @@ Wire Wire Line
 	7900 2500 7900 2600
 Wire Wire Line
 	7900 2600 8100 2600
-Text GLabel 9500 2750 2    60   Input ~ 0
+Text GLabel 9500 2750 2    60   Output ~ 0
 TxD_RS232
 Text GLabel 9500 2650 2    60   Input ~ 0
 RxD_RS232
 Wire Wire Line
 	9250 2600 9450 2600
-Text GLabel 9500 2500 2    60   Input ~ 0
+Text GLabel 9500 2500 2    60   Output ~ 0
 GND_RS232
 Wire Wire Line
 	9450 2600 9450 2650
@@ -284,22 +285,10 @@ Wire Wire Line
 	9450 2500 9450 2400
 Wire Wire Line
 	9450 2400 9250 2400
-Text GLabel 9450 3300 2    60   Input ~ 0
-solenoid_value_1
+Text GLabel 9450 3300 2    60   UnSpc ~ 0
+solenoid_valve1
 Wire Wire Line
 	9250 3300 9450 3300
-Text GLabel 9450 3400 2    60   Input ~ 0
-solenoid_value_2
-Text GLabel 9450 3500 2    60   Input ~ 0
-solenoid_value_3
-Text GLabel 9450 3600 2    60   Input ~ 0
-solenoid_value_4
-Text GLabel 9450 3700 2    60   Input ~ 0
-solenoid_value_5
-Text GLabel 9450 3800 2    60   Input ~ 0
-solenoid_value_6
-Text GLabel 9450 3900 2    60   Input ~ 0
-solenoid_value_7
 Wire Wire Line
 	9450 3900 9250 3900
 Wire Wire Line
@@ -318,12 +307,28 @@ Text Label 5300 5750 0    60   ~ 0
 Power_distributor_addtional_pin
 Text Label 8000 5750 0    60   ~ 0
 Peripheral_bridge_addtional_pin
-Text GLabel 7850 3100 0    60   Input ~ 0
+Text GLabel 7850 3100 0    60   UnSpc ~ 0
 DSP_reset+
 Wire Wire Line
 	7850 3100 8100 3100
-Text GLabel 9450 3100 2    60   Input ~ 0
+Text GLabel 9450 3100 2    60   UnSpc ~ 0
 DSP_reset-
 Wire Wire Line
 	9450 3100 9250 3100
+Text GLabel 7850 3300 0    60   Input ~ 0
+PLANNER_SW
+Wire Wire Line
+	8100 3300 7850 3300
+Text GLabel 9450 3400 2    60   UnSpc ~ 0
+solenoid_valve2
+Text GLabel 9450 3500 2    60   UnSpc ~ 0
+solenoid_valve3
+Text GLabel 9450 3600 2    60   UnSpc ~ 0
+solenoid_valve4
+Text GLabel 9450 3700 2    60   UnSpc ~ 0
+solenoid_valve5
+Text GLabel 9450 3800 2    60   UnSpc ~ 0
+solenoid_valve6
+Text GLabel 9450 3900 2    60   UnSpc ~ 0
+solenoid_valve7
 $EndSCHEMATC
