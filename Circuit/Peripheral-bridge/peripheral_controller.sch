@@ -1050,7 +1050,6 @@ NoConn ~ 5900 3550
 NoConn ~ 5900 3850
 NoConn ~ 5900 4150
 NoConn ~ 5900 4250
-NoConn ~ 5900 4350
 NoConn ~ 5900 5550
 NoConn ~ 5900 5650
 Text HLabel 800  1800 0    60   Input ~ 0
@@ -1856,4 +1855,12 @@ Text HLabel 10400 4900 2    60   UnSpc ~ 0
 SOL6
 Text HLabel 10400 5400 2    60   UnSpc ~ 0
 SOL7
+Text HLabel 6050 4250 2    60   Input ~ 0
+PLANNER_SW
+Wire Wire Line
+	5900 4350 6000 4350
+Wire Wire Line
+	6000 4350 6000 4250
+Wire Wire Line
+	6000 4250 6050 4250
 $EndSCHEMATC
