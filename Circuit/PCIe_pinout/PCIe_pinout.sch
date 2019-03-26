@@ -32,7 +32,6 @@ LIBS:atmel
 LIBS:contrib
 LIBS:valves
 LIBS:zeabus
-LIBS:PCIe_pinout-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -254,7 +253,7 @@ F 3 "" H 8300 2000 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text GLabel 7850 2500 0    60   Input ~ 0
-analog_pressure_sensor
+ressure_sensor_analog
 Wire Wire Line
 	7850 2500 7900 2500
 Wire Wire Line
@@ -262,13 +261,13 @@ Wire Wire Line
 Wire Wire Line
 	7900 2600 8100 2600
 Text GLabel 9500 2750 2    60   Input ~ 0
-TxD_RS232_DVL
+TxD_RS232
 Text GLabel 9500 2650 2    60   Input ~ 0
-RxD_RS232_DVL
+RxD_RS232
 Wire Wire Line
 	9250 2600 9450 2600
 Text GLabel 9500 2500 2    60   Input ~ 0
-GND_RS232_DVL
+GND_RS232
 Wire Wire Line
 	9450 2600 9450 2650
 Wire Wire Line
@@ -319,4 +318,12 @@ Text Label 5300 5750 0    60   ~ 0
 Power_distributor_addtional_pin
 Text Label 8000 5750 0    60   ~ 0
 Peripheral_bridge_addtional_pin
+Text GLabel 7850 3100 0    60   Input ~ 0
+DSP_reset+
+Wire Wire Line
+	7850 3100 8100 3100
+Text GLabel 9450 3100 2    60   Input ~ 0
+DSP_reset-
+Wire Wire Line
+	9450 3100 9250 3100
 $EndSCHEMATC
