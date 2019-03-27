@@ -331,4 +331,20 @@ Text GLabel 9450 3800 2    60   UnSpc ~ 0
 solenoid_valve6
 Text GLabel 9450 3900 2    60   UnSpc ~ 0
 solenoid_valve7
+Text GLabel 6750 3400 2    60   UnSpc ~ 0
+KILL_SW+
+Text GLabel 6750 3700 2    60   UnSpc ~ 0
+SYS_SW+
+Text GLabel 6750 3500 2    60   UnSpc ~ 0
+KILL_SW-
+Wire Wire Line
+	6550 3400 6750 3400
+Wire Wire Line
+	6750 3500 6550 3500
+Text GLabel 6750 3800 2    60   UnSpc ~ 0
+SYS_SW+
+Wire Wire Line
+	6750 3700 6550 3700
+Wire Wire Line
+	6550 3800 6750 3800
 $EndSCHEMATC
