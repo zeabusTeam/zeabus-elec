@@ -141,9 +141,9 @@ F 3 "" H 2050 4000 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text GLabel 1650 3400 0    60   BiDi ~ 0
-Data+
+data+
 Text GLabel 1650 3700 0    60   BiDi ~ 0
-Data-
+data-
 $Comp
 L Conn-PCIE-x16 CON2
 U 1 1 5A63B4F1
@@ -254,7 +254,7 @@ F 3 "" H 8300 2000 60  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text GLabel 7850 2500 0    60   Input ~ 0
-ressure_sensor_analog
+pressure_sensor_analog
 Wire Wire Line
 	7850 2500 7900 2500
 Wire Wire Line
@@ -316,7 +316,7 @@ DSP_reset-
 Wire Wire Line
 	9450 3100 9250 3100
 Text GLabel 7850 3300 0    60   Input ~ 0
-PLANNER_SW
+planner_sw
 Wire Wire Line
 	8100 3300 7850 3300
 Text GLabel 9450 3400 2    60   UnSpc ~ 0
