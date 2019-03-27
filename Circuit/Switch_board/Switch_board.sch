@@ -32,7 +32,6 @@ LIBS:atmel
 LIBS:contrib
 LIBS:valves
 LIBS:zeabus
-LIBS:Switch_board-cache
 EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
@@ -520,12 +519,12 @@ F 3 "" H 3250 2050 50  0001 C CNN
 	1    3250 2050
 	1    0    0    -1  
 $EndComp
-Text GLabel 4900 4750 2    60   Input ~ 0
+Text GLabel 4900 4750 2    60   Output ~ 0
 hall_sensor_out
 Text GLabel 3350 2650 0    60   Input ~ 0
 hall_sensor_out
-Text GLabel 8500 3050 2    60   Input ~ 0
-+switch
+Text GLabel 8500 3050 2    60   Output ~ 0
+switch+
 Wire Wire Line
 	3700 4650 3700 4750
 Wire Wire Line
@@ -708,7 +707,7 @@ F 3 "" H 5000 2050 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text GLabel 5100 2650 0    60   Input ~ 0
-+switch
+switch+
 Wire Wire Line
 	5550 2650 5500 2650
 Wire Wire Line
