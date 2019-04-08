@@ -1,3 +1,6 @@
 [submodule "code"]
 	path = code
 	url = git@github.com:zeabusTeam/zeabus-elec-code.git
+[submodule "circuit"]
+	path = circuit
+	url = git@github.com:zeabusTeam/zeabus-elec-circuit.git
