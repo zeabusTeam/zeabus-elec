@@ -1,3 +1,0 @@
-(fp_lib_table
-  (lib (name Zeabus)(type KiCad)(uri ${KIPRJMOD}/../Kicad-Libraries/zeabus.pretty)(options "")(descr "Zeabus footprints"))
-)
